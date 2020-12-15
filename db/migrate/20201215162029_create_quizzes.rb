@@ -3,7 +3,7 @@ class CreateQuizzes < ActiveRecord::Migration[6.1]
     create_table :quizzes do |t|
       t.string :title
       t.string :kind
-      t.string :infomation
+      t.string :information
       t.integer :duration
       t.string :description, default: 3600
       t.string :string

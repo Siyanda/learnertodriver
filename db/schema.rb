@@ -93,7 +93,7 @@ ActiveRecord::Schema.define(version: 2020_12_15_162033) do
   create_table "quizzes", force: :cascade do |t|
     t.string "title"
     t.string "kind"
-    t.string "infomation"
+    t.string "information"
     t.integer "duration"
     t.string "description", default: "3600"
     t.string "string"
