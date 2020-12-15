@@ -43,6 +43,7 @@ gem 'bullet', group: [:development]
 gem 'shog', groups: [:development, :test]
 
 group :development, :test do
+  gem 'rspec-rails'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
 
@@ -56,7 +57,6 @@ end
 
 group :test do
   gem 'capybara'
-  gem 'rspec-rails'
   gem 'selenium-webdriver'
   gem 'webdrivers'
 end
