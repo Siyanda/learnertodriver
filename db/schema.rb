@@ -94,8 +94,8 @@ ActiveRecord::Schema.define(version: 2020_12_15_162033) do
     t.string "title"
     t.string "kind"
     t.string "information"
-    t.integer "duration"
-    t.string "description", default: "3600"
+    t.integer "duration", default: 3600
+    t.string "description"
     t.string "string"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
