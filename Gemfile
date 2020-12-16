@@ -12,9 +12,6 @@ gem 'jbuilder'
 gem 'turbolinks'
 gem 'bootsnap', require: false
 
-gem 'sentry-raven'
-gem 'skylight'
-
 gem 'devise'
 gem 'faker'
 
@@ -43,8 +40,8 @@ gem 'bullet', group: [:development]
 gem 'shog', groups: [:development, :test]
 
 group :development, :test do
-  gem 'rspec-rails'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'rspec-rails'
 end
 
 group :development do
