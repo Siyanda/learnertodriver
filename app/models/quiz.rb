@@ -1,3 +1,4 @@
 class Quiz < ApplicationRecord
-  belongs_to :municipality
+  has_many :specifications
+  has_many :questions, through: :specifications
 end

@@ -1,4 +1,4 @@
 class Specification < ApplicationRecord
-  belongs_to :question
   belongs_to :quiz
+  belongs_to :question
 end
