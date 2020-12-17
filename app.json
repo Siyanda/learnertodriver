@@ -1,0 +1,9 @@
+{
+  "name": "learnertodriver.co.za",
+   "description": "Learner to Driver K53 quiz application",
+  "scripts": {
+    "dokku": {
+      "postdeploy": "bundle exec rake db:migrate"
+    }
+  }
+}
