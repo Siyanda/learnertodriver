@@ -1,16 +1,15 @@
-// This file is automatically compiled by Webpack, along with any other files
-// present in this directory. You're encouraged to place your actual application logic in
-// a relevant structure within app/javascript and only use these pack files to reference
-// that code so it'll be compiled.
+require("@rails/ujs").start();
+require("turbolinks").start();
+require("@rails/activestorage").start();
+require("@rails/actiontext");
+require("channels");
+require("trix");
 
-import Rails from "@rails/ujs"
-import Turbolinks from "turbolinks"
-import * as ActiveStorage from "@rails/activestorage"
-import "channels"
+const images = require.context('../images', true);
+import "stylesheets/application";
 
-Rails.start()
-Turbolinks.start()
-ActiveStorage.start()
-
-require("trix")
-require("@rails/actiontext")
+import "./helpers/indexdb.js";
+import "./helpers/numbers.js";
+import "./helpers/time_date.js";
+import "./utils/pwa.js";
+import "./utils/service_worker.js";
