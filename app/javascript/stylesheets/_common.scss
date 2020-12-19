@@ -1,0 +1,542 @@
+/*---------------------------
+       Common SCSS
+-----------------------------*/
+
+body {
+  font-family: $base-font-family;
+  font-size: 18px;
+  font-weight: 400;
+  height: 100%;
+  min-width: 350px;
+  text-rendering: optimizeLegibility;
+}
+
+html {
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+}
+
+*,
+::before,
+::after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+pre {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+small {
+  font-size: 80%;
+}
+
+textarea {
+  overflow: auto;
+}
+
+a {
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3 {
+  display: block;
+  font-family: $heading-font-family;
+  margin-bottom: .67em;
+  margin-left: 0;
+  margin-right: 0;
+  margin-top: .2em;
+}
+
+h1 {
+  font-size: 2.8rem;
+}
+
+h2 {
+  font-size: 2.2em;
+}
+
+h3 {
+  font-size: 1.8rem;
+}
+
+h4 {
+  font-size: 1.2rem;
+}
+
+svg {
+  min-width: 10px;
+  min-height: 10px;
+  pointer-events: none;
+}
+
+button {
+  appearance: none;
+  border: 0;
+  cursor: pointer;
+  font-family: $base-font-family;
+  font-size: $base-font-size;
+  font-weight: 600;
+  line-height: 1;
+  padding: $small-spacing $base-spacing;
+  text-decoration: none;
+  transition: background-color $base-duration $base-timing;
+  user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+table {
+  table-layout: auto;
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  margin: auto 0 0;
+  padding: 10px;
+  width: 100%;
+}
+
+[hidden] {
+  display: none;
+}
+
+.container {
+  margin: auto;
+  padding: 30px 0;
+}
+
+.header-menu,
+.icon-menu {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+  text-align: center;
+  width: 100%;
+}
+
+.header-menu {
+  .button {
+    text-align: center;
+    text-decoration: none;
+  }
+}
+
+.shadowed {
+  box-shadow: $nav-box;
+
+  &.inset {
+    box-shadow: $shadow-box;
+  }
+
+  &.lightly {
+    box-shadow: $thin-box;
+  }
+}
+
+.bold {
+  font-weight: 600;
+}
+
+.irregular {
+  width: 98%;
+}
+
+.pull-right {
+  float: right;
+}
+
+.pull-left {
+  float: left;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.relative {
+  position: relative;
+}
+
+.level-one {
+  z-index: 1;
+}
+
+.level-two {
+  z-index: 2;
+}
+
+.level-three {
+  z-index: 3;
+}
+
+.no-x-overflow {
+  overflow-x: hidden;
+}
+
+.no-y-overflow {
+  overflow-y: hidden;
+}
+
+.top-fixed {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1;
+}
+
+.bottom-fixed {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+}
+
+.fixed {
+  position: fixed;
+
+  &.top {
+    top: 0;
+  }
+
+  &.bottom {
+    bottom: 0;
+  }
+}
+
+.padded {
+  padding: 1.2rem;
+
+  &.heavily {
+    padding: 2.8rem;
+  }
+
+  &.slightly {
+    padding: .6rem;
+  }
+
+  &.lightly {
+    padding: .4rem;
+  }
+
+}
+
+.hidden {
+  display: none;
+}
+
+.auto {
+  margin: auto;
+}
+
+.invisibile {
+  opacity: 0;
+}
+
+.tall {
+  height: 65vh;
+}
+
+.no-margin {
+  margin: 0;
+}
+
+.top-margin {
+  margin-top: .4rem;
+}
+
+.right-margin {
+  margin-right: .4rem;
+}
+
+.bottom-margin {
+  margin-bottom: .4rem;
+}
+
+.left-margin {
+  margin-left: .4rem;
+}
+
+.no-padding {
+  padding: 0;
+}
+
+.top-padded {
+  padding-top: 1.8rem;
+}
+
+.right-padded {
+  padding-right: 1.8rem;
+}
+
+.bottom-padded {
+  padding-bottom: 1.8rem;
+}
+
+.left-padded {
+  padding-left: 1.8rem;
+}
+
+.full-height {
+  min-height: 100vh;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.half-width {
+  width: 50%;
+}
+
+.third-width {
+  width: 30%;
+}
+
+.quarter-width {
+  width: 25%;
+}
+
+.mid-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.flex {
+  display: flex;
+
+  &.row  {
+    flex-direction: row;
+  }
+
+  &.column {
+    flex-direction: column;
+  }
+
+  &.wrapped {
+    flex-wrap: wrap;
+  }
+
+  &.start {
+    align-items: flex-start;
+  }
+
+  &.baseline {
+    align-items: baseline;
+  }
+
+  &.flex-end {
+    justify-content: flex-end;
+  }
+
+  &.flex-start {
+    justify-content: flex-start;
+  }
+
+  &.spaced-between {
+    justify-content: space-between;
+  }
+
+  &.spaced-around {
+    justify-content: space-around;
+  }
+
+  &.evenly-spaced {
+    justify-content: space-evenly;
+  }
+
+  &.centered {
+    justify-content: center;
+  }
+
+  &.center-aligned {
+    align-items: center;
+  }
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.non-clickable {
+  pointer-events: none;
+}
+
+.capitalized {
+  text-transform: capitalize;
+}
+
+.upcase {
+  text-transform: uppercase;
+}
+
+.downcase {
+  text-transform: lowercase;
+}
+
+.grey-text {
+  color: $gray;
+}
+
+.blue-text {
+  color: $alt-blue;
+}
+
+.white-text {
+  color: $white;
+}
+
+.bright-text {
+  color: $alt-brand;
+}
+
+.light-text {
+  color: $cream;
+}
+
+.dark-text {
+  color: $night;
+}
+
+.ocean-text {
+  color: $ocean;
+}
+
+.red-text {
+  color: $ruby;
+}
+
+.center {
+  margin: auto;
+  text-align: center;
+}
+
+.big {
+  font-size: 4.4rem;
+}
+
+.x-large {
+  font-size: 2.25rem;
+}
+
+.large {
+  font-size: 1.25rem;
+}
+
+.medium {
+  font-size: .8rem;
+}
+
+.small {
+  font-size: .75rem;
+}
+
+.tiny {
+  font-size: .55rem;
+}
+
+.regular {
+  border-radius: .5rem;
+}
+
+.square {
+  border-radius: .25rem;
+}
+
+.circle {
+  border-radius: 50%;
+}
+
+.round {
+  border-radius: 1.25rem;
+}
+
+.rounded {
+  border-radius: .2rem;
+}
+
+.dark {
+  background-color: $ocean;
+}
+
+.night {
+  background-color: $night;
+}
+
+.light {
+  background-color: $clean;
+}
+
+.shaded {
+  background-color: $shades;
+}
+
+.cream {
+  background-color: $cream;
+}
+
+.yellow {
+  background-color: $yellow;
+}
+
+.green {
+  background-color: $green;
+}
+
+.blue {
+  background-color: $blue;
+}
+
+.red {
+  background-color: $red;
+}
+
+.crimson {
+  background-color: $crimson;
+}
+
+.purple {
+  background-color: $purple;
+}
+
+.white {
+  background-color: $white;
+}
+
+.grey {
+  background-color: $grey;
+}
+
+.gainsboro {
+  background-color: $gainsboro;
+}
+
+.black {
+  background-color: $black;
+}
+
+.gainsboro-bordered {
+  border: 1px solid $gainsboro;
+}
+
+.grey-bordered {
+  border: 1px solid $grey;
+}

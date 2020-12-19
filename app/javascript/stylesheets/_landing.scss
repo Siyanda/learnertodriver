@@ -1,0 +1,92 @@
+.landing {
+  .button {
+    border-radius: 0;
+  }
+}
+
+.bttn {
+  border-radius: $base-border-radius;
+  display: inline-block;
+
+  &.danger {
+    @include button-states($crimson, $red, $cream);
+  }
+
+  &.success {
+    @include button-states($grass, $green, $cream);
+  }
+
+  &.warning {
+    @include button-states($goldenrod, $yellow, $cream);
+  }
+
+  &.info {
+    @include button-states($sky-blue, $sky, $cream);
+  }
+
+  &.dark {
+    @include button-states($ocean, $night, $cream);
+  }
+
+  &.light {
+    @include button-states($slate, $clean, $cream);
+  }
+
+  &.clear {
+    @include button-states($translucent, $cream, $night);
+  }
+}
+
+.wrap {
+  max-width: 80%;
+  margin: 2rem 0 2rem 2rem;
+  padding: 2rem;
+  border-radius: 1.2rem;
+  box-shadow: $wrap-shadow;
+
+  &.offset-left {
+    margin: 2rem;
+  }
+
+  &.offset-right {
+    margin: 2rem;
+  }
+
+  &.offset-up {
+    margin: 2rem 0 2rem 2rem;
+  }
+
+  &.raised {
+    z-index: 1;
+  }
+
+  .svg  {
+    width: 70%;
+    max-width: 200px;
+    margin: auto;
+  }
+}
+
+@media screen and (min-width: 540px) {
+  .wrap {
+    max-width: 60%;
+
+    &.offset-left {
+      margin: -4rem 0 -4rem 6rem;
+    }
+
+    &.offset-right {
+      margin: -4rem 4rem -4rem 0;
+    }
+  }
+}
+
+@media screen and (min-width: 480px) {
+  .wrap {
+    max-width: 60%;
+
+    &.offset-left {
+      margin: -4rem 0 -4rem 4rem;
+    }
+  }
+}
