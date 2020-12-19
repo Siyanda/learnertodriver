@@ -31,22 +31,20 @@ gem 'ransack'
 gem 'inky-rb', require: 'inky'
 gem 'premailer-rails'
 
-gem 'rails_admin'
-
 gem 'awesome_print'
 gem 'image_processing'
-
-gem 'bullet', group: [:development]
-gem 'shog', groups: [:development, :test]
+gem 'rails_admin'
 
 group :development, :test do
+  gem 'shog'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails'
 end
 
 group :development do
+  gem 'bullet'
   gem 'letter_opener'
-  gem 'listen', '~> 3.3'
+  gem 'listen'
   gem 'rack-mini-profiler'
   gem 'spring'
   gem 'web-console'

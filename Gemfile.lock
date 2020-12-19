@@ -373,7 +373,7 @@ DEPENDENCIES
   inky-rb
   jbuilder
   letter_opener
-  listen (~> 3.3)
+  listen
   pagy
   pg
   premailer-rails
