@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="<%= I18n.locale %>">
+  <head>
+    <title><%= t("site_name") %> | <%= t("tagline") %></title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' http://* 'unsafe-inline'; script-src 'self' http://* 'unsafe-inline' 'unsafe-eval'" />
+
+    <%= render "layouts/app/meta" %>
+  
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <!-- action_cable_meta_tag -->
+
+    <%= action_cable_meta_tag %>
+
+    <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track": "reload" %>
+    <%= stylesheet_pack_tag "application", media: "all", "data-turbolinks-track": "reload" %>
+    <%= javascript_pack_tag "application" %>
+
+    <%= favicon_link_tag asset_path("favicon.png"), :rel => "icon", :type =>  "image/png" %>
+  </head>
+
+  <body>
+    <%= render "layouts/components/messages" %>
+    <%= render 'layouts/components/header' %>
+    <%= yield  %>
+    <%= render 'layouts/components/footer' %>
+  </body>
+    <%= render :partial => "layouts/components/analytics" %>
+</html>

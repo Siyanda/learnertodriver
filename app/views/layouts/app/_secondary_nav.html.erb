@@ -1,0 +1,21 @@
+<div class="full-width lightly padded flex center-aligned spaced-between secondary-nav">
+  <div class="breadcrumbs-container">
+    <div class="breadcrumbs">
+      <%= breadcrumbs separator: " / " %>
+    </div>
+  </div>
+  <!--search-->
+  <div class="nav-area">
+    <div class="search-wrapper" id="search_container">
+      <%= form_tag users_path, method: :get do %>
+        <%= text_field_tag :"q[name_cont]", "", class: "auto-complete search search-input", :id => "select_tag_form", placeholder: "search" %>
+        <div class="small-svg search-icon icon">
+        <%= inline_svg("icons/magnifying-glass.svg") %>
+      </div>
+    <% end %>
+    </div>
+    <div class="hidden search-results">
+    </div>
+  </div>
+
+</div>
