@@ -36,9 +36,9 @@ gem 'image_processing'
 gem 'rails_admin'
 
 group :development, :test do
-  gem 'shog'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails'
+  gem 'shog'
 end
 
 group :development do
