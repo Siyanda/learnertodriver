@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_15_162033) do
+ActiveRecord::Schema.define(version: 2021_01_03_230839) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,16 +54,14 @@ ActiveRecord::Schema.define(version: 2020_12_15_162033) do
   end
 
   create_table "answers", force: :cascade do |t|
-    t.string "content"
-    t.string "information"
+    t.string "content", null: false
+    t.string "information", null: false
     t.bigint "correct_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
     t.index ["correct_id"], name: "index_answers_on_correct_id"
   end
 
   create_table "comments", force: :cascade do |t|
-    t.string "body"
+    t.string "body", null: false
     t.bigint "post_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -72,8 +70,19 @@ ActiveRecord::Schema.define(version: 2020_12_15_162033) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
+  create_table "friendly_id_slugs", force: :cascade do |t|
+    t.string "slug", null: false
+    t.integer "sluggable_id", null: false
+    t.string "sluggable_type", limit: 50
+    t.string "scope"
+    t.datetime "created_at"
+    t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
+    t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
+    t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
+  end
+
   create_table "posts", force: :cascade do |t|
-    t.string "title"
+    t.string "title", null: false
     t.bigint "users_id"
     t.bigint "author_id"
     t.datetime "created_at", precision: 6, null: false
@@ -83,22 +92,17 @@ ActiveRecord::Schema.define(version: 2020_12_15_162033) do
   end
 
   create_table "questions", force: :cascade do |t|
-    t.string "content"
-    t.string "kind"
-    t.string "information"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.string "content", null: false
+    t.integer "kind", default: 0, null: false
+    t.string "information", null: false
   end
 
   create_table "quizzes", force: :cascade do |t|
-    t.string "title"
-    t.string "kind"
-    t.string "information"
-    t.integer "duration", default: 3600
-    t.string "description"
-    t.string "string"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.string "title", null: false
+    t.integer "kind", default: 0, null: false
+    t.string "information", default: "blank", null: false
+    t.integer "duration", default: 3600, null: false
+    t.string "description", default: "blank", null: false
   end
 
   create_table "responses", force: :cascade do |t|
@@ -136,17 +140,19 @@ ActiveRecord::Schema.define(version: 2020_12_15_162033) do
     t.string "unconfirmed_email"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "name"
-    t.string "first_name"
-    t.string "last_name"
-    t.string "username"
+    t.string "first_name", default: "blank", null: false
+    t.string "last_name", default: "blank", null: false
+    t.string "name", null: false
+    t.string "username", null: false
     t.jsonb "links"
     t.text "bio"
     t.date "birthday"
     t.boolean "admin", default: false, null: false
+    t.string "slug"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["slug"], name: "index_users_on_slug", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
