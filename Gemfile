@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.7.2'
+ruby '3.0.0'
 
 gem 'rails', '~> 6.1.0'
 gem 'pg', '~> 1.1'
@@ -12,10 +12,11 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder'
 gem 'bootsnap', require: false
 
-gem 'image_processing'
 gem 'redis'
 gem 'sidekiq'
 gem 'sidekiq-scheduler'
+gem 'image_processing'
+gem 'aws-sdk-s3', require: false
 
 gem 'devise'
 gem 'gretel'
