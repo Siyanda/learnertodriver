@@ -107,6 +107,14 @@
 
 .gapped {
   margin: 2rem;
+
+  &.no-lm {
+    margin-left: 0;
+  }
+
+  &.no-rm {
+    margin-right: 0;
+  }
 }
 
 .controls {
@@ -166,7 +174,7 @@
 }
 
 .header {
-  background-image: linear-gradient($light-grey, $light-black), url("../images/bg/main.png");
+  background-image: linear-gradient($light-grey, $light-black), url(image_path("bg/main.png"));
   font-weight: 400;
   text-align: center;
   width: 100%;

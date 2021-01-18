@@ -122,7 +122,7 @@
     min-width: 40px;
     height: 40px;
     border-radius: 10%;
-    background: $grey;
+    background-color: $grey;
   }
 }
 
@@ -132,6 +132,24 @@
 
 .user-menu-wrap {
   position: relative;
+}
+
+.v-menu {
+
+  .menu-item {
+    margin: 4px 0;
+
+    &.active {
+      background-color: $white;
+      box-shadow: $light-box;
+      border: 1px solid $grey;
+      color: $night;
+    }
+
+    &:hover {
+      background-color: $grey;
+    }
+  }
 }
 
 .menu-container {
@@ -145,7 +163,7 @@
     visibility: visible;
   }
 }
-// update
+
 .user-menu {
   background-color: $white;
   border: 1px solid $slate;
@@ -187,7 +205,6 @@
   }
 }
 
-// update
 .notification-menu {
   background-color: $white;
   border: 1px solid $slate;

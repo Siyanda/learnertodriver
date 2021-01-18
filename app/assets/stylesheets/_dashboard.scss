@@ -185,12 +185,11 @@ body {
 .hero {
   margin-bottom: 4rem;
   padding: 150px 0 90px;
-  box-shadow: 0 0 5px rgba(0,0,0,.15);
 
   &.overlaid {
 
     &::after {
-      background: url("../images//bg/confetti.png");
+      background: url(image_path("bg/confetti.png"));
       background-size: cover;
       background-repeat: repeat;
       content: "";
@@ -207,7 +206,7 @@ body {
 }
 
 .texture {
-  background-image: linear-gradient(45deg, $alt-blue 15%, $purp 85%), url("../images/bg/overlay.png");
+  background-image: linear-gradient(45deg, $alt-blue 15%, $purp 85%), url(image_path("bg/overlay.png"));
 }
 
 .lighter {
@@ -220,13 +219,13 @@ body {
 }
 
 .sideimage {
-  background-image: url("../images/bg/main.png");
+  background-image: url(image_path("bg/main.png"));
   background-size: cover;
   width: 40%;
 }
 
 .banner {
-  background-image: url("../images/bg/main.png");
+  background-image: url(image_path("bg/main.png"));
   background-size: cover;
 
   min-height: 450px;
@@ -234,7 +233,7 @@ body {
   position: relative;
 
  &.image-grad {
-    background-image: linear-gradient(rgba($alt-blue, .5), rgba($alt-blue, .1)),url("../images/bg/main.png");
+    background-image: linear-gradient(rgba($alt-blue, .5), rgba($alt-blue, .1)),url(image_path("bg/main.png"));
   }
 }
 
@@ -441,7 +440,7 @@ hr {
   .backimage {
     width: 100%;
     background-size: cover;
-    background-image: linear-gradient(rgba(0,0,0, .7),rgba(0,0,0,.6)),url("../images/bg/main.png");
+    background-image: linear-gradient(rgba(0,0,0, .7),rgba(0,0,0,.6)),url(image_path("bg/main.png"));
   }
 
   .sideimage {
