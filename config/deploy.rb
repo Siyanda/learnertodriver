@@ -1,4 +1,4 @@
-server 'server', port: 8081, roles: [:web, :app, :db], primary: true
+server '45.15.168.229', port: 8081, roles: [:web, :app, :db], primary: true
 
 set :repo_url,        'https://31b14cd4c87c4b1f6e002ab6900ab3f27bbe645b@github.com/siyanda/learnertodriver'
 set :application,     'learnertodriver'
