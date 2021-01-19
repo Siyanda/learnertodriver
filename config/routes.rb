@@ -21,9 +21,10 @@ require 'sidekiq/web'
                sign_out: 'logout'
              }
 
-  resources :users
-  resources :posts do
-    resources :comments
+  resources :users, only: %i[show]
+  resources :quizzes, only: %i[index show]
+  resources :posts, only: %i[index show] do
+    resources :comments, only: %i[show edit new]
   end
 
   get '/service-worker.js' => 'service_worker#service_worker'
