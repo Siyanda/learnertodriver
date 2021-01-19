@@ -6,6 +6,9 @@ class CreateQuizzes < ActiveRecord::Migration[6.1]
       t.string :information, null: false, default: "blank"
       t.integer :duration, null: false, default: 3600
       t.string :description, null: false, default: "blank"
+      t.string :slug
     end
+
+    add_index :quizzes, :slug, unique: true
   end
 end

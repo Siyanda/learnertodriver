@@ -8,5 +8,7 @@ class AddUserDetails < ActiveRecord::Migration[6.1]
     add_column :users, :bio, :text
     add_column :users, :birthday, :date
     add_column :users, :admin, :boolean, null: false, default: false
+    add_column :users, :slug, :string
+    add_index :users, :slug, unique: true
   end
 end
