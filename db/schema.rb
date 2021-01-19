@@ -83,12 +83,10 @@ ActiveRecord::Schema.define(version: 2021_01_03_230839) do
 
   create_table "posts", force: :cascade do |t|
     t.string "title", null: false
-    t.bigint "users_id"
     t.bigint "author_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["author_id"], name: "index_posts_on_author_id"
-    t.index ["users_id"], name: "index_posts_on_users_id"
   end
 
   create_table "questions", force: :cascade do |t|
@@ -161,7 +159,6 @@ ActiveRecord::Schema.define(version: 2021_01_03_230839) do
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
   add_foreign_key "posts", "users", column: "author_id"
-  add_foreign_key "posts", "users", column: "users_id"
   add_foreign_key "responses", "answers"
   add_foreign_key "responses", "questions"
   add_foreign_key "specifications", "questions"
