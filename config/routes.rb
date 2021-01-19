@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
-  # require 'sidekiq/web'
-  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  root 'landing#index'
+require 'sidekiq/web'
+
+  authenticate :user, lambda { |u| u.admin? } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
+
+  root 'home#index'
 
   devise_for :users,
              controllers: {
@@ -21,4 +25,8 @@ Rails.application.routes.draw do
   resources :posts do
     resources :comments
   end
+
+  get '/service-worker.js' => 'service_worker#service_worker'
+  get '/manifest.json' => 'service_worker#manifest'
+  get '/offline.html' => 'service_worker#offline'
 end
