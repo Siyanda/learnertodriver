@@ -1,6 +1,5 @@
-let environment = {
+module.exports = {
   plugins: [
-    require('autoprefixer'),
     require('postcss-import'),
     require('postcss-flexbugs-fixes'),
     require('postcss-preset-env')({
@@ -8,8 +7,6 @@ let environment = {
         flexbox: 'no-2009'
       },
       stage: 3
-    }),
+    })
   ]
 }
-
-module.exports = environment
