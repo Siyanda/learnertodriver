@@ -1,0 +1,97 @@
+<div class="banner image-grad lightly shadowed">
+  <div class="grad">
+    <nav role="navigation" class="flex spaced-between navigation">
+
+      <div class="lightly padded light-fill long nav-logo">
+        <%= link_to root_path, class: "long-svg icon", aria: { label: root_path("home") } do %>
+          <%= inline_svg("logo_icon.svg") %>
+        <% end %>
+      </div>
+
+      <ul class="centered flex navlist">
+        <li><%= link_to "Markets & Services", root_path, :class => "small white-text nav-item bottom-border" %></li>
+        <li><%= link_to "Projects", root_path, :class => "small white-text nav-item bottom-border" %></li>
+        <li><%= link_to "Careers", root_path, :class => "small white-text nav-item bottom-border" %></li>
+        </li>
+        <li><%= link_to "About Us", root_path, :class => "small white-text nav-item bottom-border" %>
+      </ul>
+
+    </nav>
+  </div>
+
+  <section class="full-width hero">
+    <div class="flex hero-container centered">
+      <div class="half-width padded frosted shadowed">
+        <h1 class="text-left ocean-text bold">People. Drive. Results.</h1>
+        <h3 class="text-left ocean-text">We’re connecting people, technology and data to meet today’s most pressing challenges</h3>
+        
+        <div class="text-right paddded">
+
+        <%= link_to root_path do %>
+          <button class="bttn clear">About us</button>
+        <% end %>
+
+      </div>
+      </div>
+    </div>
+  </section>
+
+    <section class="collapsible flex">
+      <div class="split">
+        <div class="flex center-aligned column">
+      <div class="white wrap">
+         <h3 class="capitalized dark-text post-title">Health, safety & environment</h3>
+        <p class="following">We place safety at the heart of everything we do</p>
+      </div>
+
+      <div class="raised white wrap offset-right">
+        <div class="svg image">
+          <%= inline_svg("icons/user.svg") %>
+        </div>
+      <h3 class="capitalized dark-text post-title">We put people’s safety first</h3>
+        <p class="following">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+      </div>
+
+      <div class="white wrap offset-up">
+ 
+      <h3 class="capitalized dark-text post-title">We put people’s safety first</h3>
+        <p class="following">SNC-Lavalin’s goal is to achieve and maintain HSE excellence by incorporating strategies, policies, and standards that promote the safety of our personnel, contractors, and the general public throughout all our business activities</p>
+      </div>
+    </div>
+      </div>
+
+      <div class="padded split flex column centered">
+
+          <div class="hero-text">
+            <h2 class="capitalized dark-text post-title">We put people’s safety first</h2>
+
+            <h3 class="dark-text post-title">SNC-Lavalin’s goal is to achieve and maintain HSE excellence by incorporating strategies, policies, and standards that promote the safety of our personnel, contractors, and the general public throughout all our business activities.</h3>
+
+            <p class="dark-text post-title">SNC-Lavalin will inform business partners of these standards, protocols and policies, and work with them where appropriate to support their adoption of practices consistent with our own.</p>
+
+            <div class="text-center">
+              <%= link_to "login", new_user_session_path, class: "button" %>
+            </div>
+          </div>
+
+      </div>
+    </section>
+
+<div class="full-width evenly-spaced white flex padded shadowed blocks">
+  <div class="text-center padded quarter-width block">
+    <h1 class="no-margin bold big blue-text">700</h1>
+    <h4 class="no-margin bright-text">projects over the last 50 years</h4>
+  </div>
+
+  <div class="text-center padded quarter-width block">
+    <h1 class="no-margin bold big blue-text">20,000</h1>
+    <h4 class="no-margin bright-text">experts in our oil and gas teams</h4>
+  </div>
+
+  <div class="text-center padded quarter-width block">
+    <h1 class="no-margin bold big blue-text">58m</h1>
+    <h4 class="no-margin bright-text">Person-hours in 2017 with a TRIF of 0.10</h4>
+  </div>
+</div>
+
+</div>
