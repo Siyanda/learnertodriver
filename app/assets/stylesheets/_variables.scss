@@ -4,16 +4,8 @@
 
 // Typography
 
-@font-face {
-  font-family: system;
-  font-style: normal;
-  font-weight: 300;
-  src: local(".SFNSText-Light"), local("-apple-system"), local("BlinkMacSystemFont"), local(".HelveticaNeueDeskInterface-Light"), local(".LucidaGrandeUI"), local("Ubuntu Light"), local("Segoe UI Light"), local("Roboto-Light"), local("DroidSans"), local("Tahoma");
-}
-
-$system-font-family: system;
-$base-font-family: sans-serif, arial, helvetica;
-$heading-font-family: helvetica, sans-serif, arial;
+$base-font-family: $font-stack-system;
+$heading-font-family: $font-stack-helvetica;
 
 // Font Sizes
 

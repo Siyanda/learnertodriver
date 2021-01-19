@@ -1,9 +1,10 @@
+@import "vendor/lib";
 @import "variables";
 @import "common";
 @import "normalize";
 @import "layout";
 @import "page";
-@import "devise";
+@import "auth";
 @import "users";
 @import "cards";
 @import "controls";
@@ -17,4 +18,4 @@
 @import "dashboard";
 @import "landing";
 @import "themes";
-@import "trix";
+@import "editor";
