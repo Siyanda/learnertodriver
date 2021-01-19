@@ -23,10 +23,10 @@ set :puma_worker_timeout, nil
 set :puma_init_active_record, false  # Change to true if using ActiveRecord
 
 ## Defaults:
-# set :scm,           :git
-# set :branch,        :master
-# set :format,        :pretty
-# set :log_level,     :debug
+set :scm,           :git
+set :branch,        :main
+set :format,        :pretty
+set :log_level,     :debug
 # set :keep_releases, 5
 
 ## Linked Files & Directories (Default None):
