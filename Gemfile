@@ -45,6 +45,7 @@ group :development do
   gem 'listen'
   gem 'spring'
   gem 'capistrano'
+  gem 'capistrano-rails'
 end
 
 group :test do

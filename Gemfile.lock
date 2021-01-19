@@ -94,6 +94,11 @@ GEM
       i18n
       rake (>= 10.0.0)
       sshkit (>= 1.9.0)
+    capistrano-bundler (2.0.1)
+      capistrano (~> 3.1)
+    capistrano-rails (1.6.1)
+      capistrano (~> 3.1)
+      capistrano-bundler (>= 1.1, < 3)
     capybara (3.34.0)
       addressable
       mini_mime (>= 0.1.3)
@@ -345,6 +350,7 @@ DEPENDENCIES
   bullet
   byebug
   capistrano
+  capistrano-rails
   capybara
   devise
   friendly_id
