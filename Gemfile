@@ -44,8 +44,11 @@ group :development do
   gem 'rack-mini-profiler'
   gem 'listen'
   gem 'spring'
-  gem 'capistrano'
-  gem 'capistrano-rails'
+  gem 'capistrano',         require: false
+  gem 'capistrano-rvm',     require: false
+  gem 'capistrano-rails',   require: false
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano3-puma',   require: false
 end
 
 group :test do
