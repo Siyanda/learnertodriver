@@ -7,11 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' http://* 'unsafe-inline'; script-src 'self' http://* 'unsafe-inline' 'unsafe-eval'" />
 
-    <%= render "layouts/app/meta" %>
+    <%= render "layouts/common/meta" %>
   
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <!-- action_cable_meta_tag -->
 
     <%= action_cable_meta_tag %>
 
@@ -19,14 +18,12 @@
     <%= stylesheet_pack_tag "application", media: "all", "data-turbolinks-track": "reload" %>
     <%= javascript_pack_tag "application" %>
 
-    <%= favicon_link_tag asset_path("favicon.png"), :rel => "icon", :type =>  "image/png" %>
   </head>
 
   <body>
-    <%= render "layouts/components/messages" %>
-    <%= render 'layouts/components/header' %>
+    <%= render "layouts/common/messages" %>
+    <%= render 'layouts/static/header' %>
     <%= yield  %>
-    <%= render 'layouts/components/footer' %>
+    <%= render 'layouts/static/footer' %>
   </body>
-    <%= render :partial => "layouts/components/analytics" %>
 </html>

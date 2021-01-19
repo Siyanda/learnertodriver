@@ -1,16 +1,42 @@
 <!DOCTYPE html>
-<html>
+<html lang="<%= I18n.locale %>">
   <head>
-    <title>Learnertodriver</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title><%= t("site_name") %> | <%= t("tagline") %></title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' http://* 'unsafe-inline'; script-src 'self' http://* 'unsafe-inline' 'unsafe-eval'" />
+
+    <%= render "layouts/common/meta" %>
+  
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= action_cable_meta_tag %>
+
+    <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track": "reload" %>
+    <%= stylesheet_pack_tag "application", media: "all", "data-turbolinks-track": "reload" %>
+    <%= javascript_pack_tag "application" %>
+
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="main-bg">
+
+    <div class="full-height mid-center devise">
+      <%= render "layouts/common/messages" %>
+
+      <div class="grey-bordered content form">
+        <div class="full-width logo-container">
+          <div class="flex logo">
+            <%= link_to root_path do %>
+              <%= inline_svg("company_logo.svg") %>
+            <% end %>
+          </div>
+        </div>
+
+        <%= yield %>
+      </div>
+    </div>
+
   </body>
 </html>
