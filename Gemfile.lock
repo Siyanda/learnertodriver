@@ -377,7 +377,7 @@ DEPENDENCIES
   pagy
   pg (~> 1.1)
   premailer-rails
-  puma (~> 5.0)
+  puma
   rack-mini-profiler
   rails (~> 6.1.0)
   ransack
