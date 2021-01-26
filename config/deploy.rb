@@ -27,7 +27,7 @@ set :puma_init_active_record, true  # Change to false when not using ActiveRecor
 set :branch,        :main
 set :format,        :pretty
 set :log_level,     :debug
-# append :linked_dirs, '.bundle'
+append :linked_dirs, '.bundle'
 # set :keep_releases, 5
 
 ## Linked Files & Directories (Default None):
