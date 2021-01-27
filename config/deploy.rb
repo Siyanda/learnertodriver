@@ -32,7 +32,7 @@ append :linked_dirs, '.bundle'
 
 ## Linked Files & Directories (Default None):
 set :linked_files, %w{config/master.key}
-# set :linked_dirs,  %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
+set :linked_dirs,  %w{log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 
 namespace :puma do
   desc 'Create Directories for Puma Pids and Socket'
@@ -78,7 +78,7 @@ desc 'Initial Deploy'
   before :starting,     :check_revision
   after  :finishing,    :compile_assets
   after  :finishing,    :cleanup
-  # after  :finishing,    :restart
+  after  :finishing,    :restart
 end
 
 # ps aux | grep puma    # Get puma pid
