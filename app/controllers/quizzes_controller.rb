@@ -11,11 +11,12 @@ class QuizzesController < ApplicationController
   end
 
   private
-    def set_quiz
-      @quiz = Quiz.friendly.find(params[:id])
-    end
 
-    def quiz_params
-      params.require(:quiz).permit(:title)
+  def set_quiz
+    @quiz = Quiz.friendly.find(params[:id])
+  end
+
+  def quiz_params
+    params.require(:quiz).permit(:title)
     end
 end
