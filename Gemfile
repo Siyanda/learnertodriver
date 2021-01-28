@@ -21,6 +21,7 @@ gem 'aws-sdk-s3', require: false
 gem 'devise'
 gem 'gretel'
 gem 'simple_form'
+gem 'high_voltage'
 gem 'sinatra'
 
 gem 'friendly_id'

@@ -143,6 +143,7 @@ GEM
     gretel (4.2.0)
       actionview (>= 5.1, < 7.0)
       railties (>= 5.1, < 7.0)
+    high_voltage (3.1.2)
     htmlentities (4.3.4)
     i18n (1.8.7)
       concurrent-ruby (~> 1.0)
@@ -368,6 +369,7 @@ DEPENDENCIES
   devise
   friendly_id
   gretel
+  high_voltage
   image_processing
   inky-rb
   jbuilder
