@@ -3,7 +3,7 @@ class Post < ApplicationRecord
   friendly_id :title, use: :slugged
 
   has_many :comments
-  belongs_to :author, class_name: "User"
+  belongs_to :author, class_name: 'User'
 
   has_rich_text :content
   has_one_attached :cover_image
