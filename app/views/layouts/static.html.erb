@@ -20,8 +20,10 @@
   </head>
 
   <body>
-    <%= render "layouts/common/messages" %>
+    <%= render 'layouts/common/messages' %>
     <%= render 'layouts/static/header' %>
+    <%= render 'layouts/static/primary_nav' %>
+    <%= render 'layouts/static/secondary_nav' %>
     <%= yield  %>
     <%= render 'layouts/static/footer' %>
   </body>

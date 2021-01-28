@@ -1,0 +1,64 @@
+<div class="full-width lightly padded flex center-aligned spaced-between secondary-nav">
+
+    <%= breadcrumbs separator: " / " %>
+
+    <!-- search -->
+    <div class="search-container">
+    </div>
+
+    <div class="nav-profile">
+
+      <% if user_signed_in? %>
+      
+      <div class="user-menu-wrap">
+        <!-- drop down -->
+          <div id="dropdown">
+            <a class="nav-avatar">
+              <%= image_tag gravatar_url(current_user.email, :size=> 51), alt: 'nav-img', class: 'nav-img' %>
+            </a>
+
+            <div class="menu-container">
+              <ul class="user-menu">
+
+                <li><%= link_to user_path(current_user), class: 'user-menu-link' do %>
+                  <i class="fa fa-user"></i> Profile
+                    <% end %>
+                </li>
+                  <% if warden.user.admin == true %>
+                <li><%= link_to admin_root_path, class: 'user-menu-link' do %>
+                  <i class="fa fa-lock"></i> Admin
+                <% end %>
+                </li>
+                  <% end %>
+                <div class="divider"></div>
+                <li><%= link_to destroy_user_session_path, class: 'user-menu-link', :method => :delete  do %>
+                  <i class="fa fa-power-off"></i> Log Out
+                <% end %>
+                </li>
+
+              </ul>
+            </div>
+          </div>
+
+      </div>
+
+      <% else %>
+
+        <div class="header-links">
+          
+          <%= link_to new_user_session_path, class: 'nav-link noline' do %>
+            Sign In
+          <% end %>
+ 
+          <span class="grey-text">or</span>
+          
+          <%= link_to new_user_registration_path, class: 'nav-link outline' do %>
+            Sign Up
+          <% end %>
+
+        </div>
+
+      <% end %>
+      
+    </div>
+  </div>
