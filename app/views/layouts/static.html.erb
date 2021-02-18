@@ -21,10 +21,10 @@
 
   <body>
     <%= render 'layouts/common/messages' %>
-    <%= render 'layouts/static/header' %>
-    <%= render 'layouts/static/primary_nav' %>
-    <%= render 'layouts/static/secondary_nav' %>
+    <%= render 'layouts/static/header', cached: true %>
+    <%= render 'layouts/static/primary_nav', cached: true %>
+    <%= render 'layouts/static/secondary_nav', cached: true %>
     <%= yield  %>
-    <%= render 'layouts/static/footer' %>
+    <%= render 'layouts/static/footer', cached: true %>
   </body>
 </html>

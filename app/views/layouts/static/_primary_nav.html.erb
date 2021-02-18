@@ -1,9 +1,9 @@
 <nav role="navigation" class="dark full-width flex spaced-between top-nav">
   <ul class="navlist">
 
-    <li><%= link_to "Home", root_path, class: "#{current? "active", root_path}"%></li>
-    <li><%= link_to "Tests", quizzes_path, class: "#{current? "active", quizzes_path}"%></li>
-    <li><%= link_to "Blog", posts_path, class: "#{current? "active", posts_path}"%></li>
-    <li><%= link_to "About", root_path, class: "#{current? "active", root_path}"%></li>
+    <li><%= link_to_unless_current "Home", root_path, class: "#{current? "active", root_path}"%></li>
+    <li><%= link_to_unless_current "Tests", quizzes_path, class: "#{current? "active", quizzes_path}"%></li>
+    <li><%= link_to_unless_current "Blog", posts_path, class: "#{current? "active", posts_path}"%></li>
+    <li><%= link_to_unless_current "About", root_path, class: "#{current? "active", root_path}"%></li>
   </ul>
 </nav>
