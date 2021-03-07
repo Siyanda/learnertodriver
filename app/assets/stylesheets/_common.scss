@@ -244,7 +244,7 @@ footer {
   display: none;
 }
 
-.auto {
+.auto-marg {
   margin: auto;
 }
 
@@ -278,6 +278,11 @@ footer {
 
 .no-padding {
   padding: 0;
+}
+
+.padded-sides {
+  padding-left: 1.8rem;
+  padding-right: 1.8rem;
 }
 
 .top-padded {

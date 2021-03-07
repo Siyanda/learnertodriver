@@ -142,7 +142,7 @@
 
 .content {
   background: $white;
-  box-shadow: $content-shadow;
+  box-shadow: $light-shadow;
   padding: 2rem;
 }
 
@@ -175,10 +175,11 @@
 
 .header {
   background-image: linear-gradient($light-grey, $light-black), url(image_path("bg/main.png"));
+  background-size: cover;
   font-weight: 400;
   text-align: center;
   width: 100%;
-  height: 150px;
+  height: 200px;
   display: table;
 
   h1 {
@@ -260,7 +261,7 @@
   }
 
   &.content {
-    padding: 1.4rem 0 0;
+    padding: .4rem 0 0;
   }
 }
 

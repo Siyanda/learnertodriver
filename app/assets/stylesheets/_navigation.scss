@@ -52,6 +52,16 @@
   align-items: center;
   flex-flow: row wrap;
 
+  .link {
+    background-color: $ocean;
+    border-bottom: 2px solid $clear;
+
+    &.active {
+      background-color: lighten($ocean, 5%);
+      border-bottom: 2px solid $dodgerblue;
+    }
+  }
+
   &.spaced-between {
     justify-content: space-between;
   }
@@ -272,7 +282,7 @@
 
   &.dark-fill {
     svg {
-      fill: $border;
+      fill: $ocean;
     }
   }
 
@@ -353,8 +363,10 @@
 
   svg {
     position: absolute;
-    top: .5em;
-    left: .4em;
+    top: 5px;
+    left: 5px;
+    width: 15px;
+    height: 15px;
   }
 }
 
@@ -368,6 +380,7 @@
   border-radius: .2rem;
 
   .search-input {
+    margin: 0;
     padding: .2em .2em .2em 1.5em;
     font-size: 18px;
   }
