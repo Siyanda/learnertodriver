@@ -3,7 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.0.0'
 
-gem 'rails', '~> 6.1.1'
+gem 'rails', '~> 6.1.3'
 gem 'pg', '~> 1.1'
 gem 'puma'
 gem 'sass-rails', '>= 6'
@@ -18,20 +18,19 @@ gem 'sidekiq-scheduler'
 gem 'image_processing'
 gem 'aws-sdk-s3', require: false
 
-gem 'devise'
-gem 'gretel'
-gem 'simple_form'
-gem 'high_voltage'
-gem 'sinatra'
-
-gem 'friendly_id'
-gem 'pagy'
-gem 'ransack'
-
 gem 'inky-rb', require: 'inky'
 gem 'premailer-rails'
 
+gem 'acts_as_votable'
+gem 'liquid'
+gem 'devise'
+gem 'friendly_id'
+gem 'gretel'
 gem 'name_of_person'
+gem 'pagy'
+gem 'ransack'
+gem 'sinatra'
+gem 'simple_form'
 
 group :development, :test do
   gem 'rspec-rails'
