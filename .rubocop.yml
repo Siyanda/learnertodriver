@@ -22,7 +22,7 @@ Style/HashSyntax:
 
 # Never break line due to length, except in data
 # vim: set wrap
-Metrics/LineLength:
+Layout/LineLength:
   Max: 1024
 
 # Rails controllers and such
@@ -77,7 +77,7 @@ Style/SignalException:
 Lint/AssignmentInCondition:
   Enabled: false
 
-Style/MultilineMethodCallIndentation:
+Layout/MultilineMethodCallIndentation:
   EnforcedStyle: indented
 
 # Load order is important
