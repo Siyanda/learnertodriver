@@ -276,6 +276,11 @@ footer {
   margin-left: .4rem;
 }
 
+.margin-sides {
+  margin-left: .4rem;
+  margin-right: .4rem;
+}
+
 .no-padding {
   padding: 0;
 }
@@ -488,63 +493,63 @@ footer {
   border-radius: .2rem;
 }
 
-.dark {
+.dark-bg {
   background-color: $ocean;
 }
 
-.night {
+.night-bg {
   background-color: $night;
 }
 
-.light {
+.light-bg {
   background-color: $clean;
 }
 
-.shaded {
+.shaded-bg {
   background-color: $shades;
 }
 
-.cream {
+.cream-bg {
   background-color: $cream;
 }
 
-.yellow {
+.yellow-bg {
   background-color: $yellow;
 }
 
-.green {
+.green-bg {
   background-color: $green;
 }
 
-.blue {
+.blue-bg {
   background-color: $blue;
 }
 
-.red {
+.red-bg {
   background-color: $red;
 }
 
-.crimson {
+.crimson-bg {
   background-color: $crimson;
 }
 
-.purple {
+.purple-bg {
   background-color: $purple;
 }
 
-.white {
+.white-bg {
   background-color: $white;
 }
 
-.grey {
+.grey-bg {
   background-color: $grey;
 }
 
-.gainsboro {
+.gainsboro-bg {
   background-color: $gainsboro;
 }
 
-.black {
+.black-bg {
   background-color: $black;
 }
 
@@ -554,4 +559,34 @@ footer {
 
 .grey-bordered {
   border: 1px solid $grey;
+}
+
+.mobile-only {
+  display: none;
+}
+
+.tablet-only {
+  display: none;
+}
+
+.desktop-only {
+  display: none;
+}
+
+@media screen and (max-width: 420px) {
+  .mobile-only {
+    display: inherit;
+  }
+}
+
+@media screen and (min-width: 420px) {
+  .tablet-only {
+    display: inherit;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .desktop-only {
+    display: inherit;
+  }
 }

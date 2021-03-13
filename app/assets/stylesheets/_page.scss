@@ -135,14 +135,13 @@
 
   .aside {
     width: 30%;
-    padding: 1.2rem;
     margin: 0 0 0 1.3rem;
   }
 }
 
 .content {
   background: $white;
-  box-shadow: $light-shadow;
+  box-shadow: $header-shade;
   padding: 2rem;
 }
 

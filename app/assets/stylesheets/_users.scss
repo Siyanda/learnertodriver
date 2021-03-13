@@ -169,7 +169,7 @@
     color: $ocean;
     display: block;
     width: 100%;
-    padding: .4rem;
+    padding: .6rem;
     transition: background-color .1s ease-in;
 
     &:hover {
@@ -188,7 +188,7 @@
     border-bottom-color: $slate;
     content: "";
     display: inline-block;
-    left: 100px;
+    left: 95px;
     position: absolute;
     top: -16px;
   }

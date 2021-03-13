@@ -95,6 +95,10 @@
   }
 }
 
+.form-control {
+  border: 1px solid $grey;
+}
+
 .logo-container {
   // width: 200px;
   margin: 0 auto;
@@ -110,12 +114,6 @@
   svg {
     max-width: 200px;
   }
-}
-
-.lines-grad {
-  background-image: url(image_path("svg/lines_light.svg")), radial-gradient($slate 5%, $clean 15%, $clean 60%);
-  background-position: center 10%;
-  background-size: cover;
 }
 
 .lines-bg {

@@ -1,3 +1,19 @@
+.hr-sectioned {
+  .section {
+    &:not(:last-child) {
+      border-bottom: 1px solid $gainsboro;
+    }
+  }
+}
+
+.vt-sectioned {
+  .section {
+    &:not(:last-child) {
+      border-left: 1px solid $gainsboro;
+    }
+  }
+}
+
 .grid {
   display: flex;
   margin: auto;

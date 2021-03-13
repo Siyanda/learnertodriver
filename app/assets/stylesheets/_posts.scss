@@ -3,12 +3,19 @@
   padding: 1.2rem;
 }
 
-.post-content {
-  padding: 0 1.5rem;
+.post-header {
+  border-bottom: 1px solid $gainsboro;
+  font-size: 26px;
+}
 
-  .post-header {
-    margin-bottom: 1.4rem;
-  }
+.post-footer {
+  border-top: 1px solid $gainsboro;
+}
+
+
+.post-content {
+  flex: 1;
+  padding: 0 1.5rem;
 
   blockquote {
     font-weight: 500;
@@ -54,6 +61,8 @@
   }
 
   .post-date {
+    color: $gray;
+    font-size: 12px;
     margin: auto 0;
   }
 
@@ -65,11 +74,6 @@
 
 .blog-card {
   width: 30%;
-}
-
-.post-header {
-  border-bottom: 1px solid $shades;
-  // margin-bottom: 1.4rem;
 }
 
 .post-title {

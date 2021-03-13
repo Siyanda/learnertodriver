@@ -39,7 +39,6 @@
   min-width: 50px;
 
   .toggle {
-    margin: auto .8rem;
 
     &:hover {
       background-color: $night;
@@ -378,6 +377,19 @@
   position: relative;
   border: 1px solid $grey;
   border-radius: .2rem;
+
+  &.dark-bg {
+    border: 1px solid $ash;
+
+    input {
+      background-color: darken(#1b1b26, 10%);
+    }
+
+    ::placeholder {
+      color: $grey;
+      opacity: 1;
+    }
+  }
 
   .search-input {
     margin: 0;
