@@ -13,7 +13,7 @@
 ///
 /// @example scss
 ///   #{$all-text-inputs} {
-///     border: 1px solid #ccc;
+///     border: thin solid #ccc;
 ///   }
 ///
 ///   // CSS Output
@@ -33,7 +33,7 @@
 ///   [type='week'],
 ///   input:not([type]),
 ///   textarea {
-///     border: 1px solid #ccc;
+///     border: thin solid #ccc;
 ///   }
 
 $all-text-inputs: _assign-inputs($_text-inputs-list);
@@ -44,7 +44,7 @@ $all-text-inputs: _assign-inputs($_text-inputs-list);
 ///
 /// @example scss
 ///   #{$all-text-inputs-active} {
-///     border: 1px solid #aaa;
+///     border: thin solid #aaa;
 ///   }
 ///
 ///   // CSS Output
@@ -64,7 +64,7 @@ $all-text-inputs: _assign-inputs($_text-inputs-list);
 ///   [type='week']:active,
 ///   input:not([type]):active,
 ///   textarea:active {
-///     border: 1px solid #aaa;
+///     border: thin solid #aaa;
 ///   }
 
 $all-text-inputs-active: _assign-inputs($_text-inputs-list, active);
@@ -75,7 +75,7 @@ $all-text-inputs-active: _assign-inputs($_text-inputs-list, active);
 ///
 /// @example scss
 ///   #{$all-text-inputs-focus} {
-///     border: 1px solid #1565c0;
+///     border: thin solid #1565c0;
 ///   }
 ///
 ///   // CSS Output
@@ -95,7 +95,7 @@ $all-text-inputs-active: _assign-inputs($_text-inputs-list, active);
 ///   [type='week']:focus,
 ///   input:not([type]):focus,
 ///   textarea:focus {
-///     border: 1px solid #1565c0;
+///     border: thin solid #1565c0;
 ///   }
 
 $all-text-inputs-focus: _assign-inputs($_text-inputs-list, focus);
@@ -106,7 +106,7 @@ $all-text-inputs-focus: _assign-inputs($_text-inputs-list, focus);
 ///
 /// @example scss
 ///   #{$all-text-inputs-hover} {
-///     border: 1px solid #aaa;
+///     border: thin solid #aaa;
 ///   }
 ///
 ///   // CSS Output
@@ -126,7 +126,7 @@ $all-text-inputs-focus: _assign-inputs($_text-inputs-list, focus);
 ///   [type='week']:hover,
 ///   input:not([type]):hover,
 ///   textarea:hover {
-///     border: 1px solid #aaa;
+///     border: thin solid #aaa;
 ///   }
 
 $all-text-inputs-hover: _assign-inputs($_text-inputs-list, hover);
@@ -137,7 +137,7 @@ $all-text-inputs-hover: _assign-inputs($_text-inputs-list, hover);
 ///
 /// @example scss
 ///   #{$all-text-inputs-invalid} {
-///     border: 1px solid #00f;
+///     border: thin solid #00f;
 ///   }
 ///
 ///   // CSS Output
@@ -157,7 +157,7 @@ $all-text-inputs-hover: _assign-inputs($_text-inputs-list, hover);
 ///   [type='week']:invalid,
 ///   input:not([type]):invalid,
 ///   textarea:invalid {
-///     border: 1px solid #00f;
+///     border: thin solid #00f;
 ///   }
 
 $all-text-inputs-invalid: _assign-inputs($_text-inputs-list, invalid);

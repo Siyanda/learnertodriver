@@ -337,7 +337,7 @@ hr {
 .dropdown-button {
   background-image: $gray-button;
   background-blend-mode: lighten;
-  border: 1px solid $grey;
+  border: thin solid $grey;
   color: $ocean;
 
   &.iconed {
@@ -352,7 +352,7 @@ hr {
 
 .dropdown-menu {
   margin: .1rem 0;
-  border: 1px solid $gainsboro;
+  border: thin solid $gainsboro;
   border-radius: .4rem;
   box-shadow: $wrap-shadow;
   background: $white;

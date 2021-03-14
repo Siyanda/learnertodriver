@@ -23,7 +23,7 @@ input[type="range"] {
   width: 100%;
   height: 10px;
   background-color: $gainsboro;
-  border: 1px solid $grey;
+  border: thin solid $grey;
   border-radius: 10px;
   margin: auto;
   transition: color .3s ease;

@@ -42,7 +42,7 @@
 .profile-info-area {
   text-align: left;
   padding: 40px;
-  border: 1px solid $gray;
+  border: thin solid $gray;
   margin: 20px;
 }
 
@@ -131,7 +131,7 @@
     &.active {
       background-color: $white;
       box-shadow: $light-box;
-      border: 1px solid $grey;
+      border: thin solid $grey;
       color: $night;
     }
 
@@ -155,7 +155,7 @@
 
 .user-menu {
   background-color: $white;
-  border: 1px solid $slate;
+  border: thin solid $slate;
   border-radius: 4px;
   margin-top: 10px;
   position: absolute;
@@ -196,7 +196,7 @@
 
 .notification-menu {
   background-color: $white;
-  border: 1px solid $slate;
+  border: thin solid $slate;
   border-radius: 4px;
   margin-top: 10px;
   position: absolute;

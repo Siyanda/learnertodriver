@@ -172,7 +172,7 @@ $base-font-color: $dark-gray;
 // Border
 
 $base-border-color: $light-gray;
-$base-border: 1px solid $base-border-color;
+$base-border: thin solid $base-border-color;
 
 // Background Colors
 
@@ -247,7 +247,7 @@ $base-timing: ease;
 }
 
 @mixin blue-glow ($color) {
-  border: 1px solid $color;
+  border: thin solid $color;
   box-shadow: 0 0 5px $color;
   transition: .3s ease-out;
 }

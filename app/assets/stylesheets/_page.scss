@@ -1,5 +1,5 @@
 .tabbar {
-  border: 1px solid $gainsboro;
+  border: thin solid $gainsboro;
 
   &.grouped {
     margin: 0;
@@ -50,7 +50,7 @@
 
     &.active {
       background-color: $white;
-      border: 1px solid $grey;
+      border: thin solid $grey;
       cursor: revert;
       color:$night;
     }

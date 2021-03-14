@@ -90,7 +90,7 @@
 }
 
 .adblock {
-  border: 1px solid $grey;
+  border: thin solid $grey;
   padding: 4px;
 }
 
@@ -152,7 +152,7 @@
   span {
     color: $midnight;
     float: left;
-    border: 1px solid $gainsboro;
+    border: thin solid $gainsboro;
 
     &:last-child {
       border-top-right-radius: 5px;

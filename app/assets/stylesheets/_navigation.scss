@@ -189,7 +189,7 @@
 }
 
 .outline {
-  border: 1px solid;
+  border: thin solid;
   border-radius: 4px;
   padding: .4rem .8rem;
   transition-property: background-color, color;
@@ -203,7 +203,7 @@
 }
 
 .noline {
-  border: 1px $gray;
+  border: thin $gray;
   border-radius: 4px;
   padding: .4rem .8rem;
   transition-property: background-color, color;
@@ -375,11 +375,11 @@
 
 .search-wrapper {
   position: relative;
-  border: 1px solid $grey;
+  border: thin solid $grey;
   border-radius: .2rem;
 
   &.dark-bg {
-    border: 1px solid $ash;
+    border: thin solid $ash;
 
     input {
       background-color: darken(#1b1b26, 10%);
