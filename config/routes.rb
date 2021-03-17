@@ -3,6 +3,7 @@ require 'sidekiq/web'
 
   authenticate :user, lambda { |u| u.admin? } do
     mount Sidekiq::Web => '/sidekiq'
+    resource :admin, only: %[show]
   end
 
   root 'home#index'
@@ -21,11 +22,25 @@ require 'sidekiq/web'
                sign_out: 'logout'
              }
 
-  resources :users, only: %i[show]
-  resources :quizzes, only: %i[index show]
-  resources :posts, only: %i[index show] do
-    resources :comments, only: %i[show edit new]
+  resource :dashboard, only: %[show]
+  resources :users, only: %i[show edit]
+  resources :quizzes, only: %i[index show], path: 'tests'
+
+  resources :quizzes do
+    resources :evaluations do
+    end
   end
+
+
+  resources :evaluations
+  resources :pages, only: %i[show]
+   resources :posts do
+      resources :comments
+      member do
+        put 'like', to:    'posts#upvote'
+        put 'dislike', to: 'posts#downvote'
+      end
+    end
 
   get '/service-worker.js' => 'service_worker#service_worker'
   get '/manifest.json' => 'service_worker#manifest'
