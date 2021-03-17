@@ -1,0 +1,62 @@
+<nav role="navigation" class="dark-bg full-width flex spaced-between top-nav">
+
+  <!-- menu - logo -->
+  <div class="flex nav-area">
+    <div class="margin-sides clickable flex icon">
+      <div class="lightly padded tablet-only desktop-only light-fill medium-svg menu icon" data-action="click->sidebar#toggle">
+        <%= link_to root_path, aria: { label: root_path("home") } do %>
+          <%= inline_svg("logo_icon.svg") %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="flex mobile-only center-aligned clickable toggle">
+      <div class="lightly padded menu standard-svg icon" data-action="click->sidebar#toggle">
+        <%= inline_svg("icons/menu.svg") %>
+      </div>
+    </div>
+  </div>
+
+    <!-- large screen nav -->
+  <ul class="flex auto-marg navlist tablet-only desktop-only">
+    <li class="flex">
+      <%= link_to "Dashboard", dashboard_path, class: "white-text padded link #{current? "active", dashboard_path}"%>
+    </li>
+    <li class="flex">
+      <%= link_to "Tests", quizzes_path, class: "white-text padded link #{current? "active", quizzes_path}"%>
+    </li>
+    <li class="flex">
+      <%= link_to "Blog", posts_path, class: "white-text padded link #{current? "active", posts_path}"%>
+    </li>
+    <li class="flex">
+      <%= link_to "About", root_path, class: "white-text padded link #{current? "active", root_path}"%>
+    </li>
+  </ul>
+
+<!-- small screen logo -->
+  <div class="flex nav-area">
+    <div class="flex mobile-only center-aligned clickable toggle">
+      <div class="lightly padded menu standard-svg icon" data-action="click->sidebar#toggle">
+        <%= inline_svg("logo_icon.svg") %>
+      </div>
+    </div>
+  </div>
+
+<!-- small screen element -->
+  <div class="flex nav-area">
+    <div class="flex mobile-only center-aligned clickable toggle">
+
+    </div>
+  </div>
+
+    <!-- search -->
+    <div class="flex center-aligned search-container tablet-only desktop-only">
+      <div class="dark-bg search-wrapper">
+        <input type="text" class="search-input" placeholder=" search">
+        <div class="svg search-icon icon">
+          <%= inline_svg("icons/magnifying-glass.svg") %>
+        </div>
+      </div>
+    </div>
+
+</nav>
