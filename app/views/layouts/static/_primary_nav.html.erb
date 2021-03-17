@@ -1,9 +1,8 @@
-<nav role="navigation" class="dark full-width flex spaced-between top-nav">
-  <ul class="navlist">
-
-    <li><%= link_to_unless_current "Home", root_path, class: "#{current? "active", root_path}"%></li>
-    <li><%= link_to_unless_current "Tests", quizzes_path, class: "#{current? "active", quizzes_path}"%></li>
-    <li><%= link_to_unless_current "Blog", posts_path, class: "#{current? "active", posts_path}"%></li>
-    <li><%= link_to_unless_current "About", root_path, class: "#{current? "active", root_path}"%></li>
+<nav role="navigation" class="dark-bg full-width flex spaced-between top-nav">
+  <ul class="flex auto-marg navlist">
+    <li class="flex"><%= link_to "Home", root_path, class: "white-text padded link #{current? "active", root_path}"%></li>
+    <li class="flex"><%= link_to "Quizz", quizzes_path, class: "white-text padded link #{current? "active", quizzes_path}"%></li>
+    <li class="flex"><%= link_to "Blog", posts_path, class: "white-text padded link #{current? "active", posts_path}"%></li>
+    <li class="flex"><%= link_to "About", root_path, class: "white-text padded link #{current? "active", root_path}"%></li>
   </ul>
 </nav>
