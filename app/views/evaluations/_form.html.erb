@@ -1,0 +1,35 @@
+<%= simple_form_for [@user, Evaluation.new] do |form| %>
+
+  <% if @evaluation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@evaluation.errors.count, "error") %> prohibited this evaluation from being saved:</h2>
+
+      <ul>
+      <% @evaluation.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+      <div class="total pull-right">
+        <div>Final Rating: <span id="final_rating"></span></div>
+      </div>
+
+      <div class="hidden">
+        <%= form.label :kind, "type of Evaluation" %>
+        <%= form.text_field :kind, :value => "general" %>
+        <%= form.label :score, "Final Score" %>
+        <%= form.text_field :score %>
+      </div>
+      <!--render evaluation comments-->
+      <div class="form-group">
+        <%= form.label :comment, "Comments" %>
+        <%= form.text_field :comment %>
+      </div>
+      <!--submit form-->
+      <div class="form-group">
+        <%= form.submit "Submit", id: "form_submit" , class: "button btn primary" %>
+      </div>
+
+  <% end%>

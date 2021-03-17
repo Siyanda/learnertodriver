@@ -1,0 +1,44 @@
+<div class="gainsboro-bordered content block">
+
+  <div class="block-header">
+    <h2 class="post-title">
+      <%= link_to truncate(post.title, :length => 65), post %>
+    </h2>
+  </div>
+
+  <div class="block-content">
+    <p><%= truncate(strip_tags(post.content.to_s), length: 165) %></p>
+    <div class="link">
+      <%= link_to "Read More >", post, class: "read-more" %>
+    </div>
+  </div>
+
+  <div class="block-meta">
+    <div class="meta meta-votes">
+      <div class="dark-fill small-svg icon">
+        <%= inline_svg("icons/arrow-up.svg") %>
+      </div>
+      <%= post.get_upvotes.size %>
+
+      <div class="dark-fill small-svg icon">
+        <%= inline_svg("icons/arrow-down.svg") %>
+      </div>
+      <%= post.get_downvotes.size %>
+    </div>
+
+    <div class="meta meta-comments">
+      <div class="dark-fill small-svg icon">
+        <%= inline_svg("icons/comments.svg") %>
+      </div>
+      <%= post.comments.count %>
+    </div>
+
+   <div class="meta meta-date">
+      <div class="dark-fill small-svg icon">
+        <%= inline_svg("icons/clock.svg") %>
+      </div>
+      <%= time_ago_in_words(post.created_at) %> ago
+    </div>
+
+  </div>
+</div>

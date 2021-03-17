@@ -1,0 +1,162 @@
+<% breadcrumb :evaluation, @user %>
+
+  <div class="grey-bordered gapped content">
+    <div class="flex column">
+      <div class="flex spaced-between">
+        <div class="new">
+          <h4 class="bold"><%= @evaluation.created_at.strftime(" %b %Y ") %></h4>
+          <p><%= @evaluation.quiz.title %> Appraisal Form</p>
+        </div>
+
+        <div class="long-svg icon">
+          <%= inline_svg("company_logo.svg") %>
+        </div>
+      </div>
+
+      <p><%= @user.alias %></p>
+      <div class="flex spaced-between">
+        <p class="grey-text"><%= @evaluation.project.name %></p>
+        <p><%= @evaluation.reactions.size %> Questions</p>
+      </div>
+    </div>
+
+    <!-- remove repetition here -->
+      <div class="questions" data-controller="menu">
+
+        <div class="clickable" data-action="click->menu#toggle">
+          <div class="lightly padded dropdown-button">
+            <div class="flex center-aligned spaced-between">
+              <h3 class="bold no-margin full-width">Soft Skills</h3>
+
+              <div class="score">
+                <span id="skills_overview" class="section_overview">0</span>/<%= @evaluation.reactions.soft_skills.size %>
+              </div>
+
+              <div class="icons" data-menu-target="icon">
+                <div class="dark-fill small-svg icon closed">
+                  <%= inline_svg("icons/arrow-down.svg") %>
+                </div>
+                <div class="dark-fill small-svg icon open">
+                  <%= inline_svg("icons/arrow-right.svg") %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-container gainsboro-bordered" data-menu-target="option">
+          <% @evaluation.reactions.soft_skills.each do |reaction| %>
+            <div class="flex striped question-container lightly padded">
+              <div class="question-content">
+                <%= reaction.content %>
+
+              </div>
+
+            <div class="flex score flex-end">
+              <%= reaction.value %>
+            </div>
+
+            </div>
+          <% end %>
+        </div>
+
+      </div>
+
+    <div class="questions" data-controller="menu">
+
+      <div class="clickable" data-action="click->menu#toggle">
+        <div class="lightly padded dropdown-button">
+            <div class="flex center-aligned spaced-between">
+              <h3 class="bold no-margin full-width">Performance</h3>
+
+              <div class="score">
+                <span id="performance_overview" class="section_overview">0</span>/<%= @evaluation.reactions.performance_skills.size %>
+              </div>
+
+              <div class="icons" data-menu-target="icon">
+                <div class="dark-fill small-svg icon closed">
+                  <%= inline_svg("icons/arrow-down.svg") %>
+                </div>
+                <div class="dark-fill small-svg icon open">
+                  <%= inline_svg("icons/arrow-right.svg") %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-container gainsboro-bordered" data-menu-target="option">
+          <% @evaluation.reactions.performance_skills.each do |reaction| %>
+            <div class="flex striped question-container lightly padded">
+              <div class="question-content">
+                <%= reaction.content %>
+
+              </div>
+
+            <div class="flex score flex-end">
+              <%= reaction.value %>
+            </div>
+
+            </div>
+          <% end %>
+        </div>
+
+    </div>
+
+
+<div class="questions" data-controller="menu">
+
+      <div class="clickable" data-action="click->menu#toggle">
+        <div class="lightly padded dropdown-button">
+            <div class="flex center-aligned spaced-between">
+              <h3 class="bold no-margin full-width">Technical</h3>
+
+              <div class="score">
+                <span id="technical_overview" class="section_overview">0</span>/<%= @evaluation.reactions.technical_skills.size %>
+              </div>
+
+              <div class="icons" data-menu-target="icon">
+                <div class="dark-fill small-svg icon closed">
+                  <%= inline_svg("icons/arrow-down.svg") %>
+                </div>
+                <div class="dark-fill small-svg icon open">
+                  <%= inline_svg("icons/arrow-right.svg") %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-container gainsboro-bordered" data-menu-target="option">
+          <% @evaluation.reactions.technical_skills.each do |reaction| %>
+            <div class="flex striped question-container lightly padded">
+              <div class="question-content">
+                <%= reaction.content %>
+
+              </div>
+
+            <div class="flex score flex-end">
+              <%= reaction.value %>
+            </div>
+
+            </div>
+          <% end %>
+        </div>
+
+    </div>
+
+
+
+    <br>
+      <div class="total pull-right">
+        <div>Final Rating: <span class="rounded_number"><%= @evaluation.score %></span></div>
+      </div>
+    <br>
+
+    <!--render evaluation comments-->
+    <div class="comment">
+      <h4 class="bold">Final Remarks</h4>
+      <div class="padded grey-bordered cream shadowed inset"><%= @evaluation.comment %></div>
+    </div>
+
+</div>

@@ -1,0 +1,143 @@
+<% content_for :page_title, @post.title %>
+<% breadcrumb :post, @post %>
+
+<div class="flex split gapped">
+  <article class="flex rounded gainsboro-bordered column content post">
+
+    <div class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <%= @post.title %>
+      </h1>
+    </div>
+
+    <div class="padded post-content" itemprop="articleBody">
+      <div class="post-body">
+        <%= @post.content %>
+      </div>
+    </div>
+
+    <div class="padded post-footer">
+      <div class="post-meta">
+        <p class="post-date">Posted <%= time_ago_in_words(@post.created_at) %> ago</p>
+
+          <div class="hidden">
+            <div class="btn-group pull-right">
+                <%= link_to like_post_path(@post), method: :put, class: "button btn-default btn-sm" do %>
+
+              <span class="fa fa-thumbs-up"></span>
+                <%= @post.get_upvotes.size %>
+              <% end %>
+
+                <%= link_to dislike_post_path(@post), method: :put, class: "button btn-default btn-sm" do %>
+              <span class="fa fa-thumbs-down"></span>
+                <%= @post.get_downvotes.size %>
+              <% end %>
+            </div>
+        </div>
+
+      </div>
+    </div> 
+
+  </article>
+
+  <aside class="hr-sectioned rounded gainsboro-bordered aside">
+
+    <div class="section">
+      <div class="padded section-heading">
+        <h3>Catergories</h3>
+        <hr class="third-width hr-grey">
+      </div>
+      
+    </div>
+
+    <div class="section">
+      <div class="padded section-heading">
+        <h3>Recent Posts</h3>
+        <hr class="third-width hr-grey">
+      </div>
+      
+    </div>
+
+    <div class="section">
+      <div class="padded section-heading">
+        <h3>Sponsored</h3>
+        <hr class="third-width hr-grey">
+      </div>
+      
+    </div>
+
+  </aside>
+</div>
+
+  <div class="post-meta-container">
+    <div class="post-author">
+
+      <div class="post-author-content">
+
+          <div class="auto-marg author avatar">
+            <%= image_tag gravatar_url(@post.author.email, :size=> 300), alt: 'profile', class: "author avatar" %>
+          </div>
+          <div class="author username">
+            <h3><%= link_to @post.author.name, user_path(@post.author) %></h3>
+          </div>
+          <div class="author bio">
+            <p><%= @post.author.bio %></p>
+          </div>
+          <div class="author social">
+            <div class="flex centered">
+          <% if @post.author.links %>
+              <%= link_to "https://twitter.com/#{ @post.author.links }", target: "_blank" do %>
+                <div class="twitter icon">
+                  <%= inline_svg("twitter.svg") %>
+                </div>
+              <% end %>
+           <% end %>
+
+          <% if @post.author.links %>
+              <%= link_to "https://instagram.com/#{ @post.author.links }", target: "_blank" do %>
+                <div class="insta icon">
+                  <%= inline_svg("instagram.svg") %>
+                </div>
+             <% end %>
+           <% end %>
+
+            </div>
+          </div>
+
+      </div>
+
+    </div>
+  </div>
+
+<article class="gapped comments content rounded gainsboro-bordered">
+  <div class="comments-title-container">
+    <h2 class="comments-title fleft"><%= @post.comments.count %> Comments</h2>
+  </div>
+
+  <div id="comment-section" class="comment-section">
+
+    <% if @post.comments.any? %>
+      <%= render :partial => @post.comments.includes(:user) %>
+    <% else %>
+
+    <div class="comment-header">
+      <h4>Be the first to comment</h4>
+    </div>
+
+    <% end %>
+
+    <div id="respond" class="comment-respond">
+      <h4 id="reply-title" class="comment-reply-title">Leave a Reply</h4>
+
+    <%= simple_form_for [@post, Comment.new]  do |f| %>
+      <div class="field">
+        <%= f.text_area :body, class: "form-control" %>
+      </div>
+    <br>
+        <%= f.submit "Post Comment", class: "button btn-primary" %>
+    <% end %>
+
+    </div>
+  </div>
+
+</article>

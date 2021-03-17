@@ -1,0 +1,28 @@
+<div class="rounded gainsboro-bordered grid-item card">
+  <div class="card-image">
+    <%= link_to quiz_path(quiz), class: "image" do %>
+      <%= image_tag("cards/#{ quiz.kind }.jpeg") %>
+    <% end %>
+  </div>
+    <div class="card-content">
+
+    <div class="card-header">
+      <h2><%= link_to truncate(quiz.title, :length => 65), quiz %></h2>
+    </div>
+    
+    <div class="card-copy">
+      <p class="item-description">
+        <%= quiz.information.truncate(165) %>
+      </p>
+      
+      <p class="item-meta">
+        <%= distance_of_time_in_words(quiz.duration) %>
+      </p>
+    </div>
+      
+      <div class="cta">
+        <%= link_to new_quiz_evaluation_path(quiz), class: 'full dark button' do %> Practice Quiz <% end %>
+      </div>
+
+    </div>
+</div>
