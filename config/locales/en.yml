@@ -2,6 +2,7 @@ en:
   site_name: "Learner to Driver"
   short_name: "learnertodriver"
   tagline: "Get Your Learners"
+  app_version: "0.2.3"
   description: "Learner to Driver K53 quiz application"
   mission: "The LearnertoDriver app offers the best preparation before taking the official test given by the Traffic Department, motor vehicle related advice"
   dev_company: "TypoGraphics"
