@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+    <%= favicon_link_tag asset_path("favicon.png"), :rel => "icon", :type =>  "image/png" %><!DOCTYPE html>
 <html lang="<%= I18n.locale %>">
   <head>
     <title><%= t("site_name") %> | <%= t("tagline") %></title>
@@ -7,16 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' http://* 'unsafe-inline'; script-src 'self' http://* 'unsafe-inline' 'unsafe-eval'" />
 
-    <%= render "layouts/common/meta" %>
-  
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= action_cable_meta_tag %>
 
     <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track": "reload" %>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => "reload" %>
     <%= javascript_pack_tag "application" %>
 
+    <%= favicon_link_tag asset_path("favicon.png"), :rel => "icon", :type =>  "image/png" %>
   </head>
 
   <body>

@@ -15,8 +15,10 @@
     <%= action_cable_meta_tag %>
 
     <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track": "reload" %>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => "reload" %>
     <%= javascript_pack_tag "application" %>
 
+    <%= favicon_link_tag asset_path("favicon.png"), :rel => "icon", :type =>  "image/png" %>
   </head>
 
   <body class="main-bg">
@@ -26,14 +28,17 @@
 
       <div class="grey-bordered content form">
         <div class="full-width logo-container">
+
           <div class="flex logo">
             <%= link_to root_path do %>
-              <%= inline_svg("company_logo.svg") %>
+              <%= inline_svg("company_logo_black.svg") %>
             <% end %>
           </div>
+
         </div>
 
         <%= yield %>
+
       </div>
     </div>
 
