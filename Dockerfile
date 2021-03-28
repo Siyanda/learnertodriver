@@ -6,8 +6,6 @@ RUN apk add --update --virtual \
   build-base \
   libxml2-dev \
   libxslt-dev \
-  nodejs \
-  yarn \
   libffi-dev \
   readline \
   build-base \
@@ -25,7 +23,6 @@ WORKDIR /app
 COPY . /app/
 
 ENV BUNDLE_PATH /gems
-RUN yarn install
 RUN bundle install
 
 ENTRYPOINT ["bin/rails"]
