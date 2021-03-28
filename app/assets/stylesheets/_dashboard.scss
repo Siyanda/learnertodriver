@@ -206,7 +206,11 @@ body {
 }
 
 .texture {
-  background-image: linear-gradient(45deg, $alt-blue 15%, $purp 85%), url(image_path("bg/overlay.png"));
+  background-image: url(image_path("bg/cream_dust.png"));
+
+  .txre-dark {
+    background-image: linear-gradient($unclear,$unclear),url(image_path("bg/cream_dust.png"))
+  }
 }
 
 .lighter {

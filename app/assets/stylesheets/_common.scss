@@ -133,11 +133,19 @@ footer {
 .shadowed {
   box-shadow: $nav-box;
 
-  &.inset {
+  &.light-inset-shd {
+    box-shadow: $in-shadow;
+  }
+
+  &.mild-inset-shd {
     box-shadow: $shadow-box;
   }
 
-  &.lightly {
+  &.mildy-shd {
+    box-shadow: $header-shade;
+  }
+
+  &.lightly-shd {
     box-shadow: $thin-box;
   }
 }
@@ -306,6 +314,10 @@ footer {
   padding-left: 1.8rem;
 }
 
+.max-height {
+  height: fill-available;
+}
+
 .full-height {
   min-height: 100vh;
 }
@@ -408,7 +420,7 @@ footer {
   text-transform: lowercase;
 }
 
-.grey-text {
+.gray-text {
   color: $gray;
 }
 
@@ -495,6 +507,14 @@ footer {
 
 .dark-bg {
   background-color: $ocean;
+
+  .toggle {
+    cursor: pointer;
+
+    &:hover {
+      background-color: $night;
+    }
+  }
 }
 
 .night-bg {
@@ -579,7 +599,13 @@ footer {
   }
 }
 
-@media screen and (min-width: 420px) {
+@media screen and (max-width: 420px) {
+  .tablet-only {
+    display: inherit;
+  }
+}
+
+@media screen and (max-width: 1200px) {
   .tablet-only {
     display: inherit;
   }

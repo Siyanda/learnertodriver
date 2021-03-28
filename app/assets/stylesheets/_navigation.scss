@@ -32,20 +32,6 @@
   }
 }
 
-.nav-area {
-  margin: auto 2px;
-  max-width: 30%;
-  max-height: 100px;
-  min-width: 50px;
-
-  .toggle {
-
-    &:hover {
-      background-color: $night;
-    }
-  }
-}
-
 .navlist {
   align-content: center;
   align-items: center;
@@ -186,6 +172,7 @@
 .secondary-nav {
   background: $white;
   box-shadow: $block-shadow;
+  padding: .8rem;
 }
 
 .outline {
@@ -267,13 +254,19 @@
     }
   }
 
+  &.light-stroke {
+    svg {
+      stroke: $white;
+    }
+  }
+
   &.gold-fill {
     svg {
       fill: $goldenrod;
     }
   }
 
-  &.grey-fill {
+  &.gray-fill {
     svg {
       fill: $gray;
     }
@@ -282,6 +275,18 @@
   &.dark-fill {
     svg {
       fill: $ocean;
+    }
+  }
+
+  &.dark-stroke {
+    svg {
+      stroke: $ocean;
+    }
+  }
+
+  &.gray-stroke {
+    svg {
+      stroke: $gray;
     }
   }
 
@@ -477,7 +482,7 @@
   }
 
   .header-links {
-    padding: 0;
+    padding: .4rem;
     margin: 0;
   }
 }

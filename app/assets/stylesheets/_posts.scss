@@ -63,7 +63,7 @@
   .post-date {
     color: $gray;
     font-size: 12px;
-    margin: auto 0;
+    margin: auto .2rem;
   }
 
   .meta {
@@ -163,6 +163,22 @@
       border-top-left-radius: 5px;
       border-bottom-left-radius: 5px;
     }
+  }
+}
+
+.sub-section {
+  &.sm-icon {
+    margin: auto .2rem;
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  .sub-heading {
+    font-size: 16px;
+    margin: 0 4px;
   }
 }
 
