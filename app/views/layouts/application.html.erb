@@ -1,21 +1,25 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= t("site_name") %> | <%= t("tagline") %></title>
+    <title><%= t('site_name') %> | <%= yield(:title).presence || t('tagline') %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <%= render "layouts/common/meta" %>
+    <%= favicon_link_tag asset_path("favicon.png"), :rel => "icon", :type => "image/png" %>
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag "application", "data-turbolinks-track" => "reload" %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
 
-    <%= render "layouts/common/meta" %>
+    <%= yield :head %>
 
-    <%= favicon_link_tag asset_path("favicon.png"), :rel => "icon", :type =>  "image/png" %>
+    <%= turbo_include_tags %>
+    <%= stimulus_include_tags %>
+
   </head>
 
-  <body>
+  <body class="texture full-height max-height">
     <%= render 'layouts/app/header', cached: true %>
     <%= yield %>
     <%= render 'layouts/app/footer', cached: true %>
