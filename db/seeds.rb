@@ -1,6 +1,6 @@
 require 'csv'
 
-models =  %w[user post comment quiz question answer specification response]
+models =  %w[user page post comment quiz question answer specification response]
 
 puts '... deleting all existing data 🗑'
 

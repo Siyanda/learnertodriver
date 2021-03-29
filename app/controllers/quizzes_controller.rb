@@ -7,7 +7,7 @@ class QuizzesController < ApplicationController
   end
 
   def show
-    @questions = @quiz.questions.random.includes(:answers)
+    @questions = @quiz.questions.includes(:answers)
   end
 
   private

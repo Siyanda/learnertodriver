@@ -2,6 +2,7 @@ class Quiz < ApplicationRecord
   extend FriendlyId
   friendly_id :title, use: :slugged
 
+  has_many :evaluations
   has_many :specifications
   has_many :questions, through: :specifications
 

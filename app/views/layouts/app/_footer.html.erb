@@ -1,6 +1,25 @@
-<div class="level-one fixed full-width white-bg bottom-nav">
-  <div class="grey-bordered flex spaced-between dashboard-footer">
-    <p class="small grey-text"><%= t("site_name") %> | v <%= t("app_version") %></p>
-    <p class="small grey-text"><%= current_user.name.familiar  %></p>
+<div class="full-width level-one flex fixed full-width white-bg bottom-nav">
+
+  <div class="full-width desktop-only grey-bordered flex spaced-between dashboard-footer">
+    <p class="small gray-text"><%= t("site_name") %> | v <%= t("app_version") %></p>
+    <p class="small gray-text"><%= current_user.name.familiar  %></p>
+  </div>
+
+  <div class="full-width mobile-only tablet-only spaced-around flex icons">
+    <%= link_to root_path, class: "dark-stroke icon #{class_names(active: current_page?(dashboard_path))}", aria: { label: root_path("home") } do %>
+        <%= inline_svg("/icons/home.svg") %>
+    <% end %>
+
+   <%= link_to quizzes_path, class: "dark-stroke icon #{class_names(active: current_page?(quizzes_path))}", aria: { label: root_path("quizz") } do %>
+        <%= inline_svg("/icons/chat.svg") %>
+    <% end %>
+
+   <%= link_to posts_path, class: "dark-stroke icon #{class_names(active: current_page?(posts_path))}", aria: { label: root_path("blog") } do %>
+        <%= inline_svg("/icons/newspaper.svg") %>
+    <% end %>
+
+   <%= link_to root_path, class: "dark-stroke icon #{class_names(active: current_page?(dashboard_path))}", aria: { label: root_path("about") } do %>
+        <%= inline_svg("/icons/clock.svg") %>
+    <% end %>
   </div>
 </div>

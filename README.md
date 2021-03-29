@@ -29,15 +29,15 @@
 
 ### Installation
 
-0.  Make sure all the prerequisites are installed.
-1.  Fork invoiced-rsa repository, ie. https://github.com/siyanda/invoiced-rsa/fork
-1.  Clone your forked repository, ie. `git clone https://github.com/<your-username>/learnertodriver-rails.git`
-1.  `gem install bundler`
-1.  `bundle install`
+0. Make sure all the prerequisites are installed.
+1. Fork invoiced-rsa repository, ie. https://github.com/siyanda/invoiced-rsa/fork
+2. Clone your forked repository, ie. `git clone https://github.com/<your-username>/learnertodriver-rails.git`
+3. `gem install bundler`
+4. `bundle install`
 
-1.  `rails db:create`
-1.  `rails db:migrate`
-1.  `rails db:seed`
+5. `rails db:create`
+6. `rails db:migrate`
+7. `rails db:seed`
 
 #### Starting the application
 

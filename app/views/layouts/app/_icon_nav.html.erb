@@ -1,25 +1,20 @@
 <div class="full-width level-one nav">
    <div class="spaced-around flex icons">
 
-      <%= link_to root_path, class: "#{current? "active", root_path} ocean-fill icon", aria: { label: root_path("home") } do %>
+      <%= link_to_active root_path, class: "ocean-fill icon", aria: { label: root_path("home") } do %>
           <%= inline_svg("/icons/home.svg") %>
       <% end %>
 
-      <%= link_to search_index_path, class: "#{current? "active", search_index_path} ocean-fill icon", aria: { label: search_index_path("search") } do %>
-          <%= inline_svg("/icons/search.svg") %>
+     <%= link_to_active root_path, class: "ocean-fill icon", aria: { label: root_path("home") } do %>
+          <%= inline_svg("/icons/home.svg") %>
       <% end %>
 
-      <%= link_to notifications_path, class: "#{current? "active", notifications_path} ocean-fill icon", aria: { label: notifications_path("notifications") } do %>
-        <%= inline_svg("/icons/notifications_bell_outline.svg") %>
-        <% if current_user.admin %>
-          <span class="badge"><%= current_user.projects.count %></span>
-        <% else %>
-
-        <% end %>
+     <%= link_to_active root_path, class: "ocean-fill icon", aria: { label: root_path("home") } do %>
+          <%= inline_svg("/icons/home.svg") %>
       <% end %>
 
-      <%= link_to user_path(current_user), class: "#{current? "active", user_path(current_user)} ocean-fill icon", aria: { label: users_path("user profile") } do %>
-        <%= inline_svg("/icons/user.svg") %>
+     <%= link_to_active root_path, class: "ocean-fill icon", aria: { label: root_path("home") } do %>
+          <%= inline_svg("/icons/home.svg") %>
       <% end %>
 
    </div>
