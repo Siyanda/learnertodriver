@@ -13,7 +13,6 @@ crumb :user do |user|
   parent :users
 end
 
-
 # Post list
 crumb :posts do
   link "Posts", posts_path
@@ -24,6 +23,18 @@ crumb :post do |post|
   link post.title, post
   parent :posts
 end
+
+# Page list
+crumb :pages do
+  link "Company", root_path
+end
+
+# Page
+crumb :page do |page|
+  link page.title, page
+  parent :pages
+end
+
 
 # Quiz list
 crumb :quizzes do
@@ -38,7 +49,7 @@ end
 
 # Quiz list
 crumb :evaluations do
-  link "Tests", quiz_evaluations_path
+  link "Tests", quizzes_path
 end
 
 # Quiz
