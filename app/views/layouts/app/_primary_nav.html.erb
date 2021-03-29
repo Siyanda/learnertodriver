@@ -2,55 +2,49 @@
 
   <!-- menu - logo -->
   <div class="flex nav-area">
-    <div class="margin-sides clickable flex icon">
-      <div class="lightly padded tablet-only desktop-only light-fill medium-svg menu icon" data-action="click->sidebar#toggle">
+    <div class="clickable flex icon">
+
+      <div class="margin-sides lightly padded desktop-only light-fill medium-svg menu icon" data-action="click->sidebar#toggle">
         <%= link_to root_path, aria: { label: root_path("home") } do %>
           <%= inline_svg("logo_icon.svg") %>
         <% end %>
       </div>
-    </div>
 
-    <div class="flex mobile-only center-aligned clickable toggle">
-      <div class="lightly padded menu standard-svg icon" data-action="click->sidebar#toggle">
-        <%= inline_svg("icons/menu.svg") %>
+      <div class="flex mobile-only tablet-only center-aligned clickable toggle">
+        <div class="lightly padded margin-sides menu standard-svg icon" data-action="click->sidebar#toggle">
+          <%= inline_svg("icons/menu.svg") %>
+        </div>
       </div>
+
     </div>
   </div>
 
-    <!-- large screen nav -->
-  <ul class="flex auto-marg navlist tablet-only desktop-only">
-    <li class="flex">
-      <%= link_to "Dashboard", dashboard_path, class: "white-text padded link #{current? "active", dashboard_path}"%>
-    </li>
-    <li class="flex">
-      <%= link_to "Tests", quizzes_path, class: "white-text padded link #{current? "active", quizzes_path}"%>
-    </li>
-    <li class="flex">
-      <%= link_to "Blog", posts_path, class: "white-text padded link #{current? "active", posts_path}"%>
-    </li>
-    <li class="flex">
-      <%= link_to "About", root_path, class: "white-text padded link #{current? "active", root_path}"%>
-    </li>
-  </ul>
-
-<!-- small screen logo -->
   <div class="flex nav-area">
-    <div class="flex mobile-only center-aligned clickable toggle">
-      <div class="lightly padded menu standard-svg icon" data-action="click->sidebar#toggle">
+    <div class="lightly padded mobile-only tablet-only light-fill medium-svg menu icon" data-action="click->sidebar#toggle">
+      <%= link_to root_path, aria: { label: root_path("home") } do %>
         <%= inline_svg("logo_icon.svg") %>
-      </div>
+      <% end %>
     </div>
+      <!-- large screen nav -->
+    <ul class="flex auto-marg navlist desktop-only">
+      <li class="flex link <%= class_names(active: current_page?(dashboard_path)) %>">
+        <%= link_to "Dashboard", dashboard_path, class: "white-text padded" %>
+      </li>
+      <li class="flex link <%= class_names(active: current_page?(quizzes_path)) %>">
+        <%= link_to "Quizz", quizzes_path, class: "white-text padded" %>
+      </li>
+      <li class="flex link <%= class_names(active: current_page?(posts_path)) %>">
+        <%= link_to "Blog", posts_path, class: "white-text padded" %>
+      </li>
+      <li class="flex link <%= class_names(active: current_page?(page_path("about"))) %>">
+        <%= link_to "About", page_path("about"), class: "white-text padded" %>
+      </li>
+    </ul>
   </div>
 
-<!-- small screen element -->
   <div class="flex nav-area">
-    <div class="flex mobile-only center-aligned clickable toggle">
-
-    </div>
-  </div>
-
     <!-- search -->
-    <div class="flex center-aligned search-container tablet-only desktop-only">
+    <div class="flex center-aligned search-container desktop-only">
       <div class="dark-bg search-wrapper">
         <input type="text" class="search-input" placeholder=" search">
         <div class="svg search-icon icon">
@@ -58,5 +52,12 @@
         </div>
       </div>
     </div>
+
+    <div class="flex mobile-only tablet-only center-aligned clickable toggle">
+      <div class="lightly padded menu light-stroke standard-svg icon" data-action="click->sidebar#toggle">
+        <%= inline_svg("icons/search.svg") %>
+      </div>
+    </div>
+  </div>
 
 </nav>
