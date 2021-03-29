@@ -1,3 +1,6 @@
+<link rel="stylesheet" href="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
+    <script src="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
+
   <div class="dashboard" data-controller="tabs">
 
       <div class="flex spaced-between">
@@ -20,7 +23,7 @@
           
         </div>
         <div class="meta">
-          <h4 class="small grey-text">Active: {{}}</h4>
+          <h4 class="small gray-text">Active: {{}}</h4>
         </div>
      </div>
 
@@ -28,21 +31,21 @@
         <div class="flex evenly-spaced no-margin panel">
          <div class="grey-bordered third-width sparkline content" id="sparkline_latest">
            <div class="padded">
-             <h1>Comments : <%= @current_user_stats.posts.size %></h1>
+             <h1 class="large">Comments : <%= @current_user_stats.posts.size %></h1>
            </div>
            <!-- total completed eval for the period -->
          </div>
 
          <div class="grey-bordered third-width sparkline content" id="sparkline_current">
            <div class="padded">
-             <h1>Quizzes Completed : <%= @current_user_stats.posts.size %></h1>
+             <h1 class="large">Quizzes Completed : <%= @current_user_stats.posts.size %></h1>
            </div>
            <!-- for each of total evals what was the avarage score for the selected period -->
          </div>
 
          <div class="grey-bordered third-width sparkline content" id="sparkline_total">
            <div class="padded">
-             <h1>Average Score :<%= @current_user_stats.posts.size %></h1>
+             <h1 class="large">Average Score :<%= @current_user_stats.posts.size %></h1>
            </div>
            <!-- for each of total evals what was the avarage score for the selected period -->
          </div>
@@ -51,13 +54,9 @@
     <div class="flex evenly-spaced panel">
 
        <div class="grey-bordered half-width content">
-         <div id="bar_chart">
-         </div>
        </div>
 
        <div class="grey-bordered half-width content">
-         <div id="pie_chart">
-         </div>
        </div>
 
      </div>
@@ -96,19 +95,14 @@
     <div class="flex evenly-spaced panel">
 
        <div class="grey-bordered half-width content">
-         <div id="bar_chart">
-         </div>
+
        </div>
 
        <div class="grey-bordered half-width content">
-         <div id="pie_chart">
-         </div>
        </div>
 
      </div>
 
      <div class="flex panel">
-       <div class="grey-bordered full-width content">
-       </div>
      </div>
   </div>

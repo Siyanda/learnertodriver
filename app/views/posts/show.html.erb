@@ -1,4 +1,4 @@
-<% content_for :page_title, @post.title %>
+<% title @post.title %>
 <% breadcrumb :post, @post %>
 
 <div class="flex split gapped">
@@ -17,19 +17,22 @@
     </div>
 
     <div class="padded post-footer">
-      <div class="post-meta">
-        <p class="post-date">Posted <%= time_ago_in_words(@post.created_at) %> ago</p>
+      <div class="flex post-meta">
+        <div class="gray-stroke small-svg icon"><%= inline_svg("icons/clock.svg") %></div>
+        <p class="post-date">
+          Posted <%= time_ago_in_words(@post.created_at) %> ago
+        </p>
 
           <div class="hidden">
             <div class="btn-group pull-right">
                 <%= link_to like_post_path(@post), method: :put, class: "button btn-default btn-sm" do %>
 
               <span class="fa fa-thumbs-up"></span>
-                <%= @post.get_upvotes.size %>
+                <div class="dark-stroke small-svg icon"><%= inline_svg("icons/chat.svg") %></div>
               <% end %>
 
                 <%= link_to dislike_post_path(@post), method: :put, class: "button btn-default btn-sm" do %>
-              <span class="fa fa-thumbs-down"></span>
+              <div class="dark-stroke small-svg icon"><%= inline_svg("icons/chat.svg") %></div>
                 <%= @post.get_downvotes.size %>
               <% end %>
             </div>
@@ -40,28 +43,46 @@
 
   </article>
 
-  <aside class="hr-sectioned rounded gainsboro-bordered aside">
+  <aside class="hr-sectioned white-bg mildy-shd shadowed rounded gainsboro-bordered aside">
 
     <div class="section">
       <div class="padded section-heading">
-        <h3>Catergories</h3>
+        <div class="flex">
+          <div class="sub-section dark-stroke sm-icon"><%= inline_svg("icons/hashtag.svg") %></div>
+          <h3 class="sub-heading">Tags</h3>
+        </div>
         <hr class="third-width hr-grey">
+        <div class="section">
+          
+        </div>
       </div>
       
     </div>
 
     <div class="section">
       <div class="padded section-heading">
-        <h3>Recent Posts</h3>
+        <div class="flex">
+          <div class="sub-section dark-stroke sm-icon"><%= inline_svg("icons/clock.svg") %></div>
+          <h3 class="sub-heading">Recent Posts</h3>
+        </div>
         <hr class="third-width hr-grey">
+        <div class="section">
+          
+        </div>
       </div>
       
     </div>
 
     <div class="section">
       <div class="padded section-heading">
-        <h3>Sponsored</h3>
+        <div class="flex">
+          <div class="sub-section dark-stroke sm-icon"><%= inline_svg("icons/cash.svg") %></div>
+          <h3 class="sub-heading">Sponsored</h3>
+        </div>
         <hr class="third-width hr-grey">
+        <div class="section">
+          
+        </div>
       </div>
       
     </div>
@@ -69,43 +90,12 @@
   </aside>
 </div>
 
-  <div class="post-meta-container">
+  <div class="shadowed light-inset-shd txre-dark post-meta-container">
     <div class="post-author">
-
       <div class="post-author-content">
 
-          <div class="auto-marg author avatar">
-            <%= image_tag gravatar_url(@post.author.email, :size=> 300), alt: 'profile', class: "author avatar" %>
-          </div>
-          <div class="author username">
-            <h3><%= link_to @post.author.name, user_path(@post.author) %></h3>
-          </div>
-          <div class="author bio">
-            <p><%= @post.author.bio %></p>
-          </div>
-          <div class="author social">
-            <div class="flex centered">
-          <% if @post.author.links %>
-              <%= link_to "https://twitter.com/#{ @post.author.links }", target: "_blank" do %>
-                <div class="twitter icon">
-                  <%= inline_svg("twitter.svg") %>
-                </div>
-              <% end %>
-           <% end %>
-
-          <% if @post.author.links %>
-              <%= link_to "https://instagram.com/#{ @post.author.links }", target: "_blank" do %>
-                <div class="insta icon">
-                  <%= inline_svg("instagram.svg") %>
-                </div>
-             <% end %>
-           <% end %>
-
-            </div>
-          </div>
 
       </div>
-
     </div>
   </div>
 
