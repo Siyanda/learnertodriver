@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_15_162033) do
+ActiveRecord::Schema.define(version: 2021_03_07_005010) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,10 +54,19 @@ ActiveRecord::Schema.define(version: 2020_12_15_162033) do
   end
 
   create_table "answers", force: :cascade do |t|
+    t.string "name", default: "", null: false
+    t.integer "value", default: 1, null: false
     t.string "content", null: false
     t.string "information", null: false
     t.bigint "correct_id"
     t.index ["correct_id"], name: "index_answers_on_correct_id"
+  end
+
+  create_table "choices", force: :cascade do |t|
+    t.bigint "answer_id", null: false
+    t.bigint "question_id", null: false
+    t.index ["answer_id"], name: "index_choices_on_answer_id"
+    t.index ["question_id"], name: "index_choices_on_question_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -70,6 +79,20 @@ ActiveRecord::Schema.define(version: 2020_12_15_162033) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
+  create_table "evaluations", force: :cascade do |t|
+    t.decimal "score", default: "0.0", null: false
+    t.string "comment", default: "", null: false
+    t.string "form_snapshot", default: "", null: false
+    t.integer "status", default: 0, null: false
+    t.integer "kind", default: 0, null: false
+    t.bigint "user_id"
+    t.bigint "quiz_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["quiz_id"], name: "index_evaluations_on_quiz_id"
+    t.index ["user_id"], name: "index_evaluations_on_user_id"
+  end
+
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string "slug", null: false
     t.integer "sluggable_id", null: false
@@ -79,6 +102,17 @@ ActiveRecord::Schema.define(version: 2020_12_15_162033) do
     t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
     t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
     t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
+  end
+
+  create_table "pages", force: :cascade do |t|
+    t.string "title", null: false
+    t.text "template"
+    t.string "slug"
+    t.bigint "author_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["author_id"], name: "index_pages_on_author_id"
+    t.index ["slug"], name: "index_pages_on_slug", unique: true
   end
 
   create_table "posts", force: :cascade do |t|
@@ -105,6 +139,21 @@ ActiveRecord::Schema.define(version: 2020_12_15_162033) do
     t.string "description", default: "blank", null: false
     t.string "slug"
     t.index ["slug"], name: "index_quizzes_on_slug", unique: true
+  end
+
+  create_table "reactions", force: :cascade do |t|
+    t.string "name", default: "", null: false
+    t.string "content", default: "", null: false
+    t.integer "value", default: 0, null: false
+    t.integer "kind", default: 0, null: false
+    t.bigint "answer_id", null: false
+    t.bigint "question_id", null: false
+    t.bigint "quiz_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["answer_id"], name: "index_reactions_on_answer_id"
+    t.index ["question_id"], name: "index_reactions_on_question_id"
+    t.index ["quiz_id"], name: "index_reactions_on_quiz_id"
   end
 
   create_table "responses", force: :cascade do |t|
@@ -142,9 +191,8 @@ ActiveRecord::Schema.define(version: 2020_12_15_162033) do
     t.string "unconfirmed_email"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "first_name", default: "blank", null: false
-    t.string "last_name", default: "blank", null: false
-    t.string "name", null: false
+    t.string "first_name", default: "J", null: false
+    t.string "last_name", default: "Doe", null: false
     t.string "username", null: false
     t.jsonb "links"
     t.text "bio"
@@ -157,12 +205,36 @@ ActiveRecord::Schema.define(version: 2020_12_15_162033) do
     t.index ["slug"], name: "index_users_on_slug", unique: true
   end
 
+  create_table "votes", force: :cascade do |t|
+    t.string "votable_type"
+    t.bigint "votable_id"
+    t.string "voter_type"
+    t.bigint "voter_id"
+    t.boolean "vote_flag"
+    t.string "vote_scope"
+    t.integer "vote_weight"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["votable_id", "votable_type", "vote_scope"], name: "index_votes_on_votable_id_and_votable_type_and_vote_scope"
+    t.index ["votable_type", "votable_id"], name: "index_votes_on_votable_type_and_votable_id"
+    t.index ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope"
+    t.index ["voter_type", "voter_id"], name: "index_votes_on_voter_type_and_voter_id"
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "answers", "answers", column: "correct_id"
+  add_foreign_key "choices", "answers"
+  add_foreign_key "choices", "questions"
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
+  add_foreign_key "evaluations", "quizzes"
+  add_foreign_key "evaluations", "users"
+  add_foreign_key "pages", "users", column: "author_id"
   add_foreign_key "posts", "users", column: "author_id"
+  add_foreign_key "reactions", "answers"
+  add_foreign_key "reactions", "questions"
+  add_foreign_key "reactions", "quizzes"
   add_foreign_key "responses", "answers"
   add_foreign_key "responses", "questions"
   add_foreign_key "specifications", "questions"
