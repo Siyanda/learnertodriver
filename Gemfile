@@ -10,6 +10,8 @@ gem 'sass-rails'
 gem 'hotwire-rails'
 gem 'jbuilder'
 gem 'bootsnap', require: false
+gem 'actiontext'
+gem 'activestorage'
 
 gem 'redis'
 gem 'sidekiq'
@@ -17,24 +19,22 @@ gem 'sidekiq-scheduler'
 gem 'image_processing'
 gem 'aws-sdk-s3', require: false
 
+gem 'liquid'
+gem 'name_of_person'
+gem 'noticed'
+gem 'pagy'
+gem 'ransack'
+gem 'sinatra'
+
 gem 'acts_as_votable'
 gem 'autoprefixer-rails'
 gem 'devise'
 gem 'gretel'
-gem 'liquid'
-gem 'sinatra'
-gem 'simple_form'
-
 gem 'friendly_id'
-gem 'pagy'
-gem 'ransack'
-gem 'actiontext'
-gem 'activestorage'
+gem 'simple_form'
 
 gem 'inky-rb', require: 'inky'
 gem 'premailer-rails'
-
-gem 'name_of_person'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
