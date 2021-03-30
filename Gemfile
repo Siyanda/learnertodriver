@@ -28,6 +28,8 @@ gem 'simple_form'
 gem 'friendly_id'
 gem 'pagy'
 gem 'ransack'
+gem 'actiontext'
+gem 'activestorage'
 
 gem 'inky-rb', require: 'inky'
 gem 'premailer-rails'
