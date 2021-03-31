@@ -40,7 +40,6 @@ body {
 
 .bottom-nav {
   border-top: 1px solid $gainsboro;
-  // position: fixed;
   bottom: 0;
   min-width: 350px;
 
@@ -51,7 +50,7 @@ body {
     align-content: center;
     align-items: center;
     justify-content: center;
-    padding: 20px 10px;
+    padding: 1%;
     cursor: pointer;
     border-top: 4px solid $white;
 
@@ -63,7 +62,7 @@ body {
     svg {
       width: 30px;
       height: 30px;
-      margin-bottom: 10px;
+      // margin-bottom: 10px;
     }
   }
 }

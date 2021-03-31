@@ -9,8 +9,10 @@
           <div class="comment-actions">
             <% if comment.user == current_user %>
 
-              <%= link_to '', post_comments_path(comment), method: :delete, data: { confirm: 'Are you sure?' }, class: "fa fa-trash" %>
-
+              <%= link_to '', post_comments_path(comment), method: :delete, data: { confirm: 'Are you sure?' }, class: "confirmation" %>
+              <div class="clickable gray-fill standard-svg svg icon">
+                <%= inline_svg("icons/trash.svg") %>
+              </div>
             <% end %>
             <div class="clear"></div>
           </div>
