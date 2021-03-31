@@ -16,3 +16,6 @@ en:
       subject: "New Message"
       greeting: "Hi %{username},"
       content: "%{username} is now following you!"
+  notifications:
+    new_comment:
+      message: "New comment post"
