@@ -24,6 +24,8 @@ RUN apk add --update --virtual \
 WORKDIR /app
 COPY . /app/
 
+RUN gem install bundler
+
 ENV BUNDLE_PATH /gems
 RUN bundle install
 
