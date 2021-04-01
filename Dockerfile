@@ -19,6 +19,9 @@ RUN apk add --update --virtual \
   tzdata \
   && rm -rf /var/cache/apk/*
 
+ENV BUNDLER_VERSION='2.2.15'
+RUN gem install bundler --no-document -v '2.2.15'
+
 WORKDIR /app
 COPY . /app/
 
