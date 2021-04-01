@@ -6,6 +6,8 @@ RUN apk add --update --virtual \
   build-base \
   libxml2-dev \
   libxslt-dev \
+  nodejs \
+  yarn \
   libffi-dev \
   readline \
   build-base \
@@ -18,9 +20,6 @@ RUN apk add --update --virtual \
   git \
   tzdata \
   && rm -rf /var/cache/apk/*
-
-ENV BUNDLER_VERSION='2.2.15'
-RUN gem install bundler --no-document -v '2.2.15'
 
 WORKDIR /app
 COPY . /app/
