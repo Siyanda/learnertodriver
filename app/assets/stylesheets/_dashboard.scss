@@ -42,6 +42,7 @@ body {
   border-top: 1px solid $gainsboro;
   bottom: 0;
   min-width: 350px;
+  padding-bottom: calc(.8rem + env(safe-area-inset-bottom));
 
   .icon {
     flex-grow: 1;
@@ -62,7 +63,6 @@ body {
     svg {
       width: 30px;
       height: 30px;
-      // margin-bottom: 10px;
     }
   }
 }

@@ -21,9 +21,9 @@
         <span class="dark-text">posts</span>
     <% end %>
 
-   <%= link_to root_path, class: "flex column dark-stroke icon #{class_names(active: current_page?(dashboard_path))}", aria: { label: root_path("about") } do %>
-        <%= inline_svg("/icons/dots-hr.svg") %>
-        <span class="dark-text">more</span>
-    <% end %>
+   <li class="flex column dark-stroke icon">
+      <%= inline_svg("/icons/dots-hr.svg") %>
+      <span class="dark-text">more</span>
+    </li>
   </div>
 </div>
