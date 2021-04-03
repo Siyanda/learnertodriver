@@ -42,18 +42,16 @@ body {
   border-top: 1px solid $gainsboro;
   bottom: 0;
   min-width: 350px;
-  padding-bottom: calc(.8rem + env(safe-area-inset-bottom));
 
   .icon {
-    flex-grow: 1;
-    display: flex;
+    // flex-grow: 1;
+    // display: flex;
     margin: auto;
-    align-content: center;
-    align-items: center;
-    justify-content: center;
-    padding: 1%;
-    cursor: pointer;
-    border-top: 4px solid $white;
+    // align-content: center;
+    // align-items: center;
+    // justify-content: center;
+    // cursor: pointer;
+    // border-top: 4px solid $white;
 
     &.active {
       border-top: 4px solid $brand-blue;

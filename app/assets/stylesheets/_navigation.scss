@@ -116,10 +116,6 @@
   }
 }
 
-.mob-nav-item {
-  padding-bottom: calc(.8rem + env(safe-area-inset-bottom));
-}
-
 .nav-item {
   display: inline-block;
   height: inherit;
@@ -459,6 +455,12 @@
       // text-decoration: underline;
     }
   }
+}
+
+.mob-nav-item {
+  padding-top: .4rem;
+  padding-bottom: calc(.8rem + env(safe-area-inset-bottom));
+  width: 100%;
 }
 
 @media screen and (max-width: 700px) {
