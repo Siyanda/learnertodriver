@@ -116,6 +116,10 @@
   }
 }
 
+.mob-nav-item {
+  padding-bottom: calc(.8rem + env(safe-area-inset-bottom));
+}
+
 .nav-item {
   display: inline-block;
   height: inherit;

@@ -6,22 +6,22 @@
   </div>
 
   <div class="full-width mobile-only tablet-only spaced-around flex icons">
-    <%= link_to root_path, class: "flex column dark-stroke icon #{class_names(active: current_page?(dashboard_path))}", aria: { label: root_path("home") } do %>
-        <%= inline_svg("/icons/home.svg") %>
+    <%= link_to root_path, class: "flex column dark-stroke icon mob-nav-item #{class_names(active: current_page?(dashboard_path))}", aria: { label: root_path("home") } do %>
+        <%= inline_svg("/icons/home-o.svg") %>
         <span class="dark-text">home</span>
     <% end %>
 
-   <%= link_to quizzes_path, class: "flex column dark-stroke icon #{class_names(active: current_page?(quizzes_path))}", aria: { label: root_path("quizz") } do %>
-        <%= inline_svg("/icons/chat.svg") %>
+   <%= link_to quizzes_path, class: "flex column dark-stroke icon mob-nav-item #{class_names(active: current_page?(quizzes_path))}", aria: { label: root_path("quizz") } do %>
+        <%= inline_svg("/icons/chat-o.svg") %>
         <span class="dark-text">quizz</span>
     <% end %>
 
-   <%= link_to posts_path, class: "flex column dark-stroke icon #{class_names(active: current_page?(posts_path))}", aria: { label: root_path("posts") } do %>
-        <%= inline_svg("/icons/newspaper.svg") %>
+   <%= link_to posts_path, class: "flex column dark-stroke icon mob-nav-item #{class_names(active: current_page?(posts_path))}", aria: { label: root_path("posts") } do %>
+        <%= inline_svg("/icons/newspaper-o.svg") %>
         <span class="dark-text">posts</span>
     <% end %>
 
-   <li class="flex column dark-stroke icon">
+   <li class="flex column dark-stroke icon mob-nav-item">
       <%= inline_svg("/icons/dots-hr.svg") %>
       <span class="dark-text">more</span>
     </li>
