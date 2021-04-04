@@ -152,10 +152,6 @@ GEM
     gretel (4.2.0)
       actionview (>= 5.1, < 7.0)
       railties (>= 5.1, < 7.0)
-    hotwire-rails (0.1.3)
-      rails (>= 6.0.0)
-      stimulus-rails
-      turbo-rails
     htmlentities (4.3.4)
     http (4.4.1)
       addressable (~> 2.3)
@@ -349,8 +345,6 @@ GEM
     thwait (0.2.0)
       e2mmap
     tilt (2.0.10)
-    turbo-rails (0.5.9)
-      rails (>= 6.0.0)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
     unf (0.1.4)
@@ -398,7 +392,6 @@ DEPENDENCIES
   devise
   friendly_id
   gretel
-  hotwire-rails
   image_processing
   inky-rb
   jbuilder
@@ -422,6 +415,7 @@ DEPENDENCIES
   sinatra
   spring
   standard
+  stimulus-rails
   tzinfo-data
   web-console
   webdrivers

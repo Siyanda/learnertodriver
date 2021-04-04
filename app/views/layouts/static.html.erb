@@ -14,21 +14,18 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all' %>
-
+    <%= javascript_include_tag 'application' %>
     <%= yield :head %>
-
-    <%= turbo_include_tags %>
     <%= stimulus_include_tags %>
-    <%= javascript_include_tag "turbo", type: "module-shim" %>
 
   </head>
 
   <body>
     <%= render 'layouts/common/messages' %>
-    <%= render 'layouts/static/header', cached: true %>
-    <%= render 'layouts/static/primary_nav', cached: true %>
-    <%= render 'layouts/static/secondary_nav', cached: true %>
+    <%= render 'layouts/static/header' %>
+    <%= render 'layouts/static/primary_nav' %>
+    <%= render 'layouts/static/secondary_nav' %>
     <%= yield  %>
-    <%= render 'layouts/static/footer', cached: true %>
+    <%= render 'layouts/static/footer' %>
   </body>
 </html>

@@ -7,7 +7,7 @@ gem 'rails', '~> 6.1.3'
 gem 'pg'
 gem 'puma'
 gem 'sass-rails'
-gem 'hotwire-rails'
+gem 'stimulus-rails'
 gem 'jbuilder'
 gem 'bootsnap', require: false
 gem 'actiontext'

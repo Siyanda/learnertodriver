@@ -2,7 +2,11 @@ import { Controller } from 'stimulus'
 
 export default class extends Controller {
 
-  static targets = ['logo','icon','wrapper','bar'];
+  // static targets = ['logo','icon','wrapper','bar'];
+
+  static get targets() {
+    return ['logo','icon','wrapper','bar']
+  }
 
   toggle(event) {
     this.iconTarget.classList.toggle('hidden');
