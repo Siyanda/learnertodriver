@@ -1,2 +1,2 @@
 id,name,email,password,first_name,last_name,username,bio,admin,confirmed_at
-1,demo,test@leanertodriver.co.za,demo1234,demo,user,demouser,testaccount,false
+1,demo,test@leanertodriver.co.za,demo1234,demo,user,demouser,test account,false,
