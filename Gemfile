@@ -21,7 +21,6 @@ gem 'aws-sdk-s3', require: false
 
 gem 'liquid'
 gem 'name_of_person'
-gem 'noticed'
 gem 'pagy'
 gem 'ransack'
 gem 'sinatra'

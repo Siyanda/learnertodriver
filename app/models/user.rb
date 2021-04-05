@@ -5,7 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   has_many :posts, foreign_key: 'author_id'
-  has_many :notifications, as: :recipient
 
   has_many :comments
   has_many :evaluations
