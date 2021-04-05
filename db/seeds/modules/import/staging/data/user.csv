@@ -1,2 +1,2 @@
 id,name,email,password,first_name,last_name,username,bio,admin,confirmed_at
-1,Siyanda Maphumulo,admin@demo.com,demo1234,Admin,User,demo,"Admin user",true,"2020-08-23 19:54:15 +0200"
+1,demo,test@leanertodriver.co.za,demo1234,demo,user,demouser,testaccount,false
