@@ -17,7 +17,7 @@ models.each do |data|
   csv = CSV.parse(seed, :headers => true)
 
   model = data.camelize.constantize
-  puts "seeding #{model}"
+  puts "seeding #{model} 🌱"
   csv.each do |row|
     model.create!(
       row.to_hash)
