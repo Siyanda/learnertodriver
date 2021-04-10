@@ -2,8 +2,6 @@ import { Controller } from 'stimulus'
 
 export default class extends Controller {
 
-  // static targets = ['tab', 'panel'];
-
   static get targets() {
     return ['tab', 'panel']
   }

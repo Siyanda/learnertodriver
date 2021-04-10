@@ -8,16 +8,16 @@
     <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' http://* 'unsafe-inline'; script-src 'self' http://* 'unsafe-inline' 'unsafe-eval'" />
 
     <%= render "layouts/common/meta" %>
-  
+    <%= favicon_link_tag asset_path("favicon.png"), :rel => "icon", :type => "image/png" %>
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= action_cable_meta_tag %>
+    <%= yield :head %>
 
-    <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track": "reload" %>
-    <%= javascript_include_tag "application", "data-turbolinks-track" => "reload" %>
-
-    <%= favicon_link_tag asset_path("favicon.png"), :rel => "icon", :type =>  "image/png" %>
+    <%= stylesheet_link_tag "application", media: "all" %>
+    <%= stimulus_include_tags %>
+    <%= javascript_include_tag "turbo", type: "module-shim" %>
   </head>
 
   <body class="main-bg">

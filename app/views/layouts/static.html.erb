@@ -13,10 +13,11 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all' %>
-    <%= javascript_include_tag 'application' %>
     <%= yield :head %>
+
+    <%= stylesheet_link_tag "application", media: "all" %>
     <%= stimulus_include_tags %>
+    <%= javascript_include_tag "turbo", type: "module-shim" %>
 
   </head>
 

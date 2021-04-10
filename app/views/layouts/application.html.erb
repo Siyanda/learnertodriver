@@ -15,8 +15,9 @@
 
     <%= yield :head %>
 
-    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= stylesheet_link_tag "application", media: "all" %>
     <%= stimulus_include_tags %>
+    <%= javascript_include_tag "turbo", type: "module-shim" %>
 
   </head>
 
