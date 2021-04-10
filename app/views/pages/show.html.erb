@@ -12,7 +12,7 @@
 
     <div class="padded page-content" itemprop="articleBody">
       <div class="page-body">
-        <%= Liquid::Template.parse(@page.template).render({'user' => current_user }) %>
+        <%= Liquid::Template.parse(@page.template).render({'author' => @page.author.name }) %>
       </div>
     </div>
 
