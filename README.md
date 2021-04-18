@@ -1,6 +1,7 @@
 <div align="center">
   <br>
   <a href="http://learnertodriver.co.za/">
+    ![Logo](app/assets/images/favicon.png?raw=true "Logo")
     <img
       alt="Learner to Driver"
       src="https://typographics.co.za/svg/logos/learnertodriver.svg"
@@ -14,10 +15,10 @@
 <br/>
 <p align="center">
   <a href="https://www.ruby-lang.org/en/">
-    <img src="https://img.shields.io/badge/Ruby-v2.6.4-green.svg" alt="ruby version"/>
+    <img src="https://img.shields.io/badge/Ruby-v3.0.1-green.svg" alt="ruby version"/>
   </a>
   <a href="http://rubyonrails.org/">
-    <img src="https://img.shields.io/badge/Rails-v6.0.0-brightgreen.svg" alt="rails version"/>
+    <img src="https://img.shields.io/badge/Rails-v6.1.3-brightgreen.svg" alt="rails version"/>
   </a>
 
 ## Getting Started
@@ -30,8 +31,8 @@
 ### Installation
 
 0. Make sure all the prerequisites are installed.
-1. Fork invoiced-rsa repository, ie. https://github.com/siyanda/invoiced-rsa/fork
-2. Clone your forked repository, ie. `git clone https://github.com/<your-username>/learnertodriver-rails.git`
+1. Fork learnertodriver repository, ie. https://github.com/siyanda/learnertodriver/fork
+2. Clone your forked repository, ie. `git clone https://github.com/<your-username>/learnertodriver.git`
 3. `gem install bundler`
 4. `bundle install`
 
