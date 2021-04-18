@@ -43,7 +43,7 @@ a {
   color: $base-color;
 
   &:hover {
-    color: lighten($base-color, 10%);
+    color: lighten($alt-accent, 10%);
   }
 }
 
@@ -434,27 +434,27 @@ footer {
 }
 
 .white-text {
-  @include link-colors($white, lighten($white, 10%) ,$alt-accent,darken($white, 20%));
+  @include link-colors($white, lighten($white, 10%) ,lighten($white, 5%),lighten($white, 20%));
 }
 
 .bright-text {
-  @include link-colors($alt-brand, $alt-color ,$color-accent,$alt-accent);
+  @include link-colors($alt-brand, $alt-brand ,$color-accent,$alt-accent);
 }
 
 .light-text {
-  @include link-colors($cream, $alt-color ,$color-accent,$alt-accent);
+  @include link-colors(darken($cream,15%), darken($cream,25%) ,$alt-accent,$cream);
 }
 
 .dark-text {
-  @include link-colors($night, $alt-color ,$color-accent,$alt-accent);
+  @include link-colors($night, $night ,$color-accent,$alt-accent);
 }
 
 .ocean-text {
-  @include link-colors($ocean, $alt-color ,$color-accent,$alt-accent);
+  @include link-colors($ocean, $ocean ,$color-accent,$alt-accent);
 }
 
 .red-text {
-  @include link-colors($ruby, $alt-color ,$color-accent,$alt-accent);
+  @include link-colors($ruby, $ruby ,$color-accent,$alt-accent);
 }
 
 .center {

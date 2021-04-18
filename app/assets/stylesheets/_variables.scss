@@ -198,6 +198,9 @@ $base-timing: ease;
 @mixin link-colors ($text-color, $visited-color, $hover-color, $active-color) {
   & {
       color: $text-color;
+    }
+  a {
+      color: $text-color;
       &:visited {
           color: $visited-color;
       }
