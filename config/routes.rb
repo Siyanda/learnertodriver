@@ -4,7 +4,6 @@ require 'sidekiq/web'
   authenticate :user, lambda { |u| u.admin? } do
     mount Sidekiq::Web => '/sidekiq'
     resource :admin, only: %[show]
-    resources :pages, only: %[edit]
   end
 
   root 'home#index'
@@ -32,7 +31,7 @@ require 'sidekiq/web'
   resources :users, only: %i[show edit]
   resources :quizzes, only: %i[index show], path: 'tests'
   resources :evaluations
-  resources :pages, only: %i[index show]
+  resources :pages, path: 'company'
 
   resources :posts do
     resources :comments
