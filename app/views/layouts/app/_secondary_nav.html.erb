@@ -17,8 +17,8 @@
           <ul class="user-menu">
 
             <li class="full-width">
-              <%= link_to user_path(current_user), class: 'user-menu-link' do %>
-                <div class="pull-left small-svg dark-fill icon">
+              <%= link_to user_path(current_user), class: 'flex full-width user-menu-link' do %>
+                <div class="right-margin small-svg dark-fill icon">
                   <%= inline_svg("icons/user-icon.svg") %>
                 </div> Profile
               <% end %>
@@ -26,8 +26,8 @@
 
             <% if warden.user.admin == true %>
               <li class="full-width">
-                <%= link_to admin_path, class: 'user-menu-link' do %>
-                <div class="pull-left small-svg dark-fill icon">
+                <%= link_to admin_path, class: 'flex full-width user-menu-link' do %>
+                <div class="right-margin small-svg dark-fill icon">
                   <%= inline_svg("icons/settings.svg") %>
                 </div> Admin
               <% end %>
@@ -37,8 +37,8 @@
             <div class="divider"></div>
 
             <li class="full-width">
-              <%= link_to destroy_user_session_path, class: 'user-menu-link', :method => :delete  do %>
-                <div class="pull-left small-svg dark-fill icon">
+              <%= link_to destroy_user_session_path, class: 'flex full-width user-menu-link', :method => :delete  do %>
+                <div class="right-margin small-svg dark-fill icon">
                   <%= inline_svg("icons/log-out.svg") %>
                 </div> Log Out
               <% end %>

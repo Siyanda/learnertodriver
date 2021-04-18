@@ -1,8 +1,6 @@
 <div class="rounded gainsboro-bordered grid-item card">
   <div class="card-image">
-    <%= link_to quiz_path(quiz), class: "image" do %>
       <%= image_tag("cards/#{ quiz.kind }.jpg") %>
-    <% end %>
   </div>
     <div class="card-content">
 
@@ -21,7 +19,7 @@
     </div>
       
       <div class="cta">
-        <%= link_to new_quiz_evaluation_path(quiz), class: 'full dark button' do %> Practice Quiz <% end %>
+        <%= link_to new_quiz_evaluation_path(quiz), class: 'slightly white-text padded full-width dark rounded button' do %> Practice Quiz <% end %>
       </div>
 
     </div>

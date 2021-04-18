@@ -1,9 +1,20 @@
-<h1>Edit</h1>
-<div id="content" class="inner">
-  <article class="post">
-    <%= render 'form' %>
+<% title @post.title.titleize %>
+<% breadcrumb :post, @post %>
 
-    <%= link_to 'Show', @post %> |
-    <%= link_to 'Back', posts_path %>
+<div class="flex gapped">
+  <article class="flex full-width rounded gainsboro-bordered column content page">
+
+    <div class="page-header">
+      <h1 class="capitalized page-title" itemprop="name headline">
+        <%= @post.title %>
+      </h1>
+    </div>
+
+    <div class="padded page-content" itemprop="articleBody">
+      <div class="page-body">
+        <%= render 'form' %>
+      </div>
+    </div>
+
   </article>
 </div>
