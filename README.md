@@ -4,7 +4,7 @@
     <img
       alt="Learner to Driver"
       src="app/assets/images/favicon.png"
-      width="200px"
+      width="100px"
     />
   </a>
   <br/>

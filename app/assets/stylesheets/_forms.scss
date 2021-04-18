@@ -99,23 +99,6 @@
   border: thin solid $grey;
 }
 
-.logo-container {
-  // width: 200px;
-  margin: 0 auto;
-
-  .logo {
-    margin: 0 auto;
-
-    a {
-      margin: 0 auto;
-    }
-  }
-
-  svg {
-    max-width: 200px;
-  }
-}
-
 .lines-bg {
   background-image: url(image_path("svg/lines_light.svg"));
   background-size: cover;

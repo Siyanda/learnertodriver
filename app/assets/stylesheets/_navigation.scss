@@ -60,13 +60,18 @@
       outline: none;
     }
   }
+}
 
-  .logo {
-    padding: .4rem;
+.logo {
+  padding: .4rem;
 
-    svg {
-      height: 50px;
-    }
+  img {
+    width: 150px;
+    height: 150px;
+  }
+
+  svg {
+    height: 50px;
   }
 }
 
