@@ -64,7 +64,7 @@ class PostsController < ApplicationController
   private
 
   def require_same_user
-    if current_user != @post.user
+    if current_user != @post.author
       flash[:danger] = "Not authorized to edit this post"
       redirect_to root_path
     end
