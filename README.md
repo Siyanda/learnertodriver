@@ -1,10 +1,9 @@
 <div align="center">
   <br>
   <a href="http://learnertodriver.co.za/">
-    ![Logo](app/assets/images/favicon.png?raw=true "Logo")
     <img
       alt="Learner to Driver"
-      src="https://typographics.co.za/svg/logos/learnertodriver.svg"
+      src="app/assets/images/favicon.png"
       width="200px"
     />
   </a>
