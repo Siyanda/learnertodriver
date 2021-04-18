@@ -26,9 +26,9 @@ a {
   text-decoration-skip-ink: auto;
   transition: color var(--duration) var(--timing);
 
-  &:hover {
-    color: $action-color--alt;
-  }
+  // &:hover {
+  //   color: $action-color--alt;
+  // }
 
   &:focus {
     outline: var(--focus-outline);
