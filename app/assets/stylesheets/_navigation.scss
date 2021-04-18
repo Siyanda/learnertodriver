@@ -43,7 +43,7 @@
 
     &.active {
       background-color: lighten($ocean, 5%);
-      border-bottom: 2px solid $dodgerblue;
+      border-bottom: 2px solid $alt-accent;
     }
   }
 
@@ -82,7 +82,7 @@
 
     &.active {
       background: $night;
-      border-left: 2px solid $dodgerblue;
+      border-left: 2px solid $alt-accent;
       box-shadow: $dark-box;
       color: $alt-base;
     }
@@ -156,7 +156,6 @@
 }
 
 .bottom-border {
-  // border-bottom: 2px solid $base-color;
 
   &:hover {
     border-bottom: 2px solid lighten($base-color, 50%);

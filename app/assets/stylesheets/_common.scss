@@ -40,6 +40,11 @@ textarea {
 
 a {
   text-decoration: none;
+  color: $base-color;
+
+  &:hover {
+    color: lighten($base-color, 10%);
+  }
 }
 
 h1,
@@ -421,35 +426,35 @@ footer {
 }
 
 .gray-text {
-  color: $gray;
+  @include link-colors($gray, $alt-color ,$color-accent,$alt-accent);
 }
 
 .blue-text {
-  color: $alt-blue;
+  @include link-colors($alt-blue, $alt-color ,$color-accent,$alt-accent);
 }
 
 .white-text {
-  color: $white;
+  @include link-colors($white, lighten($white, 10%) ,$alt-accent,darken($white, 20%));
 }
 
 .bright-text {
-  color: $alt-brand;
+  @include link-colors($alt-brand, $alt-color ,$color-accent,$alt-accent);
 }
 
 .light-text {
-  color: $cream;
+  @include link-colors($cream, $alt-color ,$color-accent,$alt-accent);
 }
 
 .dark-text {
-  color: $night;
+  @include link-colors($night, $alt-color ,$color-accent,$alt-accent);
 }
 
 .ocean-text {
-  color: $ocean;
+  @include link-colors($ocean, $alt-color ,$color-accent,$alt-accent);
 }
 
 .red-text {
-  color: $ruby;
+  @include link-colors($ruby, $alt-color ,$color-accent,$alt-accent);
 }
 
 .center {

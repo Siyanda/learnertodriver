@@ -69,6 +69,10 @@
   .meta {
     background: $cream;
     padding: .2rem 1.2rem;
+
+    svg {
+      margin: 0 .4rem;
+    }
   }
 }
 
@@ -98,12 +102,11 @@
   margin: 2rem auto;
   padding: 2rem;
   text-align: center;
-  background: $gainsboro;
+  background: $base-bg-color;
 }
 
 .block-meta {
-  background: $gainsboro;
-  border-top: 1px solid $gainsboro;
+  border-top: 1px solid $base-border-color;
   display: flex;
   padding: .8rem;
   justify-content: space-around;
@@ -129,7 +132,7 @@
   }
 
   .disabled {
-    background-color: $gainsboro;
+    background-color: $base-bg-color;
     color: $gray;
     cursor: not-allowed;
     padding: 8px 16px;
@@ -145,14 +148,14 @@
     padding: 8px 16px;
 
     &:hover {
-      background-color: $gainsboro;
+      background-color: $base-bg-color;
     }
   }
 
   span {
     color: $midnight;
     float: left;
-    border: thin solid $gainsboro;
+    border: thin solid $base-border-color;
 
     &:last-child {
       border-top-right-radius: 5px;
@@ -162,6 +165,30 @@
     &:first-child {
       border-top-left-radius: 5px;
       border-bottom-left-radius: 5px;
+    }
+  }
+}
+
+.link-underline {
+    // text-decoration: underline;
+    // text-decoration-color: $alt-accent;
+
+  &.read-more {
+    &:hover::after {
+        height: 130%;
+      }
+
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      bottom: -5px;
+      width: 120%;
+      height: 4px;
+      background: $alt-accent;
+      left: -5px;
+      transition: height .2s;
+      z-index: -1;
     }
   }
 }

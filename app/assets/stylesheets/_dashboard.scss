@@ -353,7 +353,7 @@ hr {
 
 .dropdown-menu {
   margin: .1rem 0;
-  border: thin solid $gainsboro;
+  border: $base-border-color;
   border-radius: .4rem;
   box-shadow: $wrap-shadow;
   background: $white;
@@ -367,8 +367,8 @@ hr {
 }
 
 .select_item {
-  border-bottom: 1px solid $gainsboro;
-  color: $ocean;
+  border-bottom: 1px solid $base-border-color;
+  color: $base-color;
   display: flex;
   font-weight: 600;
   padding: .6rem .8rem .4rem .4rem;
@@ -376,7 +376,7 @@ hr {
 
   &:hover {
     background-color: $gainsboro;
-    color: $ocean;
+    color: $base-color;
   }
 }
 
