@@ -205,7 +205,7 @@ body {
 .texture {
   background-image: url(image_path("bg/cream_dust.png"));
 
-  .txre-dark {
+  &.txr-dark {
     background-image: linear-gradient($unclear,$unclear),url(image_path("bg/cream_dust.png"))
   }
 }
