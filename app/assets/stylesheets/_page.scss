@@ -157,14 +157,20 @@
 .heading,
 .pre-text {
   h1 {
+    color: $blackish;
     font-weight: 600;
+    font-size: 28px;
     text-align: center;
     text-transform: uppercase;
+  }
+
+  p {
+    font-size: 20px;
   }
 }
 
 .header {
-  background-image: linear-gradient($light-grey, $light-black), url(image_path("bg/main.png"));
+  background-image: linear-gradient($clear-grey, $clear-black), url(image_path("bg/main.png"));
   background-size: cover;
   font-weight: 400;
   text-align: center;

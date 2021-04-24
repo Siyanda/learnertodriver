@@ -1,6 +1,6 @@
 .testimonials {
   padding: 2.5em 0;
-  background-image: url(image_path("svg/background.svg"));
+  background-image: linear-gradient($translucent, $light-grey), url(image_path("bg/city.jpg"));
   background-position: center top;
   background-repeat: repeat-x;
 }
@@ -60,13 +60,24 @@ blockquote {
 }
 
 #slider {
-  background: $gainsboro;
   border: thin solid $slate;
+  border-radius: 4px;
   box-shadow: $light-shadow;
   margin: 2rem auto;
   padding: 2rem;
   text-align: center;
   width: 80%;
+
+  &::before {
+    background: $white;
+    filter: blur(100px);
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
 }
 
 .slider {
@@ -99,7 +110,7 @@ blockquote {
 
 @media screen and (min-width: 980px) {
   .testimonials {
-    background-size: contain;
+    background-size: cover;
   }
 
   .pre-text {

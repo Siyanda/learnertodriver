@@ -137,7 +137,7 @@ $wrap-shadow: 0 10px 10px 4px rgba(0, 0, 0, .1);
 $shadow-text: 1px 1px 0 rgba(0, 0, 0, .6);
 $dark-box: inset 1px 4px 7px 5px rgba($ocean, .2);
 $light-box: inset 1px 1px 1px 2px rgba($gray, .2);
-$in-shadow: inset 0px 4px 10px 0px rgba($gray, .2);
+$in-shadow: inset 0 4px 10px 0 rgba($gray, .2);
 $header-shade: 0 0 5px rgba($black, .15);
 $light-shadow: 0 0 9px rgba($black, .15);
 $shadow-text: 0 0 6px rgba($black, .3);
@@ -197,20 +197,24 @@ $base-timing: ease;
 
 @mixin link-colors ($text-color, $visited-color, $hover-color, $active-color) {
   & {
-      color: $text-color;
-    }
+    color: $text-color;
+  }
+
   a {
-      color: $text-color;
-      &:visited {
-          color: $visited-color;
-      }
-      &:hover {
-          color: $hover-color;
-      }
-      &:active, &:focus {
-          color: $active-color;
-      }
+    color: $text-color;
+
+    &:visited {
+      color: $visited-color;
     }
+
+    &:hover {
+      color: $hover-color;
+    }
+
+    &:active, &:focus {
+      color: $active-color;
+    }
+  }
 }
 
 @mixin scrollbars($size, $foreground-color, $background-color: darken($foreground-color, 50%)) {
