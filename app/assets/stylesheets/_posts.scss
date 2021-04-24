@@ -4,14 +4,18 @@
 }
 
 .post-header {
-  border-bottom: 1px solid $gainsboro;
+  border-bottom: thin solid $gainsboro;
   font-size: 26px;
 }
 
-.post-footer {
-  border-top: 1px solid $gainsboro;
+.post-body {
+  padding: 1.2rem 0;
 }
 
+.post-footer {
+  border-top: thin solid $gainsboro;
+  padding: 0 1.5rem;
+}
 
 .post-content {
   flex: 1;
@@ -21,8 +25,8 @@
     font-weight: 500;
     font-size: 20px;
 
-    &:before,
-    &:after {
+    &::before,
+    &::after {
       content: "";
       display: block;
       width: 30%;
@@ -106,7 +110,7 @@
 }
 
 .block-meta {
-  border-top: 1px solid $base-border-color;
+  border-top: thin solid $base-border-color;
   display: flex;
   padding: .8rem;
   justify-content: space-around;
@@ -170,13 +174,11 @@
 }
 
 .link-underline {
-    // text-decoration: underline;
-    // text-decoration-color: $alt-accent;
 
   &.read-more {
     &:hover::after {
-        height: 130%;
-      }
+      height: 130%;
+    }
 
     &::after {
       content: "";

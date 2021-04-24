@@ -11,10 +11,10 @@
     </div>
 
     <div class="padded page-content" itemprop="articleBody">
-      <div class="page-body">
-        <%= Liquid::Template.parse(@page.template).render({'author' => @page.author.name }) %>
+      <div class="padded page-body">
+        <%= @page.template %>
       </div>
     </div>
-
+<!-- Liquid::Template.parse(  ).render({'author' => @page.author.name }) -->
   </article>
 </div>

@@ -2,7 +2,7 @@
 <% breadcrumb :post, @post %>
 
 <div class="flex split gapped">
-  <article class="flex rounded gainsboro-bordered column content post">
+  <article class="flex rounded mildy-shd shadowed gainsboro-bordered column white-bg post">
 
     <div class="post-header">
       <h1 class="post-title" itemprop="name headline">
@@ -10,14 +10,14 @@
       </h1>
     </div>
 
-    <div class="padded post-content" itemprop="articleBody">
+    <div class="post-content" itemprop="articleBody">
       <div class="post-body">
         <%= @post.content %>
       </div>
     </div>
 
-    <div class="padded post-footer">
-      <div class="flex center-aligned spaced-between post-meta">
+    <div class="post-footer">
+      <div class="flex lightly center-aligned spaced-between post-meta">
         <div class="flex center-aligned">
           <div class="gray-stroke small-svg icon"><%= inline_svg("icons/clock.svg") %></div>
           <p class="post-date">
@@ -31,6 +31,8 @@
             <%= inline_svg("icons/arrow-up.svg") %>
           </div>
         <% end %>
+
+        <%= @post.weighted_score %>
 
           <%= link_to dislike_post_path(@post), method: :put, class: "dd" do %>
           <div class="dark-fill standard-svg icon">
@@ -54,10 +56,9 @@
         </div>
         <hr class="third-width hr-grey">
         <div class="section">
-          
+
         </div>
       </div>
-      
     </div>
 
     <div class="section">
@@ -68,10 +69,9 @@
         </div>
         <hr class="third-width hr-grey">
         <div class="section">
-          
+
         </div>
       </div>
-      
     </div>
 
     <div class="section">
@@ -82,10 +82,9 @@
         </div>
         <hr class="third-width hr-grey">
         <div class="section">
-          
+
         </div>
       </div>
-      
     </div>
 
   </aside>
@@ -94,7 +93,6 @@
   <div class="shadowed texture light-inset-shd txr-dark post-meta-container">
     <div class="post-author">
       <div class="post-author-content">
-
 
       </div>
     </div>

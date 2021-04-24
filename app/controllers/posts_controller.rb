@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_post, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
   before_action :require_same_user, only: [:edit, :update, :destroy]
 
   def index
@@ -75,6 +75,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit( :title, :user_id)
+    params.require(:post).permit(:title, :user_id, :content)
   end
 end
