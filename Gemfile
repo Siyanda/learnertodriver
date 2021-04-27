@@ -6,9 +6,9 @@ ruby '3.0.1'
 gem 'rails', '~> 6.1.3'
 gem 'pg'
 gem 'puma'
+gem 'jbuilder'
 gem 'sass-rails'
 gem 'hotwire-rails'
-gem 'jbuilder'
 gem 'bootsnap', require: false
 
 gem 'redis'
@@ -18,6 +18,7 @@ gem 'image_processing'
 gem 'aws-sdk-s3', require: false
 
 gem 'liquid'
+gem 'redcarpet'
 gem 'name_of_person'
 gem 'pagy'
 gem 'ransack'
