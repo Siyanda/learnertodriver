@@ -7,8 +7,7 @@ class PagesController < ApplicationController
     @pages = Page.all
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @page = current_user.pages.build

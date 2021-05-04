@@ -1,12 +1,21 @@
 module ApplicationHelper
   include Pagy::Frontend
 
+  def from_markdown(text)
+    options = %i[autolink fenced_code_blocks highlight no_intra_emphasis]
+    Markdown.new(text, *options).to_html.html_safe
+  end
+
+  def liquidize(content)
+    Liquid::Template.parse(content).render
+  end
+
   def gravatar_url(email, options = {})
     require 'digest/md5'
     hash = Digest::MD5.hexdigest(email)
     url = "https://www.gravatar.com/avatar/#{hash}"
     options.each do |option|
-      option == options.first ? url += '?' : url += '&'
+      url += option == options.first ? '?' : '&'
       key = option[0].to_s
       value = option[1].to_s
       url += key + '=' + value

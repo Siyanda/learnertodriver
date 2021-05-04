@@ -1,10 +1,10 @@
 crumb :root do
-  link "Dashboard", dashboard_path
+  link 'Dashboard', dashboard_path
 end
 
 # User list
 crumb :users do
-  link "Users", user_path
+  link 'Users', user_path
 end
 
 # User
@@ -15,7 +15,7 @@ end
 
 # Post list
 crumb :posts do
-  link "Posts", posts_path
+  link 'Posts', posts_path
 end
 
 # Post
@@ -26,7 +26,7 @@ end
 
 # Page list
 crumb :pages do
-  link "Company", root_path
+  link 'Company', root_path
 end
 
 # Page
@@ -35,10 +35,9 @@ crumb :page do |page|
   parent :pages
 end
 
-
 # Quiz list
 crumb :quizzes do
-  link "Tests", quizzes_path
+  link 'Tests', quizzes_path
 end
 
 # Quiz
@@ -49,11 +48,11 @@ end
 
 # Quiz list
 crumb :evaluations do
-  link "Tests", quizzes_path
+  link 'Tests', quizzes_path
 end
 
 # Quiz
-crumb :evaluation do |evaluation|
-  link "New Quiz", quiz_evaluations_path
+crumb :evaluation do |_evaluation|
+  link 'New Quiz', quiz_evaluations_path
   parent :evaluations
 end

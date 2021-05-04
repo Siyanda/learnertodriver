@@ -8,12 +8,12 @@ class TagsController < ApplicationController
   def create
     @tag = @tagable.tags.new tag_params
     @tagable.save
-    redirect_to @tagable, notice: "item was successfully tagged"
+    redirect_to @tagable, notice: 'item was successfully tagged'
   end
 
   private
 
-    def tag_params
-      params.require(:tag).permit( :content)
-    end
+  def tag_params
+    params.require(:tag).permit(:content)
+  end
 end

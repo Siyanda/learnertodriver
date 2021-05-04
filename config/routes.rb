@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-require 'sidekiq/web'
+  require 'sidekiq/web'
 
   authenticate :user, lambda { |u| u.admin? } do
     mount Sidekiq::Web => '/sidekiq'
-    resource :admin, only: %[show]
+    resource :admin, only: %(show)
   end
 
   root 'home#index'
@@ -27,7 +27,7 @@ require 'sidekiq/web'
     end
   end
 
-  resource :dashboard, only: %[show]
+  resource :dashboard, only: %(show)
   resources :users, only: %i[show edit]
   resources :quizzes, only: %i[index show], path: 'tests'
   resources :evaluations

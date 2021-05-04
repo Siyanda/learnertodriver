@@ -3,7 +3,7 @@ class Posts::TagsController < TagsController
 
   private
 
-    def set_tagable
-      @tagable = Post.friendly.find(params[:post_id])
-    end
+  def set_tagable
+    @tagable = Post.friendly.find(params[:post_id])
+  end
 end
