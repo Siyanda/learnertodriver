@@ -2,9 +2,18 @@ namespace :quick_migration do
   desc 'Quick migration to add db columns'
   task column_add: :environment do
     # ActiveRecord::Migration.add_column :questions, :weighting, :decimal
-    # unless ActiveRecord::Base.connection.column_exists?('evaluations', 'due')
-    #   # ActiveRecord::Migration.add_column :evaluations, :due, :date
-    # end
+    unless ActiveRecord::Base.connection.column_exists?('comments', 'content')
+      ActiveRecord::Migration.add_column :comments, :status, :integer
+    end
+    unless ActiveRecord::Base.connection.column_exists?('comments', 'content')
+      ActiveRecord::Migration.add_column :comments, :content, :string
+    end
+    unless ActiveRecord::Base.connection.column_exists?('posts', 'content')
+      ActiveRecord::Migration.add_column :posts, :content, :string
+    end
+    unless ActiveRecord::Base.connection.column_exists?('pages', 'content')
+      ActiveRecord::Migration.add_column :pages, :content, :string
+    end
   end
 
   desc 'Quick migration to remove db columns'
