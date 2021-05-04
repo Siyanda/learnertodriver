@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def show
-    @user_posts = @user.posts.includes(:rich_text_content)
+    @user_posts = @user.posts
   end
 
   private

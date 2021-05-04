@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show]
-  before_action :set_page, only: [:show, :edit, :update, :destroy]
-  before_action :require_same_user, only: [:edit, :update, :destroy]
+  skip_before_action :authenticate_user!, only: %i[index show]
+  before_action :set_page, only: %i[show edit update destroy]
+  before_action :require_same_user, only: %i[edit update destroy]
 
   def index
     @pages = Page.all
@@ -15,6 +15,7 @@ class PagesController < ApplicationController
   end
 
   def edit
+    # edit action
   end
 
   def create
@@ -54,8 +55,8 @@ class PagesController < ApplicationController
   private
 
   def require_same_user
-    if current_user != @page.author
-      flash[:danger] = "Not authorized to edit this page"
+    if current_user != @page.editor
+      flash[:danger] = 'Not authorized to edit this page'
       redirect_to root_path
     end
   end
@@ -65,6 +66,6 @@ class PagesController < ApplicationController
   end
 
   def page_params
-    params.require(:page).permit( :title, :template, :author_id)
+    params.require(:page).permit(:title, :content, :author_id)
   end
 end

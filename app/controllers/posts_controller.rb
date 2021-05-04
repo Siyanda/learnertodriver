@@ -1,13 +1,14 @@
 class PostsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show]
-  before_action :set_post, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
-  before_action :require_same_user, only: [:edit, :update, :destroy]
+  skip_before_action :authenticate_user!, only: %i[index show]
+  before_action :set_post, only: %i[show edit update destroy upvote downvote]
+  before_action :require_same_user, only: %i[edit update destroy]
 
   def index
-    @posts = Post.all
+    @posts = Post.published
   end
 
   def show
+    @posts = Post.published
   end
 
   def new
@@ -15,6 +16,7 @@ class PostsController < ApplicationController
   end
 
   def edit
+    @users = User.is_active.all
   end
 
   def create
@@ -65,7 +67,7 @@ class PostsController < ApplicationController
 
   def require_same_user
     if current_user != @post.author
-      flash[:danger] = "Not authorized to edit this post"
+      flash[:danger] = 'Not authorized to edit this post'
       redirect_to root_path
     end
   end
@@ -75,6 +77,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :user_id, :content)
+    params.require(:post).permit(:title, :user_id, :content, :status, :slug, :author)
   end
 end
