@@ -1,3 +1,3 @@
-title,template,author_id
+title,content,author_id
 test,"Hello {{ user }}, here is your shopping list.<ul> {% for item in list %} <li>{{ item.name }}</li> {% endfor %} </ul>", 1
 about,"Hello {{ user }}, here is your shopping list.<ul> {% for item in list %} <li>{{ item.name }}</li> {% endfor %} </ul>", 1
