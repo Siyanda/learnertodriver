@@ -1,6 +1,7 @@
 class Page < ApplicationRecord
   extend FriendlyId
   friendly_id :title, use: :slugged
+  validates_uniqueness_of :title
 
   belongs_to :author, class_name: 'User', foreign_key: 'author_id'
 
@@ -10,4 +11,8 @@ class Page < ApplicationRecord
 
   enum status: { draft: 0, unpublished: 1, published: 2, restricted: 3, removed: 4 }
   scope :is_published, -> { where(status: 'published') }
+
+  def should_generate_new_friendly_id?
+    slug.blank? || title_changed?
+  end
 end

@@ -10,48 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_16_214505) do
+ActiveRecord::Schema.define(version: 2021_05_02_082605) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "action_text_rich_texts", force: :cascade do |t|
-    t.string "name", null: false
-    t.text "body"
-    t.string "record_type", null: false
-    t.bigint "record_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["record_type", "record_id", "name"], name: "index_action_text_rich_texts_uniqueness", unique: true
-  end
-
-  create_table "active_storage_attachments", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "record_type", null: false
-    t.bigint "record_id", null: false
-    t.bigint "blob_id", null: false
-    t.datetime "created_at", null: false
-    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
-    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
-  end
-
-  create_table "active_storage_blobs", force: :cascade do |t|
-    t.string "key", null: false
-    t.string "filename", null: false
-    t.string "content_type"
-    t.text "metadata"
-    t.string "service_name", null: false
-    t.bigint "byte_size", null: false
-    t.string "checksum", null: false
-    t.datetime "created_at", null: false
-    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
-  end
-
-  create_table "active_storage_variant_records", force: :cascade do |t|
-    t.bigint "blob_id", null: false
-    t.string "variation_digest", null: false
-    t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
-  end
 
   create_table "answers", force: :cascade do |t|
     t.string "name", default: "", null: false
@@ -70,7 +32,7 @@ ActiveRecord::Schema.define(version: 2021_04_16_214505) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.string "body", null: false
+    t.string "content"
     t.bigint "post_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -118,18 +80,24 @@ ActiveRecord::Schema.define(version: 2021_04_16_214505) do
 
   create_table "pages", force: :cascade do |t|
     t.string "title", null: false
-    t.text "template"
+    t.text "content"
+    t.string "layout"
     t.string "slug"
-    t.bigint "author_id"
+    t.integer "status", default: 0, null: false
+    t.bigint "editor_id"
+    t.bigint "parent_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["author_id"], name: "index_pages_on_author_id"
+    t.index ["editor_id"], name: "index_pages_on_editor_id"
+    t.index ["parent_id"], name: "index_pages_on_parent_id"
     t.index ["slug"], name: "index_pages_on_slug", unique: true
   end
 
   create_table "posts", force: :cascade do |t|
     t.string "title", null: false
+    t.text "content"
     t.string "slug"
+    t.integer "status", default: 0, null: false
     t.bigint "author_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -186,6 +154,15 @@ ActiveRecord::Schema.define(version: 2021_04_16_214505) do
     t.index ["quiz_id"], name: "index_specifications_on_quiz_id"
   end
 
+  create_table "tags", force: :cascade do |t|
+    t.string "tagable_type", null: false
+    t.bigint "tagable_id", null: false
+    t.text "content"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["tagable_type", "tagable_id"], name: "index_tags_on_tagable"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -203,12 +180,13 @@ ActiveRecord::Schema.define(version: 2021_04_16_214505) do
     t.string "unconfirmed_email"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "first_name", default: "J", null: false
-    t.string "last_name", default: "Doe", null: false
+    t.string "first_name"
+    t.string "last_name"
     t.string "username", null: false
     t.jsonb "links"
     t.text "bio"
     t.date "birthday"
+    t.integer "status", default: 0, null: false
     t.boolean "admin", default: false, null: false
     t.string "slug"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
@@ -233,8 +211,6 @@ ActiveRecord::Schema.define(version: 2021_04_16_214505) do
     t.index ["voter_type", "voter_id"], name: "index_votes_on_voter_type_and_voter_id"
   end
 
-  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "answers", "answers", column: "correct_id"
   add_foreign_key "choices", "answers"
   add_foreign_key "choices", "questions"
@@ -242,7 +218,8 @@ ActiveRecord::Schema.define(version: 2021_04_16_214505) do
   add_foreign_key "comments", "users"
   add_foreign_key "evaluations", "quizzes"
   add_foreign_key "evaluations", "users"
-  add_foreign_key "pages", "users", column: "author_id"
+  add_foreign_key "pages", "pages", column: "parent_id"
+  add_foreign_key "pages", "users", column: "editor_id"
   add_foreign_key "posts", "users", column: "author_id"
   add_foreign_key "reactions", "answers"
   add_foreign_key "reactions", "questions"
