@@ -1,16 +1,14 @@
 class Page < ApplicationRecord
   extend FriendlyId
   friendly_id :title, use: :slugged
-  validates_uniqueness_of :title
+  validates_presence_of :title
 
-  belongs_to :author, class_name: 'User', foreign_key: 'author_id'
+  belongs_to :parent, class_name: 'Page', optional: true
+  has_many :children, class_name: 'Page', foreign_key: :parent_id, dependent: :delete_all
 
-  has_rich_text :content
-  has_one_attached :cover_image
-  has_many_attached :images
+  belongs_to :editor, class_name: 'User', foreign_key: 'editor_id'
 
   enum status: { draft: 0, unpublished: 1, published: 2, restricted: 3, removed: 4 }
-  scope :is_published, -> { where(status: 'published') }
 
   def should_generate_new_friendly_id?
     slug.blank? || title_changed?
