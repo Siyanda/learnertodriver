@@ -14,7 +14,7 @@ gem 'bootsnap', require: false
 gem 'redis'
 gem 'sidekiq'
 gem 'sidekiq-scheduler'
-gem 'image_processing'
+gem 'shrine'
 gem 'aws-sdk-s3', require: false
 
 gem 'liquid'
