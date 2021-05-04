@@ -2,17 +2,17 @@
 <% breadcrumb :post, @post %>
 
 <div class="flex split gapped">
-  <article class="flex rounded mildy-shd shadowed gainsboro-bordered column white-bg post">
+  <article class="flex rounded mildy-shd shadowed gainsboro-bordered max-height column white-bg post">
 
     <div class="post-header">
-      <h1 class="post-title" itemprop="name headline">
+      <h1 class="post-title">
         <%= @post.title %>
       </h1>
     </div>
 
-    <div class="post-content" itemprop="articleBody">
+    <div class="post-content">
       <div class="post-body">
-        <%= @post.content %>
+        <%= @post.content.html_safe %>
       </div>
     </div>
 
@@ -46,7 +46,7 @@
 
   </article>
 
-  <aside class="hr-sectioned white-bg mildy-shd shadowed rounded gainsboro-bordered aside">
+  <aside class="hr-sectioned max-height white-bg mildy-shd shadowed rounded gainsboro-bordered aside">
 
     <div class="section">
       <div class="padded section-heading">
@@ -69,7 +69,11 @@
         </div>
         <hr class="third-width hr-grey">
         <div class="section">
-
+          <% @posts.most_recent.published.each do |post| %>
+            <div class="item">
+               <%= link_to post.title, post, class: "link" %>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>
@@ -82,7 +86,7 @@
         </div>
         <hr class="third-width hr-grey">
         <div class="section">
-
+          <%= image_tag("bg/main.png", alt: "Edit Entry", class: "rounded image") %>
         </div>
       </div>
     </div>
@@ -93,7 +97,7 @@
   <div class="shadowed texture light-inset-shd txr-dark post-meta-container">
     <div class="post-author">
       <div class="post-author-content">
-
+        <div class="bold"><%= @post.author.name %></div>
       </div>
     </div>
   </div>
@@ -120,7 +124,7 @@
 
     <%= simple_form_for [@post, Comment.new]  do |f| %>
       <div class="field">
-        <%= f.text_area :body, class: "form-control" %>
+        <%= f.text_area :content, class: "form-control" %>
       </div>
     <br>
         <%= f.submit "Post Comment", class: "button btn-primary" %>

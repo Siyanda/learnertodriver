@@ -1,43 +1,50 @@
+
+
+
 <% @user_posts.each do |post| %>
-  <div class="main content block">
+<div class="gainsboro-bordered content block">
 
-    <div class="post-header">
-      <h2 class="text-center post-title" itemprop="name headline">
-        <%= link_to truncate(post.title, :length => 65), post %>
-      </h2>
-    </div>
+  <div class="block-header">
+    <h1 class="post-title">
+      <%= link_to truncate(post.title, :length => 65), post %>
+    </h1>
+  </div>
 
-    <div class="block-content">
-      <p><%= truncate(strip_tags(post.content.to_s), length: 65) %></p>
-      <%= link_to "Read More >", post, class: "read-more" %>
+  <div class="block-content">
+    <p><%= truncate(strip_tags(post.content), length: 165) %></p>
+    <div class="link">
+      <%= link_to "Read More", post, class: "relative level-one bold link-underline hvr-fill read-more" %>
     </div>
-  <div class="block-meta">
+  </div>
+
+  <div class="dark-bg block-meta">
     <div class="meta meta-votes">
-      <div class="dark-fill small-svg icon">
+      <div class="light-fill small-svg icon">
         <%= inline_svg("icons/arrow-up.svg") %>
       </div>
-      <%= post.get_upvotes.size %>
+      <div class="light-text"><%= post.get_upvotes.size %></div>
 
-      <div class="dark-fill small-svg icon">
+      <div class="light-fill small-svg icon">
         <%= inline_svg("icons/arrow-down.svg") %>
       </div>
-      <%= post.get_downvotes.size %>
+      <div class="light-text"><%= post.get_downvotes.size %></div>
     </div>
 
     <div class="meta meta-comments">
-      <div class="dark-fill small-svg icon">
+      <div class="light-fill small-svg icon">
         <%= inline_svg("icons/comments.svg") %>
       </div>
-      <%= post.comments.count %>
+      <div class="light-text"><%= post.comments.count %></div>
     </div>
 
    <div class="meta meta-date">
-      <div class="dark-fill small-svg icon">
-        <%= inline_svg("icons/clock.svg") %>
+      <div class="light-fill small-svg icon">
+        <%= inline_svg("icons/clock-fill.svg") %>
       </div>
-      <%= time_ago_in_words(post.created_at) %> ago
+      <div class="light-text"> <%= post.created_at %></div>
     </div>
 
   </div>
-  </div>
+</div>
+
 <% end %>

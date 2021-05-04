@@ -7,7 +7,7 @@
   </div>
 
   <div class="block-content">
-    <p><%= truncate(strip_tags(post.content.to_s), length: 165) %></p>
+    <p><%= truncate(strip_tags(post.content), length: 165) %></p>
     <div class="link">
       <%= link_to "Read More", post, class: "relative level-one bold link-underline hvr-fill read-more" %>
     </div>
@@ -37,7 +37,7 @@
       <div class="light-fill small-svg icon">
         <%= inline_svg("icons/clock-fill.svg") %>
       </div>
-      <div class="light-text"><%= time_ago_in_words(post.created_at) %> ago</div>
+      <div class="light-text"><%= post.created_at %></div>
     </div>
 
   </div>

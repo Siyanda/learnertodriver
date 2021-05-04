@@ -1,6 +1,10 @@
-<%= form_for @post do |f| %>
+<%= simple_form_for @post do |f| %>
   <%= f.label :title %>
   <%= f.text_field :title %>
+  <%= f.input :status, collection: ['draft', 'unpublished', 'published', 'restricted', 'removed'] %>
+  <%= f.label :slug %>
+  <%= f.text_field :slug %>
+  <%= f.input :author_id, collection: @users %>
   <%= f.label :content %>
   <%= f.text_area :content %>
   <%= f.submit %>
