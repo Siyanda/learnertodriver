@@ -35,6 +35,7 @@ require 'sidekiq/web'
 
   resources :posts do
     resources :comments
+    resources :tags, module: :posts
     member do
       put 'like', to:    'posts#upvote'
       put 'dislike', to: 'posts#downvote'
