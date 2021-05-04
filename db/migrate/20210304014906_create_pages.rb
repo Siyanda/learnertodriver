@@ -2,9 +2,12 @@ class CreatePages < ActiveRecord::Migration[6.1]
   def change
     create_table :pages do |t|
       t.string :title, null: false
-      t.text :template
+      t.text :content
+      t.string :layout
       t.string :slug
-      t.references :author, foreign_key: { to_table: :users }, index: true
+      t.integer :status, default: 0, null: false
+      t.references :editor, foreign_key: { to_table: :users }, index: true
+      t.references :parent, foreign_key: { to_table: :pages }, index: true
 
       t.timestamps
     end
