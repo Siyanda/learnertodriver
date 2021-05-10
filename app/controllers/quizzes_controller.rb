@@ -6,6 +6,20 @@ class QuizzesController < ApplicationController
     @quizzes = Quiz.all
   end
 
+  def new
+    @quiz = Quiz.new
+  end
+
+ def create
+    @quiz = Quiz.new(quiz_params)
+
+    if @quiz.save
+      redirect_to @quiz, notice: 'Quiz was successfully created.'
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+
   def show
     @questions = @quiz.questions.includes(:answers)
   end
@@ -17,6 +31,6 @@ class QuizzesController < ApplicationController
   end
 
   def quiz_params
-    params.require(:quiz).permit(:title)
+    params.require(:quiz).permit( :title, :kind, :information, :duration, :description, :slug, questions_attributes: [ :content, :kind, :information, :_destroy])
   end
 end

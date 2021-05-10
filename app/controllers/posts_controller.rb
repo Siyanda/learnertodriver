@@ -16,7 +16,7 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @users = User.is_active.all
+    @users = User.active
   end
 
   def create

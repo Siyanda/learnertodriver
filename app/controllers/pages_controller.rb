@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
+  before_action :set_page_options
   before_action :set_page, only: %i[show edit update destroy]
   before_action :require_same_user, only: %i[edit update destroy]
 
@@ -14,7 +15,7 @@ class PagesController < ApplicationController
   end
 
   def edit
-    # edit action
+    #
   end
 
   def create
@@ -62,6 +63,11 @@ class PagesController < ApplicationController
 
   def set_page
     @page = Page.friendly.find(params[:id])
+  end
+
+  def set_page_options
+    @pages = Page.all.map { |page| [page.title, page.id ] }
+    @editors = User.all.map { |user| [user.name, user.id ] }
   end
 
   def page_params
