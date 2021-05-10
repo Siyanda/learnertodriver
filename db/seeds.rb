@@ -1,6 +1,6 @@
 require 'csv'
 
-models =  %w[user page post comment quiz question answer specification response]
+models =  %w[user quiz question answer specification response]
 
 puts '... deleting all existing data 🗑'
 
@@ -25,20 +25,19 @@ models.each do |data|
   puts "#{data.camelize.constantize.count} #{data.pluralize} created"
 end
 
-# puts '... generating posts and pages from markdown 📝'
+puts '... generating post and page content from markdown 📝'
 
-# def rendered_md(file_name)
-#   markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true, tables: true)
-#   file = "#{Rails.root}/db/seeds/modules/import/#{Rails.env}/content/comment/#{file_name}.markdown"
+def rendered_md(file_name)
+  markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true, tables: true)
+  file = "#{Rails.root}/db/seeds/modules/import/#{Rails.env}/content/#{file_name}.markdown"
 
-#   content = File.read(file)
-#   markdown.render(content)
-# end
+  content = File.read(file)
+  markdown.render(content)
+end
 
-# files = [
-#   { 'content' => rendered_md('first-comment'), 'post_id' => Post.first.id, 'user_id' => User.first.id }
-# ]
+data = %w[page post comment]
 
-# files.each do |data|
-#   Comment.create!(data)
-# end
+data.each do |model_name|
+   require File.expand_path(File.dirname(__FILE__))+"/seeds/modules/import/#{Rails.env}/generate/#{model_name}.rb"
+   puts "#{model_name.camelize.constantize.count} #{model_name.pluralize} created"
+end

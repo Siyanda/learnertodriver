@@ -1,2 +1,2 @@
-id,name,email,password,first_name,last_name,username,bio,admin,confirmed_at
-1,demo,siyanda@typographics.co.za,demo1234,demo,user,demouser,test account,false,"2020-08-23 19:54:15 +0200"
+email,password,first_name,last_name,username,bio,admin,confirmed_at
+siyanda@typographics.co.za,demo1234,Siyanda,Maphumulo,demo,"Admin user",true,"2020-08-23 19:54:15 +0200"
