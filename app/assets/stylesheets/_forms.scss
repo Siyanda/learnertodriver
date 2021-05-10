@@ -71,6 +71,7 @@
   margin-left: -125px;
   min-width: 250px;
   padding: 16px;
+  position: absolute;
   text-align: center;
   z-index: 1;
 }
@@ -94,6 +95,14 @@
 
 .form-control {
   border: thin solid $grey;
+}
+
+.form-label {
+  height: 25px;
+}
+
+.form-textarea {
+  background-color: $unclear;
 }
 
 .lines-bg {

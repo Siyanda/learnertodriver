@@ -1,6 +1,6 @@
 <% breadcrumb :evaluation, @user %>
 
-  <div class="grey-bordered gapped content">
+  <div class="alt-border gapped content">
     <div class="flex column">
       <div class="flex spaced-between">
         <div class="new">
@@ -44,7 +44,7 @@
           </div>
         </div>
 
-        <div class="menu-container gainsboro-bordered" data-menu-target="option">
+        <div class="menu-container basic-border" data-menu-target="option">
           <% @evaluation.reactions.soft_skills.each do |reaction| %>
             <div class="flex striped question-container lightly padded">
               <div class="question-content">
@@ -85,7 +85,7 @@
           </div>
         </div>
 
-        <div class="menu-container gainsboro-bordered" data-menu-target="option">
+        <div class="menu-container basic-border" data-menu-target="option">
           <% @evaluation.reactions.performance_skills.each do |reaction| %>
             <div class="flex striped question-container lightly padded">
               <div class="question-content">
@@ -127,7 +127,7 @@
           </div>
         </div>
 
-        <div class="menu-container gainsboro-bordered" data-menu-target="option">
+        <div class="menu-container basic-border" data-menu-target="option">
           <% @evaluation.reactions.technical_skills.each do |reaction| %>
             <div class="flex striped question-container lightly padded">
               <div class="question-content">
@@ -156,7 +156,7 @@
     <!--render evaluation comments-->
     <div class="comment">
       <h4 class="bold">Final Remarks</h4>
-      <div class="padded grey-bordered cream shadowed inset"><%= @evaluation.comment %></div>
+      <div class="padded alt-border cream shadowed inset"><%= @evaluation.comment %></div>
     </div>
 
 </div>

@@ -2,12 +2,15 @@
 <% breadcrumb :page, @page %>
 
 <div class="flex gapped">
-  <div class="flex full-width rounded gainsboro-bordered column content page">
+  <div class="flex full-width rounded basic-border column content page">
 
     <div class="page-header">
       <h1 class="page-title">
         <%= @page.title %>
       </h1>
+      <div class="option">
+        <%= link_to "Edit", edit_page_path(@page) %>
+      </div>
     </div>
 
     <div class="padded page-content">

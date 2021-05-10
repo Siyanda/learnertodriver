@@ -1,4 +1,6 @@
 .hr-sectioned {
+  margin-bottom: 1.4rem;
+
   .section {
     &:not(:last-child) {
       border-bottom: 1px solid $gainsboro;

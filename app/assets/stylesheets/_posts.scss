@@ -5,7 +5,10 @@
 
 .post-header {
   border-bottom: thin solid $gainsboro;
-  font-size: 26px;
+
+  h1 {
+    font-size: 26px;
+  }
 }
 
 .post-body {
@@ -110,7 +113,7 @@
 }
 
 .block-meta {
-  border-top: thin solid $base-border-color;
+  border-top: $base-border;
   display: flex;
   padding: .8rem;
   justify-content: space-around;
@@ -159,7 +162,7 @@
   span {
     color: $midnight;
     float: left;
-    border: thin solid $base-border-color;
+    border: $base-border;
 
     &:last-child {
       border-top-right-radius: 5px;

@@ -353,7 +353,7 @@ hr {
 
 .dropdown-menu {
   margin: .1rem 0;
-  border: $base-border-color;
+  border: $base-border;
   border-radius: .4rem;
   box-shadow: $wrap-shadow;
   background: $white;
@@ -367,7 +367,7 @@ hr {
 }
 
 .select_item {
-  border-bottom: 1px solid $base-border-color;
+  border-bottom: $base-border;
   color: $base-color;
   display: flex;
   font-weight: 600;

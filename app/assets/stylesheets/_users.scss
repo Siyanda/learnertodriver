@@ -170,7 +170,7 @@
   z-index: 10;
 
   .user-menu-link {
-    border-top: 1px solid $base-border-color;
+    border-top: $base-border;
     color: $base-color;
     // display: block;
     // width: 100%;

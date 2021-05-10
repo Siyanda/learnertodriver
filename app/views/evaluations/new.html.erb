@@ -1,20 +1,18 @@
 <% breadcrumb :evaluation, @quiz %>
 
-  <div class="grey-bordered gapped content">
+  <div class="alt-border gapped content">
     <div class="flex column">
       <div class="flex spaced-between">
-        <div class="new">
-          <h4 class="bold">{{Date}}</h4>
-        </div>
+          <div class="info">
+            <h4 class="bold"><%= DateTime.now %></h4>
+            <h1>Test</h1>
+          </div>
 
         <div class="long-svg icon">
           <%= inline_svg("logo.svg") %>
         </div>
       </div>
 
-      <div class="flex spaced-between">
-        <p>Questions</p>
-      </div>
     </div>
 
     <br>

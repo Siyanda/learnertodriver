@@ -1,7 +1,7 @@
 <% breadcrumb :quiz, @quiz %>
 
 <div class="gapped quiz-area">
-  <section class="flex rounded gainsboro-bordered column content post">
+  <section class="flex rounded basic-border column content post">
 
     <div class="post-header">
       <h1 class="post-title" itemprop="name headline">
@@ -11,7 +11,7 @@
 
     <div class="padded post-content" itemprop="articleBody">
 
-            <% if @questions.any? %>
+    <% if @questions.any? %>
       <div class="gapped">
         <table>
           <tr>

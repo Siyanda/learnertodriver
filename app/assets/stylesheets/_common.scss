@@ -301,6 +301,10 @@ footer {
 
 .top-padded {
   padding-top: 1.8rem;
+
+  &.lightly {
+    padding-top: .4rem;
+  }
 }
 
 .right-padded {
@@ -309,6 +313,10 @@ footer {
 
 .bottom-padded {
   padding-bottom: 1.8rem;
+
+  &.lightly {
+    padding-bottom: .4rem;
+  }
 }
 
 .left-padded {
@@ -388,7 +396,7 @@ footer {
     justify-content: space-evenly;
   }
 
-  &.centered {
+  &.just-centered {
     justify-content: center;
   }
 
@@ -574,11 +582,11 @@ footer {
   background-color: $black;
 }
 
-.gainsboro-bordered {
+.basic-border {
   border: thin solid $gainsboro;
 }
 
-.grey-bordered {
+.alt-border {
   border: thin solid $grey;
 }
 

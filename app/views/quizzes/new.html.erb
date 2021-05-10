@@ -1,14 +1,15 @@
-<% title @page.title.titleize %>
-<% breadcrumb :page, @page %>
+<% title "New Quiz" %>
+<% breadcrumb :quiz, @quiz %>
 
 <div class="flex gapped">
   <article class="flex full-width rounded basic-border column content page">
 
     <div class="padded page-content" itemprop="articleBody">
       <div class="page-body">
-        <%= render 'form' %>
+        <%= render 'form', quiz: @quiz %>
       </div>
     </div>
 
   </article>
 </div>
+

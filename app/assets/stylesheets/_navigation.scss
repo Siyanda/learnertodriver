@@ -252,6 +252,12 @@
     }
   }
 
+  &.red-fill {
+    svg {
+      fill: $crimson;
+    }
+  }
+
   &.light-fill {
     svg {
       fill: $white;
@@ -320,6 +326,13 @@
     svg {
       width: 15px;
       height: 15px;
+    }
+  }
+
+  &.mdm-svg {
+    svg {
+      width: 20px;
+      height: 20px;
     }
   }
 
@@ -468,9 +481,6 @@
 }
 
 @media screen and (max-width: 700px) {
-  .row {
-    width: 90%;
-  }
 
   nav {
     &.navigation {

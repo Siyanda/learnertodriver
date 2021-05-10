@@ -1,8 +1,15 @@
-<h1>Submit New Post</h1>
-<div id="content" class="inner">
-  <article class="post">
-    <%= render 'form' %>
+<% title "New Page" %>
+<% breadcrumb :post, @post %>
 
-    <%= link_to 'Back', posts_path , class: "button" %>
+<div class="flex gapped">
+  <article class="flex full-width rounded basic-border column content page">
+
+    <div class="padded page-content" itemprop="articleBody">
+      <div class="page-body">
+        <%= render 'form' %>
+      </div>
+    </div>
+
   </article>
 </div>
+

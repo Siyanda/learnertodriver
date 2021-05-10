@@ -258,6 +258,12 @@ $base-timing: ease;
   }
 }
 
+@mixin border-stl ($width, $style, $color) {
+  border-color: $color;
+  border-style: $style;
+  border-width: $width;
+}
+
 @mixin stack ($color) {
   box-shadow: 4px -4px 0 2px rgba($color, .1), 15px -12px 0 2px rgba($color, .2);
 }

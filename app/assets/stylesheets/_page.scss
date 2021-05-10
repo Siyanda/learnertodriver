@@ -59,12 +59,20 @@
 }
 
 .button {
+  padding: .8rem 1.2rem;
   background-color: $brand-color;
+  border: thin solid $clear;
+  color: $white;
+
+  &.thin-btn {
+    padding: .4rem 1.2rem;
+  }
 
   &.dark {
     &:hover, &:focus {
-      background-color: darken($brand-color, 20%);
-      color: $white;
+      background-color: $alt-accent;
+      border: thin solid $brand-color;
+      color: $ocean;
     }
 
     &:disabled {
@@ -72,16 +80,19 @@
       opacity: .5;
 
       &:hover {
-        background-color: $brand-color;
+        background-color: $alt-accent;
       }
     }
   }
 
   &.light {
-    background-color: $clean;
+    background-color: $shades;
+    border: thin solid darken($shades, 10%);
+    color: $ocean;
 
     &:hover, &:focus {
-      background-color: darken($clean, 20%);
+      background-color: darken($shades, 10%);
+      border: thin solid $ocean;
       color: $ocean;
     }
 
@@ -302,9 +313,16 @@
   }
 }
 
-.row {
-  margin: auto;
-  width: 85%;
+.dropzone {
+  background-color: darken($white, 4%);
+  text-align: center;
+  @include border-stl(thick, dashed, $gainsboro);
+
+  &:hover {
+    background-color: darken($white, 2%);
+    color: darken($base-bg-color, 40%);
+    @include border-stl(thick, dashed, $rockstar);
+  }
 }
 
 .translucent {
