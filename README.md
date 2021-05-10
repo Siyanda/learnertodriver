@@ -45,6 +45,21 @@
 
 <br/>
 
+##User Roles
+
+Administrator 'administrator' : has access to all the administration features within a single site.
+Editor 'editor' : can publish and manage posts including the posts of other users.
+Author 'author' : can publish and manage their own posts.
+Contributor 'contributor' : can write and manage their own posts but cannot publish them.
+Subscriber 'subscriber' : can only manage their profile.
+
+##Question Types
+
+
+##Quizz Options
+
+
+
 <p align="center">
   <br/>
   <strong>Enjoy</strong> ❤️
