@@ -15,10 +15,8 @@ class User < ApplicationRecord
 
   validates_uniqueness_of :username
 
-  has_one_attached :avatar_image
-
+  enum role: { subscriber: 0, contributor: 1, author: 2, editor: 3, administrator: 4 }
   enum status: { pending: 0, inactive: 1, active: 2, suspened: 3, blocked: 4 }
-  scope :is_active, -> { where(status: 'active') }
 
   def should_generate_new_friendly_id?
     slug.blank? || username_changed?

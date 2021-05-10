@@ -16,4 +16,8 @@ class Post < ApplicationRecord
   def should_generate_new_friendly_id?
     slug.blank? || title_changed?
   end
+
+  def generate_excerpt
+    # truncate post and strip and save to self.excerpt
+  end
 end

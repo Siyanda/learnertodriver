@@ -6,6 +6,7 @@ class AddUserDetails < ActiveRecord::Migration[6.1]
     add_column :users, :links, :jsonb
     add_column :users, :bio, :text
     add_column :users, :birthday, :date
+    add_column :users, :role, :integer, default: 0, null: false
     add_column :users, :status, :integer, default: 0, null: false
     add_column :users, :admin, :boolean, null: false, default: false
     add_column :users, :slug, :string
