@@ -2,7 +2,7 @@
 <% breadcrumb :post, @post %>
 
 <div class="flex split gapped">
-  <article class="flex rounded mildy-shd shadowed basic-border max-height column white-bg post">
+  <div class="flex full-width rounded mildy-shd shadowed basic-border max-height column white-bg post">
 
     <div class="post-header">
       <h1 class="post-title">
@@ -44,9 +44,9 @@
       </div>
     </div>
 
-  </article>
+  </div>
 
-  <aside class="hr-sectioned max-height white-bg mildy-shd shadowed rounded basic-border aside">
+  <div class="third-width hr-sectioned max-height white-bg mildy-shd shadowed rounded basic-border aside">
 
     <div class="section">
       <div class="padded section-heading">
@@ -86,12 +86,12 @@
         </div>
         <hr class="third-width hr-grey">
         <div class="section">
-          <%= image_tag("bg/main.png", alt: "Edit Entry", class: "rounded image") %>
+          <%= image_tag("bg/main.png", alt: "Edit Entry", class: "clickable rounded image") %>
         </div>
       </div>
     </div>
 
-  </aside>
+  </div>
 </div>
 
   <div class="shadowed texture light-inset-shd txr-dark post-meta-container">
@@ -102,7 +102,7 @@
     </div>
   </div>
 
-<article class="gapped comments content rounded basic-border">
+<div class="gapped comments content rounded basic-border">
   <div class="comments-title-container">
     <h2 class="comments-title fleft"><%= @post.comments.count %> Comments</h2>
   </div>
@@ -133,4 +133,4 @@
     </div>
   </div>
 
-</article>
+</div>

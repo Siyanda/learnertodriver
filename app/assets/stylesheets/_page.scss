@@ -108,6 +108,7 @@
 }
 
 .gapped {
+  gap: 2rem;
   margin: 2rem;
 
   &.no-lm {
@@ -127,17 +128,6 @@
     &.active {
       display: block;
     }
-  }
-}
-
-.split {
-  .post {
-    width: 70%;
-  }
-
-  .aside {
-    width: 30%;
-    margin: 0 0 0 1.3rem;
   }
 }
 
@@ -410,9 +400,6 @@
       width: 100%;
     }
 
-    .aside {
-      display: none;
-    }
   }
 
 }

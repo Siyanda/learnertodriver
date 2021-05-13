@@ -15,7 +15,6 @@ class PagesController < ApplicationController
   end
 
   def edit
-    #
   end
 
   def create
@@ -66,8 +65,10 @@ class PagesController < ApplicationController
   end
 
   def set_page_options
-    @pages = Page.all.map { |page| [page.title, page.id ] }
-    @editors = User.all.map { |user| [user.name, user.id ] }
+    @users = User.active
+    @pages = Page.all
+    @page_list = @pages.map { |page| [page.title, page.id] }
+    @editor_list = @users.map { |user| [user.name, user.id] }
   end
 
   def page_params

@@ -2,8 +2,8 @@
 <% breadcrumb :post, @post %>
 
 <div class="flex split gapped">
-  <div class="flex rounded mildy-shd shadowed basic-border max-height column white-bg post">
 
+  <div class="flex full-width rounded mildy-shd shadowed basic-border max-height column white-bg post">
     <div class="post-content">
       <div class="post-body">
         <%= render 'form' %>
@@ -28,17 +28,15 @@
 
       </div>
     </div>
-
   </div>
 
+  <div class="third-width">
 
-  <div class="aside">
-    <div class="hr-sectioned max-height white-bg mildy-shd shadowed rounded basic-border">
-
+    <div class="hr-sectioned max-height white-bg mildy-shd shadowed rounded basic-border aside">
       <div class="section">
         <div class="padded section-heading">
           <div class="flex">
-            <h3 class="sub-heading">Post</h3>
+            <h3 class="sub-heading">Details</h3>
           </div>
           <hr class="third-width hr-grey">
           <div class="section">
@@ -74,27 +72,27 @@
           </div>
           <hr class="third-width hr-grey">
 
-              <div class="flex center-aligned">
-                <div class="relative dropdown-select" data-controller="dropdown">
-                  <div class="select-button" role="group">
+            <div class="flex center-aligned">
+              <div class="relative dropdown-select" data-controller="dropdown">
+                <div class="select-button" role="group">
 
-                    <div class="rounded dropdown-button-area" role="group" data-action="click->dropdown#toggle">
-                      <button class="capitalized rounded dropdown-button iconed" type="button" aria-expanded="false">
-                        <%= @post.author.name %>
-                      </button>
-                      <div class="dropdown-menu" data-dropdown-target="menu">
-                        <% @users.each do |user| %>
-                          <div class="select_item"><%= user.name %></div>
-                        <% end %>
-                      </div>
+                  <div class="rounded dropdown-button-area" role="group" data-action="click->dropdown#toggle">
+                    <button class="capitalized rounded dropdown-button iconed" type="button" aria-expanded="false">
+                      <%= @post.author.name %>
+                    </button>
+                    <div class="dropdown-menu" data-dropdown-target="menu">
+                      <% @users.each do |user| %>
+                        <div class="select_item"><%= user.name %></div>
+                      <% end %>
                     </div>
+                  </div>
 
-                  </div>
-                  <div class="mdm-svg grey-fill search-icon icon">
-                    <%= inline_svg("icons/arrow-down.svg") %>
-                  </div>
+                </div>
+                <div class="mdm-svg grey-fill search-icon icon">
+                  <%= inline_svg("icons/arrow-down.svg") %>
                 </div>
               </div>
+            </div>
 
         </div>
       </div>
@@ -122,11 +120,9 @@
             </div>
         </div>
       </div>
-
     </div>
 
     <div class="hr-sectioned max-height white-bg mildy-shd shadowed rounded basic-border">
-
       <div class="section">
         <div class="padded section-heading">
           <div class="flex">
@@ -143,12 +139,10 @@
             <h3 class="sub-heading">Catergories</h3>
           </div>
           <hr class="third-width hr-grey">
-          
         </div>
       </div>
-
-
     </div>
+
   </div>
 
 </div>
