@@ -1,5 +1,5 @@
 pages = [
-  { 'title' => 'About Us', 'content' => rendered_md('page/about'), 'slug' => 'about', 'status' => 'published', 'editor_id' => User.first.id, 'parent_id' => '' },
+  { 'title' => 'About', 'content' => rendered_md('page/about'), 'slug' => 'about', 'status' => 'published', 'editor_id' => User.first.id, 'parent_id' => '' },
   { 'title' => 'Terms & Conditions', 'content' => rendered_md('page/terms'), 'slug' => 'terms', 'status' => 'published', 'editor_id' => User.first.id, 'parent_id' => '' },
   { 'title' => 'Use Restrictions Policy', 'content' => rendered_md('page/abuse'), 'slug' => 'abuse', 'status' => 'published', 'editor_id' => User.first.id, 'parent_id' => '' },
   { 'title' => 'Account Ownership Information', 'content' => rendered_md('page/account-ownership-information'), 'slug' => 'account-ownership-information', 'status' => 'published', 'editor_id' => User.first.id, 'parent_id' => '' },
