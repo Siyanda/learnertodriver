@@ -22,6 +22,7 @@ gem 'redcarpet'
 gem 'name_of_person'
 gem 'pagy'
 gem 'ransack'
+gem 'pg_search'
 gem 'sinatra'
 
 gem 'acts_as_votable'
