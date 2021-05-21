@@ -1,7 +1,8 @@
 class Post < ApplicationRecord
-  acts_as_votable
-
+  include PgSearch::Model
   extend FriendlyId
+
+  acts_as_votable
   friendly_id :title, use: :slugged
   validates_presence_of :title
 
