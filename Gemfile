@@ -15,6 +15,7 @@ gem 'redis'
 gem 'sidekiq'
 gem 'sidekiq-scheduler'
 gem 'shrine'
+gem 'image_processing'
 gem 'aws-sdk-s3', require: false
 
 gem 'liquid'
