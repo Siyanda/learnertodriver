@@ -1,4 +1,6 @@
 require 'shrine'
+require 'shrine/storage/s3'
+require 'shrine/storage/memory'
 require 'shrine/storage/file_system'
 
 Shrine.storages = {

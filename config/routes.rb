@@ -22,7 +22,6 @@ Rails.application.routes.draw do
                sign_out: 'logout'
              }
 
-  # resources :quizzes, only: %i[index show], path: 'tests'
   resources :quizzes do
     resources :evaluations do
     end
@@ -32,6 +31,7 @@ Rails.application.routes.draw do
   resources :users, only: %i[show edit]
   resources :evaluations
   resources :pages
+  resources :photos
 
   resources :posts do
     resources :comments
