@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
+  before_action :set_post_options
   before_action :set_post, only: %i[show edit update destroy upvote downvote]
   before_action :require_same_user, only: %i[edit update destroy]
 
@@ -70,6 +71,13 @@ class PostsController < ApplicationController
       flash[:danger] = 'Not authorized to edit this post'
       redirect_to root_path
     end
+  end
+
+  def set_post_options
+    @users = User.active
+    @pages = Page.all
+    @page_list = @pages.map { |page| [page.title, page.id] }
+    @editor_list = @users.map { |user| [user.name, user.id] }
   end
 
   def set_post

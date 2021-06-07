@@ -5,7 +5,8 @@ class PagesController < ApplicationController
   before_action :require_same_user, only: %i[edit update destroy]
 
   def index
-    @pages = Page.all
+    @q = Page.ransack(params[:q])
+    @pagy, @pages = pagy(@q.result, items: params[:max] || 10)
   end
 
   def show; end

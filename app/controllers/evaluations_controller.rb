@@ -1,13 +1,14 @@
 class EvaluationsController < ApplicationController
   # skip_before_action :authenticate_user!, only: %i[show new]
   before_action :set_evaluation, only: %i[show edit update destroy]
-  before_action :set_user, only: %i[show edit update destroy]
+  before_action :set_user, only: %i[show edit create update destroy]
 
   def show
     # view completed
   end
 
   def new
+    @quiz = Quiz.friendly.find(params[:quiz_id])
     @evaluation = Evaluation.new
   end
 
@@ -42,6 +43,6 @@ class EvaluationsController < ApplicationController
 
   # TODO: use form object for reactions_attributes
   def evaluation_params
-    params.require(:evaluation).permit(:score, :comment, :form_snapshot, :manager_id, :approver_id, :user_id, :kind, :created_at, :updated_at, reactions_attributes: %i[kind value question_id answer_id evaluation_id])
+    params.require(:evaluation).permit(:score, :comment, :form_snapshot, :user_id, :created_at, :updated_at, reactions_attributes: %i[kind value question_id answer_id evaluation_id])
   end
 end
