@@ -8,6 +8,7 @@ class AddUserDetails < ActiveRecord::Migration[6.1]
     add_column :users, :birthday, :date
     add_column :users, :role, :integer, default: 0, null: false
     add_column :users, :status, :integer, default: 0, null: false
+    add_column :users, :evaluations_count, :integer, default: 0, null: false
     add_column :users, :admin, :boolean, null: false, default: false
     add_column :users, :slug, :string
     add_index :users, :slug, unique: true

@@ -197,6 +197,7 @@ ActiveRecord::Schema.define(version: 2021_05_07_003607) do
     t.date "birthday"
     t.integer "role", default: 0, null: false
     t.integer "status", default: 0, null: false
+    t.integer "evaluations_count", default: 0, null: false
     t.boolean "admin", default: false, null: false
     t.string "slug"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
