@@ -1,7 +1,7 @@
 <% title @post.title %>
 <% breadcrumb :post, @post %>
 
-<div class="flex split gapped">
+<div class="flex to-column gapped">
   <div class="flex full-width rounded mildy-shd shadowed basic-border max-height column white-bg post">
 
     <div class="post-header">
@@ -21,12 +21,12 @@
         <div class="flex center-aligned">
           <div class="gray-stroke small-svg icon"><%= inline_svg("icons/clock.svg") %></div>
           <p class="post-date">
-            Posted <%= time_ago_in_words(@post.created_at) %> ago
+            Posted <span><%= @post.created_at %></span>
           </p>
         </div>
 
         <div class="flex center-aligned">
-          <%= link_to like_post_path(@post), method: :put, class: "dd" do %>
+          <%= link_to like_post_path(@post), method: :put, class: "vote" do %>
           <div class="dark-fill standard-svg icon">
             <%= inline_svg("icons/arrow-up.svg") %>
           </div>
@@ -34,7 +34,7 @@
 
         <%= @post.weighted_score %>
 
-          <%= link_to dislike_post_path(@post), method: :put, class: "dd" do %>
+          <%= link_to dislike_post_path(@post), method: :put, class: "vote" do %>
           <div class="dark-fill standard-svg icon">
             <%= inline_svg("icons/arrow-down.svg") %>
           </div>
@@ -46,7 +46,7 @@
 
   </div>
 
-  <div class="third-width hr-sectioned max-height white-bg mildy-shd shadowed rounded basic-border aside">
+  <div class="third-width hr-sectioned max-height white-bg mildy-shd shadowed rounded basic-border aside to-full">
 
     <div class="section">
       <div class="padded section-heading">
@@ -56,7 +56,32 @@
         </div>
         <hr class="third-width hr-grey">
         <div class="section">
-
+          <ul class="flex lightly top-padded wrapped tags">
+            <li class="flex tag-container">
+              <a href="test" class="tag gainsboro-bg">test</a>
+            </li>
+            <li class="flex tag-container">
+              <a href="test" class="tag gainsboro-bg">search</a>
+            </li>
+            <li class="flex tag-container">
+              <a href="test" class="tag gainsboro-bg">activerecord</a>
+            </li>
+            <li class="flex tag-container">
+              <a href="test" class="tag gainsboro-bg">ruby</a>
+            </li>
+            <li class="flex tag-container">
+              <a href="test" class="tag gainsboro-bg">rails</a>
+            </li>
+            <li class="flex tag-container">
+              <a href="test" class="tag gainsboro-bg">pg</a>
+            </li>
+            <li class="flex tag-container">
+              <a href="test" class="tag gainsboro-bg">webapp</a>
+            </li>
+            <li class="flex tag-container">
+              <a href="test" class="tag gainsboro-bg">testing</a>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
@@ -124,7 +149,7 @@
 
     <%= simple_form_for [@post, Comment.new]  do |f| %>
       <div class="field">
-        <%= f.text_area :content, class: "form-control" %>
+        <%= f.text_area :content, class: "basic-border form-textarea" %>
       </div>
     <br>
         <%= f.submit "Post Comment", class: "button btn-primary" %>

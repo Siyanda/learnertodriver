@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="texture">
   <head>
     <title><%= t('site_name') %> | <%= yield(:title).presence || t('tagline') %></title>
     <meta charset="utf-8">
@@ -21,7 +21,8 @@
 
   </head>
 
-  <body class="texture full-height max-height">
+  <body class="app-body full-height max-height">
+    <%= render 'layouts/common/side_menu_overlay' %>
     <%= render 'layouts/common/messages' %>
     <%= render 'layouts/app/header' %>
     <%= yield %>

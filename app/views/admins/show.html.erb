@@ -2,15 +2,15 @@
 
       <div class="flex spaced-between">
         <ul class="flex slightly padded left-margin grouped buttons">
-          <li class="small slightly light-text padded button" data-tabs-target="tab" data-action="click->tabs#activate">Quizzes</li>
-          <li class="small slightly light-text padded button" data-tabs-target="tab" data-action="click->tabs#activate">Blog</li>
+          <li class="small-text slightly light-text padded button" data-tabs-target="tab" data-action="click->tabs#activate">Quizzes</li>
+          <li class="small-text slightly light-text padded button" data-tabs-target="tab" data-action="click->tabs#activate">Blog</li>
         </ul>
 
         <ul class="flex slightly padded left-margin grouped buttons">
-          <li class="small slightly light-text padded button active">all time</li>
-          <li class="small slightly light-text padded button">week</li>
-          <li class="small slightly light-text padded button">month</li>
-          <li class="small slightly light-text padded button">year</li>
+          <li class="small-text slightly light-text padded button active">all time</li>
+          <li class="small-text slightly light-text padded button">week</li>
+          <li class="small-text slightly light-text padded button">month</li>
+          <li class="small-text slightly light-text padded button">year</li>
         </ul>
      </div>
 
@@ -20,7 +20,7 @@
           
         </div>
         <div class="meta">
-          <h4 class="small gray-text"># : {{}}</h4>
+          <h4 class="small-text gray-text"># : {{}}</h4>
         </div>
      </div>
 
@@ -87,7 +87,7 @@
 
          <div class="alt-border third-width sparkline content" id="sparkline_total">
           <div class="padded">
-            <h1>Comments : <%= Comment.size %></h1>
+            <h1>Comments : <%= Comment.count %></h1>
           </div>
            <!-- for each of total evals what was the avarage score for the selected period -->
          </div>

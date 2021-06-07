@@ -5,16 +5,15 @@
           <cite class="comment-meta">
             <%= link_to comment.user.name, user_path(comment.user) %>
           </cite>
-          <p class="gray-text">Posted <%= time_ago_in_words(comment.created_at) %> ago</p>
+          <p class="gray-text">Posted <%= comment.created_at %></p>
           <div class="comment-actions">
             <% if comment.user == current_user %>
 
-              <%= link_to '', post_comments_path(comment), method: :delete, data: { confirm: 'Are you sure?' }, class: "confirmation" %>
+              <%= link_to '', post_comments_path(comment), method: :delete, data: { confirm: 'Are you sure?' }, class: 'confirmation' %>
               <div class="clickable gray-fill standard-svg svg icon">
                 <%= inline_svg("icons/trash.svg") %>
               </div>
             <% end %>
-            <div class="clear"></div>
           </div>
       </div>
 

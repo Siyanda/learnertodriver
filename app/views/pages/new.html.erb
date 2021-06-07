@@ -2,14 +2,150 @@
 <% breadcrumb :page, @page %>
 
 <div class="flex gapped">
-  <article class="flex full-width rounded basic-border column content page">
 
-    <div class="padded page-content" itemprop="articleBody">
-      <div class="page-body">
-        <%= render 'form' %>
+  <div class="flex full-width rounded mildy-shd shadowed basic-border max-height column white-bg page">
+    <%= simple_form_for @page do |f| %>
+    <div class="post-content">
+      <div class="post-body">
+          <div class="flex column">
+            <div class="full-width">
+              <%= f.label :title, class: "form-label" %>
+              <%= f.text_field :title, class: "basic-border form-textarea" %>
+            </div>
+          </div>
+            <%= f.label :content, class: "form-label" %>
+            <%= f.text_area :content, class: "basic-border form-textarea" %>
+        </div>
+      </div>
+
+    <div class="post-footer">
+      <div class="flex center-aligned spaced-between post-meta">
+
+        <div class="flex lightly top-padded bottom-padded center-aligned">
+          <%= link_to :back, class: 'flex center-aligned red-text rounded dark ' do %>
+            <div class="red-stroke mdm-svg icon">
+              <%= inline_svg("icons/trash-o.svg") %>
+            </div>
+            <span class="margin-sides">Discard</span>
+          <% end %>
+        </div>
+
+        <div class="flex lightly top-padded bottom-padded center-aligned">
+          <%= f.submit 'Publish', class: 'white-text rounded dark button' %>
+        </div>
+
       </div>
     </div>
 
-  </article>
-</div>
+<% end %>
+  </div>
 
+  <div class="third-width">
+    <div class="hr-sectioned max-height white-bg mildy-shd shadowed rounded basic-border aside">
+      <div class="section">
+        <div class="padded section-heading">
+          <div class="flex">
+            <h3 class="sub-heading">Details</h3>
+          </div>
+          <hr class="third-width hr-grey">
+          <div class="section">
+            <div class="flex">
+              <div class="dark-stroke mdm-svg icon">
+                <%= inline_svg("icons/ui/info-o.svg") %>
+              </div>
+              <h4 class="capitalized"><span class="bold margin-sides">status : </span><%= @page.status %></h4>
+            </div>
+
+          <br>
+            <div class="flex spaced-between">
+              <%= link_to 'Save Draft', pages_path, class: 'white-text rounded light thin-btn button' %>
+              <%= link_to 'Preview', pages_path, class: 'white-text rounded light thin-btn button' %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="padded section-heading">
+          <div class="flex">
+            <div class="dark-stroke mdm-svg icon">
+              <%= inline_svg("icons/ui/user-o.svg") %>
+            </div>
+            <h3 class="sub-heading margin-sides">Parent Page</h3>
+          </div>
+          <hr class="third-width hr-grey">
+
+            <div class="flex center-aligned">
+              <div class="relative dropdown-select" data-controller="dropdown">
+                <div class="select-button" role="group">
+
+                  <div class="rounded dropdown-button-area" role="group" data-action="click->dropdown#toggle">
+                    <button class="capitalized rounded dropdown-button iconed" type="button" aria-expanded="false">
+                      <%= @page.editor.name %>
+                    </button>
+                    <div class="dropdown-menu" data-dropdown-target="menu">
+                      <% @pages.each do |page| %>
+                        <div class="select_item"><%= page.title %></div>
+                      <% end %>
+                    </div>
+                  </div>
+
+                </div>
+                <div class="mdm-svg grey-fill search-icon icon">
+                  <%= inline_svg("icons/arrow-down.svg") %>
+                </div>
+              </div>
+            </div>
+
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="padded section-heading">
+            <div class="flex">
+              <h3 class="sub-heading">Post Excerpt</h3>
+            </div>
+          <hr class="third-width hr-grey">
+            <div class="flex">
+              <textarea class="basic-border cream-bg" name="demo" id="" cols="30" rows="5"></textarea>
+            </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="hr-sectioned max-height white-bg mildy-shd shadowed rounded basic-border aside">
+      <div class="section">
+        <div class="padded section-heading">
+          <div class="flex">
+            <h3 class="sub-heading">Details</h3>
+          </div>
+          <hr class="third-width hr-grey">
+          <div class="section">
+            <div class="flex">
+              <div class="dark-stroke mdm-svg icon">
+                <%= inline_svg("icons/ui/info-o.svg") %>
+              </div>
+              <h4 class="capitalized"><span class="bold margin-sides">status : </span><%= @page.status %></h4>
+            </div>
+
+            <div class="flex">
+              <div class="dark-stroke mdm-svg icon">
+                <%= inline_svg("icons/ui/date-calendar.svg") %>
+              </div>
+              <h4 class="capitalized">
+                <span class="bold margin-sides">Schedule Post : </span><%= @page.created_at %>
+              </h4>
+            </div>
+          <br>
+            <div class="flex spaced-between">
+              <%= link_to 'Save Draft', pages_path, class: 'white-text rounded light thin-btn button' %>
+              <%= link_to 'Preview', pages_path, class: 'white-text rounded light thin-btn button' %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

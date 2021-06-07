@@ -5,7 +5,9 @@
       <div class="flex spaced-between">
           <div class="info">
             <h4 class="bold"><%= DateTime.now %></h4>
-            <h1>Test</h1>
+            <h1>Quiz : <%= @quiz.title %></h1>
+            <h1><%= @quiz.questions.count %> Questions</h1>
+            <h1><%= current_user.name %></h1>
           </div>
 
         <div class="long-svg icon">
@@ -14,7 +16,22 @@
       </div>
 
     </div>
-
     <br>
+
+    <div class="gainsboro-bordered" >
+      <% @quiz.questions.random.each do |question| %>
+        <div class="column flex padded">
+          <h2><%= question.content %></h2>
+          <div class="flex padded">
+            <ul>
+              <% question.answers.each do |answer| %>
+                <li><%= answer.content %></li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
     <%= render "form" %>
   </div>

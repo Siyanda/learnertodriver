@@ -1,0 +1,185 @@
+<% breadcrumb :pages, @pages %>
+
+<div class="grey-bordered gapped content">
+
+  <div class="controls" data-controller="menu">
+    <div class="flex spaced-between">
+      <h3 class="bold">Pages</h3>
+        <div class="relative filter">
+          <button class="capitalized rounded dropdown-button iconed" type="button" data-action="click->menu#toggle">
+            Filter
+          </button>
+          <div class="small-svg search-icon icon">
+            <%= inline_svg("icons/ui/filter.svg") %>
+          </div>
+        </div>
+    </div>
+
+    <div class="shaded padded filter-container gainsboro-bordered top-margin rounded" data-menu-target="option">
+
+      <div class="flex spaced-between center-aligned">
+        <div class="search-wrapper">
+          <%= form_tag pages_path, method: :get do %>
+            <%= text_field_tag :"q[name_cont]", "", class: "search-input", placeholder: "filter name ..." %>
+              <div class="small-svg search-icon icon">
+                <%= inline_svg("icons/search.svg") %>
+              </div>
+          <% end %>
+        </div>
+
+        <div class="date-wrapper">
+        <span class="small">From Date:</span>
+          <div class="right-margin relative filter">
+            <input type="text" class="small left-padded">
+            <div class="small-svg dark-stroke search-icon icon">
+              <%= inline_svg("icons/ui/date-calendar.svg") %>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="top-margin flex spaced-between">
+
+        <div class="group">
+          <span class="small">Export As:</span>
+          <div class="flex center-aligned">
+
+            <div class="right-margin relative">
+              <button class="capitalized rounded dropdown-button iconed" type="button">
+                PDF
+              </button>
+              <div class="small-svg grey-fill search-icon icon">
+                <%= inline_svg("icons/pdf.svg") %>
+              </div>
+            </div>
+
+            <div class="right-margin relative">
+              <button class="capitalized rounded dropdown-button iconed" type="button">
+                Excel
+              </button>
+              <div class="small-svg grey-fill search-icon icon">
+                <%= inline_svg("icons/xls.svg") %>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="flex center-aligned">
+
+          <div class="relative dropdown-select" data-controller="dropdown">
+            <div class="select-button" role="group">
+
+              <div class="dropdown-button-area" role="group" data-action="click->dropdown#toggle">
+                <button class="capitalized rounded dropdown-button iconed" type="button" aria-expanded="false">
+                  Filter by Status
+                </button>
+                <div class="dropdown-menu" data-dropdown-target="menu">
+                  
+                </div>
+              </div>
+
+            </div>
+            <div class="small-svg grey-fill icon">
+              <%= inline_svg("icons/ui/chevron-down.svg") %>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="flex spaced-between">
+    <div class="flex lightly top-padded bottom-padded center-aligned">
+      <%= link_to new_page_path, class: 'flex center-aligned rounded dark ' do %>
+        <div class="mdm-svg icon">
+          <%= inline_svg("icons/plus-circle-o.svg") %>
+        </div>
+        <span class="margin-sides">New Page</span>
+      <% end %>
+    </div>
+
+    <div class="flex dropdown-container">
+      <div class="relative dropdown-select" data-controller="dropdown">
+        <div class="select-button" role="group">
+
+          <div class="dropdown-button-area" role="group" data-action="click->dropdown#toggle">
+            <button class="capitalized rounded dropdown-button iconed" type="button" aria-expanded="false">
+            <%= params[:max] %> Items per page
+            </button>
+            <div class="dropdown-menu" data-dropdown-target="menu">
+              <%= link_to "5 Entries", pages_path(max: 5, page: params[:page]), class: "select_item" %>
+              <%= link_to "10 Entries", pages_path(max: 10, page: params[:page]), class: "select_item" %>
+              <%= link_to "15 Entries", pages_path(max: 15, page: params[:page]), class: "select_item" %>
+              <%= link_to "20 Entries", pages_path(max: 20, page: params[:page]), class: "select_item" %>
+            </div>
+          </div>
+
+        </div>
+        <div class="small-svg grey-fill search-icon icon">
+          <%= inline_svg("icons/ui/chevron-down.svg") %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <br>
+
+  <table class="table">
+    <tr class="thead">
+      <th></th>
+      <th><%= sort_link @q, :title, "Title" %></th>
+      <th><%= sort_link @q, :slug, "Slug" %></th>
+      <th>Status</th>
+      <th>Content</th>
+      <th>Actions</th>
+    </tr>
+
+    <% @pages.each.with_index(1) do |page, index| %>
+      <tr class="tbody">
+        <td class="text-center numbered grey-text"><%= index %></td>
+        <td class="capatilize" ><%= page.title %></td>
+        <td> <p class="truncate"><%= page.slug %></p></td>
+        <td><%= page.status %></td>
+        <td><p class="truncate"><%= page.content %></p></td>
+        <td class="flex spaced-between">
+          <%= link_to page_path(page) do %>
+            <div class="mdm-svg dark-stroke icon">
+              <%= inline_svg("icons/view-o.svg") %>
+            </div>
+          <% end %>
+
+          <%= link_to edit_page_path(page) do %>
+            <div class="mdm-svg dark-stroke icon">
+              <%= inline_svg("icons/edit.svg") %>
+            </div>
+          <% end %>
+
+          <%= link_to edit_page_path(page) do %>
+            <div class="mdm-svg dark-stroke icon">
+              <%= inline_svg("icons/trash-o.svg") %>
+            </div>
+          <% end %>
+        </td>
+      </tr>
+
+    <% end %>
+
+  </table>
+
+    <br/>
+
+  <div class="to-column flex spaced-between">
+    <div class="tiny-text grey-text information">
+      <%= pagy_info(@pagy).html_safe %>
+    </div>
+    <div class="small-text pagination-container">
+      <%= pagy_nav(@pagy).html_safe %>
+    </div>
+  </div>
+</div>
