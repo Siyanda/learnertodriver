@@ -315,6 +315,13 @@
     }
   }
 
+  &.micro-svg {
+    svg {
+      width: 4px;
+      height: 4px;
+    }
+  }
+
   &.tiny-svg {
     svg {
       width: 12px;

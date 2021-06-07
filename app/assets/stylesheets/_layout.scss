@@ -74,11 +74,11 @@
 .overlay {
   background-image: linear-gradient($light-grey, $light-black);
   cursor: pointer;
-  left:0;
-  bottom:0;
-  right:0;
-  top:0;
-  position:absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  top: 0;
+  position: absolute;
   transition: opacity 1s ease-in-out;
 
   &:hover {
@@ -90,25 +90,17 @@
   margin: auto;
 }
 
-.collapsible {
-  flex-direction: row;
-
-  .split{
-    width: 50%;
-  }
-}
-
 @media screen and (max-width: 980px) {
   .grid-item {
     width: 45%;
   }
 }
 
-@media screen and (max-width: 900px) {
-  .collapsible {
+@media screen and (max-width: 800px) {
+  .to-column {
     flex-direction: column;
 
-    .split{
+    .to-full {
       width: 100%;
     }
   }

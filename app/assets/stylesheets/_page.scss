@@ -37,13 +37,13 @@
 .grouped {
 
   .button {
-    cursor: pointer ;
+    cursor: pointer;
 
     &.active {
       background-color: $white;
       border: thin solid $grey;
       cursor: revert;
-      color:$night;
+      color: $night;
     }
 
     &:first-child {
@@ -63,6 +63,10 @@
   background-color: $brand-color;
   border: thin solid $clear;
   color: $white;
+
+  .outline-btn {
+    
+  }
 
   &.thin-btn {
     padding: .4rem 1.2rem;
@@ -207,6 +211,43 @@
   font-weight: 300;
   margin: 2rem auto;
   width: 83.33%;
+}
+
+.tags {
+  .tag-container {
+    margin: 0 .4rem .4rem 0;
+
+    .tag {
+      border: thin solid $gainsboro;
+      border-radius: .2rem;
+      font-size: 14px;
+      padding: .4rem;
+
+      &:hover {
+        background-color: lighten($gainsboro, 5%);
+        border: thin solid $gainsboro;
+      }
+    }
+
+    .removeable-tag {
+      border: thin solid $gainsboro;
+      // border-radius: .2rem;
+      font-size: 14px;
+      padding: .4rem;
+    }
+
+    .tag-button {
+      border: thin solid $gainsboro;
+      // border-radius: .2rem;
+      font-size: 14px;
+      padding: .4rem;
+
+      &:hover {
+        background-color: lighten($gainsboro, 5%);
+        border: thin solid $gainsboro;
+      }
+    }
+  }
 }
 
 .stats-box {
@@ -393,13 +434,6 @@
 
   .block {
     width: 80%;
-  }
-
-  .split {
-    .post {
-      width: 100%;
-    }
-
   }
 
 }

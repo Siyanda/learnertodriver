@@ -433,6 +433,13 @@ footer {
   text-transform: lowercase;
 }
 
+.truncate {
+  width: 250px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .gray-text {
   @include link-colors($gray, $alt-color ,$color-accent,$alt-accent);
 }
@@ -470,27 +477,27 @@ footer {
   text-align: center;
 }
 
-.big {
+.big-text {
   font-size: 4.4rem;
 }
 
-.x-large {
+.x-large-text {
   font-size: 2.25rem;
 }
 
-.large {
+.large-text {
   font-size: 1.25rem;
 }
 
-.medium {
+.medium-text {
   font-size: .8rem;
 }
 
-.small {
+.small-text {
   font-size: .75rem;
 }
 
-.tiny {
+.tiny-text {
   font-size: .55rem;
 }
 
