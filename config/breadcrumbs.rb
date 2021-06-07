@@ -26,7 +26,7 @@ end
 
 # Page list
 crumb :pages do
-  link 'Company', root_path
+  link 'Pages', pages_path
 end
 
 # Page
