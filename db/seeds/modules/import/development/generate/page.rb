@@ -8,7 +8,7 @@ pages = [
   { 'title' => 'Cancellation Policy', 'content' => rendered_md('page/cancellation'), 'slug' => 'cancellation', 'status' => 'published', 'editor_id' => User.first.id, 'parent_id' => '' },
   { 'title' => 'Support Community', 'content' => rendered_md('page/community'), 'slug' => 'community', 'status' => 'published', 'editor_id' => User.first.id, 'parent_id' => '' },
   { 'title' => 'Contact', 'content' => rendered_md('page/contact'), 'slug' => 'contact', 'status' => 'published', 'editor_id' => User.first.id, 'parent_id' => '' },
-  { 'title' => 'How to manage the account of someone who is incapacitated or has died', 'content' => rendered_md('page/incapacitated'), 'slug' => 'incapacitated', 'status' => 'published', 'editor_id' => User.first.id, 'parent_id' => '' },
+  { 'title' => 'Incapacitated', 'content' => rendered_md('page/incapacitated'), 'slug' => 'incapacitated', 'status' => 'published', 'editor_id' => User.first.id, 'parent_id' => '' },
   { 'title' => 'Careers', 'content' => rendered_md('page/jobs'), 'slug' => 'jobs', 'status' => 'published', 'editor_id' => User.first.id, 'parent_id' => '' },
   { 'title' => 'Partners', 'content' => rendered_md('page/partnership'), 'slug' => 'partnership', 'status' => 'published', 'editor_id' => User.first.id, 'parent_id' => '' },
   { 'title' => 'Policies', 'content' => rendered_md('page/policies'), 'slug' => 'policies', 'status' => 'published', 'editor_id' => User.first.id, 'parent_id' => '' },
