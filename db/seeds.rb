@@ -13,7 +13,6 @@ models.reverse.each { |m|
 puts '... seeding new data 💾'
 
 seeds_path = "#{Rails.root}/db/seeds/modules/import/#{Rails.env}"
-File.expand_path("../content/#{file_name}.markdown", __FILE__)
 
 models.each do |data|
   seed = File.read(seeds_path + "/data/#{data}.csv")
@@ -32,9 +31,9 @@ puts '... generating post and page content from markdown 📝'
 
 def rendered_md(file_name)
   markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true, tables: true)
-  file = "../content/#{file_name}.markdown"
+  seeds_path = "#{Rails.root}/db/seeds/modules/import/#{Rails.env}"
 
-  content = File.read(file)
+  content = File.read(seeds_path + "/content/#{file_name}.markdown")
   markdown.render(content)
 end
 
