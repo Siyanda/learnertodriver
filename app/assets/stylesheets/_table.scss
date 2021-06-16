@@ -19,6 +19,7 @@ table {
     text-align: left;
     text-transform: initial;
     vertical-align: middle;
+    border-left: thin solid $gainsboro;
 
     &.small-cell {
       width: 80px;
