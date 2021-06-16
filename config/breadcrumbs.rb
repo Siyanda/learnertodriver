@@ -9,7 +9,7 @@ end
 
 # User
 crumb :user do |user|
-  link user.name.first, user
+  link user.username, user
   parent :users
 end
 
