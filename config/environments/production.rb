@@ -103,7 +103,7 @@ Rails.application.configure do
   config.action_mailer.perform_deliveries = true
   config.action_mailer.smtp_settings = {
     address: ENV['EMAIL_SERVICE_SMTP'],
-    port: 587,
+    port: ENV['EMAIL_SERVICE_PORT'],
     user_name: ENV['EMAIL_SERVICE_USER'],
     password: ENV['EMAIL_SERVICE_PASS'],
     authentication: :plain,
