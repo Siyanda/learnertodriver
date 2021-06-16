@@ -24,6 +24,10 @@ class QuizzesController < ApplicationController
     @questions = @quiz.questions.includes(:answers)
   end
 
+  def edit
+    @questions = @quiz.questions.includes(:answers)
+  end
+
   private
 
   def set_quiz

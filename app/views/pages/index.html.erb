@@ -96,7 +96,7 @@
 
   <div class="flex spaced-between">
     <div class="flex lightly top-padded bottom-padded center-aligned">
-      <%= link_to new_page_path, class: 'flex center-aligned rounded dark ' do %>
+      <%= link_to new_page_path, class: 'flex center-aligned rounded dark outline-btn' do %>
         <div class="mdm-svg icon">
           <%= inline_svg("icons/plus-circle-o.svg") %>
         </div>
@@ -131,7 +131,7 @@
   <br>
 
   <table class="table">
-    <tr class="thead">
+    <tr class="thead night-bg white-text">
       <th></th>
       <th><%= sort_link @q, :title, "Title" %></th>
       <th><%= sort_link @q, :slug, "Slug" %></th>

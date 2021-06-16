@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   resources :evaluations
   resources :pages
   resources :photos
+  resources :questions
 
   resources :posts do
     resources :comments

@@ -1,6 +1,24 @@
-<tr>
-  <td><%= question.id %></td>
-  <td><%= question.content %></td>
+<tr class="tbody">
+  <td class="small-cell text-center numbered grey-text"><%= question.id %></td>
+  <td><p class="truncate"><%= question.content %></p></td>
   <td><%= question.answer_ids %></td>
-  <td class="flex"><button>Update</button> <button>Remove</button></td>
+  <td class="flex small-cell spaced-between">
+    <%= link_to question_path(question) do %>
+      <div class="mdm-svg dark-stroke icon">
+        <%= inline_svg("icons/view-o.svg") %>
+      </div>
+    <% end %>
+
+    <%= link_to edit_question_path(question) do %>
+      <div class="mdm-svg dark-stroke icon">
+        <%= inline_svg("icons/edit.svg") %>
+      </div>
+    <% end %>
+
+    <%= link_to edit_question_path(question) do %>
+      <div class="mdm-svg dark-stroke icon">
+        <%= inline_svg("icons/trash-o.svg") %>
+      </div>
+    <% end %>
+  </td>
 </tr>
