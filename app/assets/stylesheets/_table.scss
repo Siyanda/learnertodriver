@@ -3,22 +3,25 @@ table {
 
   tbody {
     tr {
+      &:nth-child(odd) {
+        border: thin solid $gainsboro;
+      }
 
       &:nth-child(even) {
         background-color: $cream;
+        border: thin solid $gainsboro;
       }
     }
   }
 
   td, th {
-    border: thin solid $gainsboro;
     padding: 8px;
     text-align: left;
     text-transform: initial;
     vertical-align: middle;
 
-    &.tiny {
-      width: 70px;
+    &.small-cell {
+      width: 80px;
     }
   }
 }
