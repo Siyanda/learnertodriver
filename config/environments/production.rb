@@ -104,8 +104,8 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     address: ENV['EMAIL_SERVICE_SMTP'],
     port: ENV['EMAIL_SERVICE_PORT'],
-    user_name: ENV['EMAIL_SERVICE_USER'],
-    password: ENV['EMAIL_SERVICE_PASS'],
+    user_name: ENV['EMAIL_API_USER'],
+    password: ENV['EMAIL_API_KEY'],
     authentication: :plain,
     enable_starttls_auto: true
   }
