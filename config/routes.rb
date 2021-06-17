@@ -29,10 +29,11 @@ Rails.application.routes.draw do
 
   resource :dashboard, only: %(show)
   resources :users, only: %i[show edit]
-  resources :evaluations
+  resources :tags
   resources :pages
   resources :photos
   resources :questions
+  resources :evaluations
 
   resources :posts do
     resources :comments
