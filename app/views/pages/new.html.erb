@@ -134,7 +134,7 @@
                 <%= inline_svg("icons/ui/date-calendar.svg") %>
               </div>
               <h4 class="capitalized">
-                <span class="bold margin-sides">Schedule Post : </span><%= @page.created_at %>
+                <span class="bold margin-sides">Schedule Post : </span><%= @page.created_at.iso8601 %>
               </h4>
             </div>
           <br>

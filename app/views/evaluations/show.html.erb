@@ -4,7 +4,7 @@
     <div class="flex column">
       <div class="flex spaced-between">
         <div class="new">
-          <h4 class="bold"><%= @evaluation.created_at.strftime(" %b %Y ") %></h4>
+          <h4 class="bold"><%= @evaluation.created_at.iso8601.strftime(" %b %Y ") %></h4>
           <p><%= @evaluation.quiz.title %> Appraisal Form</p>
         </div>
 

@@ -4,7 +4,7 @@
     <div class="flex column">
       <div class="flex spaced-between">
           <div class="info">
-            <h4 class="bold"><%= DateTime.now %></h4>
+            <h4 class="bold"><span class="formatted_time"><%= DateTime.now %></span></h4>
             <h1>Quiz : <%= @quiz.title %></h1>
             <h1><%= @quiz.questions.count %> Questions</h1>
             <h1><%= current_user.name %></h1>

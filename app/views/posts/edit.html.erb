@@ -27,7 +27,7 @@
               <div class="dark-stroke mdm-svg icon">
                 <%= inline_svg("icons/ui/date-calendar.svg") %>
               </div>
-              <h4 class="capitalized"><span class="bold margin-sides">Schedule Post : </span><%= @post.created_at %></h4>
+              <h4 class="capitalized"><span class="bold margin-sides">Schedule Post : </span><%= @post.created_at.iso8601 %></h4>
             </div>
 
           </div>
