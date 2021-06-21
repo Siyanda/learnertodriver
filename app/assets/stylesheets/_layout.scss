@@ -71,6 +71,22 @@
   }
 }
 
+.alt-overlay {
+  background-image: linear-gradient($light-grey, $light-black);
+  cursor: pointer;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  top: 0;
+  opacity: 0;
+  position: absolute;
+  transition: opacity 1s ease-in-out;
+
+  &:hover {
+    opacity: .6;
+  }
+}
+
 .overlay {
   background-image: linear-gradient($light-grey, $light-black);
   cursor: pointer;
