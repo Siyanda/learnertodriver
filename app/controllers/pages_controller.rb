@@ -9,7 +9,9 @@ class PagesController < ApplicationController
     @pagy, @pages = pagy(@q.result, items: params[:max] || 10)
   end
 
-  def show; end
+  def show
+    @pages = Page.all
+  end
 
   def new
     @page = current_user.pages.build
