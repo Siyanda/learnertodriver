@@ -59,14 +59,18 @@
 }
 
 .outline-btn {
-  border: 2px solid #585858;
   border-radius: .4rem;
   padding: .4rem;
-  transition: color .3s ease;
 
-  &:hover {
-    background-color: $brand-color;
-    color: $white;
+  &.dark-btn {
+    border: 2px solid lighten($ocean, 10%);
+    color: $ocean;
+    transition: color .3s ease;
+
+    &:hover {
+      color: $white;
+      background-color: $ocean;
+    }
   }
 }
 

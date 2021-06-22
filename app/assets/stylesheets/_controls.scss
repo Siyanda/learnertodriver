@@ -1,3 +1,23 @@
+.action-bar {
+  border-bottom: $base-border;
+
+  a {
+    align-items: center;
+    border: 2px solid $ocean;
+    border-radius: .4rem;
+    color: $ocean;
+    cursor: pointer;
+    display: flex;
+    margin: auto .4rem;
+    padding: .2rem .4rem;
+
+    &:hover {
+      background-color: $ocean;
+      color: $white;
+    }
+  }
+}
+
 .range-container {
   margin: 2rem;
 }
@@ -44,7 +64,6 @@ input[type="range"]::-webkit-slider-thumb {
     position: absolute;
     font-style: normal;
     font-weight: 400;
-    display: inline-block;
     text-decoration: inherit;
     width: 1em;
     text-align: center;
@@ -66,7 +85,6 @@ input[type="range"]::-webkit-slider-thumb {
     position: absolute;
     font-style: normal;
     font-weight: 400;
-    display: inline-block;
     text-decoration: inherit;
     width: 1em;
     text-align: center;
@@ -87,4 +105,3 @@ input[type="range"]::-webkit-slider-thumb {
 input[type="range"]::-webkit-slider-thumb:active {
   box-shadow: 0 0 1px $grey;
 }
-

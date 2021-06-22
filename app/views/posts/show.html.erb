@@ -1,6 +1,10 @@
 <% title @post.title %>
 <% breadcrumb :post, @post %>
 
+<% content_for :action_bar do %>
+  <%= render :partial => 'layouts/common/action_bar', :locals => { :item => @post } %>
+<% end %>
+
 <div class="flex to-column gapped">
   <div class="flex full-width rounded mildy-shd shadowed basic-border max-height column white-bg post">
 

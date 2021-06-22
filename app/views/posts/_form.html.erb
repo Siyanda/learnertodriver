@@ -20,7 +20,7 @@
 
         <div class="flex lightly top-padded bottom-padded center-aligned">
           <p class="post-date">
-            Last updated <span class="time_in_words"><%= @post.updated_at.iso8601 %></span> by <%= @post.author.name %>
+            Posted <span class="time_in_words"><%= @post.created_at.iso8601 %></span>
           </p>
         </div>
       </div>
