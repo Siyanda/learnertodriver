@@ -618,24 +618,40 @@ footer {
 }
 
 @media screen and (max-width: 420px) {
+  .app-body {
+    margin-bottom: 80px;
+  }
+
   .mobile-only {
     display: inherit;
   }
 }
 
 @media screen and (max-width: 420px) {
+  .app-body {
+    margin-bottom: 80px;
+  }
+
   .tablet-only {
     display: inherit;
   }
 }
 
 @media screen and (max-width: 800px) {
+  .app-body {
+    margin-bottom: 80px;
+  }
+
   .tablet-only {
     display: inherit;
   }
 }
 
 @media screen and (min-width: 800px) {
+  .app-body {
+    margin-bottom: 50px;
+  }
+
   .desktop-only {
     display: inherit;
   }
