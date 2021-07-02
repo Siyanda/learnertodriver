@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_07_003607) do
+ActiveRecord::Schema.define(version: 2021_06_30_130113) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,15 +68,12 @@ ActiveRecord::Schema.define(version: 2021_05_07_003607) do
   end
 
   create_table "notifications", force: :cascade do |t|
-    t.string "recipient_type", null: false
-    t.bigint "recipient_id", null: false
-    t.string "type", null: false
-    t.jsonb "params"
-    t.datetime "read_at"
+    t.string "notifiable_type", null: false
+    t.bigint "notifiable_id", null: false
+    t.text "content"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["read_at"], name: "index_notifications_on_read_at"
-    t.index ["recipient_type", "recipient_id"], name: "index_notifications_on_recipient"
+    t.index ["notifiable_type", "notifiable_id"], name: "index_notifications_on_notifiable"
   end
 
   create_table "pages", force: :cascade do |t|
@@ -165,10 +162,11 @@ ActiveRecord::Schema.define(version: 2021_05_07_003607) do
   create_table "tags", force: :cascade do |t|
     t.string "tagable_type", null: false
     t.bigint "tagable_id", null: false
+    t.string "title"
     t.text "content"
+    t.string "slug"
     t.integer "status", default: 0, null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.index ["slug"], name: "index_tags_on_slug", unique: true
     t.index ["tagable_type", "tagable_id"], name: "index_tags_on_tagable"
   end
 

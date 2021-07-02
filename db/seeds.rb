@@ -1,6 +1,6 @@
 require 'csv'
 
-models =  %w[user post comment page quiz question answer specification response]
+models =  %w[user post comment page quiz question answer specification response tag]
 
 puts '... deleting all existing data 🗑'
 
@@ -37,7 +37,7 @@ def rendered_md(file_name)
   markdown.render(content)
 end
 
-data = %w[page post comment]
+data = %w[page post comment tag]
 
 data.each do |model_name|
    require seeds_path + "/generate/#{model_name}.rb"
