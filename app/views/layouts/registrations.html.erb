@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="<%= I18n.locale %>">
+<html class="texture" lang="<%= I18n.locale %>">
   <head>
     <title><%= t("site_name") %> | <%= t("tagline") %></title>
     <meta charset="utf-8">
@@ -20,7 +20,7 @@
     <%= javascript_include_tag "turbo", type: "module-shim" %>
   </head>
 
-  <body class="main-bg texture full-page max-height">
+  <body class="main-bg full-page max-height">
 
     <div class="full-page mid-center devise">
       <%= render "layouts/common/messages" %>
