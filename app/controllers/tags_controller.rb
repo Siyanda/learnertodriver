@@ -1,5 +1,6 @@
 class TagsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index]
+  skip_before_action :authenticate_user!, only: [:index, :show]
+  before_action :set_tag, only: %i[show edit update destroy]
 
   def new
     @tag = @tagable.tags.new
@@ -12,6 +13,9 @@ class TagsController < ApplicationController
   end
 
   private
+  def set_tag
+    @tag = Tag.friendly.find(params[:id])
+  end
 
   def tag_params
     params.require(:tag).permit(:content)
