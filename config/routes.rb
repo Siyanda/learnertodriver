@@ -37,8 +37,7 @@ Rails.application.routes.draw do
 
   resources :posts do
     resources :comments
-    resources :tags, module: :posts
-    member do
+     member do
       put 'like', to:    'posts#upvote'
       put 'dislike', to: 'posts#downvote'
     end

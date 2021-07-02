@@ -32,6 +32,9 @@
 }
 
 .card-image {
+  min-height: 160px;
+  min-width: 280px;
+
   img {
     border-bottom: 3px solid $alt-accent;
     width: 100%;

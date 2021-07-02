@@ -61,30 +61,11 @@
         <hr class="third-width hr-grey">
         <div class="section">
           <ul class="flex lightly top-padded wrapped tags">
+          <% @post.tags.each do |tag| %>
             <li class="flex tag-container">
-              <a href="test" class="tag gainsboro-bg">test</a>
+              <%= link_to  tag.title, tag_path(tag), class: "tag gainsboro-bg" %>
             </li>
-            <li class="flex tag-container">
-              <a href="test" class="tag gainsboro-bg">search</a>
-            </li>
-            <li class="flex tag-container">
-              <a href="test" class="tag gainsboro-bg">activerecord</a>
-            </li>
-            <li class="flex tag-container">
-              <a href="test" class="tag gainsboro-bg">ruby</a>
-            </li>
-            <li class="flex tag-container">
-              <a href="test" class="tag gainsboro-bg">rails</a>
-            </li>
-            <li class="flex tag-container">
-              <a href="test" class="tag gainsboro-bg">pg</a>
-            </li>
-            <li class="flex tag-container">
-              <a href="test" class="tag gainsboro-bg">webapp</a>
-            </li>
-            <li class="flex tag-container">
-              <a href="test" class="tag gainsboro-bg">testing</a>
-            </li>
+          <% end %>
           </ul>
         </div>
       </div>
