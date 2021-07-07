@@ -21,8 +21,7 @@ models.each do |data|
   model = data.camelize.constantize
   puts "seeding #{model} 🌱"
   csv.each do |row|
-    model.create!(
-      row.to_hash)
+    model.create!(row.to_hash)
   end
   puts "#{data.camelize.constantize.count} #{data.pluralize} created"
 end

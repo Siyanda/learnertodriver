@@ -123,9 +123,20 @@
   }
 }
 
+// flex gap not working on chrome
+// .gapped {
+//   gap: 2rem;
+// }
+
 .gapped {
-  gap: 2rem;
   margin: 2rem;
+  gap: 2rem;
+
+  > div {
+    &:not(:last-child) {
+      margin-right: 2rem;
+    }
+  }
 
   &.no-lm {
     margin-left: 0;
