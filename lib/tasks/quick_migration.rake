@@ -1,16 +1,28 @@
 namespace :quick_migration do
   desc 'Quick migration to add db columns'
   task column_add: :environment do
-    # unless ActiveRecord::Base.connection.column_exists?('pages', 'content')
-    #   ActiveRecord::Migration.add_column :pages, :content, :string
-    # end
+    unless ActiveRecord::Base.connection.column_exists?('tags', 'title')
+      ActiveRecord::Migration.add_column :tags, :title, :string
+    end
+
+    unless ActiveRecord::Base.connection.column_exists?('tags', 'slug')
+      ActiveRecord::Migration.add_column :tags, :slug, :string
+    end
   end
 
   desc 'Quick migration to remove db columns'
   task column_remove: :environment do
-    # if ActiveRecord::Base.connection.column_exists?('quizzes', 'question_count')
-    #   ActiveRecord::Migration.remove_column :quizzes, :question_count, :integer
+    # if ActiveRecord::Base.connection.column_exists?('notifications', 'question_count')
+    #   ActiveRecord::Migration.remove_column :notifications, :question_count, :integer
     # end
+  end
+
+  desc 'Quick migration to drop a table'
+  task table_drop: :environment do
+    drop_table(:notifications) do |t|
+      # t.column :name, :string, limit: 60
+      # Other fields here
+    end
   end
 
   desc 'Quick migration to rename db columns'
