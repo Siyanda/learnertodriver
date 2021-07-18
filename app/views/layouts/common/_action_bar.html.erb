@@ -4,7 +4,7 @@
     <%= link_to url_for :controller => controller.controller_name,
                         :action => 'new' do %>
 
-      <div class="mdm-svg dark-text icon">
+      <div class="mdm-svg icon">
         <%= inline_svg("icons/plus-circle-o.svg") %>
       </div> New
     <% end %>
@@ -12,7 +12,7 @@
       <%= link_to url_for :controller => controller.controller_name,
                           :action => 'edit',
                           :id => item.id do %>
-      <div class="mdm-svg dark-text icon">
+      <div class="mdm-svg icon">
         <%= inline_svg("icons/edit-o.svg") %>
       </div>Edit
       <% end %>
