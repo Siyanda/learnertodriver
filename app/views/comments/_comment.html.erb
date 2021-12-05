@@ -5,7 +5,7 @@
           <cite class="comment-meta">
             <%= link_to comment.user.name, user_path(comment.user) %>
           </cite>
-          <p class="gray-text">Posted <span class="time_in_words"><%= comment.created_at.iso8601 %></span></p>
+          <p class="gray-text">Posted <span class="time_ago_in_words"><%= comment.created_at.iso8601 %></span></p>
           <div class="comment-actions">
             <% if comment.user == current_user %>
 
