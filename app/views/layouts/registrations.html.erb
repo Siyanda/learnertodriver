@@ -14,10 +14,8 @@
 
     <%= yield :head %>
 
-    <%= stylesheet_link_tag "application", media: "all" %>
-    <%= javascript_include_tag "application" %>
-    <%= javascript_include_tag "turbo", type: "module-shim" %>
-
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+    <%= stylesheet_link_tag "application", media: "all", "data-turbo-track": "reload" %>
   </head>
 
   <body class="main-bg full-page max-height">

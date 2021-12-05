@@ -3,15 +3,17 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.0.2'
 
-gem 'rails', '~> 6.1.3'
+gem 'rails', '~> 7.0.0.alpha2'
 gem 'pg'
 gem 'puma'
 gem 'jbuilder'
-gem 'sass-rails'
-gem 'hotwire-rails'
+gem 'jsbundling-rails'
+gem 'cssbundling-rails'
 gem 'bootsnap', require: false
 
 gem 'redis'
+gem 'turbo-rails'
+gem 'stimulus-rails'
 gem 'sidekiq'
 gem 'sidekiq-scheduler'
 gem 'shrine'
@@ -22,13 +24,13 @@ gem 'liquid'
 gem 'redcarpet'
 gem 'name_of_person'
 gem 'pagy'
-gem 'ransack'
+gem 'ransack', github: 'activerecord-hackery/ransack'
 gem 'pg_search'
 gem 'sinatra'
 
 gem 'acts_as_votable'
 gem 'autoprefixer-rails'
-gem 'devise'
+gem 'devise', git: 'https://github.com/heartcombo/devise', branch: 'main'
 gem 'gretel'
 gem 'friendly_id'
 gem 'simple_form'
@@ -42,7 +44,6 @@ group :development, :test do
 end
 
 group :development do
-  gem 'bullet'
   gem 'letter_opener'
   gem 'web-console'
   gem 'listen'

@@ -112,7 +112,7 @@
 }
 
 .lines-bg {
-  background-image: url(image_path("svg/lines_light.svg"));
+  background-image: url("svg/lines_light.svg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -120,7 +120,7 @@
 }
 
 .main-bg {
-  background-image: url(image_path("svg/main.svg"));
+  background-image: url("svg/main.svg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -128,7 +128,7 @@
 }
 
 .thin-bg {
-  background-image: url(image_path("svg/thin.svg"));
+  background-image: url("svg/thin.svg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;

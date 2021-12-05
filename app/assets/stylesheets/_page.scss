@@ -198,7 +198,7 @@
 }
 
 .header {
-  background-image: linear-gradient($light-grey, $light-black), url(image_path("bg/main.png"));
+  background-image: linear-gradient($light-grey, $light-black), url("bg/main.png");
   background-size: cover;
   font-weight: 400;
   text-align: center;

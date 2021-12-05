@@ -1,6 +1,6 @@
 .testimonials {
   padding: 2.5em 0;
-  background-image: linear-gradient($translucent, $light-grey), url(image_path("bg/city.jpg"));
+  background-image: linear-gradient($translucent, $light-grey), url("bg/city.jpg");
   background-position: center top;
   background-repeat: repeat-x;
 }
