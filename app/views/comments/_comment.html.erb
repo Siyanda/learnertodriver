@@ -9,10 +9,11 @@
           <div class="comment-actions">
             <% if comment.user == current_user %>
 
-              <%= link_to '', post_comments_path(comment), method: :delete, data: { confirm: 'Are you sure?' }, class: 'confirmation' %>
+              <%= link_to post_comment_path(comment.post, comment), "data-turbo-method": :delete, "data-turbo-confirm": "Are you sure?", class: 'confirmation' do %>
               <div class="clickable gray-fill standard-svg svg icon">
                 <%= inline_svg("icons/trash.svg") %>
               </div>
+              <% end %>
             <% end %>
           </div>
       </div>
