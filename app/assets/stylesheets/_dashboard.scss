@@ -206,7 +206,7 @@ body {
   background-image: url("bg/cream_dust.png");
 
   &.txr-dark {
-    background-image: linear-gradient($unclear,$unclear),url("bg/cream_dust.png")
+    background-image: linear-gradient($unclear,$unclear), url("bg/cream_dust.png")
   }
 }
 

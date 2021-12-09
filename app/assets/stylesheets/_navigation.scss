@@ -387,14 +387,20 @@
   }
 }
 
-.search-icon {
+.float-icon {
+
+  &.search {
+    svg {
+    top: 5px;
+    }
+  }
 
   svg {
     position: absolute;
-    top: 5px;
+    top: 10px;
     left: 5px;
     width: 15px;
-    height: 15px;
+    height: 20px;
   }
 }
 
