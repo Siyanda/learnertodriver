@@ -22,7 +22,6 @@ class CommentsController < ApplicationController
   def destroy
     @comment.destroy
     respond_to do |format|
-      format.html { redirect_back(fallback_location: posts_path, notice: 'Comment successfully deleted') }
       format.json { head :no_content }
     end
   end
