@@ -12226,26 +12226,28 @@
 
   // app/javascript/vendor/day.js
   var import_dayjs = __toModule(require_dayjs_min());
-  var relativeTime = require_relativeTime();
-  import_dayjs.default.extend(relativeTime);
-  var dateContainer = document.getElementsByClassName("time_ago_in_words");
-  if (dateContainer) {
-    let allDates = Array.from(dateContainer);
-    allDates.forEach(function(element) {
-      let dateText = element.textContent.replace(/[\n\r]+|[\s]{2,}/g, " ").trim();
-      let formatedDate = (0, import_dayjs.default)().to((0, import_dayjs.default)(dateText));
-      element.innerHTML = formatedDate;
-    });
-  }
-  var timeContainer = document.getElementsByClassName("formatted_time");
-  if (timeContainer) {
-    let allTimes = Array.from(timeContainer);
-    allTimes.forEach(function(element) {
-      let dateText = element.textContent.replace(/[\n\r]+|[\s]{2,}/g, " ").trim();
-      let formatedTime = (0, import_dayjs.default)(dateText).format("D MMM YYYY");
-      element.innerHTML = formatedTime;
-    });
-  }
+  document.addEventListener("turbo:load", () => {
+    var relativeTime = require_relativeTime();
+    import_dayjs.default.extend(relativeTime);
+    let dateContainer = document.getElementsByClassName("time_ago_in_words");
+    if (dateContainer) {
+      let allDates = Array.from(dateContainer);
+      allDates.forEach(function(element) {
+        let dateText = element.textContent.replace(/[\n\r]+|[\s]{2,}/g, " ").trim();
+        let formatedDate = (0, import_dayjs.default)().to((0, import_dayjs.default)(dateText));
+        element.innerHTML = formatedDate;
+      });
+    }
+    let timeContainer = document.getElementsByClassName("formatted_time");
+    if (timeContainer) {
+      let allTimes = Array.from(timeContainer);
+      allTimes.forEach(function(element) {
+        let dateText = element.textContent.replace(/[\n\r]+|[\s]{2,}/g, " ").trim();
+        let formatedTime = (0, import_dayjs.default)(dateText).format("D MMM YYYY");
+        element.innerHTML = formatedTime;
+      });
+    }
+  });
 
   // app/javascript/vendor/lazysrc.js
   document.addEventListener("turbo:load", () => {

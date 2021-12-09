@@ -3158,12 +3158,15 @@ input[type=range]::-webkit-slider-thumb:active {
   height: 100px;
 }
 
-.search-icon svg {
-  position: absolute;
+.float-icon.search svg {
   top: 5px;
+}
+.float-icon svg {
+  position: absolute;
+  top: 10px;
   left: 5px;
   width: 15px;
-  height: 15px;
+  height: 20px;
 }
 
 .search-container {
