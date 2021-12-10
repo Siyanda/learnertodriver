@@ -12218,23 +12218,43 @@
     }
   };
 
+  // app/javascript/controllers/day_controller.js
+  var import_dayjs = __toModule(require_dayjs_min());
+  var relativeTime = require_relativeTime();
+  import_dayjs.default.extend(relativeTime);
+  var day_controller_default = class extends Controller {
+    static get targets() {
+      return ["formattedTime"];
+    }
+    initialize() {
+    }
+    trim(rawText) {
+      return rawText.replace(/[\n\r]+|[\s]{2,}/g, " ").trim();
+    }
+    format(dateText) {
+    }
+    time_ago(dateText) {
+    }
+  };
+
   // app/javascript/controllers/index.js
   application.register("dropdown", dropdown_controller_default);
   application.register("menu", menu_controller_default);
   application.register("sidebar", sidebar_controller_default);
   application.register("tabs", tabs_controller_default);
+  application.register("day", day_controller_default);
 
   // app/javascript/vendor/day.js
-  var import_dayjs = __toModule(require_dayjs_min());
+  var import_dayjs2 = __toModule(require_dayjs_min());
   document.addEventListener("turbo:load", () => {
-    var relativeTime = require_relativeTime();
-    import_dayjs.default.extend(relativeTime);
+    var relativeTime2 = require_relativeTime();
+    import_dayjs2.default.extend(relativeTime2);
     let dateContainer = document.getElementsByClassName("time_ago_in_words");
     if (dateContainer) {
       let allDates = Array.from(dateContainer);
       allDates.forEach(function(element) {
         let dateText = element.textContent.replace(/[\n\r]+|[\s]{2,}/g, " ").trim();
-        let formatedDate = (0, import_dayjs.default)().to((0, import_dayjs.default)(dateText));
+        let formatedDate = (0, import_dayjs2.default)().to((0, import_dayjs2.default)(dateText));
         element.innerHTML = formatedDate;
       });
     }
@@ -12243,7 +12263,7 @@
       let allTimes = Array.from(timeContainer);
       allTimes.forEach(function(element) {
         let dateText = element.textContent.replace(/[\n\r]+|[\s]{2,}/g, " ").trim();
-        let formatedTime = (0, import_dayjs.default)(dateText).format("D MMM YYYY");
+        let formatedTime = (0, import_dayjs2.default)(dateText).format("D MMM YYYY");
         element.innerHTML = formatedTime;
       });
     }
