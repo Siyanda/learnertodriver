@@ -15,5 +15,8 @@ application.register("sidebar", SidebarController)
 import TabsController from "./tabs_controller.js"
 application.register("tabs", TabsController)
 
+import TabsController from "./slides_controller.js"
+application.register("slides", TabsController)
+
 import DayController from "./day_controller.js"
 application.register("day", DayController)
