@@ -1,13 +1,9 @@
 namespace :quick_migration do
   desc 'Quick migration to add db columns'
   task column_add: :environment do
-    unless ActiveRecord::Base.connection.column_exists?('tags', 'title')
-      ActiveRecord::Migration.add_column :tags, :title, :string
-    end
+    ActiveRecord::Migration.add_column :tags, :title, :string unless ActiveRecord::Base.connection.column_exists?('tags', 'title')
 
-    unless ActiveRecord::Base.connection.column_exists?('tags', 'slug')
-      ActiveRecord::Migration.add_column :tags, :slug, :string
-    end
+    ActiveRecord::Migration.add_column :tags, :slug, :string unless ActiveRecord::Base.connection.column_exists?('tags', 'slug')
   end
 
   desc 'Quick migration to remove db columns'

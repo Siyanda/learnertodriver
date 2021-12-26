@@ -2,50 +2,46 @@ import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
 
+  static values = { index:Number };
+
   static get targets() {
-    return ['slide']
+    return ['slide', 'progress', 'counter']
   }
 
-  connect(){
-
+  connect() {
+    this.activeSlide();
   }
 
-  next(){
-    if(this.indexValue < (this.slideTargets.length - 1)){
-      this.indexValue++;
-    }else{
-      this.indexValue = 0;
-    }
+  show(slide) {
+    return slide.style.display = 'flex';
   }
 
-  previous(){
-    if(this.indexValue > 0){
-      this.indexValue--;
-    }else{
-      this.indexValue = this.slideTargets.length - 1;
-    }
-   }
-
-  stopSlideShow(){
-    if(this.slideShowTimer){
-      clearInterval(this.slideShowTimer);
-    }
+  hide(slide) {
+    return slide.style.display = 'none';
   }
 
-  disconnect(){
-    this.stopSlideShow();
+  next() {
+    this.indexValue++
+    this.activeSlide();
   }
 
-  showCurrentSlide() {
-    this.slideTargets.forEach((element, index) => {
-      //element.hidden = index != this.indexValue;
-      var isHidden = index != this.indexValue;
-      if(isHidden){
-        element.classList.remove('active');
-      }else{
-        element.classList.add('active');
-      }
-    })
-   }
+  previous() {
+    this.indexValue--
+    this.activeSlide();
+  }
 
+  hideAllSlides() {
+    this.slideTargets.map(this.hide);
+  }
+
+  progressUpdate() {
+  }
+
+  activeSlide() {
+    const currentIndex = parseInt(this.indexValue);
+    const currentSlide = this.slideTargets[currentIndex];
+
+    this.hideAllSlides();
+    this.show(currentSlide);
+  }
 }

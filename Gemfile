@@ -1,12 +1,13 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.0.3'
+ruby '3.1.0'
 
-gem 'rails', '~> 7.0.0.alpha2'
+gem 'rails'
 gem 'pg'
 gem 'puma'
 gem 'jbuilder'
+gem 'sprockets-rails'
 gem 'jsbundling-rails'
 gem 'cssbundling-rails'
 gem 'bootsnap', require: false
@@ -30,7 +31,7 @@ gem 'sinatra'
 
 gem 'acts_as_votable'
 gem 'autoprefixer-rails'
-gem 'devise', git: 'https://github.com/heartcombo/devise', branch: 'main'
+gem 'devise'
 gem 'gretel'
 gem 'friendly_id'
 gem 'simple_form'

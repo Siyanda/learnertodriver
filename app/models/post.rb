@@ -4,7 +4,7 @@ class Post < ApplicationRecord
 
   acts_as_votable
   friendly_id :title, use: :slugged
-  validates_presence_of :title
+  validates :title, presence: true
 
   has_many :comments
   has_many :tags, as: :tagable

@@ -17,8 +17,7 @@ class PagesController < ApplicationController
     @page = current_user.pages.build
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @page = current_user.pages.build(page_params)
