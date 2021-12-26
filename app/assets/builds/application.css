@@ -1762,7 +1762,6 @@ table {
   gap: 2rem;
 }
 .gapped > div:not(:last-child) {
-  margin-right: 2rem;
 }
 .gapped.no-lm {
   margin-left: 0;

@@ -1,37 +1,49 @@
 <% breadcrumb :evaluation, @quiz %>
-
-  <div class="alt-border gapped content">
-    <div class="flex column">
-      <div class="flex spaced-between">
-          <div class="info">
-            <h4 class="bold"><span class="formatted_time"><%= DateTime.now %></span></h4>
-            <h1>Quiz : <%= @quiz.title %></h1>
-            <h1><%= @quiz.questions.count %> Questions</h1>
-            <h1><%= current_user.name %></h1>
-          </div>
-
-        <div class="long-svg icon">
-          <%= inline_svg("logo.svg") %>
-        </div>
-      </div>
-
-    </div>
+  <div class="alt-border gapped content"
+  data-controller="slides"
+  data-slides-index-value="0">
+    <%= render "evaluations/components/header" %>
     <br>
+    <div class="gainsboro-bordered">
 
-    <div class="gainsboro-bordered" >
-      <% @quiz.questions.random.each do |question| %>
-        <div class="column flex padded">
+    <div class="progress-container full-width">
+      <label for="question-progress">Progress:</label>
+      <progress
+        id="question-progress"
+        value="1"
+        max="10"
+        data-slides-target="progress"
+        class="full-width">
+      </progress>
+    </div>
+
+
+      <% @quiz.questions.random.each.with_index(1) do |question, index| %>
+
+        <div class="column flex padded" data-slides-target="slide">
+          <h2>Question <span data-slides-target="counter"><%= index %></span></h2>
           <h2><%= question.content %></h2>
+
           <div class="flex padded">
-            <ul>
+            <ul class="answers">
               <% question.answers.each do |answer| %>
-                <li><%= answer.content %></li>
+                <li class="answer"><%= answer.content %></li>
               <% end %>
             </ul>
           </div>
+
+        <div class="flex spaced-between slides-controls">
+          <div class="prv-btn" data-action="click->slides#previous">
+            <button class="button large-text">Previous</button>
+          </div>
+
+          <div class="next-btn" data-action="click->slides#next">
+            <button class="button large-text">Next</button>
+          </div>
+        </div>
+
         </div>
       <% end %>
     </div>
-
     <%= render "form" %>
   </div>
