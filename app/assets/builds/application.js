@@ -5,28 +5,32 @@
   var __getOwnPropNames = Object.getOwnPropertyNames;
   var __getProtoOf = Object.getPrototypeOf;
   var __hasOwnProp = Object.prototype.hasOwnProperty;
+  var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
   var __markAsModule = (target) => __defProp(target, "__esModule", { value: true });
   var __esm = (fn, res) => function __init() {
-    return fn && (res = (0, fn[Object.keys(fn)[0]])(fn = 0)), res;
+    return fn && (res = (0, fn[__getOwnPropNames(fn)[0]])(fn = 0)), res;
   };
   var __commonJS = (cb, mod) => function __require() {
-    return mod || (0, cb[Object.keys(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
+    return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
   };
   var __export = (target, all) => {
-    __markAsModule(target);
     for (var name in all)
       __defProp(target, name, { get: all[name], enumerable: true });
   };
-  var __reExport = (target, module, desc) => {
+  var __reExport = (target, module, copyDefault, desc) => {
     if (module && typeof module === "object" || typeof module === "function") {
       for (let key of __getOwnPropNames(module))
-        if (!__hasOwnProp.call(target, key) && key !== "default")
+        if (!__hasOwnProp.call(target, key) && (copyDefault || key !== "default"))
           __defProp(target, key, { get: () => module[key], enumerable: !(desc = __getOwnPropDesc(module, key)) || desc.enumerable });
     }
     return target;
   };
-  var __toModule = (module) => {
-    return __reExport(__markAsModule(__defProp(module != null ? __create(__getProtoOf(module)) : {}, "default", module && module.__esModule && "default" in module ? { get: () => module.default, enumerable: true } : { value: module, enumerable: true })), module);
+  var __toESM = (module, isNodeMode) => {
+    return __reExport(__markAsModule(__defProp(module != null ? __create(__getProtoOf(module)) : {}, "default", !isNodeMode && module && module.__esModule ? { get: () => module.default, enumerable: true } : { value: module, enumerable: true })), module);
+  };
+  var __publicField = (obj, key, value) => {
+    __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+    return value;
   };
 
   // node_modules/@hotwired/turbo-rails/node_modules/@rails/actioncable/src/adapters.js
@@ -761,7 +765,7 @@
             this.observer = t3, this.target = e3, this.options = n3, this.transientObservedNodes = [];
           }
           if (!t2.JsMutationObserver) {
-            var g, m = new WeakMap();
+            var g, m = /* @__PURE__ */ new WeakMap();
             if (/Trident|Edge/.test(navigator.userAgent))
               g = setTimeout;
             else if (window.setImmediate)
@@ -1368,9 +1372,9 @@
               return n = arguments[0], e2 = 2 <= arguments.length ? t2.call(arguments, 1) : [], i = n.slice(0), i.splice.apply(i, e2), i;
             }, summarizeArrayChange: function(t3, e2) {
               var n, i, o, r, s, a, u, c, l, h, p;
-              for (t3 == null && (t3 = []), e2 == null && (e2 = []), n = [], h = [], o = new Set(), r = 0, u = t3.length; u > r; r++)
+              for (t3 == null && (t3 = []), e2 == null && (e2 = []), n = [], h = [], o = /* @__PURE__ */ new Set(), r = 0, u = t3.length; u > r; r++)
                 p = t3[r], o.add(p);
-              for (i = new Set(), s = 0, c = e2.length; c > s; s++)
+              for (i = /* @__PURE__ */ new Set(), s = 0, c = e2.length; c > s; s++)
                 p = e2[s], i.add(p), o.has(p) || n.push(p);
               for (a = 0, l = t3.length; l > a; a++)
                 p = t3[a], i.has(p) || h.push(p);
@@ -5788,958 +5792,6 @@
     }
   });
 
-  // node_modules/@rails/activestorage/app/assets/javascripts/activestorage.js
-  var require_activestorage = __commonJS({
-    "node_modules/@rails/activestorage/app/assets/javascripts/activestorage.js"(exports, module) {
-      (function(global, factory) {
-        typeof exports === "object" && typeof module !== "undefined" ? factory(exports) : typeof define === "function" && define.amd ? define(["exports"], factory) : factory(global.ActiveStorage = {});
-      })(exports, function(exports2) {
-        "use strict";
-        function createCommonjsModule(fn, module2) {
-          return module2 = {
-            exports: {}
-          }, fn(module2, module2.exports), module2.exports;
-        }
-        var sparkMd5 = createCommonjsModule(function(module2, exports3) {
-          (function(factory) {
-            {
-              module2.exports = factory();
-            }
-          })(function(undefined2) {
-            var hex_chr = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f"];
-            function md5cycle(x, k) {
-              var a = x[0], b = x[1], c = x[2], d = x[3];
-              a += (b & c | ~b & d) + k[0] - 680876936 | 0;
-              a = (a << 7 | a >>> 25) + b | 0;
-              d += (a & b | ~a & c) + k[1] - 389564586 | 0;
-              d = (d << 12 | d >>> 20) + a | 0;
-              c += (d & a | ~d & b) + k[2] + 606105819 | 0;
-              c = (c << 17 | c >>> 15) + d | 0;
-              b += (c & d | ~c & a) + k[3] - 1044525330 | 0;
-              b = (b << 22 | b >>> 10) + c | 0;
-              a += (b & c | ~b & d) + k[4] - 176418897 | 0;
-              a = (a << 7 | a >>> 25) + b | 0;
-              d += (a & b | ~a & c) + k[5] + 1200080426 | 0;
-              d = (d << 12 | d >>> 20) + a | 0;
-              c += (d & a | ~d & b) + k[6] - 1473231341 | 0;
-              c = (c << 17 | c >>> 15) + d | 0;
-              b += (c & d | ~c & a) + k[7] - 45705983 | 0;
-              b = (b << 22 | b >>> 10) + c | 0;
-              a += (b & c | ~b & d) + k[8] + 1770035416 | 0;
-              a = (a << 7 | a >>> 25) + b | 0;
-              d += (a & b | ~a & c) + k[9] - 1958414417 | 0;
-              d = (d << 12 | d >>> 20) + a | 0;
-              c += (d & a | ~d & b) + k[10] - 42063 | 0;
-              c = (c << 17 | c >>> 15) + d | 0;
-              b += (c & d | ~c & a) + k[11] - 1990404162 | 0;
-              b = (b << 22 | b >>> 10) + c | 0;
-              a += (b & c | ~b & d) + k[12] + 1804603682 | 0;
-              a = (a << 7 | a >>> 25) + b | 0;
-              d += (a & b | ~a & c) + k[13] - 40341101 | 0;
-              d = (d << 12 | d >>> 20) + a | 0;
-              c += (d & a | ~d & b) + k[14] - 1502002290 | 0;
-              c = (c << 17 | c >>> 15) + d | 0;
-              b += (c & d | ~c & a) + k[15] + 1236535329 | 0;
-              b = (b << 22 | b >>> 10) + c | 0;
-              a += (b & d | c & ~d) + k[1] - 165796510 | 0;
-              a = (a << 5 | a >>> 27) + b | 0;
-              d += (a & c | b & ~c) + k[6] - 1069501632 | 0;
-              d = (d << 9 | d >>> 23) + a | 0;
-              c += (d & b | a & ~b) + k[11] + 643717713 | 0;
-              c = (c << 14 | c >>> 18) + d | 0;
-              b += (c & a | d & ~a) + k[0] - 373897302 | 0;
-              b = (b << 20 | b >>> 12) + c | 0;
-              a += (b & d | c & ~d) + k[5] - 701558691 | 0;
-              a = (a << 5 | a >>> 27) + b | 0;
-              d += (a & c | b & ~c) + k[10] + 38016083 | 0;
-              d = (d << 9 | d >>> 23) + a | 0;
-              c += (d & b | a & ~b) + k[15] - 660478335 | 0;
-              c = (c << 14 | c >>> 18) + d | 0;
-              b += (c & a | d & ~a) + k[4] - 405537848 | 0;
-              b = (b << 20 | b >>> 12) + c | 0;
-              a += (b & d | c & ~d) + k[9] + 568446438 | 0;
-              a = (a << 5 | a >>> 27) + b | 0;
-              d += (a & c | b & ~c) + k[14] - 1019803690 | 0;
-              d = (d << 9 | d >>> 23) + a | 0;
-              c += (d & b | a & ~b) + k[3] - 187363961 | 0;
-              c = (c << 14 | c >>> 18) + d | 0;
-              b += (c & a | d & ~a) + k[8] + 1163531501 | 0;
-              b = (b << 20 | b >>> 12) + c | 0;
-              a += (b & d | c & ~d) + k[13] - 1444681467 | 0;
-              a = (a << 5 | a >>> 27) + b | 0;
-              d += (a & c | b & ~c) + k[2] - 51403784 | 0;
-              d = (d << 9 | d >>> 23) + a | 0;
-              c += (d & b | a & ~b) + k[7] + 1735328473 | 0;
-              c = (c << 14 | c >>> 18) + d | 0;
-              b += (c & a | d & ~a) + k[12] - 1926607734 | 0;
-              b = (b << 20 | b >>> 12) + c | 0;
-              a += (b ^ c ^ d) + k[5] - 378558 | 0;
-              a = (a << 4 | a >>> 28) + b | 0;
-              d += (a ^ b ^ c) + k[8] - 2022574463 | 0;
-              d = (d << 11 | d >>> 21) + a | 0;
-              c += (d ^ a ^ b) + k[11] + 1839030562 | 0;
-              c = (c << 16 | c >>> 16) + d | 0;
-              b += (c ^ d ^ a) + k[14] - 35309556 | 0;
-              b = (b << 23 | b >>> 9) + c | 0;
-              a += (b ^ c ^ d) + k[1] - 1530992060 | 0;
-              a = (a << 4 | a >>> 28) + b | 0;
-              d += (a ^ b ^ c) + k[4] + 1272893353 | 0;
-              d = (d << 11 | d >>> 21) + a | 0;
-              c += (d ^ a ^ b) + k[7] - 155497632 | 0;
-              c = (c << 16 | c >>> 16) + d | 0;
-              b += (c ^ d ^ a) + k[10] - 1094730640 | 0;
-              b = (b << 23 | b >>> 9) + c | 0;
-              a += (b ^ c ^ d) + k[13] + 681279174 | 0;
-              a = (a << 4 | a >>> 28) + b | 0;
-              d += (a ^ b ^ c) + k[0] - 358537222 | 0;
-              d = (d << 11 | d >>> 21) + a | 0;
-              c += (d ^ a ^ b) + k[3] - 722521979 | 0;
-              c = (c << 16 | c >>> 16) + d | 0;
-              b += (c ^ d ^ a) + k[6] + 76029189 | 0;
-              b = (b << 23 | b >>> 9) + c | 0;
-              a += (b ^ c ^ d) + k[9] - 640364487 | 0;
-              a = (a << 4 | a >>> 28) + b | 0;
-              d += (a ^ b ^ c) + k[12] - 421815835 | 0;
-              d = (d << 11 | d >>> 21) + a | 0;
-              c += (d ^ a ^ b) + k[15] + 530742520 | 0;
-              c = (c << 16 | c >>> 16) + d | 0;
-              b += (c ^ d ^ a) + k[2] - 995338651 | 0;
-              b = (b << 23 | b >>> 9) + c | 0;
-              a += (c ^ (b | ~d)) + k[0] - 198630844 | 0;
-              a = (a << 6 | a >>> 26) + b | 0;
-              d += (b ^ (a | ~c)) + k[7] + 1126891415 | 0;
-              d = (d << 10 | d >>> 22) + a | 0;
-              c += (a ^ (d | ~b)) + k[14] - 1416354905 | 0;
-              c = (c << 15 | c >>> 17) + d | 0;
-              b += (d ^ (c | ~a)) + k[5] - 57434055 | 0;
-              b = (b << 21 | b >>> 11) + c | 0;
-              a += (c ^ (b | ~d)) + k[12] + 1700485571 | 0;
-              a = (a << 6 | a >>> 26) + b | 0;
-              d += (b ^ (a | ~c)) + k[3] - 1894986606 | 0;
-              d = (d << 10 | d >>> 22) + a | 0;
-              c += (a ^ (d | ~b)) + k[10] - 1051523 | 0;
-              c = (c << 15 | c >>> 17) + d | 0;
-              b += (d ^ (c | ~a)) + k[1] - 2054922799 | 0;
-              b = (b << 21 | b >>> 11) + c | 0;
-              a += (c ^ (b | ~d)) + k[8] + 1873313359 | 0;
-              a = (a << 6 | a >>> 26) + b | 0;
-              d += (b ^ (a | ~c)) + k[15] - 30611744 | 0;
-              d = (d << 10 | d >>> 22) + a | 0;
-              c += (a ^ (d | ~b)) + k[6] - 1560198380 | 0;
-              c = (c << 15 | c >>> 17) + d | 0;
-              b += (d ^ (c | ~a)) + k[13] + 1309151649 | 0;
-              b = (b << 21 | b >>> 11) + c | 0;
-              a += (c ^ (b | ~d)) + k[4] - 145523070 | 0;
-              a = (a << 6 | a >>> 26) + b | 0;
-              d += (b ^ (a | ~c)) + k[11] - 1120210379 | 0;
-              d = (d << 10 | d >>> 22) + a | 0;
-              c += (a ^ (d | ~b)) + k[2] + 718787259 | 0;
-              c = (c << 15 | c >>> 17) + d | 0;
-              b += (d ^ (c | ~a)) + k[9] - 343485551 | 0;
-              b = (b << 21 | b >>> 11) + c | 0;
-              x[0] = a + x[0] | 0;
-              x[1] = b + x[1] | 0;
-              x[2] = c + x[2] | 0;
-              x[3] = d + x[3] | 0;
-            }
-            function md5blk(s) {
-              var md5blks = [], i;
-              for (i = 0; i < 64; i += 4) {
-                md5blks[i >> 2] = s.charCodeAt(i) + (s.charCodeAt(i + 1) << 8) + (s.charCodeAt(i + 2) << 16) + (s.charCodeAt(i + 3) << 24);
-              }
-              return md5blks;
-            }
-            function md5blk_array(a) {
-              var md5blks = [], i;
-              for (i = 0; i < 64; i += 4) {
-                md5blks[i >> 2] = a[i] + (a[i + 1] << 8) + (a[i + 2] << 16) + (a[i + 3] << 24);
-              }
-              return md5blks;
-            }
-            function md51(s) {
-              var n = s.length, state = [1732584193, -271733879, -1732584194, 271733878], i, length, tail, tmp, lo, hi;
-              for (i = 64; i <= n; i += 64) {
-                md5cycle(state, md5blk(s.substring(i - 64, i)));
-              }
-              s = s.substring(i - 64);
-              length = s.length;
-              tail = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-              for (i = 0; i < length; i += 1) {
-                tail[i >> 2] |= s.charCodeAt(i) << (i % 4 << 3);
-              }
-              tail[i >> 2] |= 128 << (i % 4 << 3);
-              if (i > 55) {
-                md5cycle(state, tail);
-                for (i = 0; i < 16; i += 1) {
-                  tail[i] = 0;
-                }
-              }
-              tmp = n * 8;
-              tmp = tmp.toString(16).match(/(.*?)(.{0,8})$/);
-              lo = parseInt(tmp[2], 16);
-              hi = parseInt(tmp[1], 16) || 0;
-              tail[14] = lo;
-              tail[15] = hi;
-              md5cycle(state, tail);
-              return state;
-            }
-            function md51_array(a) {
-              var n = a.length, state = [1732584193, -271733879, -1732584194, 271733878], i, length, tail, tmp, lo, hi;
-              for (i = 64; i <= n; i += 64) {
-                md5cycle(state, md5blk_array(a.subarray(i - 64, i)));
-              }
-              a = i - 64 < n ? a.subarray(i - 64) : new Uint8Array(0);
-              length = a.length;
-              tail = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-              for (i = 0; i < length; i += 1) {
-                tail[i >> 2] |= a[i] << (i % 4 << 3);
-              }
-              tail[i >> 2] |= 128 << (i % 4 << 3);
-              if (i > 55) {
-                md5cycle(state, tail);
-                for (i = 0; i < 16; i += 1) {
-                  tail[i] = 0;
-                }
-              }
-              tmp = n * 8;
-              tmp = tmp.toString(16).match(/(.*?)(.{0,8})$/);
-              lo = parseInt(tmp[2], 16);
-              hi = parseInt(tmp[1], 16) || 0;
-              tail[14] = lo;
-              tail[15] = hi;
-              md5cycle(state, tail);
-              return state;
-            }
-            function rhex(n) {
-              var s = "", j;
-              for (j = 0; j < 4; j += 1) {
-                s += hex_chr[n >> j * 8 + 4 & 15] + hex_chr[n >> j * 8 & 15];
-              }
-              return s;
-            }
-            function hex(x) {
-              var i;
-              for (i = 0; i < x.length; i += 1) {
-                x[i] = rhex(x[i]);
-              }
-              return x.join("");
-            }
-            if (hex(md51("hello")) !== "5d41402abc4b2a76b9719d911017c592")
-              ;
-            if (typeof ArrayBuffer !== "undefined" && !ArrayBuffer.prototype.slice) {
-              (function() {
-                function clamp2(val, length) {
-                  val = val | 0 || 0;
-                  if (val < 0) {
-                    return Math.max(val + length, 0);
-                  }
-                  return Math.min(val, length);
-                }
-                ArrayBuffer.prototype.slice = function(from, to) {
-                  var length = this.byteLength, begin = clamp2(from, length), end = length, num, target, targetArray, sourceArray;
-                  if (to !== undefined2) {
-                    end = clamp2(to, length);
-                  }
-                  if (begin > end) {
-                    return new ArrayBuffer(0);
-                  }
-                  num = end - begin;
-                  target = new ArrayBuffer(num);
-                  targetArray = new Uint8Array(target);
-                  sourceArray = new Uint8Array(this, begin, num);
-                  targetArray.set(sourceArray);
-                  return target;
-                };
-              })();
-            }
-            function toUtf8(str) {
-              if (/[\u0080-\uFFFF]/.test(str)) {
-                str = unescape(encodeURIComponent(str));
-              }
-              return str;
-            }
-            function utf8Str2ArrayBuffer(str, returnUInt8Array) {
-              var length = str.length, buff = new ArrayBuffer(length), arr = new Uint8Array(buff), i;
-              for (i = 0; i < length; i += 1) {
-                arr[i] = str.charCodeAt(i);
-              }
-              return returnUInt8Array ? arr : buff;
-            }
-            function arrayBuffer2Utf8Str(buff) {
-              return String.fromCharCode.apply(null, new Uint8Array(buff));
-            }
-            function concatenateArrayBuffers(first, second, returnUInt8Array) {
-              var result = new Uint8Array(first.byteLength + second.byteLength);
-              result.set(new Uint8Array(first));
-              result.set(new Uint8Array(second), first.byteLength);
-              return returnUInt8Array ? result : result.buffer;
-            }
-            function hexToBinaryString(hex2) {
-              var bytes = [], length = hex2.length, x;
-              for (x = 0; x < length - 1; x += 2) {
-                bytes.push(parseInt(hex2.substr(x, 2), 16));
-              }
-              return String.fromCharCode.apply(String, bytes);
-            }
-            function SparkMD5() {
-              this.reset();
-            }
-            SparkMD5.prototype.append = function(str) {
-              this.appendBinary(toUtf8(str));
-              return this;
-            };
-            SparkMD5.prototype.appendBinary = function(contents) {
-              this._buff += contents;
-              this._length += contents.length;
-              var length = this._buff.length, i;
-              for (i = 64; i <= length; i += 64) {
-                md5cycle(this._hash, md5blk(this._buff.substring(i - 64, i)));
-              }
-              this._buff = this._buff.substring(i - 64);
-              return this;
-            };
-            SparkMD5.prototype.end = function(raw) {
-              var buff = this._buff, length = buff.length, i, tail = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], ret;
-              for (i = 0; i < length; i += 1) {
-                tail[i >> 2] |= buff.charCodeAt(i) << (i % 4 << 3);
-              }
-              this._finish(tail, length);
-              ret = hex(this._hash);
-              if (raw) {
-                ret = hexToBinaryString(ret);
-              }
-              this.reset();
-              return ret;
-            };
-            SparkMD5.prototype.reset = function() {
-              this._buff = "";
-              this._length = 0;
-              this._hash = [1732584193, -271733879, -1732584194, 271733878];
-              return this;
-            };
-            SparkMD5.prototype.getState = function() {
-              return {
-                buff: this._buff,
-                length: this._length,
-                hash: this._hash
-              };
-            };
-            SparkMD5.prototype.setState = function(state) {
-              this._buff = state.buff;
-              this._length = state.length;
-              this._hash = state.hash;
-              return this;
-            };
-            SparkMD5.prototype.destroy = function() {
-              delete this._hash;
-              delete this._buff;
-              delete this._length;
-            };
-            SparkMD5.prototype._finish = function(tail, length) {
-              var i = length, tmp, lo, hi;
-              tail[i >> 2] |= 128 << (i % 4 << 3);
-              if (i > 55) {
-                md5cycle(this._hash, tail);
-                for (i = 0; i < 16; i += 1) {
-                  tail[i] = 0;
-                }
-              }
-              tmp = this._length * 8;
-              tmp = tmp.toString(16).match(/(.*?)(.{0,8})$/);
-              lo = parseInt(tmp[2], 16);
-              hi = parseInt(tmp[1], 16) || 0;
-              tail[14] = lo;
-              tail[15] = hi;
-              md5cycle(this._hash, tail);
-            };
-            SparkMD5.hash = function(str, raw) {
-              return SparkMD5.hashBinary(toUtf8(str), raw);
-            };
-            SparkMD5.hashBinary = function(content, raw) {
-              var hash = md51(content), ret = hex(hash);
-              return raw ? hexToBinaryString(ret) : ret;
-            };
-            SparkMD5.ArrayBuffer = function() {
-              this.reset();
-            };
-            SparkMD5.ArrayBuffer.prototype.append = function(arr) {
-              var buff = concatenateArrayBuffers(this._buff.buffer, arr, true), length = buff.length, i;
-              this._length += arr.byteLength;
-              for (i = 64; i <= length; i += 64) {
-                md5cycle(this._hash, md5blk_array(buff.subarray(i - 64, i)));
-              }
-              this._buff = i - 64 < length ? new Uint8Array(buff.buffer.slice(i - 64)) : new Uint8Array(0);
-              return this;
-            };
-            SparkMD5.ArrayBuffer.prototype.end = function(raw) {
-              var buff = this._buff, length = buff.length, tail = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], i, ret;
-              for (i = 0; i < length; i += 1) {
-                tail[i >> 2] |= buff[i] << (i % 4 << 3);
-              }
-              this._finish(tail, length);
-              ret = hex(this._hash);
-              if (raw) {
-                ret = hexToBinaryString(ret);
-              }
-              this.reset();
-              return ret;
-            };
-            SparkMD5.ArrayBuffer.prototype.reset = function() {
-              this._buff = new Uint8Array(0);
-              this._length = 0;
-              this._hash = [1732584193, -271733879, -1732584194, 271733878];
-              return this;
-            };
-            SparkMD5.ArrayBuffer.prototype.getState = function() {
-              var state = SparkMD5.prototype.getState.call(this);
-              state.buff = arrayBuffer2Utf8Str(state.buff);
-              return state;
-            };
-            SparkMD5.ArrayBuffer.prototype.setState = function(state) {
-              state.buff = utf8Str2ArrayBuffer(state.buff, true);
-              return SparkMD5.prototype.setState.call(this, state);
-            };
-            SparkMD5.ArrayBuffer.prototype.destroy = SparkMD5.prototype.destroy;
-            SparkMD5.ArrayBuffer.prototype._finish = SparkMD5.prototype._finish;
-            SparkMD5.ArrayBuffer.hash = function(arr, raw) {
-              var hash = md51_array(new Uint8Array(arr)), ret = hex(hash);
-              return raw ? hexToBinaryString(ret) : ret;
-            };
-            return SparkMD5;
-          });
-        });
-        var classCallCheck = function(instance, Constructor) {
-          if (!(instance instanceof Constructor)) {
-            throw new TypeError("Cannot call a class as a function");
-          }
-        };
-        var createClass = function() {
-          function defineProperties(target, props) {
-            for (var i = 0; i < props.length; i++) {
-              var descriptor = props[i];
-              descriptor.enumerable = descriptor.enumerable || false;
-              descriptor.configurable = true;
-              if ("value" in descriptor)
-                descriptor.writable = true;
-              Object.defineProperty(target, descriptor.key, descriptor);
-            }
-          }
-          return function(Constructor, protoProps, staticProps) {
-            if (protoProps)
-              defineProperties(Constructor.prototype, protoProps);
-            if (staticProps)
-              defineProperties(Constructor, staticProps);
-            return Constructor;
-          };
-        }();
-        var fileSlice = File.prototype.slice || File.prototype.mozSlice || File.prototype.webkitSlice;
-        var FileChecksum = function() {
-          createClass(FileChecksum2, null, [{
-            key: "create",
-            value: function create(file, callback) {
-              var instance = new FileChecksum2(file);
-              instance.create(callback);
-            }
-          }]);
-          function FileChecksum2(file) {
-            classCallCheck(this, FileChecksum2);
-            this.file = file;
-            this.chunkSize = 2097152;
-            this.chunkCount = Math.ceil(this.file.size / this.chunkSize);
-            this.chunkIndex = 0;
-          }
-          createClass(FileChecksum2, [{
-            key: "create",
-            value: function create(callback) {
-              var _this = this;
-              this.callback = callback;
-              this.md5Buffer = new sparkMd5.ArrayBuffer();
-              this.fileReader = new FileReader();
-              this.fileReader.addEventListener("load", function(event) {
-                return _this.fileReaderDidLoad(event);
-              });
-              this.fileReader.addEventListener("error", function(event) {
-                return _this.fileReaderDidError(event);
-              });
-              this.readNextChunk();
-            }
-          }, {
-            key: "fileReaderDidLoad",
-            value: function fileReaderDidLoad(event) {
-              this.md5Buffer.append(event.target.result);
-              if (!this.readNextChunk()) {
-                var binaryDigest = this.md5Buffer.end(true);
-                var base64digest = btoa(binaryDigest);
-                this.callback(null, base64digest);
-              }
-            }
-          }, {
-            key: "fileReaderDidError",
-            value: function fileReaderDidError(event) {
-              this.callback("Error reading " + this.file.name);
-            }
-          }, {
-            key: "readNextChunk",
-            value: function readNextChunk() {
-              if (this.chunkIndex < this.chunkCount || this.chunkIndex == 0 && this.chunkCount == 0) {
-                var start3 = this.chunkIndex * this.chunkSize;
-                var end = Math.min(start3 + this.chunkSize, this.file.size);
-                var bytes = fileSlice.call(this.file, start3, end);
-                this.fileReader.readAsArrayBuffer(bytes);
-                this.chunkIndex++;
-                return true;
-              } else {
-                return false;
-              }
-            }
-          }]);
-          return FileChecksum2;
-        }();
-        function getMetaValue(name) {
-          var element = findElement(document.head, 'meta[name="' + name + '"]');
-          if (element) {
-            return element.getAttribute("content");
-          }
-        }
-        function findElements(root, selector) {
-          if (typeof root == "string") {
-            selector = root;
-            root = document;
-          }
-          var elements = root.querySelectorAll(selector);
-          return toArray$1(elements);
-        }
-        function findElement(root, selector) {
-          if (typeof root == "string") {
-            selector = root;
-            root = document;
-          }
-          return root.querySelector(selector);
-        }
-        function dispatchEvent2(element, type) {
-          var eventInit = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : {};
-          var disabled = element.disabled;
-          var bubbles = eventInit.bubbles, cancelable = eventInit.cancelable, detail = eventInit.detail;
-          var event = document.createEvent("Event");
-          event.initEvent(type, bubbles || true, cancelable || true);
-          event.detail = detail || {};
-          try {
-            element.disabled = false;
-            element.dispatchEvent(event);
-          } finally {
-            element.disabled = disabled;
-          }
-          return event;
-        }
-        function toArray$1(value) {
-          if (Array.isArray(value)) {
-            return value;
-          } else if (Array.from) {
-            return Array.from(value);
-          } else {
-            return [].slice.call(value);
-          }
-        }
-        var BlobRecord = function() {
-          function BlobRecord2(file, checksum, url) {
-            var _this = this;
-            classCallCheck(this, BlobRecord2);
-            this.file = file;
-            this.attributes = {
-              filename: file.name,
-              content_type: file.type || "application/octet-stream",
-              byte_size: file.size,
-              checksum
-            };
-            this.xhr = new XMLHttpRequest();
-            this.xhr.open("POST", url, true);
-            this.xhr.responseType = "json";
-            this.xhr.setRequestHeader("Content-Type", "application/json");
-            this.xhr.setRequestHeader("Accept", "application/json");
-            this.xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
-            var csrfToken = getMetaValue("csrf-token");
-            if (csrfToken != void 0) {
-              this.xhr.setRequestHeader("X-CSRF-Token", csrfToken);
-            }
-            this.xhr.addEventListener("load", function(event) {
-              return _this.requestDidLoad(event);
-            });
-            this.xhr.addEventListener("error", function(event) {
-              return _this.requestDidError(event);
-            });
-          }
-          createClass(BlobRecord2, [{
-            key: "create",
-            value: function create(callback) {
-              this.callback = callback;
-              this.xhr.send(JSON.stringify({
-                blob: this.attributes
-              }));
-            }
-          }, {
-            key: "requestDidLoad",
-            value: function requestDidLoad(event) {
-              if (this.status >= 200 && this.status < 300) {
-                var response = this.response;
-                var direct_upload = response.direct_upload;
-                delete response.direct_upload;
-                this.attributes = response;
-                this.directUploadData = direct_upload;
-                this.callback(null, this.toJSON());
-              } else {
-                this.requestDidError(event);
-              }
-            }
-          }, {
-            key: "requestDidError",
-            value: function requestDidError(event) {
-              this.callback('Error creating Blob for "' + this.file.name + '". Status: ' + this.status);
-            }
-          }, {
-            key: "toJSON",
-            value: function toJSON() {
-              var result = {};
-              for (var key in this.attributes) {
-                result[key] = this.attributes[key];
-              }
-              return result;
-            }
-          }, {
-            key: "status",
-            get: function get$$1() {
-              return this.xhr.status;
-            }
-          }, {
-            key: "response",
-            get: function get$$1() {
-              var _xhr = this.xhr, responseType = _xhr.responseType, response = _xhr.response;
-              if (responseType == "json") {
-                return response;
-              } else {
-                return JSON.parse(response);
-              }
-            }
-          }]);
-          return BlobRecord2;
-        }();
-        var BlobUpload = function() {
-          function BlobUpload2(blob) {
-            var _this = this;
-            classCallCheck(this, BlobUpload2);
-            this.blob = blob;
-            this.file = blob.file;
-            var _blob$directUploadDat = blob.directUploadData, url = _blob$directUploadDat.url, headers = _blob$directUploadDat.headers;
-            this.xhr = new XMLHttpRequest();
-            this.xhr.open("PUT", url, true);
-            this.xhr.responseType = "text";
-            for (var key in headers) {
-              this.xhr.setRequestHeader(key, headers[key]);
-            }
-            this.xhr.addEventListener("load", function(event) {
-              return _this.requestDidLoad(event);
-            });
-            this.xhr.addEventListener("error", function(event) {
-              return _this.requestDidError(event);
-            });
-          }
-          createClass(BlobUpload2, [{
-            key: "create",
-            value: function create(callback) {
-              this.callback = callback;
-              this.xhr.send(this.file.slice());
-            }
-          }, {
-            key: "requestDidLoad",
-            value: function requestDidLoad(event) {
-              var _xhr = this.xhr, status = _xhr.status, response = _xhr.response;
-              if (status >= 200 && status < 300) {
-                this.callback(null, response);
-              } else {
-                this.requestDidError(event);
-              }
-            }
-          }, {
-            key: "requestDidError",
-            value: function requestDidError(event) {
-              this.callback('Error storing "' + this.file.name + '". Status: ' + this.xhr.status);
-            }
-          }]);
-          return BlobUpload2;
-        }();
-        var id = 0;
-        var DirectUpload2 = function() {
-          function DirectUpload3(file, url, delegate) {
-            classCallCheck(this, DirectUpload3);
-            this.id = ++id;
-            this.file = file;
-            this.url = url;
-            this.delegate = delegate;
-          }
-          createClass(DirectUpload3, [{
-            key: "create",
-            value: function create(callback) {
-              var _this = this;
-              FileChecksum.create(this.file, function(error2, checksum) {
-                if (error2) {
-                  callback(error2);
-                  return;
-                }
-                var blob = new BlobRecord(_this.file, checksum, _this.url);
-                notify(_this.delegate, "directUploadWillCreateBlobWithXHR", blob.xhr);
-                blob.create(function(error3) {
-                  if (error3) {
-                    callback(error3);
-                  } else {
-                    var upload = new BlobUpload(blob);
-                    notify(_this.delegate, "directUploadWillStoreFileWithXHR", upload.xhr);
-                    upload.create(function(error4) {
-                      if (error4) {
-                        callback(error4);
-                      } else {
-                        callback(null, blob.toJSON());
-                      }
-                    });
-                  }
-                });
-              });
-            }
-          }]);
-          return DirectUpload3;
-        }();
-        function notify(object, methodName) {
-          if (object && typeof object[methodName] == "function") {
-            for (var _len = arguments.length, messages = Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
-              messages[_key - 2] = arguments[_key];
-            }
-            return object[methodName].apply(object, messages);
-          }
-        }
-        var DirectUploadController = function() {
-          function DirectUploadController2(input, file) {
-            classCallCheck(this, DirectUploadController2);
-            this.input = input;
-            this.file = file;
-            this.directUpload = new DirectUpload2(this.file, this.url, this);
-            this.dispatch("initialize");
-          }
-          createClass(DirectUploadController2, [{
-            key: "start",
-            value: function start3(callback) {
-              var _this = this;
-              var hiddenInput = document.createElement("input");
-              hiddenInput.type = "hidden";
-              hiddenInput.name = this.input.name;
-              this.input.insertAdjacentElement("beforebegin", hiddenInput);
-              this.dispatch("start");
-              this.directUpload.create(function(error2, attributes) {
-                if (error2) {
-                  hiddenInput.parentNode.removeChild(hiddenInput);
-                  _this.dispatchError(error2);
-                } else {
-                  hiddenInput.value = attributes.signed_id;
-                }
-                _this.dispatch("end");
-                callback(error2);
-              });
-            }
-          }, {
-            key: "uploadRequestDidProgress",
-            value: function uploadRequestDidProgress(event) {
-              var progress = event.loaded / event.total * 100;
-              if (progress) {
-                this.dispatch("progress", {
-                  progress
-                });
-              }
-            }
-          }, {
-            key: "dispatch",
-            value: function dispatch2(name) {
-              var detail = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {};
-              detail.file = this.file;
-              detail.id = this.directUpload.id;
-              return dispatchEvent2(this.input, "direct-upload:" + name, {
-                detail
-              });
-            }
-          }, {
-            key: "dispatchError",
-            value: function dispatchError(error2) {
-              var event = this.dispatch("error", {
-                error: error2
-              });
-              if (!event.defaultPrevented) {
-                alert(error2);
-              }
-            }
-          }, {
-            key: "directUploadWillCreateBlobWithXHR",
-            value: function directUploadWillCreateBlobWithXHR(xhr) {
-              this.dispatch("before-blob-request", {
-                xhr
-              });
-            }
-          }, {
-            key: "directUploadWillStoreFileWithXHR",
-            value: function directUploadWillStoreFileWithXHR(xhr) {
-              var _this2 = this;
-              this.dispatch("before-storage-request", {
-                xhr
-              });
-              xhr.upload.addEventListener("progress", function(event) {
-                return _this2.uploadRequestDidProgress(event);
-              });
-            }
-          }, {
-            key: "url",
-            get: function get$$1() {
-              return this.input.getAttribute("data-direct-upload-url");
-            }
-          }]);
-          return DirectUploadController2;
-        }();
-        var inputSelector = "input[type=file][data-direct-upload-url]:not([disabled])";
-        var DirectUploadsController = function() {
-          function DirectUploadsController2(form) {
-            classCallCheck(this, DirectUploadsController2);
-            this.form = form;
-            this.inputs = findElements(form, inputSelector).filter(function(input) {
-              return input.files.length;
-            });
-          }
-          createClass(DirectUploadsController2, [{
-            key: "start",
-            value: function start3(callback) {
-              var _this = this;
-              var controllers = this.createDirectUploadControllers();
-              var startNextController = function startNextController2() {
-                var controller = controllers.shift();
-                if (controller) {
-                  controller.start(function(error2) {
-                    if (error2) {
-                      callback(error2);
-                      _this.dispatch("end");
-                    } else {
-                      startNextController2();
-                    }
-                  });
-                } else {
-                  callback();
-                  _this.dispatch("end");
-                }
-              };
-              this.dispatch("start");
-              startNextController();
-            }
-          }, {
-            key: "createDirectUploadControllers",
-            value: function createDirectUploadControllers() {
-              var controllers = [];
-              this.inputs.forEach(function(input) {
-                toArray$1(input.files).forEach(function(file) {
-                  var controller = new DirectUploadController(input, file);
-                  controllers.push(controller);
-                });
-              });
-              return controllers;
-            }
-          }, {
-            key: "dispatch",
-            value: function dispatch2(name) {
-              var detail = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {};
-              return dispatchEvent2(this.form, "direct-uploads:" + name, {
-                detail
-              });
-            }
-          }]);
-          return DirectUploadsController2;
-        }();
-        var processingAttribute = "data-direct-uploads-processing";
-        var submitButtonsByForm = new WeakMap();
-        var started = false;
-        function start2() {
-          if (!started) {
-            started = true;
-            document.addEventListener("click", didClick, true);
-            document.addEventListener("submit", didSubmitForm);
-            document.addEventListener("ajax:before", didSubmitRemoteElement);
-          }
-        }
-        function didClick(event) {
-          var target = event.target;
-          if ((target.tagName == "INPUT" || target.tagName == "BUTTON") && target.type == "submit" && target.form) {
-            submitButtonsByForm.set(target.form, target);
-          }
-        }
-        function didSubmitForm(event) {
-          handleFormSubmissionEvent(event);
-        }
-        function didSubmitRemoteElement(event) {
-          if (event.target.tagName == "FORM") {
-            handleFormSubmissionEvent(event);
-          }
-        }
-        function handleFormSubmissionEvent(event) {
-          var form = event.target;
-          if (form.hasAttribute(processingAttribute)) {
-            event.preventDefault();
-            return;
-          }
-          var controller = new DirectUploadsController(form);
-          var inputs = controller.inputs;
-          if (inputs.length) {
-            event.preventDefault();
-            form.setAttribute(processingAttribute, "");
-            inputs.forEach(disable);
-            controller.start(function(error2) {
-              form.removeAttribute(processingAttribute);
-              if (error2) {
-                inputs.forEach(enable);
-              } else {
-                submitForm(form);
-              }
-            });
-          }
-        }
-        function submitForm(form) {
-          var button = submitButtonsByForm.get(form) || findElement(form, "input[type=submit], button[type=submit]");
-          if (button) {
-            var _button = button, disabled = _button.disabled;
-            button.disabled = false;
-            button.focus();
-            button.click();
-            button.disabled = disabled;
-          } else {
-            button = document.createElement("input");
-            button.type = "submit";
-            button.style.display = "none";
-            form.appendChild(button);
-            button.click();
-            form.removeChild(button);
-          }
-          submitButtonsByForm.delete(form);
-        }
-        function disable(input) {
-          input.disabled = true;
-        }
-        function enable(input) {
-          input.disabled = false;
-        }
-        function autostart() {
-          if (window.ActiveStorage) {
-            start2();
-          }
-        }
-        setTimeout(autostart, 1);
-        exports2.start = start2;
-        exports2.DirectUpload = DirectUpload2;
-        Object.defineProperty(exports2, "__esModule", {
-          value: true
-        });
-      });
-    }
-  });
-
   // node_modules/dayjs/dayjs.min.js
   var require_dayjs_min = __commonJS({
     "node_modules/dayjs/dayjs.min.js"(exports, module) {
@@ -7049,7 +6101,7 @@
       throw new errorConstructor("Failed to execute 'requestSubmit' on 'HTMLFormElement': " + message + ".", name);
     }
   })(HTMLFormElement.prototype);
-  var submittersByForm = new WeakMap();
+  var submittersByForm = /* @__PURE__ */ new WeakMap();
   function findSubmitterFromClickTarget(target) {
     const element = target instanceof Element ? target : target instanceof Node ? target.parentElement : null;
     const candidate = element ? element.closest("input, button") : null;
@@ -7717,16 +6769,16 @@
     get permanentElements() {
       return [...this.element.querySelectorAll("[id][data-turbo-permanent]")];
     }
-    getPermanentElementById(id) {
-      return this.element.querySelector(`#${id}[data-turbo-permanent]`);
+    getPermanentElementById(id2) {
+      return this.element.querySelector(`#${id2}[data-turbo-permanent]`);
     }
     getPermanentElementMapForSnapshot(snapshot) {
       const permanentElementMap = {};
       for (const currentPermanentElement of this.permanentElements) {
-        const { id } = currentPermanentElement;
-        const newPermanentElement = snapshot.getPermanentElementById(id);
+        const { id: id2 } = currentPermanentElement;
+        const newPermanentElement = snapshot.getPermanentElementById(id2);
         if (newPermanentElement) {
-          permanentElementMap[id] = [currentPermanentElement, newPermanentElement];
+          permanentElementMap[id2] = [currentPermanentElement, newPermanentElement];
         }
       }
       return permanentElementMap;
@@ -7903,14 +6955,14 @@
       bardo.leave();
     }
     enter() {
-      for (const id in this.permanentElementMap) {
-        const [, newPermanentElement] = this.permanentElementMap[id];
+      for (const id2 in this.permanentElementMap) {
+        const [, newPermanentElement] = this.permanentElementMap[id2];
         this.replaceNewPermanentElementWithPlaceholder(newPermanentElement);
       }
     }
     leave() {
-      for (const id in this.permanentElementMap) {
-        const [currentPermanentElement] = this.permanentElementMap[id];
+      for (const id2 in this.permanentElementMap) {
+        const [currentPermanentElement] = this.permanentElementMap[id2];
         this.replaceCurrentPermanentElementWithClone(currentPermanentElement);
         this.replacePlaceholderWithPermanentElement(currentPermanentElement);
       }
@@ -7927,8 +6979,8 @@
       const placeholder = this.getPlaceholderById(permanentElement.id);
       placeholder === null || placeholder === void 0 ? void 0 : placeholder.replaceWith(permanentElement);
     }
-    getPlaceholderById(id) {
-      return this.placeholders.find((element) => element.content == id);
+    getPlaceholderById(id2) {
+      return this.placeholders.find((element) => element.content == id2);
     }
     get placeholders() {
       return [...document.querySelectorAll("meta[name=turbo-permanent-placeholder][content]")];
@@ -8795,9 +7847,9 @@
       return frame ? frame != element.closest("turbo-frame") : false;
     }
     findFrameElement(element, submitter) {
-      const id = (submitter === null || submitter === void 0 ? void 0 : submitter.getAttribute("data-turbo-frame")) || element.getAttribute("data-turbo-frame");
-      if (id && id != "_top") {
-        const frame = this.element.querySelector(`#${id}:not([disabled])`);
+      const id2 = (submitter === null || submitter === void 0 ? void 0 : submitter.getAttribute("data-turbo-frame")) || element.getAttribute("data-turbo-frame");
+      if (id2 && id2 != "_top") {
+        const frame = this.element.querySelector(`#${id2}:not([disabled])`);
         if (frame instanceof FrameElement) {
           return frame;
         }
@@ -9125,7 +8177,7 @@
   };
   var StreamObserver = class {
     constructor(delegate) {
-      this.sources = new Set();
+      this.sources = /* @__PURE__ */ new Set();
       this.started = false;
       this.inspectFetchResponse = (event) => {
         const response = fetchResponseFromEvent(event);
@@ -9910,21 +8962,21 @@
     }
     findFrameElement(element, submitter) {
       var _a;
-      const id = getAttribute("data-turbo-frame", submitter, element) || this.element.getAttribute("target");
-      return (_a = getFrameElementById(id)) !== null && _a !== void 0 ? _a : this.element;
+      const id2 = getAttribute("data-turbo-frame", submitter, element) || this.element.getAttribute("target");
+      return (_a = getFrameElementById(id2)) !== null && _a !== void 0 ? _a : this.element;
     }
     async extractForeignFrameElement(container) {
       let element;
-      const id = CSS.escape(this.id);
+      const id2 = CSS.escape(this.id);
       try {
-        if (element = activateElement(container.querySelector(`turbo-frame#${id}`), this.currentURL)) {
+        if (element = activateElement(container.querySelector(`turbo-frame#${id2}`), this.currentURL)) {
           return element;
         }
-        if (element = activateElement(container.querySelector(`turbo-frame[src][recurse~=${id}]`), this.currentURL)) {
+        if (element = activateElement(container.querySelector(`turbo-frame[src][recurse~=${id2}]`), this.currentURL)) {
           await element.loaded;
           return await this.extractForeignFrameElement(element);
         }
-        console.error(`Response has no matching <turbo-frame id="${id}"> element`);
+        console.error(`Response has no matching <turbo-frame id="${id2}"> element`);
       } catch (error2) {
         console.error(error2);
       }
@@ -9935,15 +8987,15 @@
       return locationIsVisitable(expandURL(action), this.rootLocation);
     }
     shouldInterceptNavigation(element, submitter) {
-      const id = getAttribute("data-turbo-frame", submitter, element) || this.element.getAttribute("target");
+      const id2 = getAttribute("data-turbo-frame", submitter, element) || this.element.getAttribute("target");
       if (element instanceof HTMLFormElement && !this.formActionIsVisitable(element, submitter)) {
         return false;
       }
-      if (!this.enabled || id == "_top") {
+      if (!this.enabled || id2 == "_top") {
         return false;
       }
-      if (id) {
-        const frameElement = getFrameElementById(id);
+      if (id2) {
+        const frameElement = getFrameElementById(id2);
         if (frameElement) {
           return !frameElement.disabled;
         }
@@ -10005,16 +9057,16 @@
     constructor(element) {
       this.visitCachedSnapshot = ({ element: element2 }) => {
         var _a;
-        const { id, clone } = this;
-        (_a = element2.querySelector("#" + id)) === null || _a === void 0 ? void 0 : _a.replaceWith(clone);
+        const { id: id2, clone } = this;
+        (_a = element2.querySelector("#" + id2)) === null || _a === void 0 ? void 0 : _a.replaceWith(clone);
       };
       this.clone = element.cloneNode(true);
       this.id = element.id;
     }
   };
-  function getFrameElementById(id) {
-    if (id != null) {
-      const element = document.getElementById(id);
+  function getFrameElementById(id2) {
+    if (id2 != null) {
+      const element = document.getElementById(id2);
       if (element instanceof FrameElement) {
         return element;
       }
@@ -10238,15 +9290,841 @@
   customElements.define("turbo-cable-stream-source", TurboCableStreamSourceElement);
 
   // app/javascript/application.js
-  var import_trix = __toModule(require_trix());
+  var import_trix = __toESM(require_trix());
+
+  // node_modules/@rails/activestorage/app/assets/javascripts/activestorage.esm.js
+  var sparkMd5 = {
+    exports: {}
+  };
+  (function(module, exports) {
+    (function(factory) {
+      {
+        module.exports = factory();
+      }
+    })(function(undefined$1) {
+      var hex_chr = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f"];
+      function md5cycle(x, k) {
+        var a = x[0], b = x[1], c = x[2], d = x[3];
+        a += (b & c | ~b & d) + k[0] - 680876936 | 0;
+        a = (a << 7 | a >>> 25) + b | 0;
+        d += (a & b | ~a & c) + k[1] - 389564586 | 0;
+        d = (d << 12 | d >>> 20) + a | 0;
+        c += (d & a | ~d & b) + k[2] + 606105819 | 0;
+        c = (c << 17 | c >>> 15) + d | 0;
+        b += (c & d | ~c & a) + k[3] - 1044525330 | 0;
+        b = (b << 22 | b >>> 10) + c | 0;
+        a += (b & c | ~b & d) + k[4] - 176418897 | 0;
+        a = (a << 7 | a >>> 25) + b | 0;
+        d += (a & b | ~a & c) + k[5] + 1200080426 | 0;
+        d = (d << 12 | d >>> 20) + a | 0;
+        c += (d & a | ~d & b) + k[6] - 1473231341 | 0;
+        c = (c << 17 | c >>> 15) + d | 0;
+        b += (c & d | ~c & a) + k[7] - 45705983 | 0;
+        b = (b << 22 | b >>> 10) + c | 0;
+        a += (b & c | ~b & d) + k[8] + 1770035416 | 0;
+        a = (a << 7 | a >>> 25) + b | 0;
+        d += (a & b | ~a & c) + k[9] - 1958414417 | 0;
+        d = (d << 12 | d >>> 20) + a | 0;
+        c += (d & a | ~d & b) + k[10] - 42063 | 0;
+        c = (c << 17 | c >>> 15) + d | 0;
+        b += (c & d | ~c & a) + k[11] - 1990404162 | 0;
+        b = (b << 22 | b >>> 10) + c | 0;
+        a += (b & c | ~b & d) + k[12] + 1804603682 | 0;
+        a = (a << 7 | a >>> 25) + b | 0;
+        d += (a & b | ~a & c) + k[13] - 40341101 | 0;
+        d = (d << 12 | d >>> 20) + a | 0;
+        c += (d & a | ~d & b) + k[14] - 1502002290 | 0;
+        c = (c << 17 | c >>> 15) + d | 0;
+        b += (c & d | ~c & a) + k[15] + 1236535329 | 0;
+        b = (b << 22 | b >>> 10) + c | 0;
+        a += (b & d | c & ~d) + k[1] - 165796510 | 0;
+        a = (a << 5 | a >>> 27) + b | 0;
+        d += (a & c | b & ~c) + k[6] - 1069501632 | 0;
+        d = (d << 9 | d >>> 23) + a | 0;
+        c += (d & b | a & ~b) + k[11] + 643717713 | 0;
+        c = (c << 14 | c >>> 18) + d | 0;
+        b += (c & a | d & ~a) + k[0] - 373897302 | 0;
+        b = (b << 20 | b >>> 12) + c | 0;
+        a += (b & d | c & ~d) + k[5] - 701558691 | 0;
+        a = (a << 5 | a >>> 27) + b | 0;
+        d += (a & c | b & ~c) + k[10] + 38016083 | 0;
+        d = (d << 9 | d >>> 23) + a | 0;
+        c += (d & b | a & ~b) + k[15] - 660478335 | 0;
+        c = (c << 14 | c >>> 18) + d | 0;
+        b += (c & a | d & ~a) + k[4] - 405537848 | 0;
+        b = (b << 20 | b >>> 12) + c | 0;
+        a += (b & d | c & ~d) + k[9] + 568446438 | 0;
+        a = (a << 5 | a >>> 27) + b | 0;
+        d += (a & c | b & ~c) + k[14] - 1019803690 | 0;
+        d = (d << 9 | d >>> 23) + a | 0;
+        c += (d & b | a & ~b) + k[3] - 187363961 | 0;
+        c = (c << 14 | c >>> 18) + d | 0;
+        b += (c & a | d & ~a) + k[8] + 1163531501 | 0;
+        b = (b << 20 | b >>> 12) + c | 0;
+        a += (b & d | c & ~d) + k[13] - 1444681467 | 0;
+        a = (a << 5 | a >>> 27) + b | 0;
+        d += (a & c | b & ~c) + k[2] - 51403784 | 0;
+        d = (d << 9 | d >>> 23) + a | 0;
+        c += (d & b | a & ~b) + k[7] + 1735328473 | 0;
+        c = (c << 14 | c >>> 18) + d | 0;
+        b += (c & a | d & ~a) + k[12] - 1926607734 | 0;
+        b = (b << 20 | b >>> 12) + c | 0;
+        a += (b ^ c ^ d) + k[5] - 378558 | 0;
+        a = (a << 4 | a >>> 28) + b | 0;
+        d += (a ^ b ^ c) + k[8] - 2022574463 | 0;
+        d = (d << 11 | d >>> 21) + a | 0;
+        c += (d ^ a ^ b) + k[11] + 1839030562 | 0;
+        c = (c << 16 | c >>> 16) + d | 0;
+        b += (c ^ d ^ a) + k[14] - 35309556 | 0;
+        b = (b << 23 | b >>> 9) + c | 0;
+        a += (b ^ c ^ d) + k[1] - 1530992060 | 0;
+        a = (a << 4 | a >>> 28) + b | 0;
+        d += (a ^ b ^ c) + k[4] + 1272893353 | 0;
+        d = (d << 11 | d >>> 21) + a | 0;
+        c += (d ^ a ^ b) + k[7] - 155497632 | 0;
+        c = (c << 16 | c >>> 16) + d | 0;
+        b += (c ^ d ^ a) + k[10] - 1094730640 | 0;
+        b = (b << 23 | b >>> 9) + c | 0;
+        a += (b ^ c ^ d) + k[13] + 681279174 | 0;
+        a = (a << 4 | a >>> 28) + b | 0;
+        d += (a ^ b ^ c) + k[0] - 358537222 | 0;
+        d = (d << 11 | d >>> 21) + a | 0;
+        c += (d ^ a ^ b) + k[3] - 722521979 | 0;
+        c = (c << 16 | c >>> 16) + d | 0;
+        b += (c ^ d ^ a) + k[6] + 76029189 | 0;
+        b = (b << 23 | b >>> 9) + c | 0;
+        a += (b ^ c ^ d) + k[9] - 640364487 | 0;
+        a = (a << 4 | a >>> 28) + b | 0;
+        d += (a ^ b ^ c) + k[12] - 421815835 | 0;
+        d = (d << 11 | d >>> 21) + a | 0;
+        c += (d ^ a ^ b) + k[15] + 530742520 | 0;
+        c = (c << 16 | c >>> 16) + d | 0;
+        b += (c ^ d ^ a) + k[2] - 995338651 | 0;
+        b = (b << 23 | b >>> 9) + c | 0;
+        a += (c ^ (b | ~d)) + k[0] - 198630844 | 0;
+        a = (a << 6 | a >>> 26) + b | 0;
+        d += (b ^ (a | ~c)) + k[7] + 1126891415 | 0;
+        d = (d << 10 | d >>> 22) + a | 0;
+        c += (a ^ (d | ~b)) + k[14] - 1416354905 | 0;
+        c = (c << 15 | c >>> 17) + d | 0;
+        b += (d ^ (c | ~a)) + k[5] - 57434055 | 0;
+        b = (b << 21 | b >>> 11) + c | 0;
+        a += (c ^ (b | ~d)) + k[12] + 1700485571 | 0;
+        a = (a << 6 | a >>> 26) + b | 0;
+        d += (b ^ (a | ~c)) + k[3] - 1894986606 | 0;
+        d = (d << 10 | d >>> 22) + a | 0;
+        c += (a ^ (d | ~b)) + k[10] - 1051523 | 0;
+        c = (c << 15 | c >>> 17) + d | 0;
+        b += (d ^ (c | ~a)) + k[1] - 2054922799 | 0;
+        b = (b << 21 | b >>> 11) + c | 0;
+        a += (c ^ (b | ~d)) + k[8] + 1873313359 | 0;
+        a = (a << 6 | a >>> 26) + b | 0;
+        d += (b ^ (a | ~c)) + k[15] - 30611744 | 0;
+        d = (d << 10 | d >>> 22) + a | 0;
+        c += (a ^ (d | ~b)) + k[6] - 1560198380 | 0;
+        c = (c << 15 | c >>> 17) + d | 0;
+        b += (d ^ (c | ~a)) + k[13] + 1309151649 | 0;
+        b = (b << 21 | b >>> 11) + c | 0;
+        a += (c ^ (b | ~d)) + k[4] - 145523070 | 0;
+        a = (a << 6 | a >>> 26) + b | 0;
+        d += (b ^ (a | ~c)) + k[11] - 1120210379 | 0;
+        d = (d << 10 | d >>> 22) + a | 0;
+        c += (a ^ (d | ~b)) + k[2] + 718787259 | 0;
+        c = (c << 15 | c >>> 17) + d | 0;
+        b += (d ^ (c | ~a)) + k[9] - 343485551 | 0;
+        b = (b << 21 | b >>> 11) + c | 0;
+        x[0] = a + x[0] | 0;
+        x[1] = b + x[1] | 0;
+        x[2] = c + x[2] | 0;
+        x[3] = d + x[3] | 0;
+      }
+      function md5blk(s) {
+        var md5blks = [], i;
+        for (i = 0; i < 64; i += 4) {
+          md5blks[i >> 2] = s.charCodeAt(i) + (s.charCodeAt(i + 1) << 8) + (s.charCodeAt(i + 2) << 16) + (s.charCodeAt(i + 3) << 24);
+        }
+        return md5blks;
+      }
+      function md5blk_array(a) {
+        var md5blks = [], i;
+        for (i = 0; i < 64; i += 4) {
+          md5blks[i >> 2] = a[i] + (a[i + 1] << 8) + (a[i + 2] << 16) + (a[i + 3] << 24);
+        }
+        return md5blks;
+      }
+      function md51(s) {
+        var n = s.length, state = [1732584193, -271733879, -1732584194, 271733878], i, length, tail, tmp, lo, hi;
+        for (i = 64; i <= n; i += 64) {
+          md5cycle(state, md5blk(s.substring(i - 64, i)));
+        }
+        s = s.substring(i - 64);
+        length = s.length;
+        tail = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        for (i = 0; i < length; i += 1) {
+          tail[i >> 2] |= s.charCodeAt(i) << (i % 4 << 3);
+        }
+        tail[i >> 2] |= 128 << (i % 4 << 3);
+        if (i > 55) {
+          md5cycle(state, tail);
+          for (i = 0; i < 16; i += 1) {
+            tail[i] = 0;
+          }
+        }
+        tmp = n * 8;
+        tmp = tmp.toString(16).match(/(.*?)(.{0,8})$/);
+        lo = parseInt(tmp[2], 16);
+        hi = parseInt(tmp[1], 16) || 0;
+        tail[14] = lo;
+        tail[15] = hi;
+        md5cycle(state, tail);
+        return state;
+      }
+      function md51_array(a) {
+        var n = a.length, state = [1732584193, -271733879, -1732584194, 271733878], i, length, tail, tmp, lo, hi;
+        for (i = 64; i <= n; i += 64) {
+          md5cycle(state, md5blk_array(a.subarray(i - 64, i)));
+        }
+        a = i - 64 < n ? a.subarray(i - 64) : new Uint8Array(0);
+        length = a.length;
+        tail = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        for (i = 0; i < length; i += 1) {
+          tail[i >> 2] |= a[i] << (i % 4 << 3);
+        }
+        tail[i >> 2] |= 128 << (i % 4 << 3);
+        if (i > 55) {
+          md5cycle(state, tail);
+          for (i = 0; i < 16; i += 1) {
+            tail[i] = 0;
+          }
+        }
+        tmp = n * 8;
+        tmp = tmp.toString(16).match(/(.*?)(.{0,8})$/);
+        lo = parseInt(tmp[2], 16);
+        hi = parseInt(tmp[1], 16) || 0;
+        tail[14] = lo;
+        tail[15] = hi;
+        md5cycle(state, tail);
+        return state;
+      }
+      function rhex(n) {
+        var s = "", j;
+        for (j = 0; j < 4; j += 1) {
+          s += hex_chr[n >> j * 8 + 4 & 15] + hex_chr[n >> j * 8 & 15];
+        }
+        return s;
+      }
+      function hex(x) {
+        var i;
+        for (i = 0; i < x.length; i += 1) {
+          x[i] = rhex(x[i]);
+        }
+        return x.join("");
+      }
+      if (hex(md51("hello")) !== "5d41402abc4b2a76b9719d911017c592")
+        ;
+      if (typeof ArrayBuffer !== "undefined" && !ArrayBuffer.prototype.slice) {
+        (function() {
+          function clamp2(val, length) {
+            val = val | 0 || 0;
+            if (val < 0) {
+              return Math.max(val + length, 0);
+            }
+            return Math.min(val, length);
+          }
+          ArrayBuffer.prototype.slice = function(from, to) {
+            var length = this.byteLength, begin = clamp2(from, length), end = length, num, target, targetArray, sourceArray;
+            if (to !== undefined$1) {
+              end = clamp2(to, length);
+            }
+            if (begin > end) {
+              return new ArrayBuffer(0);
+            }
+            num = end - begin;
+            target = new ArrayBuffer(num);
+            targetArray = new Uint8Array(target);
+            sourceArray = new Uint8Array(this, begin, num);
+            targetArray.set(sourceArray);
+            return target;
+          };
+        })();
+      }
+      function toUtf8(str) {
+        if (/[\u0080-\uFFFF]/.test(str)) {
+          str = unescape(encodeURIComponent(str));
+        }
+        return str;
+      }
+      function utf8Str2ArrayBuffer(str, returnUInt8Array) {
+        var length = str.length, buff = new ArrayBuffer(length), arr = new Uint8Array(buff), i;
+        for (i = 0; i < length; i += 1) {
+          arr[i] = str.charCodeAt(i);
+        }
+        return returnUInt8Array ? arr : buff;
+      }
+      function arrayBuffer2Utf8Str(buff) {
+        return String.fromCharCode.apply(null, new Uint8Array(buff));
+      }
+      function concatenateArrayBuffers(first, second, returnUInt8Array) {
+        var result = new Uint8Array(first.byteLength + second.byteLength);
+        result.set(new Uint8Array(first));
+        result.set(new Uint8Array(second), first.byteLength);
+        return returnUInt8Array ? result : result.buffer;
+      }
+      function hexToBinaryString(hex2) {
+        var bytes = [], length = hex2.length, x;
+        for (x = 0; x < length - 1; x += 2) {
+          bytes.push(parseInt(hex2.substr(x, 2), 16));
+        }
+        return String.fromCharCode.apply(String, bytes);
+      }
+      function SparkMD52() {
+        this.reset();
+      }
+      SparkMD52.prototype.append = function(str) {
+        this.appendBinary(toUtf8(str));
+        return this;
+      };
+      SparkMD52.prototype.appendBinary = function(contents) {
+        this._buff += contents;
+        this._length += contents.length;
+        var length = this._buff.length, i;
+        for (i = 64; i <= length; i += 64) {
+          md5cycle(this._hash, md5blk(this._buff.substring(i - 64, i)));
+        }
+        this._buff = this._buff.substring(i - 64);
+        return this;
+      };
+      SparkMD52.prototype.end = function(raw) {
+        var buff = this._buff, length = buff.length, i, tail = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], ret;
+        for (i = 0; i < length; i += 1) {
+          tail[i >> 2] |= buff.charCodeAt(i) << (i % 4 << 3);
+        }
+        this._finish(tail, length);
+        ret = hex(this._hash);
+        if (raw) {
+          ret = hexToBinaryString(ret);
+        }
+        this.reset();
+        return ret;
+      };
+      SparkMD52.prototype.reset = function() {
+        this._buff = "";
+        this._length = 0;
+        this._hash = [1732584193, -271733879, -1732584194, 271733878];
+        return this;
+      };
+      SparkMD52.prototype.getState = function() {
+        return {
+          buff: this._buff,
+          length: this._length,
+          hash: this._hash.slice()
+        };
+      };
+      SparkMD52.prototype.setState = function(state) {
+        this._buff = state.buff;
+        this._length = state.length;
+        this._hash = state.hash;
+        return this;
+      };
+      SparkMD52.prototype.destroy = function() {
+        delete this._hash;
+        delete this._buff;
+        delete this._length;
+      };
+      SparkMD52.prototype._finish = function(tail, length) {
+        var i = length, tmp, lo, hi;
+        tail[i >> 2] |= 128 << (i % 4 << 3);
+        if (i > 55) {
+          md5cycle(this._hash, tail);
+          for (i = 0; i < 16; i += 1) {
+            tail[i] = 0;
+          }
+        }
+        tmp = this._length * 8;
+        tmp = tmp.toString(16).match(/(.*?)(.{0,8})$/);
+        lo = parseInt(tmp[2], 16);
+        hi = parseInt(tmp[1], 16) || 0;
+        tail[14] = lo;
+        tail[15] = hi;
+        md5cycle(this._hash, tail);
+      };
+      SparkMD52.hash = function(str, raw) {
+        return SparkMD52.hashBinary(toUtf8(str), raw);
+      };
+      SparkMD52.hashBinary = function(content, raw) {
+        var hash = md51(content), ret = hex(hash);
+        return raw ? hexToBinaryString(ret) : ret;
+      };
+      SparkMD52.ArrayBuffer = function() {
+        this.reset();
+      };
+      SparkMD52.ArrayBuffer.prototype.append = function(arr) {
+        var buff = concatenateArrayBuffers(this._buff.buffer, arr, true), length = buff.length, i;
+        this._length += arr.byteLength;
+        for (i = 64; i <= length; i += 64) {
+          md5cycle(this._hash, md5blk_array(buff.subarray(i - 64, i)));
+        }
+        this._buff = i - 64 < length ? new Uint8Array(buff.buffer.slice(i - 64)) : new Uint8Array(0);
+        return this;
+      };
+      SparkMD52.ArrayBuffer.prototype.end = function(raw) {
+        var buff = this._buff, length = buff.length, tail = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], i, ret;
+        for (i = 0; i < length; i += 1) {
+          tail[i >> 2] |= buff[i] << (i % 4 << 3);
+        }
+        this._finish(tail, length);
+        ret = hex(this._hash);
+        if (raw) {
+          ret = hexToBinaryString(ret);
+        }
+        this.reset();
+        return ret;
+      };
+      SparkMD52.ArrayBuffer.prototype.reset = function() {
+        this._buff = new Uint8Array(0);
+        this._length = 0;
+        this._hash = [1732584193, -271733879, -1732584194, 271733878];
+        return this;
+      };
+      SparkMD52.ArrayBuffer.prototype.getState = function() {
+        var state = SparkMD52.prototype.getState.call(this);
+        state.buff = arrayBuffer2Utf8Str(state.buff);
+        return state;
+      };
+      SparkMD52.ArrayBuffer.prototype.setState = function(state) {
+        state.buff = utf8Str2ArrayBuffer(state.buff, true);
+        return SparkMD52.prototype.setState.call(this, state);
+      };
+      SparkMD52.ArrayBuffer.prototype.destroy = SparkMD52.prototype.destroy;
+      SparkMD52.ArrayBuffer.prototype._finish = SparkMD52.prototype._finish;
+      SparkMD52.ArrayBuffer.hash = function(arr, raw) {
+        var hash = md51_array(new Uint8Array(arr)), ret = hex(hash);
+        return raw ? hexToBinaryString(ret) : ret;
+      };
+      return SparkMD52;
+    });
+  })(sparkMd5);
+  var SparkMD5 = sparkMd5.exports;
+  var fileSlice = File.prototype.slice || File.prototype.mozSlice || File.prototype.webkitSlice;
+  var FileChecksum = class {
+    static create(file, callback) {
+      const instance = new FileChecksum(file);
+      instance.create(callback);
+    }
+    constructor(file) {
+      this.file = file;
+      this.chunkSize = 2097152;
+      this.chunkCount = Math.ceil(this.file.size / this.chunkSize);
+      this.chunkIndex = 0;
+    }
+    create(callback) {
+      this.callback = callback;
+      this.md5Buffer = new SparkMD5.ArrayBuffer();
+      this.fileReader = new FileReader();
+      this.fileReader.addEventListener("load", (event) => this.fileReaderDidLoad(event));
+      this.fileReader.addEventListener("error", (event) => this.fileReaderDidError(event));
+      this.readNextChunk();
+    }
+    fileReaderDidLoad(event) {
+      this.md5Buffer.append(event.target.result);
+      if (!this.readNextChunk()) {
+        const binaryDigest = this.md5Buffer.end(true);
+        const base64digest = btoa(binaryDigest);
+        this.callback(null, base64digest);
+      }
+    }
+    fileReaderDidError(event) {
+      this.callback(`Error reading ${this.file.name}`);
+    }
+    readNextChunk() {
+      if (this.chunkIndex < this.chunkCount || this.chunkIndex == 0 && this.chunkCount == 0) {
+        const start3 = this.chunkIndex * this.chunkSize;
+        const end = Math.min(start3 + this.chunkSize, this.file.size);
+        const bytes = fileSlice.call(this.file, start3, end);
+        this.fileReader.readAsArrayBuffer(bytes);
+        this.chunkIndex++;
+        return true;
+      } else {
+        return false;
+      }
+    }
+  };
+  function getMetaValue(name) {
+    const element = findElement(document.head, `meta[name="${name}"]`);
+    if (element) {
+      return element.getAttribute("content");
+    }
+  }
+  function findElements(root, selector) {
+    if (typeof root == "string") {
+      selector = root;
+      root = document;
+    }
+    const elements = root.querySelectorAll(selector);
+    return toArray(elements);
+  }
+  function findElement(root, selector) {
+    if (typeof root == "string") {
+      selector = root;
+      root = document;
+    }
+    return root.querySelector(selector);
+  }
+  function dispatchEvent2(element, type, eventInit = {}) {
+    const { disabled } = element;
+    const { bubbles, cancelable, detail } = eventInit;
+    const event = document.createEvent("Event");
+    event.initEvent(type, bubbles || true, cancelable || true);
+    event.detail = detail || {};
+    try {
+      element.disabled = false;
+      element.dispatchEvent(event);
+    } finally {
+      element.disabled = disabled;
+    }
+    return event;
+  }
+  function toArray(value) {
+    if (Array.isArray(value)) {
+      return value;
+    } else if (Array.from) {
+      return Array.from(value);
+    } else {
+      return [].slice.call(value);
+    }
+  }
+  var BlobRecord = class {
+    constructor(file, checksum, url, directUploadToken, attachmentName) {
+      this.file = file;
+      this.attributes = {
+        filename: file.name,
+        content_type: file.type || "application/octet-stream",
+        byte_size: file.size,
+        checksum
+      };
+      this.directUploadToken = directUploadToken;
+      this.attachmentName = attachmentName;
+      this.xhr = new XMLHttpRequest();
+      this.xhr.open("POST", url, true);
+      this.xhr.responseType = "json";
+      this.xhr.setRequestHeader("Content-Type", "application/json");
+      this.xhr.setRequestHeader("Accept", "application/json");
+      this.xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+      const csrfToken = getMetaValue("csrf-token");
+      if (csrfToken != void 0) {
+        this.xhr.setRequestHeader("X-CSRF-Token", csrfToken);
+      }
+      this.xhr.addEventListener("load", (event) => this.requestDidLoad(event));
+      this.xhr.addEventListener("error", (event) => this.requestDidError(event));
+    }
+    get status() {
+      return this.xhr.status;
+    }
+    get response() {
+      const { responseType, response } = this.xhr;
+      if (responseType == "json") {
+        return response;
+      } else {
+        return JSON.parse(response);
+      }
+    }
+    create(callback) {
+      this.callback = callback;
+      this.xhr.send(JSON.stringify({
+        blob: this.attributes,
+        direct_upload_token: this.directUploadToken,
+        attachment_name: this.attachmentName
+      }));
+    }
+    requestDidLoad(event) {
+      if (this.status >= 200 && this.status < 300) {
+        const { response } = this;
+        const { direct_upload } = response;
+        delete response.direct_upload;
+        this.attributes = response;
+        this.directUploadData = direct_upload;
+        this.callback(null, this.toJSON());
+      } else {
+        this.requestDidError(event);
+      }
+    }
+    requestDidError(event) {
+      this.callback(`Error creating Blob for "${this.file.name}". Status: ${this.status}`);
+    }
+    toJSON() {
+      const result = {};
+      for (const key in this.attributes) {
+        result[key] = this.attributes[key];
+      }
+      return result;
+    }
+  };
+  var BlobUpload = class {
+    constructor(blob) {
+      this.blob = blob;
+      this.file = blob.file;
+      const { url, headers } = blob.directUploadData;
+      this.xhr = new XMLHttpRequest();
+      this.xhr.open("PUT", url, true);
+      this.xhr.responseType = "text";
+      for (const key in headers) {
+        this.xhr.setRequestHeader(key, headers[key]);
+      }
+      this.xhr.addEventListener("load", (event) => this.requestDidLoad(event));
+      this.xhr.addEventListener("error", (event) => this.requestDidError(event));
+    }
+    create(callback) {
+      this.callback = callback;
+      this.xhr.send(this.file.slice());
+    }
+    requestDidLoad(event) {
+      const { status, response } = this.xhr;
+      if (status >= 200 && status < 300) {
+        this.callback(null, response);
+      } else {
+        this.requestDidError(event);
+      }
+    }
+    requestDidError(event) {
+      this.callback(`Error storing "${this.file.name}". Status: ${this.xhr.status}`);
+    }
+  };
+  var id = 0;
+  var DirectUpload = class {
+    constructor(file, url, serviceName, attachmentName, delegate) {
+      this.id = ++id;
+      this.file = file;
+      this.url = url;
+      this.serviceName = serviceName;
+      this.attachmentName = attachmentName;
+      this.delegate = delegate;
+    }
+    create(callback) {
+      FileChecksum.create(this.file, (error2, checksum) => {
+        if (error2) {
+          callback(error2);
+          return;
+        }
+        const blob = new BlobRecord(this.file, checksum, this.url, this.serviceName, this.attachmentName);
+        notify(this.delegate, "directUploadWillCreateBlobWithXHR", blob.xhr);
+        blob.create((error3) => {
+          if (error3) {
+            callback(error3);
+          } else {
+            const upload = new BlobUpload(blob);
+            notify(this.delegate, "directUploadWillStoreFileWithXHR", upload.xhr);
+            upload.create((error4) => {
+              if (error4) {
+                callback(error4);
+              } else {
+                callback(null, blob.toJSON());
+              }
+            });
+          }
+        });
+      });
+    }
+  };
+  function notify(object, methodName, ...messages) {
+    if (object && typeof object[methodName] == "function") {
+      return object[methodName](...messages);
+    }
+  }
+  var DirectUploadController = class {
+    constructor(input, file) {
+      this.input = input;
+      this.file = file;
+      this.directUpload = new DirectUpload(this.file, this.url, this.directUploadToken, this.attachmentName, this);
+      this.dispatch("initialize");
+    }
+    start(callback) {
+      const hiddenInput = document.createElement("input");
+      hiddenInput.type = "hidden";
+      hiddenInput.name = this.input.name;
+      this.input.insertAdjacentElement("beforebegin", hiddenInput);
+      this.dispatch("start");
+      this.directUpload.create((error2, attributes) => {
+        if (error2) {
+          hiddenInput.parentNode.removeChild(hiddenInput);
+          this.dispatchError(error2);
+        } else {
+          hiddenInput.value = attributes.signed_id;
+        }
+        this.dispatch("end");
+        callback(error2);
+      });
+    }
+    uploadRequestDidProgress(event) {
+      const progress = event.loaded / event.total * 100;
+      if (progress) {
+        this.dispatch("progress", {
+          progress
+        });
+      }
+    }
+    get url() {
+      return this.input.getAttribute("data-direct-upload-url");
+    }
+    get directUploadToken() {
+      return this.input.getAttribute("data-direct-upload-token");
+    }
+    get attachmentName() {
+      return this.input.getAttribute("data-direct-upload-attachment-name");
+    }
+    dispatch(name, detail = {}) {
+      detail.file = this.file;
+      detail.id = this.directUpload.id;
+      return dispatchEvent2(this.input, `direct-upload:${name}`, {
+        detail
+      });
+    }
+    dispatchError(error2) {
+      const event = this.dispatch("error", {
+        error: error2
+      });
+      if (!event.defaultPrevented) {
+        alert(error2);
+      }
+    }
+    directUploadWillCreateBlobWithXHR(xhr) {
+      this.dispatch("before-blob-request", {
+        xhr
+      });
+    }
+    directUploadWillStoreFileWithXHR(xhr) {
+      this.dispatch("before-storage-request", {
+        xhr
+      });
+      xhr.upload.addEventListener("progress", (event) => this.uploadRequestDidProgress(event));
+    }
+  };
+  var inputSelector = "input[type=file][data-direct-upload-url]:not([disabled])";
+  var DirectUploadsController = class {
+    constructor(form) {
+      this.form = form;
+      this.inputs = findElements(form, inputSelector).filter((input) => input.files.length);
+    }
+    start(callback) {
+      const controllers = this.createDirectUploadControllers();
+      const startNextController = () => {
+        const controller = controllers.shift();
+        if (controller) {
+          controller.start((error2) => {
+            if (error2) {
+              callback(error2);
+              this.dispatch("end");
+            } else {
+              startNextController();
+            }
+          });
+        } else {
+          callback();
+          this.dispatch("end");
+        }
+      };
+      this.dispatch("start");
+      startNextController();
+    }
+    createDirectUploadControllers() {
+      const controllers = [];
+      this.inputs.forEach((input) => {
+        toArray(input.files).forEach((file) => {
+          const controller = new DirectUploadController(input, file);
+          controllers.push(controller);
+        });
+      });
+      return controllers;
+    }
+    dispatch(name, detail = {}) {
+      return dispatchEvent2(this.form, `direct-uploads:${name}`, {
+        detail
+      });
+    }
+  };
+  var processingAttribute = "data-direct-uploads-processing";
+  var submitButtonsByForm = /* @__PURE__ */ new WeakMap();
+  var started = false;
+  function start2() {
+    if (!started) {
+      started = true;
+      document.addEventListener("click", didClick, true);
+      document.addEventListener("submit", didSubmitForm, true);
+      document.addEventListener("ajax:before", didSubmitRemoteElement);
+    }
+  }
+  function didClick(event) {
+    const { target } = event;
+    if ((target.tagName == "INPUT" || target.tagName == "BUTTON") && target.type == "submit" && target.form) {
+      submitButtonsByForm.set(target.form, target);
+    }
+  }
+  function didSubmitForm(event) {
+    handleFormSubmissionEvent(event);
+  }
+  function didSubmitRemoteElement(event) {
+    if (event.target.tagName == "FORM") {
+      handleFormSubmissionEvent(event);
+    }
+  }
+  function handleFormSubmissionEvent(event) {
+    const form = event.target;
+    if (form.hasAttribute(processingAttribute)) {
+      event.preventDefault();
+      return;
+    }
+    const controller = new DirectUploadsController(form);
+    const { inputs } = controller;
+    if (inputs.length) {
+      event.preventDefault();
+      form.setAttribute(processingAttribute, "");
+      inputs.forEach(disable);
+      controller.start((error2) => {
+        form.removeAttribute(processingAttribute);
+        if (error2) {
+          inputs.forEach(enable);
+        } else {
+          submitForm(form);
+        }
+      });
+    }
+  }
+  function submitForm(form) {
+    let button = submitButtonsByForm.get(form) || findElement(form, "input[type=submit], button[type=submit]");
+    if (button) {
+      const { disabled } = button;
+      button.disabled = false;
+      button.focus();
+      button.click();
+      button.disabled = disabled;
+    } else {
+      button = document.createElement("input");
+      button.type = "submit";
+      button.style.display = "none";
+      form.appendChild(button);
+      button.click();
+      form.removeChild(button);
+    }
+    submitButtonsByForm.delete(form);
+  }
+  function disable(input) {
+    input.disabled = true;
+  }
+  function enable(input) {
+    input.disabled = false;
+  }
+  function autostart() {
+    if (window.ActiveStorage) {
+      start2();
+    }
+  }
+  setTimeout(autostart, 1);
 
   // node_modules/@rails/actiontext/app/javascript/actiontext/attachment_upload.js
-  var import_activestorage = __toModule(require_activestorage());
   var AttachmentUpload = class {
     constructor(attachment, element) {
       this.attachment = attachment;
       this.element = element;
-      this.directUpload = new import_activestorage.DirectUpload(attachment.file, this.directUploadUrl, this);
+      this.directUpload = new DirectUpload(attachment.file, this.directUploadUrl, this.directUploadToken, this.attachmentName, this);
     }
     start() {
       this.directUpload.create(this.directUploadDidComplete.bind(this));
@@ -10275,6 +10153,12 @@
     get blobUrlTemplate() {
       return this.element.dataset.blobUrlTemplate;
     }
+    get directUploadToken() {
+      return this.element.getAttribute("data-direct-upload-token");
+    }
+    get attachmentName() {
+      return this.element.getAttribute("data-direct-upload-attachment-name");
+    }
   };
 
   // node_modules/@rails/actiontext/app/javascript/actiontext/index.js
@@ -10292,7 +10176,7 @@
       this.eventTarget = eventTarget;
       this.eventName = eventName;
       this.eventOptions = eventOptions;
-      this.unorderedBindings = new Set();
+      this.unorderedBindings = /* @__PURE__ */ new Set();
     }
     connect() {
       this.eventTarget.addEventListener(this.eventName, this, this.eventOptions);
@@ -10340,7 +10224,7 @@
   var Dispatcher = class {
     constructor(application2) {
       this.application = application2;
-      this.eventListenerMaps = new Map();
+      this.eventListenerMaps = /* @__PURE__ */ new Map();
       this.started = false;
     }
     start() {
@@ -10391,7 +10275,7 @@
     fetchEventListenerMapForEventTarget(eventTarget) {
       let eventListenerMap = this.eventListenerMaps.get(eventTarget);
       if (!eventListenerMap) {
-        eventListenerMap = new Map();
+        eventListenerMap = /* @__PURE__ */ new Map();
         this.eventListenerMaps.set(eventTarget, eventListenerMap);
       }
       return eventListenerMap;
@@ -10585,7 +10469,7 @@
       this.element = element;
       this.started = false;
       this.delegate = delegate;
-      this.elements = new Set();
+      this.elements = /* @__PURE__ */ new Set();
       this.mutationObserver = new MutationObserver((mutations) => this.processMutations(mutations));
     }
     start() {
@@ -10767,7 +10651,7 @@
       this.element = element;
       this.delegate = delegate;
       this.started = false;
-      this.stringMap = new Map();
+      this.stringMap = /* @__PURE__ */ new Map();
       this.mutationObserver = new MutationObserver((mutations) => this.processMutations(mutations));
     }
     start() {
@@ -10859,7 +10743,7 @@
   function fetch2(map, key) {
     let values = map.get(key);
     if (!values) {
-      values = new Set();
+      values = /* @__PURE__ */ new Set();
       map.set(key, values);
     }
     return values;
@@ -10872,7 +10756,7 @@
   }
   var Multimap = class {
     constructor() {
-      this.valuesByKey = new Map();
+      this.valuesByKey = /* @__PURE__ */ new Map();
     }
     get keys() {
       return Array.from(this.valuesByKey.keys());
@@ -10992,8 +10876,8 @@
     constructor(element, attributeName, delegate) {
       this.tokenListObserver = new TokenListObserver(element, attributeName, this);
       this.delegate = delegate;
-      this.parseResultsByToken = new WeakMap();
-      this.valuesByTokenByElement = new WeakMap();
+      this.parseResultsByToken = /* @__PURE__ */ new WeakMap();
+      this.valuesByTokenByElement = /* @__PURE__ */ new WeakMap();
     }
     get started() {
       return this.tokenListObserver.started;
@@ -11040,7 +10924,7 @@
     fetchValuesByTokenForElement(element) {
       let valuesByToken = this.valuesByTokenByElement.get(element);
       if (!valuesByToken) {
-        valuesByToken = new Map();
+        valuesByToken = /* @__PURE__ */ new Map();
         this.valuesByTokenByElement.set(element, valuesByToken);
       }
       return valuesByToken;
@@ -11058,7 +10942,7 @@
     constructor(context, delegate) {
       this.context = context;
       this.delegate = delegate;
-      this.bindingsByAction = new Map();
+      this.bindingsByAction = /* @__PURE__ */ new Map();
     }
     start() {
       if (!this.valueListObserver) {
@@ -11344,7 +11228,7 @@
     return Array.from(ancestors.reduce((values, constructor2) => {
       getOwnStaticArrayValues(constructor2, propertyName).forEach((name) => values.add(name));
       return values;
-    }, new Set()));
+    }, /* @__PURE__ */ new Set()));
   }
   function readInheritableStaticObjectPairs(constructor, propertyName) {
     const ancestors = getAncestorsForConstructor(constructor);
@@ -11458,8 +11342,8 @@
     constructor(application2, definition) {
       this.application = application2;
       this.definition = blessDefinition(definition);
-      this.contextsByScope = new WeakMap();
-      this.connectedContexts = new Set();
+      this.contextsByScope = /* @__PURE__ */ new WeakMap();
+      this.connectedContexts = /* @__PURE__ */ new Set();
     }
     get identifier() {
       return this.definition.identifier;
@@ -11553,13 +11437,13 @@
   };
   var Guide = class {
     constructor(logger) {
-      this.warnedKeysByObject = new WeakMap();
+      this.warnedKeysByObject = /* @__PURE__ */ new WeakMap();
       this.logger = logger;
     }
     warn(object, key, message) {
       let warnedKeys = this.warnedKeysByObject.get(object);
       if (!warnedKeys) {
-        warnedKeys = new Set();
+        warnedKeys = /* @__PURE__ */ new Set();
         this.warnedKeysByObject.set(object, warnedKeys);
       }
       if (!warnedKeys.has(key)) {
@@ -11669,8 +11553,8 @@
       this.schema = schema;
       this.delegate = delegate;
       this.valueListObserver = new ValueListObserver(this.element, this.controllerAttribute, this);
-      this.scopesByIdentifierByElement = new WeakMap();
-      this.scopeReferenceCounts = new WeakMap();
+      this.scopesByIdentifierByElement = /* @__PURE__ */ new WeakMap();
+      this.scopeReferenceCounts = /* @__PURE__ */ new WeakMap();
     }
     start() {
       this.valueListObserver.start();
@@ -11710,7 +11594,7 @@
     fetchScopesByIdentifierForElement(element) {
       let scopesByIdentifier = this.scopesByIdentifierByElement.get(element);
       if (!scopesByIdentifier) {
-        scopesByIdentifier = new Map();
+        scopesByIdentifier = /* @__PURE__ */ new Map();
         this.scopesByIdentifierByElement.set(element, scopesByIdentifier);
       }
       return scopesByIdentifier;
@@ -11721,7 +11605,7 @@
       this.application = application2;
       this.scopeObserver = new ScopeObserver(this.element, this.schema, this);
       this.scopesByIdentifier = new Multimap();
-      this.modulesByIdentifier = new Map();
+      this.modulesByIdentifier = /* @__PURE__ */ new Map();
     }
     get element() {
       return this.application.element;
@@ -12218,8 +12102,44 @@
     }
   };
 
+  // app/javascript/controllers/slides_controller.js
+  var slides_controller_default = class extends Controller {
+    static get targets() {
+      return ["slide", "progress", "counter"];
+    }
+    connect() {
+      this.activeSlide();
+    }
+    show(slide) {
+      return slide.style.display = "flex";
+    }
+    hide(slide) {
+      return slide.style.display = "none";
+    }
+    next() {
+      this.indexValue++;
+      this.activeSlide();
+    }
+    previous() {
+      this.indexValue--;
+      this.activeSlide();
+    }
+    hideAllSlides() {
+      this.slideTargets.map(this.hide);
+    }
+    progressUpdate() {
+    }
+    activeSlide() {
+      const currentIndex = parseInt(this.indexValue);
+      const currentSlide = this.slideTargets[currentIndex];
+      this.hideAllSlides();
+      this.show(currentSlide);
+    }
+  };
+  __publicField(slides_controller_default, "values", { index: Number });
+
   // app/javascript/controllers/day_controller.js
-  var import_dayjs = __toModule(require_dayjs_min());
+  var import_dayjs = __toESM(require_dayjs_min());
   var relativeTime = require_relativeTime();
   import_dayjs.default.extend(relativeTime);
   var day_controller_default = class extends Controller {
@@ -12242,10 +12162,11 @@
   application.register("menu", menu_controller_default);
   application.register("sidebar", sidebar_controller_default);
   application.register("tabs", tabs_controller_default);
+  application.register("slides", slides_controller_default);
   application.register("day", day_controller_default);
 
   // app/javascript/vendor/day.js
-  var import_dayjs2 = __toModule(require_dayjs_min());
+  var import_dayjs2 = __toESM(require_dayjs_min());
   document.addEventListener("turbo:load", () => {
     var relativeTime2 = require_relativeTime();
     import_dayjs2.default.extend(relativeTime2);
