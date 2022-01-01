@@ -3,7 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.1.0'
 
-gem 'rails'
+gem 'rails', github: 'rails/rails', branch: '7-0-stable'
 gem 'pg'
 gem 'puma'
 gem 'jbuilder'
@@ -11,6 +11,7 @@ gem 'sprockets-rails'
 gem 'jsbundling-rails'
 gem 'cssbundling-rails'
 gem 'bootsnap', require: false
+gem 'net-smtp', require: false
 
 gem 'redis'
 gem 'turbo-rails'
@@ -25,7 +26,7 @@ gem 'liquid'
 gem 'redcarpet'
 gem 'name_of_person'
 gem 'pagy'
-gem 'ransack', github: 'activerecord-hackery/ransack'
+gem 'ransack'
 gem 'pg_search'
 gem 'sinatra'
 
@@ -50,11 +51,6 @@ group :development do
   gem 'listen'
   gem 'spring'
   gem 'standard'
-  gem 'capistrano',         require: false
-  gem 'capistrano-rvm',     require: false
-  gem 'capistrano-rails',   require: false
-  gem 'capistrano-bundler', require: false
-  gem 'capistrano3-puma',   require: false
 end
 
 group :test do
@@ -62,6 +58,3 @@ group :test do
   gem 'selenium-webdriver'
   gem 'webdrivers'
 end
-
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
