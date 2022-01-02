@@ -14,10 +14,10 @@
 <br/>
 <p align="center">
   <a href="https://www.ruby-lang.org/en/">
-    <img src="https://img.shields.io/badge/Ruby-v3.0.1-green.svg" alt="ruby version"/>
+    <img src="https://img.shields.io/badge/Ruby-v3.1.0-green.svg" alt="ruby version"/>
   </a>
   <a href="http://rubyonrails.org/">
-    <img src="https://img.shields.io/badge/Rails-v6.1.3-brightgreen.svg" alt="rails version"/>
+    <img src="https://img.shields.io/badge/Rails-v7.0.0-green.svg" alt="rails version"/>
   </a>
 
 ## Getting Started
