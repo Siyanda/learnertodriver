@@ -1,9 +1,9 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.1.0'
+ruby '3.0.3'
 
-gem 'rails', github: 'rails/rails', branch: '7-0-stable'
+gem 'rails'
 gem 'pg'
 gem 'puma'
 gem 'jbuilder'
@@ -11,7 +11,6 @@ gem 'sprockets-rails'
 gem 'jsbundling-rails'
 gem 'cssbundling-rails'
 gem 'bootsnap', require: false
-gem 'net-smtp', require: false
 
 gem 'redis'
 gem 'turbo-rails'
