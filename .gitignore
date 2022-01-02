@@ -126,13 +126,6 @@ build-iPhoneSimulator/
 # .ruby-version
 # .ruby-gemset
 
-# unless supporting rvm < 1.11.0 or doing something fancy, ignore this:
-
-# .gitignore for jekyllized projects
-
-# Ignore hidden folders
-# This takes care of .tmp, .sass-cache, and many others
-.*/
 
 # OSX
 ._*

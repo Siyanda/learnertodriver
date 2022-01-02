@@ -1,0 +1,33 @@
+name: Ruby CI
+
+on:
+  pull_request:
+    branches:
+      - '**'
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: Ruby ${{ matrix.version }}
+    runs-on: ubuntu-latest
+    env:
+      BUNDLE_GEMFILE: ${{ matrix.gemfile }}
+    strategy:
+      matrix:
+        version:
+          - 3.0.3
+        gemfile:
+          - Gemfile
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up Ruby ${{ matrix.version }}
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.version }}
+          bundler-cache: true
+
+      - name: Test
+        run: bundle exec rake test
