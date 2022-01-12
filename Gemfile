@@ -40,8 +40,6 @@ gem 'inky-rb', require: 'inky'
 gem 'premailer-rails'
 gem 'sendgrid-ruby'
 
-gem 'airbrake'
-
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
