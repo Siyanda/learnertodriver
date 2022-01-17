@@ -1,21 +1,23 @@
 <% breadcrumb :evaluation, @quiz %>
-  <div class="alt-border gapped content"
-  data-controller="slides"
-  data-slides-index-value="0">
+
+<div class="alt-border gapped content"
+    data-controller="slides"
+    data-slides-index-value="0">
+
     <%= render "evaluations/components/header" %>
-    <br>
+
     <div class="gainsboro-bordered">
 
-    <div class="progress-container full-width">
-      <label for="question-progress">Progress:</label>
-      <progress
-        id="question-progress"
-        value="1"
-        max="10"
-        data-slides-target="progress"
-        class="full-width">
-      </progress>
-    </div>
+      <div class="progress-container full-width">
+        <label for="question-progress">Progress:</label>
+
+        <progress
+          data-slides-target="progress"
+          value="1"
+          max="10"
+          class="full-width">
+        </progress>
+      </div>
 
 
       <% @quiz.questions.random.each.with_index(1) do |question, index| %>
@@ -23,7 +25,6 @@
         <div class="column flex padded" data-slides-target="slide">
           <h2>Question <span data-slides-target="counter"><%= index %></span></h2>
           <h2><%= question.content %></h2>
-
           <div class="flex padded">
             <ul class="answers">
               <% question.answers.each do |answer| %>
@@ -46,4 +47,4 @@
       <% end %>
     </div>
     <%= render "form" %>
-  </div>
+</div>

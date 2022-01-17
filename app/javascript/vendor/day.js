@@ -4,18 +4,35 @@ import dayjs from 'dayjs'
 
 document.addEventListener("turbo:load", () => {
 
-var relativeTime = require('dayjs/plugin/relativeTime');
-dayjs.extend(relativeTime);
+  var relativeTime = require('dayjs/plugin/relativeTime');
+  dayjs.extend(relativeTime);
 
-  let dateContainer = document.getElementsByClassName("time_ago_in_words");
-  if (dateContainer) {
-    let allDates = Array.from(dateContainer);
+  var duration = require('dayjs/plugin/duration');
+  dayjs.extend(duration);
+
+  let timeAgoContainer = document.getElementsByClassName("time_ago_in_words");
+  if (timeAgoContainer) {
+    let allDates = Array.from(timeAgoContainer);
 
     allDates.forEach(
       function(element) {
         let dateText = element.textContent.replace(/[\n\r]+|[\s]{2,}/g, ' ').trim();
         let formatedDate = dayjs().to(dayjs(dateText));
         element.innerHTML = formatedDate;
+    }
+  )}
+
+  let durationContainer = document.getElementsByClassName("s_to_duration");
+
+  if (durationContainer) {
+    let allDates = Array.from(durationContainer);
+
+    allDates.forEach(
+      function(element) {
+        dayjs.extend(duration)
+        let dateText = element.textContent.replace(/[\n\r]+|[\s]{2,}/g, ' ').trim();
+        let asDuration = dayjs.duration(dateText, "seconds").humanize();
+        element.innerHTML = `about ${asDuration} long`;
     }
   )}
 

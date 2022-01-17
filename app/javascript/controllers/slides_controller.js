@@ -34,7 +34,10 @@ export default class extends Controller {
     this.slideTargets.map(this.hide);
   }
 
-  progressUpdate() {
+  progressUpdate(start) {
+    const currentProgress = this.indexValue + parseInt(start)
+    this.progressTarget.max = this.slideTargets.length;
+    this.progressTarget.value = currentProgress;
   }
 
   activeSlide() {
@@ -43,5 +46,6 @@ export default class extends Controller {
 
     this.hideAllSlides();
     this.show(currentSlide);
+    this.progressUpdate(1);
   }
 }
