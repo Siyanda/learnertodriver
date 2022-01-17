@@ -35,9 +35,9 @@ export default class extends Controller {
   }
 
   progressUpdate(start) {
-    const progessIndex = this.indexValue + parseInt(start)
+    const currentProgress = this.indexValue + parseInt(start)
     this.progressTarget.max = this.slideTargets.length;
-    this.progressTarget.value = progessIndex;
+    this.progressTarget.value = currentProgress;
   }
 
   activeSlide() {
