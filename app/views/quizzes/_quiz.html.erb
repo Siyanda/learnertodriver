@@ -1,26 +1,21 @@
 <div class="rounded basic-border grid-item card">
   <div class="card-image">
-      <%= image_tag("cards/#{ quiz.kind }.jpg", alt: "#{ quiz.kind } image") %>
+    <%= image_tag("cards/#{ quiz.kind }.jpg", alt: "#{ quiz.kind } image") %>
   </div>
     <div class="card-content">
-
-    <div class="card-header">
-      <h2><%= link_to truncate(quiz.title, :length => 65), quiz %></h2>
-    </div>
-    
+      <div class="card-header">
+        <h2><%= link_to truncate(quiz.title, :length => 65), quiz %></h2>
+      </div>
     <div class="card-copy">
       <p class="item-description">
         <%= quiz.information.truncate(165) %>
       </p>
-      
       <p class="item-meta">
-        Duration : <span class="formatted_time"><%= quiz.duration %></span>
+        Duration : <span class="s_to_duration"><%= quiz.duration %></span>
       </p>
     </div>
-      
       <div class="cta">
         <%= link_to new_quiz_evaluation_path(quiz), class: 'slightly white-text padded full-width dark rounded button' do %> Practice Quiz <% end %>
       </div>
-
     </div>
 </div>
