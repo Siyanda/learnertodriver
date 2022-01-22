@@ -1,19 +1,41 @@
 <%= simple_form_for [@user, Evaluation.new] do |form| %>
+  <div class="slider-form" data-controller="slides" data-slides-index-value="0">
 
-  <% if @evaluation.errors.any? %>
-    <div id="error_explanation">
-    <h2><%= pluralize(@evaluation.errors.count, "error") %> prohibited this evaluation from being saved:</h2>
-      <ul>
-      <% @evaluation.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+    <div class="alt-border gapped content">
+      <div class="progress-container full-width">
+        <progress data-slides-target="progress" value="1" max="10" class="full-width"></progress>
+      </div>
+      <% @quiz.questions.random.each.with_index(1) do |question, index| %>
+        <div class="column flex padded" data-slides-target="slide">
+          <%= content_tag(:h1, content_tag(:span, "Question : #{index}")) %>
+          <%= content_tag(:h2, question.content) %>
+          <div class="answers">
+            <% question.answers.each do |answer| %>
+              <div class="flex spaced-between">
+                <%= content_tag(:span, answer.content, class: "answer" ) %>
+                <%= form.radio_button :score, "adult" %>
+              </div>
+            <% end %>
+          </div>
+        </div>
       <% end %>
-      </ul>
     </div>
-  <% end %>
 
-  <!--submit form-->
-  <div class="form-group">
-    <%= form.submit "Submit", id: "form_submit" , class: "button btn primary" %>
+    <div class="flex spaced-between bottom full-width white-bg level-two fixed padded alt-border">
+
+      <div class="clickable bttn dark slightly padded large-text" data-action="click->slides#previous">
+        <div class="flex center-aligned inner-button">
+          <div class="standard-svg light-fill icon"><%= inline_svg("icons/arrow-left.svg") %></div>
+          <div class="btn-text">Previous</div>
+        </div>
+      </div>
+
+      <div class="clickable bttn dark slightly padded large-text" data-action="click->slides#next">
+        <div class="flex rev-row center-aligned inner-button">
+          <div class="standard-svg light-fill icon"><%= inline_svg("icons/arrow-right.svg") %></div>
+          <div class="btn-text">Next</div>
+      </div>
+    </div>
+    <%= form.submit "Submit", id: "form_submit" , class: "hidden button btn primary" %>
   </div>
-
 <% end%>

@@ -5,7 +5,7 @@ export default class extends Controller {
   static values = { index:Number };
 
   static get targets() {
-    return ['slide', 'progress', 'counter']
+    return ['slide', 'progress']
   }
 
   connect() {
