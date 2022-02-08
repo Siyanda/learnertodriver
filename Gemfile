@@ -7,7 +7,7 @@ gem 'rails'
 gem 'pg'
 gem 'puma'
 gem 'jbuilder'
-gem 'sprockets-rails'
+gem 'propshaft'
 gem 'jsbundling-rails'
 gem 'cssbundling-rails'
 gem 'bootsnap', require: false
