@@ -269,8 +269,16 @@ footer {
   margin: 0;
 }
 
+.no-sides-margin {
+  margin-right: 0;
+  margin-left: 0;
+}
+
 .top-margin {
   margin-top: .4rem;
+  &.thick-tm {
+    margin-top: 2rem;
+  }
 }
 
 .right-margin {
@@ -361,11 +369,19 @@ footer {
   justify-content: center;
 }
 
+.in-block {
+  display: inline-block;
+}
+
 .flex {
   display: flex;
 
   &.row {
     flex-direction: row;
+  }
+
+  &.rev-row {
+    flex-direction: row-reverse;
   }
 
   &.column {

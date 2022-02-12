@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   require 'sidekiq/web'
 
   authenticate :user, lambda { |u| u.admin? } do
-    mount Sidekiq::Web => '/sidekiq'
+    mount Sidekiq::Web => '/jobs'
     resource :admin, only: %(show)
   end
 
@@ -29,7 +29,7 @@ Rails.application.routes.draw do
 
   resource :dashboard, only: %(show)
   resources :users, only: %i[show edit]
-  resources :tags
+  resources :tags, only: %i[show index]
   resources :pages
   resources :photos
   resources :questions

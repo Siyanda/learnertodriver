@@ -6,7 +6,7 @@
 
 .bttn {
   border-radius: $base-border-radius;
-  display: inline-block;
+  user-select: none;
 
   &.danger {
     @include button-states($crimson, $red, $cream);

@@ -1,19 +1,52 @@
 <%= simple_form_for [@user, Evaluation.new] do |form| %>
+  <div class="slider-form" data-controller="slides" data-slides-index-value="0">
 
-  <% if @evaluation.errors.any? %>
-    <div id="error_explanation">
-    <h2><%= pluralize(@evaluation.errors.count, "error") %> prohibited this evaluation from being saved:</h2>
-      <ul>
-      <% @evaluation.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+    <div class="alt-border gapped content">
+      <% @quiz.questions.random.each.with_index(1) do |question, index| %>
+        <div class="column flex" data-slides-target="slide">
+          <%= content_tag(:h1, "Question : #{index}", class: "bold question") %>
+
+          <div class="progress-container full-width">
+            <progress
+            value="<%= index %>"
+            max="<%= @quiz.questions.size %>"
+            class="full-width">
+            </progress>
+          </div>
+          <%= content_tag(:h2, question.content, class: "question") %>
+          <div class="answers">
+              <%= form.input :score,
+                            as: :radio_buttons,
+                            label: false,
+                            item_label_class: 'flex rev-row spaced-between clickable answer',
+                            collection: question.answers.collect{ |a| [a.content, a.id] } %>
+          </div>
+        </div>
       <% end %>
-      </ul>
     </div>
-  <% end %>
 
-  <!--submit form-->
-  <div class="form-group">
-    <%= form.submit "Submit", id: "form_submit" , class: "button btn primary" %>
+    <div class="flex spaced-between bottom full-width white-bg level-two fixed slightly padded alt-border">
+
+      <div class="clickable" data-action="click->slides#previous">
+        <div class="flex center-aligned inner-button bttn dark slightly padded large-text"
+              data-slides-target="hideStart">
+          <div class="standard-svg light-fill icon">
+            <%= inline_svg("icons/arrow-left.svg") %>
+          </div>
+          <div class="btn-text">Previous</div>
+        </div>
+      </div>
+
+      <div class="clickable" data-action="click->slides#next">
+        <div class="flex rev-row center-aligned inner-button bttn dark slightly padded large-text"
+              data-slides-target="hideEnd">
+          <div class="standard-svg light-fill icon">
+            <%= inline_svg("icons/arrow-right.svg") %>
+          </div>
+          <div class="btn-text">Next</div>
+        </div>
+      </div>
+
+    <%= form.submit "Submit", id: "form_submit" , class: "button btn primary", :data => { 'slides-target': 'showEnd' } %>
   </div>
-
 <% end%>

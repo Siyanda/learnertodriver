@@ -37,7 +37,7 @@
             <div class="divider"></div>
 
             <li class="full-width">
-              <%= link_to destroy_user_session_path, class: 'flex full-width user-menu-link', :method => :delete  do %>
+              <%= link_to destroy_user_session_path, data: { "turbo-method": :delete }, class: 'flex full-width user-menu-link' do %>
                 <div class="right-margin small-svg dark-fill icon">
                   <%= inline_svg("icons/log-out.svg") %>
                 </div> Log Out
