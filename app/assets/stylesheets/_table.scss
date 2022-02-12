@@ -69,6 +69,22 @@ table {
   width: 65%;
 }
 
+.question {
+  font-size: 20px;
+  margin-bottom: .8rem;
+}
+
+.answers {
+
+  .answer {
+    background: $white;
+    border: thin solid $gainsboro;
+    border-radius: .2rem;
+    padding: .8rem;
+    margin: .4rem;
+  }
+}
+
 .score {
   width: 35%;
 }

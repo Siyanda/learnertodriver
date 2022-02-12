@@ -369,6 +369,10 @@ footer {
   justify-content: center;
 }
 
+.in-block {
+  display: inline-block;
+}
+
 .flex {
   display: flex;
 
@@ -376,7 +380,7 @@ footer {
     flex-direction: row;
   }
 
-  .rev-row {
+  &.rev-row {
     flex-direction: row-reverse;
   }
 
