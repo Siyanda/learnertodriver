@@ -15,11 +15,15 @@
           </div>
           <%= content_tag(:h2, question.content, class: "question") %>
           <div class="answers">
-              <%= form.input :score,
+            <%= form.fields_for :reactions, Reaction.new do |builder| %>
+
+            <%= builder.input :answer,
                             as: :radio_buttons,
                             label: false,
                             item_label_class: 'flex rev-row spaced-between clickable answer',
                             collection: question.answers.collect{ |a| [a.content, a.id] } %>
+            <% end %>
+
           </div>
         </div>
       <% end %>
