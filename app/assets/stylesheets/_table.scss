@@ -75,9 +75,6 @@ table {
 }
 
 .answers {
-
-  .answers {
-
   .answer {
     background: $white;
     border: thin solid $gainsboro;
@@ -92,6 +89,7 @@ table {
     }
   }
 }
+
 
 label input[type="radio"]:checked {
   margin: 10px 0px;
