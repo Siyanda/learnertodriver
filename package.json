@@ -13,7 +13,7 @@
     "trix": "^2.0.0-alpha.0"
   },
   "scripts": {
-    "build": "esbuild app/javascript/*.* --bundle --outdir=app/assets/builds",
-    "build:css": "sass ./app/assets/stylesheets/application.sass.scss ./app/assets/builds/application.css --no-source-map --load-path=node_modules"
+    "build": "esbuild app/javascript/*.* --outdir=app/assets/builds --bundle --minify --target=chrome79,edge92,firefox91,safari12",
+    "build:css": "sass ./app/assets/stylesheets/application.sass.scss ./app/assets/builds/application.css --source-map --style compressed --load-path=node_modules"
   }
 }

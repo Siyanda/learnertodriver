@@ -4,7 +4,7 @@
 // <img data-src="/assets/img.png" />
 // <iframe data-src="https://youtube.com"></iframe>
 
-document.addEventListener("turbo:load", () => {
+document.addEventListener('turbo:load', () => {
   document.querySelectorAll('[data-src]').forEach((element) =>{
     element.setAttribute('src', element.getAttribute('data-src'))
   })

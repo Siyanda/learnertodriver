@@ -76,13 +76,25 @@ table {
 
 .answers {
 
+  .answers {
+
   .answer {
     background: $white;
     border: thin solid $gainsboro;
     border-radius: .2rem;
     padding: .8rem;
     margin: .4rem;
+    transition: background-color 100ms linear;
+
+    &:hover {
+      background: $shades;
+      border: thin solid $ocean;
+    }
   }
+}
+
+label input[type="radio"]:checked {
+  margin: 10px 0px;
 }
 
 .score {
