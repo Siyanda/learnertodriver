@@ -377,6 +377,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  actionpack (~> 7.0)
   acts_as_votable
   aws-sdk-s3
   bootsnap
