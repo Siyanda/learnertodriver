@@ -1,2 +1,2 @@
-import "./day.js"
-import "./lazysrc.js"
+import './day.js'
+import './lazysrc.js'
