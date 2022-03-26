@@ -6,28 +6,28 @@
         <div class="column" data-slides-target="slide">
           <%= content_tag(:h1, "Question : #{index}", class: "bold question") %>
 
-        <div class="progress-container full-width">
-          <progress value="<%= index %>" max="<%= @quiz.questions.size %>" class="full-width">
-          </progress>
-        </div>
+            <div class="progress-container full-width">
+              <progress value="<%= index %>" max="<%= @quiz.questions.size %>" class="full-width">
+              </progress>
+            </div>
 
-          <%= content_tag(:h2, question.content, class: "question") %>
-          <div class="answers">
-            <%= form.fields_for :reactions, Reaction.new do |builder| %>
+            <%= content_tag(:h2, question.content, class: "question") %>
 
-            <%= builder.input :answer,
-                            as: :radio_buttons,
-                            label: false,
-                            item_label_class: 'flex rev-row spaced-between clickable answer',
-                            collection: question.answers.collect{ |a| [a.content, a.id] } %>
-            <% end %>
+            <div class="answers">
+              <%= form.fields_for :reactions, Reaction.new do |builder| %>
 
-          </div>
+              <%= builder.input :answer,
+                              as: :radio_buttons,
+                              label: false,
+                              item_label_class: 'flex rev-row spaced-between clickable answer',
+                              collection: question.answers.collect{ |a| [a.content, a.id] } %>
+              <% end %>
+            </div>
         </div>
       <% end %>
     </div>
 
-    <div class="flex spaced-between bottom full-width white-bg level-two fixed slightly padded alt-border" data-slides-target="controls">
+    <div class="flex spaced-between bottom full-width white-bg level-two fixed slightly padded alt-border controls" data-slides-target="controls">
 
       <div class="clickable" data-action="click->slides#previous">
         <div class="hide-start left">
@@ -51,6 +51,6 @@
         </div>
       </div>
 
-    <%= form.submit "Submit", id: "form_submit" , class: "show-end inner-button bttn dark" %>
+    <%= form.submit "Submit", id: "form_submit" , class: "shown-end inner-button bttn dark" %>
   </div>
 <% end%>
