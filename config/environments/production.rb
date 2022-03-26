@@ -98,7 +98,7 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     address: Rails.application.credentials.send_grid.smtp,
     port: Rails.application.credentials.send_grid.port,
-    user_name: Rails.application.credentials.send_grid.user,
+    user_name: Rails.application.credentials.send_grid.username,
     password: Rails.application.credentials.send_grid.password,
     authentication: :plain,
     enable_starttls_auto: true
