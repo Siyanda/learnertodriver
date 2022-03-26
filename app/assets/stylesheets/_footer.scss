@@ -1,5 +1,3 @@
-/* basic footer */
-
 .footer {
   padding: .5rem;
 
@@ -7,8 +5,6 @@
     margin: 0;
   }
 }
-
-/* page footer */
 
 .page-footer {
   background: $ocean;
@@ -37,11 +33,7 @@
   }
 }
 
-/* app footer */
-
 .application-footer {
-  // background: $dusk;
-  // color: $slate;
   display: block;
   font-size: 1rem;
   font-weight: 500;
@@ -61,10 +53,8 @@
   }
 
   a {
-    // color: $slate;
     text-decoration: none;
     transition: color 150ms ease-in-out, border-color 150ms ease-in-out;
-
   }
 
   .group {
@@ -98,32 +88,17 @@
     li {
       display: inline-block;
       margin-right: .75rem;
-
-      // a {
-      //   color: $slate;
-      //   font-size: 14px;
-
-      //   &:hover {
-      //     color: $white;
-      //   }
-      // }
     }
   }
 
   .footer-container {
-    // background: $ocean;
     display: block;
     width: 100%;
     padding: 0;
     text-align: center;
 
     a, h5, label {
-      // color: $cream;
       font-weight: 200;
-
-      // &:hover {
-      //   color: $sky;
-      // }
     }
   }
 

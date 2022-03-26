@@ -65,6 +65,18 @@
   }
 }
 
-.apexcharts-toolbar {
-  z-index: 2 !important;
+
+.controls {
+
+  .hide-start {
+    display: none;
+  }
+
+  .hide-end {
+    display: none;
+  }
+
+  .shown-end {
+    display: none;
+  }
 }
