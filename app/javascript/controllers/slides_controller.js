@@ -2,7 +2,8 @@ import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
 
- static values = { state: { type: String, default: 'start' },
+ static values = {
+                   state: { type: String, default: 'start' },
                    index: { type: Number, default: 0 }
                   }
 
@@ -11,6 +12,10 @@ export default class extends Controller {
   indexValueChanged() {
     this.currentSlide()
     this.sliderState()
+  }
+
+  stateValueChanged() {
+   console.log(this.stateValue)
   }
 
   next() {
