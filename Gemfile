@@ -57,5 +57,3 @@ group :test do
   gem 'selenium-webdriver'
   gem 'webdrivers'
 end
-
-gem "actionpack", "~> 7.0"

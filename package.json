@@ -6,14 +6,14 @@
     "@hotwired/turbo-rails": "^7.1.0",
     "@rails/actioncable": "^7.0.0",
     "@rails/actiontext": "^7.0.0",
-    "dayjs": "^1.10.7",
+    "dayjs": "^1.11.0",
     "esbuild": "^0.14.8",
     "sass": "^1.44.0",
     "stylelint": "^14.1.0",
-    "trix": "^2.0.0-alpha.0"
+    "trix": "^2.0.0-alpha.1"
   },
   "scripts": {
     "build": "esbuild app/javascript/*.* --outdir=app/assets/builds --bundle --minify --target=chrome79,edge92,firefox91,safari12",
-    "build:css": "sass ./app/assets/stylesheets/application.sass.scss ./app/assets/builds/application.css --source-map --style compressed --load-path=node_modules"
+    "build:css": "sass ./app/assets/stylesheets/application.sass.scss ./app/assets/builds/application.css --source-map --load-path=node_modules"
   }
 }
