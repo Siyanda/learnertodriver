@@ -18,7 +18,7 @@ Rails.application.configure do
 
   # Ensures that a master key has been made available in either ENV["RAILS_MASTER_KEY"]
   # or in config/master.key. This key is used to decrypt credentials (and other encrypted files).
-  # config.require_master_key = true
+  config.require_master_key = true
 
   # Disable serving static files from the `/public` folder by default since
   # Apache or NGINX already handles this.
@@ -46,7 +46,7 @@ Rails.application.configure do
   # config.action_cable.allowed_request_origins = [ "http://example.com", /http:\/\/example.*/ ]
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
-  # config.force_ssl = true
+  config.force_ssl = true
 
   # Include generic and useful information about system operation, but avoid logging too much
   # information to avoid inadvertent exposure of personally identifiable information (PII).
@@ -96,10 +96,10 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
   config.action_mailer.smtp_settings = {
-    address: ENV['EMAIL_SERVICE_SMTP'],
-    port: ENV['EMAIL_SERVICE_PORT'],
-    user_name: ENV['EMAIL_API_USER'],
-    password: ENV['EMAIL_API_KEY'],
+    address: Rails.application.credentials.send_grid.smtp,
+    port: Rails.application.credentials.send_grid.port,
+    user_name: Rails.application.credentials.send_grid.user,
+    password: Rails.application.credentials.send_grid.password,
     authentication: :plain,
     enable_starttls_auto: true
   }
