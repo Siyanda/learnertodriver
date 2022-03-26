@@ -37,7 +37,7 @@ gem 'acts_as_votable'
 
 gem 'inky-rb', require: 'inky'
 gem 'premailer-rails'
-gem 'sendgrid-ruby'
+gem 'postmark-rails'
 
 group :development, :test do
   gem 'rspec-rails'
