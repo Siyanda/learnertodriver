@@ -1,0 +1,141 @@
+.log-in,
+.sign-up {
+  margin: 4rem .4rem;
+
+  h1,
+  h2 {
+    text-align: center;
+  }
+}
+
+.devise {
+  width: 90%;
+  margin: auto;
+  max-width: 650px;
+
+  .mainbox {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .email,
+  .submit,
+  .btn,
+  .password {
+    width: 100%;
+  }
+
+  .btn {
+    background: var(--brand-color);
+    border: 0;
+    border-radius: 3px;
+    color: var(--light);
+    cursor: pointer;
+    padding: 10px;
+  }
+
+  .links {
+    font-size: 95%;
+    margin: 2rem 0 0;
+  }
+
+  a {
+    color: var(--blue);
+  }
+
+  h2 {
+    font-weight: 600;
+    text-align: center;
+  }
+
+  div,
+  .boolean {
+    margin: .2rem;
+  }
+
+  input {
+    background-image: none;
+    color: inherit;
+    margin: 0;
+    outline: 0;
+    padding: 0;
+    transition: background-color .3s;
+  }
+}
+
+.alert {
+  animation: fadeinout 8s linear forwards;
+  background-color: var(--blackish);
+  border-radius: 2px;
+  bottom: 40px;
+  color: var(--light);
+  min-width: 250px;
+  padding: 16px;
+  position: absolute;
+  text-align: center;
+  right: 10px;
+  z-index: 100;
+}
+
+.form {
+  border-radius: .4rem;
+  padding: 1.8rem 2rem;
+
+  .form-actions {
+    padding-top: 1.8rem;
+  }
+
+  h1 {
+    font-weight: 700;
+  }
+
+  h2 {
+    font-weight: 600;
+  }
+}
+
+.form-control {
+  border: thin solid var(--mid-color);
+}
+
+.form-label {
+  height: 25px;
+}
+
+
+.lines-bg {
+  background-image: url("svg/lines_light.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100%;
+}
+
+.main-bg {
+  background-image: url("svg/main.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100%;
+}
+
+.thin-bg {
+  background-image: url("svg/thin.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100%;
+}
+
+@keyframes fadeinout {
+  0%,
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  50% {
+    opacity: 1;
+    visibility: visible;
+  }
+}

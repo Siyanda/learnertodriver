@@ -1,0 +1,158 @@
+.footer {
+  padding: .5rem;
+
+  p {
+    margin: 0;
+  }
+}
+
+.page-footer {
+  background: var(--brand-alt);
+  display: block;
+  padding: 0;
+  text-align: center;
+  width: 100%;
+
+  a, h5, label {
+    color: var(--light);
+    font-weight: 200;
+
+    &:hover {
+      color: $sky;
+    }
+  }
+
+  .footer-top {
+    background: $dusk;
+  }
+
+  .footer-copyright {
+    background: var(--brand-alt);
+    color: $space-grey;
+    padding: 2rem;
+  }
+}
+
+.application-footer {
+  display: block;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 3rem;
+
+  h3 {
+    display: block;
+    font-weight: 500;
+    line-height: 1.25;
+    margin: 0 0 .75rem;
+  }
+
+  ul {
+    display: block;
+    margin: 0;
+    padding: 0;
+  }
+
+  a {
+    text-decoration: none;
+    transition: color 150ms ease-in-out, border-color 150ms ease-in-out;
+  }
+
+  .group {
+    flex-basis: calc(33% - 3rem);
+    margin-bottom: 3rem;
+    margin-right: 3rem;
+
+    li {
+      margin-bottom: .375rem;
+    }
+  }
+
+  .footer-groups {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    li {
+      margin-bottom: .7rem;
+    }
+  }
+
+  .group-title {
+    color: var(--light);
+    font-size: 1.2rem;
+  }
+
+  .copyright {
+    color: var(--slate);
+
+    li {
+      display: inline-block;
+      margin-right: .75rem;
+    }
+  }
+
+  .footer-container {
+    display: block;
+    width: 100%;
+    padding: 0;
+    text-align: center;
+
+    a, h5, label {
+      font-weight: 200;
+    }
+  }
+
+  .footer-top {
+    background: $dusk;
+  }
+
+  .footer-copyright {
+    background: var(--brand-alt);
+    color: $medium-gray;
+    padding: 2rem 1rem;
+  }
+}
+
+.dashboard-footer {
+  padding: .5rem;
+
+  p {
+    margin: 0;
+  }
+}
+
+@media screen and (max-width: 540px) {
+
+  .application-footer {
+    padding: .3rem;
+
+    .group {
+      flex-basis: 100%;
+      margin: .2rem 1.3rem;
+    }
+
+    .copyright {
+      margin: 1.2rem;
+    }
+  }
+
+  .footer-groups {
+    flex-direction: column;
+  }
+
+  .block {
+    text-align: center;
+  }
+
+  .card {
+    margin: 1.5%;
+  }
+
+  .controls {
+    .button {
+      width: 100%;
+      margin: .2rem;
+    }
+  }
+
+}

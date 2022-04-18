@@ -1,0 +1,19 @@
+.action-bar {
+  border-bottom: var(--blackish) var(--blackish) var(--grey) var(--blackish);
+
+  a {
+    align-items: center;
+    border: 2px solid var(--brand-alt);
+    border-radius: .4rem;
+    color: var(--brand-alt);
+    cursor: pointer;
+    display: flex;
+    margin: auto .4rem;
+    padding: .2rem .4rem;
+
+    &:hover {
+      background-color: var(--brand-alt);
+      color: var(--light);
+    }
+  }
+}

@@ -1,0 +1,233 @@
+.testimonials {
+  padding: 2.5em 0;
+  background-image: linear-gradient( var(--light), var(--grey)), url("bg/city.jpg");
+  background-position: center top;
+  background-repeat: repeat-x;
+}
+
+.pre-text {
+  text-align: center;
+  color: var(--accent-bg);
+  margin: 4rem auto;
+}
+
+.quote-image, .quote-avatar {
+  border: 5px solid var(--light);
+  border-radius: 44px;
+  height: 73px;
+  width: 73px;
+}
+
+.quotes {
+  min-height: 200px;
+}
+
+blockquote {
+  bottom: 0;
+  font-size: 14px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  z-index: 0;
+
+  cite {
+    color: var(--brand-alt);
+    font-size: 16px;
+    text-align: center;
+  }
+
+  p {
+    color: var(--accent-bg);
+    font-size: 24px;
+    font-style: italic;
+    font-weight: normal;
+    line-height: 30px;
+    margin-bottom: 10px;
+
+    &::before {
+      content: "\201C";
+    }
+
+    &::after {
+      content: "\201D";
+    }
+  }
+}
+
+.mask {
+  min-height: 200px;
+  overflow: hidden;
+}
+
+#slider {
+  border: thin solid var(--slate);
+  border-radius: 4px;
+  margin: 2rem auto;
+  padding: 2rem;
+  text-align: center;
+  width: 80%;
+
+  &::before {
+    background: var(--light);
+    filter: blur(100px);
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+}
+
+.slider {
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+
+  .slide {
+    left: 50%;
+    list-style: none;
+    position: absolute;
+    top: 2rem;
+    transform: translate(-50%, -100%);
+    width: 100%;
+    max-width: 800px;
+
+    &.firstanimation {
+      animation: cycle 20s ease-in-out infinite;
+    }
+
+    &.secondanimation {
+      animation: cycletwo 20s ease-in-out infinite;
+    }
+
+    &.thirdanimation {
+      animation: cyclethree 20s ease-in-out infinite;
+    }
+  }
+}
+
+@media screen and (min-width: 980px) {
+  .testimonials {
+    background-size: cover;
+  }
+
+  .pre-text {
+    max-width: 60%;
+    margin: 6rem auto;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .testimonials {
+    background-size: cover;
+  }
+
+  #slider {
+    width: 90%;
+  }
+
+  .mask {
+    min-height: 240px;
+  }
+}
+
+@keyframes cycle {
+  0% {
+    transform: translate(-50%, 0%);
+    opacity: 1;
+  }
+  /* visible */
+
+  29% {
+    transform: translate(-50%, 0%);
+    opacity: 1;
+  }
+  /* start move */
+
+  33% {
+    transform: translate(-50%, 100%);
+    opacity: 0;
+  }
+  /* below */
+
+  96% {
+    transform: translate(-50%, -100%);
+    opacity: 0;
+  }
+  /* above */
+
+  100% {
+    transform: translate(-50%, 0%);
+    opacity: 1;
+  }
+  /* visible */
+
+}
+@keyframes cycletwo {
+  0% {
+    transform: translate(-50%, -100%);
+    opacity: 0;
+  }
+  /* above */
+
+  29% {
+    transform: translate(-50%, -100%);
+    opacity: 0;
+  }
+  /* start move */
+
+  33% {
+    transform: translate(-50%,    0%);
+    opacity: 1;
+  }
+  /* visible */
+
+  62% {
+    transform: translate(-50%,    0%);
+    opacity: 1;
+  }
+  /* visible */
+
+  66% {
+    transform: translate(-50%,  100%);
+    opacity: 0;
+  }
+  /* below */
+
+  100% {
+    transform: translate(-50%, -100%);
+    opacity: 0;
+  }
+  /* above */
+
+}
+@keyframes cyclethree {
+  0% {
+    transform: translate(-50%, -100%);
+    opacity: 0;
+  }
+  /* top */
+
+  62% {
+    transform: translate(-50%, -100%);
+    opacity: 0;
+  }
+  /* start move */
+
+  66% {
+    transform: translate(-50%,    0%);
+    opacity: 1;
+  }
+  /* visible */
+
+  96% {
+    transform: translate(-50%,    0%);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(-50%,  100%);
+    opacity: 0;
+  }
+}
