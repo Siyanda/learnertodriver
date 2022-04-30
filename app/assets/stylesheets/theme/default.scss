@@ -1,0 +1,32 @@
+.nav-area {
+  .padded {
+    padding: 0.4rem 1.2rem;
+  }
+}
+
+.block-meta {
+
+  .small-svg {
+    margin: 0 .4rem;
+  }
+}
+
+.lg-form-textarea {
+  background-color: #0202020d;
+  min-height: 350px;
+}
+
+.form-textarea {
+  width: 100%;
+  padding: 0.8rem;
+}
+
+.sticky {
+  bottom: 40px;
+  width: fit-content;
+  z-index: 100;
+
+  .message {
+
+  }
+}

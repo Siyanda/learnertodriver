@@ -1,9 +1,10 @@
 /* comments */
 
-.comments-title, .comment-reply-title {
+.comments-title,
+.comment-reply-title {
   font-size: 1.75em;
   font-weight: 700;
-  color: var(--brand-color);
+  color: var(--brand-alt);
 }
 
 .comment-section {
@@ -17,7 +18,7 @@
 .comment-respond {
   margin: 2rem 0;
   padding: 1.5%;
-  background: var(--light);
+  background: var(--white);
   border-top: 1px solid var(--slate);
 }
 

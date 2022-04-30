@@ -1,11 +1,12 @@
 .cards {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .card {
-  background: var(--light);
-  box-shadow: 0 0 5px rgba(black, .15);;
+  background: var(--white);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
   display: flex;
   flex-wrap: wrap;
   margin: .4rem 1.2rem;

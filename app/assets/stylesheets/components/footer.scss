@@ -18,17 +18,17 @@
     font-weight: 200;
 
     &:hover {
-      color: $sky;
+      color: var(--accent-color);
     }
   }
 
   .footer-top {
-    background: $dusk;
+    background: var(--blackish);
   }
 
   .footer-copyright {
     background: var(--brand-alt);
-    color: $space-grey;
+    color: var(--grey);
     padding: 2rem;
   }
 }
@@ -55,6 +55,10 @@
   a {
     text-decoration: none;
     transition: color 150ms ease-in-out, border-color 150ms ease-in-out;
+
+    &:hover {
+      color: var(--accent-color);
+    }
   }
 
   .group {
@@ -103,12 +107,12 @@
   }
 
   .footer-top {
-    background: $dusk;
+    background: var(--blackish);
   }
 
   .footer-copyright {
     background: var(--brand-alt);
-    color: $medium-gray;
+    color: var(--grey);
     padding: 2rem 1rem;
   }
 }

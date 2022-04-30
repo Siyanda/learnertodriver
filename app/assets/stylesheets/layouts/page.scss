@@ -1,3 +1,23 @@
+:not(.active) {
+  > .hide-actv {
+    display: inherit;
+  }
+
+  > .show-actv {
+    display: none;
+  }
+}
+
+.active {
+  > .hide-actv {
+    display: none;
+  }
+
+  > .show-actv {
+    display: inherit;
+  }
+}
+
 .tabbar {
   border: thin solid var(--gainsboro);
 
@@ -36,10 +56,11 @@
 
   .button {
     cursor: pointer;
+    border: none;
 
     &.active {
       background-color: var(--light);
-      border: thin solid var(--mid-color);
+      border: thin solid var(--gainsboro);
       cursor: revert;
       color: var(--accent-bg);
     }
@@ -61,7 +82,7 @@
   padding: .4rem;
 
   &.dark-btn {
-    border: 2px solid lighten(var(--brand-alt), 10%);
+    border: 2px solid var(--blackish);
     color: var(--brand-alt);
     transition: color .3s ease;
 
@@ -146,8 +167,8 @@
 }
 
 .content {
-  background: var(--light);
-  box-shadow: 0 0 5px rgba(black, .15);;
+  background: var(--white);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
   padding: 2rem;
 }
 
@@ -172,7 +193,7 @@
 .heading,
 .pre-text {
   h1 {
-    color: var(--blackish);
+    color: var(--dark);
     font-weight: 600;
     font-size: 28px;
     text-align: center;
@@ -185,7 +206,7 @@
 }
 
 .header {
-  background-image: linear-gradient(var(--grey), var(--blackish)), url("bg/main.png");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url("bg/main.png");
   background-size: cover;
   font-weight: 400;
   text-align: center;
@@ -234,7 +255,7 @@
       padding: .4rem;
 
       &:hover {
-        background-color: lighten(var(--gainsboro), 5%);
+        background-color: var(--gainsboro);
         border: thin solid var(--gainsboro);
       }
     }
@@ -251,7 +272,7 @@
       padding: .4rem;
 
       &:hover {
-        background-color: lighten(var(--gainsboro), 5%);
+        background-color: var(--gainsboro);
         border: thin solid var(--gainsboro);
       }
     }
@@ -259,8 +280,9 @@
 }
 
 .stats-box {
-  background: var(--light);
+  background-color: var(--white);
   border: 2px var(--gainsboro) solid;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
   border-radius: 4px;
   box-sizing: border-box;
   display: flex;
@@ -272,7 +294,7 @@
   display: flex;
   flex-direction: column;
   margin: auto;
-  padding: 32px;
+  padding: 1.2rem;
 
   .large-text {
     font-size: 36px;
@@ -352,12 +374,40 @@
 }
 
 .dropzone {
-  background-color: darken(var(--light), 4%);
+  background-color: whitesmoke;
   text-align: center;
+  border-color: #dcdcdc;
+  border-style: dashed;
+  border-width: thick;
 
   &:hover {
-    background-color: darken(var(--light), 2%);
-    color: var(--mid-color), 40%);
+    background-color: #fafafa;
+    color: #767676;
+    border-color: #ffa900;
+    border-style: dashed;
+    border-width: thick;
+  }
+}
+
+@media screen and (max-width: 980px) {
+  .grid-item {
+    width: 75%;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .to-column {
+    flex-direction: column;
+
+    .to-full {
+      width: 100%;
+    }
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .grid-item {
+    width: 100%;
   }
 }
 

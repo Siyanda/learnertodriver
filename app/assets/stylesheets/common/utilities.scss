@@ -30,6 +30,10 @@
   position: absolute;
 }
 
+.sticky {
+  position: sticky;
+}
+
 .relative {
   position: relative;
 }
@@ -60,16 +64,13 @@
   bottom: 0;
 }
 
-.rounded {
-  border-radius: 0.4rem;
-}
-
 .image {
   &.round-bdr {
     border-radius: 50%;
 
     img {
       border-radius: 50%;
+      width: 100%;
     }
   }
 }
@@ -80,20 +81,20 @@
 
 .light-stroke {
   svg {
-    stroke: var(--lightest-color);
+    stroke: var(--light);
   }
 }
 
 .dark-stroke {
   svg {
-    stroke: var(--darkest-color);
+    stroke: var(--dark);
   }
 }
 
 .icon {
   &.light-fill {
     svg {
-      fill: var(--lightest-color);
+      fill: var(--light);
     }
   }
 
@@ -117,7 +118,7 @@
 
   &.dark-fill {
     svg {
-      fill: var(--darkest-color);
+      fill: var(--dark);
     }
   }
 
@@ -268,27 +269,30 @@
 }
 
 .padded {
-  padding: 1.8rem;
+  padding: 1.2rem;
 }
 
 .top-padded {
-  padding-top: 1.8rem;
+  padding-top: 1.2rem;
 }
 
 .right-padded {
-  padding-right: 1.8rem;
+  padding-right: 1.2rem;
 }
 
 .bottom-padded {
-  padding-bottom: 1.8rem;
+  padding-bottom: 1.2rem;
 }
 
 .left-padded {
-  padding-left: 1.8rem;
+  padding-left: 1.2rem;
+}
+
+.max-content {
+  height: max-content;
 }
 
 .full-height {
-  min-height: 100vh;
   height: 100%;
 }
 
@@ -335,6 +339,10 @@
 
   &.row {
     flex-direction: row;
+  }
+
+  &.rev-row {
+    flex-direction: row-reverse;
   }
 
   &.column {
@@ -419,7 +427,7 @@
 }
 
 .dark-text {
-  color: var(--darkest-color);
+  color: var(--dark);
 }
 
 .red-text {
@@ -431,11 +439,11 @@
 }
 
 .light-text {
-  color: var(--lightest-color);
+  color: var(--light);
 }
 
 .main-bg {
-  background-image: url("bg/background.png");
+  background-image: url("bg/main.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -443,19 +451,11 @@
 }
 
 .image-bg {
-  background-image: url("bg/background.png");
+  background-image: url("bg/main.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   height: 100%;
-}
-
-.dark-bg {
-  background-color: var(--darkest-color);
-}
-
-.light-bg {
-  background-color: var(--lightest-color);
 }
 
 .translucent-bg {
@@ -473,6 +473,10 @@
 
 .brand-alt-bg {
   background-color: var(--brand-alt);
+}
+
+.cream-bg {
+  background-color: var(--light);
 }
 
 .center {
@@ -561,7 +565,7 @@
 }
 
 .white-bg {
-  background-color: var(--light);
+  background-color: var(--white);
 }
 
 .grey-bg {
@@ -582,6 +586,10 @@
 
 .alt-border {
   border: thin solid var(--grey);
+}
+
+.shadowed {
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
 }
 
 .mobile-only {

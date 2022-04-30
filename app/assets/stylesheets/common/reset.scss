@@ -109,6 +109,15 @@ ul {
   list-style: none;
 }
 
+img, picture {
+  margin: 0;
+  max-width: 100%;
+}
+
+textarea {
+  resize: vertical;
+}
+
 blockquote,
 q {
   quotes: none;
