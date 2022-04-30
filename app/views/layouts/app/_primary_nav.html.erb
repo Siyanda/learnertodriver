@@ -4,14 +4,14 @@
   <div class="flex nav-area">
     <div class="clickable flex icon">
 
-      <div class="margin-sides lightly padded desktop-only light-fill medium-svg menu icon" data-action="click->sidebar#toggle">
+      <div class="margin-sides padded desktop-only light-fill medium-svg menu icon" data-action="click->sidebar#toggle">
         <%= link_to root_path, aria: { label: root_path("home") } do %>
           <%= inline_svg("logo_icon.svg") %>
         <% end %>
       </div>
 
       <div class="flex mobile-only tablet-only center-aligned clickable toggle">
-        <div class="lightly padded margin-sides menu standard-svg icon" data-action="click->sidebar#toggle">
+        <div class="padded margin-sides menu standard-svg icon" data-action="click->sidebar#toggle">
           <%= inline_svg("icons/menu.svg") %>
         </div>
       </div>
@@ -20,24 +20,24 @@
   </div>
 
   <div class="flex nav-area">
-    <div class="lightly padded mobile-only tablet-only light-fill medium-svg menu icon" data-action="click->sidebar#toggle">
+    <div class="padded mobile-only tablet-only light-fill medium-svg menu icon" data-action="click->sidebar#toggle">
       <%= link_to root_path, aria: { label: root_path("home") } do %>
         <%= inline_svg("logo_icon.svg") %>
       <% end %>
     </div>
       <!-- large screen nav -->
     <ul class="flex auto-marg navlist desktop-only">
-      <li class="flex link <%= class_names(active: current_page?(dashboard_path)) %>">
-        <%= link_to "Dashboard", dashboard_path, class: "white-text padded" %>
+      <li class="center-aligned flex link <%= url_contains?('active', 'dashboard') %>">
+        <%= link_to "Dashboard", dashboard_path, class: "light-text padded" %>
       </li>
-      <li class="flex link <%= class_names(active: current_page?(quizzes_path)) %>">
-        <%= link_to "Quizz", quizzes_path, class: "white-text padded" %>
+      <li class="center-aligned flex link <%= url_contains?('active', 'quizzes') %>">
+        <%= link_to "Quizz", quizzes_path, class: "light-text padded" %>
       </li>
-      <li class="flex link <%= class_names(active: current_page?(posts_path)) %>">
-        <%= link_to "Blog", posts_path, class: "white-text padded" %>
+      <li class="center-aligned flex link <%= url_contains?('active', 'posts') %>">
+        <%= link_to "Blog", posts_path, class: "light-text padded" %>
       </li>
-      <li class="flex link <%= class_names(active: current_page?(page_path("about"))) %>">
-        <%= link_to "About", page_path("about"), class: "white-text padded" %>
+      <li class="center-aligned flex link <%= url_contains?('active', 'about') %>">
+        <%= link_to "About", page_path("about"), class: "light-text padded" %>
       </li>
     </ul>
   </div>
@@ -54,7 +54,7 @@
     </div>
 
     <div class="flex mobile-only tablet-only center-aligned clickable toggle">
-      <div class="lightly padded menu light-stroke standard-svg icon" data-action="click->sidebar#toggle">
+      <div class="padded menu light-stroke standard-svg icon" data-action="click->sidebar#toggle">
         <%= inline_svg("icons/search.svg") %>
       </div>
     </div>

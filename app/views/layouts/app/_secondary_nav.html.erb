@@ -1,4 +1,4 @@
-<div class="full-width basic-border lightly padded flex center-aligned spaced-between secondary-nav">
+<div class="full-width basic-border padded flex center-aligned spaced-between secondary-nav">
 
     <%= breadcrumbs separator: " / " %>
 
@@ -26,7 +26,7 @@
 
             <% if warden.user.admin == true %>
               <li class="full-width">
-                <%= link_to admin_path, class: 'flex full-width user-menu-link' do %>
+                <%= link_to root_path, class: 'flex full-width user-menu-link' do %>
                 <div class="right-margin small-svg dark-fill icon">
                   <%= inline_svg("icons/settings.svg") %>
                 </div> Admin

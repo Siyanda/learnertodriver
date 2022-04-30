@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="texture" lang="<%= I18n.locale %>">
   <head>
-    <title><%= t("site_name") %> | <%= t("tagline") %></title>
+    <title><%= t('site_name') %> | <%= yield(:title).presence || t('tagline') %></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,26 +16,14 @@
 
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
     <%= stylesheet_link_tag "application", media: "all", "data-turbo-track": "reload" %>
+
   </head>
 
-  <body class="main-bg full-height max-content">
-
-    <div class="full-height mid-center devise">
-      <%= render "layouts/common/messages" %>
-      <div class="alt-border content form">
-        <div class="full-width">
-
-          <div class="flex just-centered logo">
-            <%= link_to root_path do %>
-              <%= image_tag 'svg/company_logo_black.svg' %>
-            <% end %>
-          </div>
-
-        </div>
-        <%= yield %>
-      </div>
-
-    </div>
-
+  <body class="app-body max-content">
+    <%= render 'layouts/common/side_menu_overlay' %>
+    <%= render 'layouts/common/messages' %>
+    <%= render 'layouts/app/header' %>
+    <%= yield %>
+    <%= render 'layouts/app/footer' %>
   </body>
 </html>

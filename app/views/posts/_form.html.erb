@@ -15,10 +15,10 @@
   </div>
 
     <div class="flex center-aligned spaced-between post-content">
-      <div class="flex lightly top-padded bottom-padded center-aligned">
+      <div class="flex top-padded bottom-padded center-aligned">
       </div>
 
-      <div class="flex lightly top-padded bottom-padded center-aligned">
+      <div class="flex top-padded bottom-padded center-aligned">
         <p class="post-date">
           Posted <span class="time_ago_in_words"><%= @post.created_at.iso8601 %></span>
         </p>
@@ -28,7 +28,7 @@
     <div class="post-footer">
       <div class="flex center-aligned spaced-between">
 
-        <div class="flex lightly top-padded bottom-padded center-aligned">
+        <div class="flex top-padded bottom-padded center-aligned">
           <%= link_to posts_path, class: 'flex center-aligned red-text rounded dark ' do %>
             <div class="red-stroke mdm-svg icon">
               <%= inline_svg("icons/trash-o.svg") %>
@@ -37,8 +37,8 @@
           <% end %>
         </div>
 
-        <div class="flex lightly top-padded bottom-padded center-aligned">
-          <%= link_to 'Update', posts_path, class: 'white-text rounded dark button' %>
+        <div class="flex top-padded bottom-padded center-aligned">
+          <%= link_to 'Update', posts_path, class: 'light-text rounded dark button' %>
         </div>
 
       </div>
