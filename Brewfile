@@ -1,11 +1,11 @@
 # Install non-ruby dependencies required by LearnertoDriver
 
 # Overmind (requires tmux)
-brew "tmux"
-brew "overmind"
+brew 'tmux'
+brew 'overmind'
 
 # Imagemagick or libvips - for processing images (avatars, file uploads, etc)
-brew "vips"
+brew 'vips'
 
-# PNPM or Yarn - for installing Javascript dependencies
-brew "pnpm"
+# Yarn - for installing Javascript dependencies
+brew 'yarn'
