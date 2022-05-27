@@ -1,28 +1,28 @@
 <div class="full-width level-one flex fixed full-width white-bg bottom-nav">
 
   <div class="full-width desktop-only alt-border flex spaced-between dashboard-footer">
-    <p class="small-text gray-text"><%= t("site_name") %> | v <%= t("app_version") %></p>
+    <p class="small-text gray-text"><%= t('site_name') %> | v <%= t('app_version') %></p>
     <p class="small-text gray-text"><%= current_user.username %></p>
   </div>
 
   <div class="full-width mobile-only tablet-only spaced-around flex icons">
-    <%= link_to root_path, class: "flex column dark-stroke icon text-center center-aligned mob-nav-item #{class_names(active: current_page?(dashboard_path))}", aria: { label: root_path("home") } do %>
-        <%= inline_svg("/icons/home-o.svg") %>
+    <%= link_to root_path, class: "flex column dark-stroke icon text-center center-aligned mob-nav-item #{class_names(active: current_page?(dashboard_path))}", aria: { label: root_path('home') } do %>
+        <%= inline_svg('/icons/home-o.svg') %>
         <span class="dark-text">home</span>
     <% end %>
 
-   <%= link_to quizzes_path, class: "flex column dark-stroke icon text-center center-aligned mob-nav-item #{class_names(active: current_page?(quizzes_path))}", aria: { label: root_path("quizz") } do %>
-        <%= inline_svg("/icons/chat-o.svg") %>
+   <%= link_to quizzes_path, class: "flex column dark-stroke icon text-center center-aligned mob-nav-item #{class_names(active: current_page?(quizzes_path))}", aria: { label: root_path('quizz') } do %>
+        <%= inline_svg('/icons/chat-o.svg') %>
         <span class="dark-text">quizz</span>
     <% end %>
 
-   <%= link_to posts_path, class: "flex column dark-stroke icon text-center center-aligned mob-nav-item #{class_names(active: current_page?(posts_path))}", aria: { label: root_path("posts") } do %>
-        <%= inline_svg("/icons/newspaper-o.svg") %>
+   <%= link_to posts_path, class: "flex column dark-stroke icon text-center center-aligned mob-nav-item #{class_names(active: current_page?(posts_path))}", aria: { label: root_path('posts') } do %>
+        <%= inline_svg('/icons/newspaper-o.svg') %>
         <span class="dark-text">posts</span>
     <% end %>
 
    <li class="flex column dark-stroke icon text-center center-aligned mob-nav-item">
-      <%= inline_svg("/icons/dots-hr.svg") %>
+      <%= inline_svg('/icons/dots-hr.svg') %>
       <span class="dark-text">more</span>
     </li>
   </div>
