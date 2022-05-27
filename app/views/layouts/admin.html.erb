@@ -6,20 +6,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <%= render "layouts/common/meta" %>
-    <%= favicon_link_tag asset_path("favicon.png"), :rel => "icon", :type => "image/png" %>
+    <%= render 'layouts/common/meta' %>
+    <%= favicon_link_tag asset_path('favicon.png'), rel: 'icon', type: 'image/png' %>
 
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= yield :head %>
 
-    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
-    <%= stylesheet_link_tag "application", media: "all", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag 'application', 'data-turbo-track': 'reload', defer: true %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbo-track': 'reload' %>
 
   </head>
 
-  <body class="app-body max-content">
+  <body class="app-body">
     <%= render 'layouts/common/side_menu_overlay' %>
     <%= render 'layouts/common/messages' %>
     <%= render 'layouts/app/header' %>

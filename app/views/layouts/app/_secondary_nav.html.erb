@@ -1,6 +1,6 @@
 <div class="full-width basic-border padded flex center-aligned spaced-between secondary-nav">
 
-    <%= breadcrumbs separator: " / " %>
+    <%= breadcrumbs separator: ' / ' %>
 
     <!-- search -->
     <div class="search-container">
@@ -10,7 +10,7 @@
 
       <div data-controller="dropdown" class="spaced clickable">
         <div class="menu standard-svg dark-fill icon" data-action="click->dropdown#toggle">
-          <%= inline_svg("icons/user.svg") %>
+          <%= inline_svg('icons/user.svg') %>
         </div>
 
         <div class="menu-container" data-dropdown-target="menu">
@@ -19,7 +19,7 @@
             <li class="full-width">
               <%= link_to user_path(current_user), class: 'flex full-width user-menu-link' do %>
                 <div class="right-margin small-svg dark-fill icon">
-                  <%= inline_svg("icons/user-icon.svg") %>
+                  <%= inline_svg('icons/user-icon.svg') %>
                 </div> Profile
               <% end %>
             </li>
@@ -28,7 +28,7 @@
               <li class="full-width">
                 <%= link_to root_path, class: 'flex full-width user-menu-link' do %>
                 <div class="right-margin small-svg dark-fill icon">
-                  <%= inline_svg("icons/settings.svg") %>
+                  <%= inline_svg('icons/settings.svg') %>
                 </div> Admin
               <% end %>
             </li>
@@ -37,9 +37,9 @@
             <div class="divider"></div>
 
             <li class="full-width">
-              <%= link_to destroy_user_session_path, data: { "turbo-method": :delete }, class: 'flex full-width user-menu-link' do %>
+              <%= link_to destroy_user_session_path, data: { 'turbo-method': :delete }, class: 'flex full-width user-menu-link' do %>
                 <div class="right-margin small-svg dark-fill icon">
-                  <%= inline_svg("icons/log-out.svg") %>
+                  <%= inline_svg('icons/log-out.svg') %>
                 </div> Log Out
               <% end %>
             </li>

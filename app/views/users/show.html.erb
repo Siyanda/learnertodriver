@@ -5,7 +5,7 @@
   <div class="profile-area">
     <div class="profile-header"></div>
     <div class="avatar-img">
-      <%= image_tag gravatar_url(@user.email, :size=> 300), alt: "profile", class: "avatar" %>
+      <%= image_tag gravatar_url(@user.email, size: 300), alt: 'profile', class: 'avatar' %>
     </div>
 
     <h3 class="profile-title">
@@ -29,7 +29,7 @@
     <div class="profile-info-area">
       <div class="profile-extra pull-right">
         <% if @user == current_user %>
-          <%= link_to "Edit", edit_user_path(current_user), class: "button fa fa-pencil-square-o" %>
+          <%= link_to 'Edit', edit_user_path(current_user), class: 'button fa fa-pencil-square-o' %>
         <% end %>
       </div>
 
@@ -52,13 +52,13 @@
       <h1>Recent Posts:</h1>
       <hr class="hr-grey">
       <div class="posts" id="posts">
-        <%= render "post" %>
+        <%= render 'post' %>
       </div>
     <% else %>
       <p>You havent posted anything yet, start today ?</p>
-        <%= link_to new_post_path, class: "button" do %>
+        <%= link_to new_post_path, class: 'button' do %>
           <span class="fa fa-plus-circle"></span> New Post
-        <% end%>
+        <% end %>
     <% end %>
   </div>
 </div>

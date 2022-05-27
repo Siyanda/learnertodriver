@@ -2,14 +2,14 @@
 <% breadcrumb :post, @post %>
 
 <% content_for :action_bar do %>
-  <%= render :partial => 'layouts/common/action_bar', :locals => { :item => @post } %>
+  <%= render partial: 'layouts/common/action_bar', locals: { item: @post } %>
 <% end %>
 
 <div class="flex to-column gapped">
-  <div class="flex full-width rounded shadowed shadowed basic-border max-content column white-bg post">
+  <div class="flex full-width rounded shadowed basic-border max-content column white-bg post">
 
     <div class="post-header">
-      <h1 class="padded post-title">
+      <h1 class="post-title">
         <%= @post.title %>
       </h1>
     </div>
@@ -23,24 +23,24 @@
     <div class="post-footer">
       <div class="flex center-aligned spaced-between post-meta">
         <div class="flex center-aligned">
-          <div class="gray-stroke small-svg icon"><%= inline_svg("icons/clock.svg") %></div>
+          <div class="gray-stroke small-svg icon"><%= inline_svg('icons/clock.svg') %></div>
           <p class="post-date">
             Posted <span class="time_ago_in_words"><%= @post.created_at.iso8601 %></span>
           </p>
         </div>
 
         <div class="flex center-aligned">
-          <%= link_to like_post_path(@post), "data-turbo-method": :put, class: "vote" do %>
+          <%= link_to like_post_path(@post), 'data-turbo-method': :put, class: 'vote' do %>
           <div class="dark-fill standard-svg icon">
-            <%= inline_svg("icons/arrow-up.svg") %>
+            <%= inline_svg('icons/arrow-up.svg') %>
           </div>
         <% end %>
 
         <%= @post.weighted_score %>
 
-          <%= link_to dislike_post_path(@post), "data-turbo-method": :put, class: "vote" do %>
+          <%= link_to dislike_post_path(@post), 'data-turbo-method': :put, class: 'vote' do %>
           <div class="dark-fill standard-svg icon">
-            <%= inline_svg("icons/arrow-down.svg") %>
+            <%= inline_svg('icons/arrow-down.svg') %>
           </div>
           <% end %>
         </div>
@@ -50,12 +50,12 @@
 
   </div>
 
-  <div class="third-width hr-sectioned max-content white-bg shadowed shadowed rounded basic-border aside to-full">
+  <div class="third-width hr-sectioned white-bg shadowed shadowed rounded basic-border aside to-full">
 
     <div class="section">
       <div class="padded section-heading">
         <div class="flex">
-          <div class="sub-section dark-stroke sm-icon"><%= inline_svg("icons/hashtag.svg") %></div>
+          <div class="sub-section dark-stroke sm-icon"><%= inline_svg('icons/hashtag.svg') %></div>
           <h3 class="sub-heading">Tags</h3>
         </div>
         <hr class="third-width hr-grey">
@@ -63,7 +63,7 @@
           <ul class="flex top-padded wrapped tags">
           <% @post.tags.each do |tag| %>
             <li class="flex tag-container">
-              <%= link_to  tag.title, tag_path(tag), class: "tag gainsboro-bg" %>
+              <%= link_to tag.title, tag_path(tag), class: 'tag gainsboro-bg' %>
             </li>
           <% end %>
           </ul>
@@ -74,14 +74,14 @@
     <div class="section">
       <div class="padded section-heading">
         <div class="flex">
-          <div class="sub-section dark-stroke sm-icon"><%= inline_svg("icons/clock.svg") %></div>
+          <div class="sub-section dark-stroke sm-icon"><%= inline_svg('icons/clock.svg') %></div>
           <h3 class="sub-heading">Recent Posts</h3>
         </div>
         <hr class="third-width hr-grey">
         <div class="section">
           <% @posts.most_recent.published.each do |post| %>
             <div class="item">
-               <%= link_to post.title, post, class: "link" %>
+               <%= link_to post.title, post, class: 'link' %>
             </div>
           <% end %>
         </div>
@@ -91,7 +91,7 @@
     <div class="section">
       <div class="padded section-heading">
         <div class="flex">
-          <div class="sub-section dark-stroke sm-icon"><%= inline_svg("icons/cash.svg") %></div>
+          <div class="sub-section dark-stroke sm-icon"><%= inline_svg('icons/cash.svg') %></div>
           <h3 class="sub-heading">Sponsored</h3>
         </div>
         <hr class="third-width hr-grey">
@@ -99,11 +99,11 @@
           <div class="clickable light-text alt-overlay">
             <div class="full-height flex center large-svg icon">
               <div class="auto-marg">
-                <%= inline_svg("icons/ui/editor-link.svg") %>
+                <%= inline_svg('icons/ui/editor-link.svg') %>
               </div>
             </div>
           </div>
-          <%= image_tag("ads/shoe-ad.png", alt: "Edit Entry", class: "rounded image") %>
+          <%= image_tag('ads/shoe-ad.png', alt: 'Edit Entry', class: 'rounded image') %>
         </div>
       </div>
     </div>
@@ -127,7 +127,7 @@
   <div id="comment-section" class="comment-section">
 
     <% if @post.comments.any? %>
-      <%= render :partial => @post.comments.includes(:user) %>
+      <%= render partial: @post.comments.includes(:user) %>
     <% else %>
 
     <div class="comment-header">
@@ -141,10 +141,10 @@
 
     <%= simple_form_for [@post, Comment.new]  do |f| %>
       <div class="field">
-        <%= f.text_area :content, class: "basic-border form-textarea" %>
+        <%= f.text_area :content, class: 'basic-border form-textarea' %>
       </div>
     <br>
-        <%= f.submit "Post Comment", class: "button btn-primary" %>
+        <%= f.submit 'Post Comment', class: 'rounded button btn-primary' %>
     <% end %>
 
     </div>

@@ -2,40 +2,40 @@
 
   <div class="block-header">
     <h1 class="post-title">
-      <%= link_to truncate(post.title, :length => 65), post %>
+      <%= link_to truncate(post.title, length: 65), post %>
     </h1>
   </div>
 
   <div class="block-content">
-    <p><%= truncate(strip_tags(post.content), length: 165) %></p>
+    <p><%= post.excerpt %></p>
     <div class="link">
-      <%= link_to "Read More", post, class: "relative level-one bold link-underline hvr-fill read-more" %>
+      <%= link_to 'Read More', post, class: 'relative level-one bold link-underline hvr-fill read-more' %>
     </div>
   </div>
 
   <div class="dark-bg block-meta">
     <div class="meta meta-votes">
       <div class="light-fill small-svg icon">
-        <%= inline_svg("icons/arrow-up.svg") %>
+        <%= inline_svg('icons/arrow-up.svg') %>
       </div>
       <div class="light-text"><%= post.get_upvotes.size %></div>
 
       <div class="light-fill small-svg icon">
-        <%= inline_svg("icons/arrow-down.svg") %>
+        <%= inline_svg('icons/arrow-down.svg') %>
       </div>
       <div class="light-text"><%= post.get_downvotes.size %></div>
     </div>
 
     <div class="meta meta-comments">
       <div class="light-fill small-svg icon">
-        <%= inline_svg("icons/comments.svg") %>
+        <%= inline_svg('icons/comments.svg') %>
       </div>
       <div class="light-text"><%= post.comments.count %></div>
     </div>
 
    <div class="meta meta-date">
       <div class="light-fill small-svg icon">
-        <%= inline_svg("icons/clock-fill.svg") %>
+        <%= inline_svg('icons/clock-fill.svg') %>
       </div>
       <div class="light-text"> <span class="time_ago_in_words"><%= post.created_at.iso8601 %></span></div>
     </div>

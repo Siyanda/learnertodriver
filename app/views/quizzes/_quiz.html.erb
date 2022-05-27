@@ -1,10 +1,10 @@
 <div class="rounded basic-border grid-item card">
   <div class="card-image">
-    <%= image_tag("cards/#{ quiz.kind }.jpg", alt: "#{ quiz.kind } image") %>
+    <%= image_tag("cards/#{quiz.kind}.jpg", alt: "#{quiz.kind} image") %>
   </div>
     <div class="card-content">
       <div class="card-header">
-        <h2><%= link_to truncate(quiz.title, :length => 65), quiz %></h2>
+        <h2><%= link_to truncate(quiz.title, length: 65), quiz %></h2>
       </div>
     <div class="card-copy">
       <p class="item-description">

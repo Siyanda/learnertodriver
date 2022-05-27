@@ -59,7 +59,7 @@
     border: none;
 
     &.active {
-      background-color: var(--light);
+      background-color: var(--white);
       border: thin solid var(--gainsboro);
       cursor: revert;
       color: var(--accent-bg);
@@ -96,7 +96,6 @@
 .button {
   padding: .8rem 1.2rem;
   background-color: var(--accent-bg);
-  border: thin solid var(--light);
   color: var(--light);
 
   &.thin-btn {

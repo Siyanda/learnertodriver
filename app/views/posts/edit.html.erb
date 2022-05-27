@@ -3,7 +3,7 @@
 
 <div class="flex to-column gapped">
 
-  <div class="flex full-width rounded shadowed shadowed basic-border max-content column white-bg post">
+  <div class="flex full-width rounded shadowed shadowed basic-border column white-bg post">
     <%= render 'form' %>
   </div>
 
@@ -94,7 +94,7 @@
               </div>
             <hr class="third-width hr-grey">
               <div class="flex">
-                <textarea class="basic-border cream-bg" name="demo" id="" cols="10" rows="2"></textarea>
+                <%= @post.excerpt %>
               </div>
           </div>
         </div>
