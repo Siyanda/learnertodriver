@@ -20,7 +20,7 @@
             <th>answers id's</th>
             <th>actions</th>
           </tr>
-          <%= render :partial => @questions %>
+          <%= render partial: @questions %>
         </table>
       </div>
     <% else %>
@@ -37,8 +37,7 @@
         <p class="post-date"><%= @quiz.questions.size %> Questions</p>
 
       </div>
-    </div> 
+    </div>
 
   </section>
 </div>
-

@@ -2,7 +2,7 @@
 <% breadcrumb :post, @post %>
 
 <% content_for :action_bar do %>
-  <%= render :partial => 'layouts/common/action_bar', :locals => { :item => @post } %>
+  <%= render partial: 'layouts/common/action_bar', locals: { item: @post } %>
 <% end %>
 
 <div class="flex to-column gapped">
@@ -127,7 +127,7 @@
   <div id="comment-section" class="comment-section">
 
     <% if @post.comments.any? %>
-      <%= render :partial => @post.comments.includes(:user) %>
+      <%= render partial: @post.comments.includes(:user) %>
     <% else %>
 
     <div class="comment-header">
