@@ -4,7 +4,7 @@
   <div class="flex nav-area">
     <div class="clickable flex icon">
 
-      <div class="margin-sides padded desktop-only light-fill medium-svg menu icon" data-action="click->sidebar#toggle">
+      <div class="padded desktop-only light-fill medium-svg menu icon" data-action="click->sidebar#toggle">
         <%= link_to root_path, aria: { label: root_path("home") } do %>
           <%= inline_svg("logo_icon.svg") %>
         <% end %>
@@ -25,21 +25,24 @@
         <%= inline_svg("logo_icon.svg") %>
       <% end %>
     </div>
-      <!-- large screen nav -->
-    <ul class="flex auto-marg navlist desktop-only">
-      <li class="center-aligned flex link <%= url_contains?('active', 'dashboard') %>">
-        <%= link_to "Dashboard", dashboard_path, class: "light-text padded" %>
-      </li>
-      <li class="center-aligned flex link <%= url_contains?('active', 'quizzes') %>">
-        <%= link_to "Quizz", quizzes_path, class: "light-text padded" %>
-      </li>
-      <li class="center-aligned flex link <%= url_contains?('active', 'posts') %>">
-        <%= link_to "Blog", posts_path, class: "light-text padded" %>
-      </li>
-      <li class="center-aligned flex link <%= url_contains?('active', 'about') %>">
-        <%= link_to "About", page_path("about"), class: "light-text padded" %>
-      </li>
-    </ul>
+    <!-- large screen nav -->
+    <div class="flex auto-marg navlist desktop-only">
+      <%= link_to "Dashboard",
+                  dashboard_path,
+                  class: "link #{url_contains?('active', 'dashboard')}" %>
+
+      <%= link_to "Quizz",
+                  quizzes_path,
+                  class: "link #{url_contains?('active', 'quiz')}" %>
+
+      <%= link_to "Blog",
+                  posts_path,
+                  class: "link #{url_contains?('active', 'posts')}" %>
+
+      <%= link_to "About",
+                  page_path("about"),
+                  class: "link #{url_contains?('active', 'about')}" %>
+    </div>
   </div>
 
   <div class="flex nav-area">

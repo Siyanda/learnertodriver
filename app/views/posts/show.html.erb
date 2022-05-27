@@ -6,10 +6,10 @@
 <% end %>
 
 <div class="flex to-column gapped">
-  <div class="flex full-width rounded shadowed shadowed basic-border max-content column white-bg post">
+  <div class="flex full-width rounded shadowed basic-border max-content column white-bg post">
 
     <div class="post-header">
-      <h1 class="padded post-title">
+      <h1 class="post-title">
         <%= @post.title %>
       </h1>
     </div>
@@ -23,7 +23,7 @@
     <div class="post-footer">
       <div class="flex center-aligned spaced-between post-meta">
         <div class="flex center-aligned">
-          <div class="gray-stroke small-svg icon"><%= inline_svg("icons/clock.svg") %></div>
+          <div class="gray-stroke small-svg icon"><%= inline_svg('icons/clock.svg') %></div>
           <p class="post-date">
             Posted <span class="time_ago_in_words"><%= @post.created_at.iso8601 %></span>
           </p>
@@ -50,7 +50,7 @@
 
   </div>
 
-  <div class="third-width hr-sectioned max-content white-bg shadowed shadowed rounded basic-border aside to-full">
+  <div class="third-width hr-sectioned white-bg shadowed shadowed rounded basic-border aside to-full">
 
     <div class="section">
       <div class="padded section-heading">

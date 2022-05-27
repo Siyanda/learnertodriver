@@ -7,7 +7,7 @@
   </div>
 
   <div class="block-content">
-    <p><%= truncate(strip_tags(post.content), length: 165) %></p>
+    <p><%= post.excerpt %></p>
     <div class="link">
       <%= link_to 'Read More', post, class: 'relative level-one bold link-underline hvr-fill read-more' %>
     </div>

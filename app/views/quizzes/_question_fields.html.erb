@@ -1,10 +1,10 @@
 <div class='nested-fields box' data-controller='dynamic-select'>
   <div class='form-group'>
     <%= form.select :kind,
-        options_for_select(Question.kind_select, selected: form.object.kind),
-        {},
-        'data-dynamic-select-target': 'select',
-        'data-action': 'dynamic-select#selected' %>
+                    options_for_select(Question.kind_select, selected: form.object.kind),
+                    {},
+                    'data-dynamic-select-target': 'select',
+                    'data-action': 'dynamic-select#selected' %>
   </div>
 
   <div class='form-group'>
