@@ -38,16 +38,21 @@
 
   .link {
     background-color: var(--brand-alt);
-    border-bottom: 2px solid;
+    border-bottom: 2px solid transparent;
     height: 100%;
 
     &.active {
       background-color: var(--brand-alt-l);
       border-bottom: 2px solid var(--accent-color);
+
+      &:hover {
+        border-bottom: 2px solid var(--accent-color);
+      }
     }
-        &.true {
+
+    &:hover {
       background-color: var(--brand-alt-l);
-      border-bottom: 2px solid var(--accent-color);
+      border-bottom: 2px solid var(--grey);
     }
   }
 

@@ -296,12 +296,12 @@
   height: 100%;
 }
 
-.fill-avail-hgt {
-  height: stretch;
+.fill-avail-h {
+  min-height: stretch;
 }
 
-.fill-avail-wth {
-  width: stretch;
+.fill-avail-w {
+  min-width: stretch;
 }
 
 .full-width {

@@ -1,5 +1,6 @@
 .action-bar {
-  border-bottom: var(--blackish) var(--blackish) var(--grey) var(--blackish);
+  border-bottom: thin solid var(--gainsboro);
+  padding: 0.4rem;
 
   .icon {
     display: flex;
