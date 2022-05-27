@@ -16,30 +16,29 @@ gem 'bootsnap', require: false
 
 gem 'redis'
 gem 'sidekiq'
-gem 'sidekiq-scheduler'
 gem 'image_processing'
 gem 'aws-sdk-s3', require: false
 
 gem 'pagy'
-gem 'ransack'
-gem 'pg_search'
 gem 'liquid'
+gem 'ransack'
+gem 'sinatra'
+gem 'pg_search'
 gem 'redcarpet'
 gem 'name_of_person'
-gem 'sinatra'
 
 gem 'devise'
 gem 'gretel'
 gem 'friendly_id'
 gem 'simple_form'
-gem 'acts_as_votable'
 gem 'postmark-rails'
+gem 'acts_as_votable'
 
 group :development, :test do
   gem 'debug'
   gem 'faker'
-  gem 'shoulda-matchers'
   gem 'rspec-rails'
+  gem 'shoulda-matchers'
   gem 'factory_bot_rails'
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec', require: false
@@ -56,6 +55,6 @@ end
 
 group :test do
   gem 'capybara'
-  gem 'selenium-webdriver'
   gem 'webdrivers'
+  gem 'selenium-webdriver'
 end

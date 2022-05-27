@@ -74,14 +74,12 @@ RSpec/ExampleLength:
 RSpec/MultipleExpectations:
   Enabled: false
 
-# TODO: enable when https://github.com/presidentbeef/brakeman/issues/1664 is fixed
 Naming/BlockForwarding:
   Enabled: false
 
 Naming/InclusiveLanguage:
   Enabled: false
 
-# TODO: enable when https://github.com/presidentbeef/brakeman/issues/1664 is fixed
 Style/HashSyntax:
   Enabled: false
 
