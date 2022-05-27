@@ -1,0 +1,90 @@
+.landing {
+  .button {
+    border-radius: 0;
+  }
+}
+
+.bttn {
+  user-select: none;
+
+  &.danger {
+    
+  }
+
+  &.success {
+    
+  }
+
+  &.warning {
+    
+  }
+
+  &.info {
+    
+  }
+
+  &.dark {
+    
+  }
+
+  &.light {
+    
+  }
+
+  &.clear {
+    
+  }
+}
+
+.wrap {
+  max-width: 80%;
+  margin: 2rem 0 2rem 2rem;
+  padding: 2rem;
+  border-radius: 1.2rem;
+
+  &.offset-left {
+    margin: 2rem;
+  }
+
+  &.offset-right {
+    margin: 2rem;
+  }
+
+  &.offset-up {
+    margin: 2rem 0 2rem 2rem;
+  }
+
+  &.raised {
+    z-index: 1;
+  }
+
+  .svg  {
+    width: 70%;
+    max-width: 200px;
+    margin: auto;
+  }
+}
+
+@media screen and (min-width: 540px) {
+  .wrap {
+    max-width: 60%;
+
+    &.offset-left {
+      margin: -4rem 0 -4rem 6rem;
+    }
+
+    &.offset-right {
+      margin: -4rem 4rem -4rem 0;
+    }
+  }
+}
+
+@media screen and (min-width: 480px) {
+  .wrap {
+    max-width: 60%;
+
+    &.offset-left {
+      margin: -4rem 0 -4rem 4rem;
+    }
+  }
+}

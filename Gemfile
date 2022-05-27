@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.1.1'
+ruby '3.1.2'
 
 gem 'rails'
 gem 'pg'
@@ -17,7 +17,6 @@ gem 'bootsnap', require: false
 gem 'redis'
 gem 'sidekiq'
 gem 'sidekiq-scheduler'
-gem 'shrine'
 gem 'image_processing'
 gem 'aws-sdk-s3', require: false
 
@@ -34,22 +33,25 @@ gem 'gretel'
 gem 'friendly_id'
 gem 'simple_form'
 gem 'acts_as_votable'
-
-gem 'inky-rb', require: 'inky'
-gem 'premailer-rails'
-gem 'sendgrid-ruby'
+gem 'postmark-rails'
 
 group :development, :test do
+  gem 'debug'
+  gem 'faker'
+  gem 'shoulda-matchers'
   gem 'rspec-rails'
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'factory_bot_rails'
+  gem 'rubocop-rails', require: false
+  gem 'rubocop-rspec', require: false
+  gem 'erb_lint', require: false, github: 'Shopify/erb-lint'
 end
 
 group :development do
-  gem 'letter_opener'
-  gem 'web-console'
   gem 'listen'
   gem 'spring'
-  gem 'standard'
+  gem 'brakeman'
+  gem 'web-console'
+  gem 'letter_opener'
 end
 
 group :test do

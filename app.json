@@ -1,8 +1,27 @@
 {
+  "name": "Learner to Driver",
   "description": "Learner to Driver K53 quiz application",
+  "website": "https://learnertodriver.co.za",
   "scripts": {
       "dokku": {
         "postdeploy": "bundle exec rake db:migrate"
+  },
+  "env": {
+    "RAILS_MASTER_KEY": {
+      "description": "Secret key for decrypting Rails credentials. You can find it at: config/credentials/production.key"
+    },
+    "RAILS_ENV": {
+      "description": "The Rails environment to run: production or staging",
+      "value": "production"
+    }
+  },
+  "image": "heroku/ruby",
+  "buildpacks": [{ "url": "heroku/nodejs" }, { "url": "heroku/ruby" }],
+  "environments": {
+    "test": {
+      "scripts": {
+        "test": "bundle exec rails test"
       }
+    }
   }
 }

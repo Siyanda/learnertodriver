@@ -8,12 +8,21 @@
     "@rails/actiontext": "^7.0.0",
     "dayjs": "^1.11.0",
     "esbuild": "^0.14.8",
-    "sass": "^1.44.0",
-    "stylelint": "^14.1.0",
-    "trix": "^2.0.0-alpha.1"
+    "postcss-cli": "^9.1.0",
+    "trix": "^2.0.0-beta.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.4",
+    "chokidar": "^3.5.3",
+    "cssnano": "^5.1.7",
+    "postcss": "^8.4.12",
+    "postcss-import": "^14.1.0",
+    "postcss-nested": "^5.0.6",
+    "stylelint": "^14.6.1",
+    "stylelint-config-standard-scss": "^4.0.0"
   },
   "scripts": {
-    "build": "esbuild app/javascript/*.* --outdir=app/assets/builds --bundle --minify --target=chrome79,edge92,firefox91,safari12",
-    "build:css": "sass ./app/assets/stylesheets/application.sass.scss ./app/assets/builds/application.css --source-map --load-path=node_modules"
+    "build": "node esbuild.config.js",
+    "build:css": "postcss -o app/assets/builds/application.css app/assets/stylesheets/application.scss"
   }
 }

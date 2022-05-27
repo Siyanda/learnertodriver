@@ -91,17 +91,10 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.action_mailer.default_url_options = { host: ENV['APP_URL'] }
-
-  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default_url_options = { host: 'https://learnertodriver.co.za' }
   config.action_mailer.perform_deliveries = true
-  config.action_mailer.smtp_settings = {
-    address: Rails.application.credentials.send_grid.smtp,
-    port: Rails.application.credentials.send_grid.port,
-    user_name: Rails.application.credentials.send_grid.user,
-    password: Rails.application.credentials.send_grid.password,
-    authentication: :plain,
-    enable_starttls_auto: true
-  }
+
+  config.action_mailer.delivery_method = :postmark
+  config.action_mailer.postmark_settings = { api_token: Rails.application.credentials.postmark_api_token }
 
 end

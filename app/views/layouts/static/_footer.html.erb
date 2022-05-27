@@ -4,14 +4,14 @@
     <div class="footer-groups blocks">
 
       <div class="group block">
-        <h3 class="group-title white-text">Community</h3>
+        <h3 class="group-title light-text">Community</h3>
         <ul class="group-list">
           <li class="light-text"><%= link_to_unless_current 'Partners', page_path('partners'), class: 'light-text' %></li>
         </ul>
       </div>
 
       <div class="group block">
-        <h3 class="group-title white-text">Company</h3>
+        <h3 class="group-title light-text">Company</h3>
         <ul class="group-list">
           <li class="light-text"><%= link_to_unless_current 'About', page_path('about'), class: 'light-text' %></li>
           <li class="light-text"><%= link_to_unless_current 'Blog', posts_path, class: 'light-text' %></li>
@@ -20,7 +20,7 @@
       </div>
 
       <div class="group block">
-        <h3 class="group-title white-text">Resources</h3>
+        <h3 class="group-title light-text">Resources</h3>
         <ul class="group-list">
           <li class="light-text"><%= link_to_unless_current 'Contact', page_path('contact') %></li>
           <li class="light-text"><%= link_to_unless_current 'FAQ', page_path('faq'), class: 'light-text' %></li>
@@ -31,7 +31,7 @@
   </div>
 
   <div class="copyright">
-    <p class="light-text">Created with ❤ by <strong><%= link_to_unless_current t("dev_company"), root_path, class: 'white-text' %> </strong> © <%= Date.today.year %></p>
+    <p class="light-text">Created with ❤ by <strong><%= link_to_unless_current t("dev_company"), root_path, class: 'light-text' %> </strong> © <%= Date.today.year %></p>
     <ul>
       <li class="light-text">
         <%= link_to_unless_current 'Privacy Policy', page_path('privacy'), class: 'light-text' %>

@@ -1,0 +1,293 @@
+.post-container {
+  height: 100%;
+  padding: 1.2rem;
+}
+
+.post-header {
+  border-bottom: thin solid var(--gainsboro);
+
+  h1 {
+    font-size: 26px;
+  }
+}
+
+.post-body {
+  padding: 1.2rem 0;
+}
+
+.post-footer {
+  border-top: thin solid var(--gainsboro);
+  padding: 0 1.5rem;
+}
+
+.post-content {
+  flex: 1;
+  padding: 0.4rem 1.8rem;
+
+  blockquote {
+    font-weight: 500;
+    font-size: 20px;
+
+    &::before,
+    &::after {
+      content: "";
+      display: block;
+      width: 30%;
+      height: 3px;
+      background: var(--mid-color);
+      margin: 40px auto;
+    }
+  }
+
+  ul {
+    list-style-type: initial;
+    margin: 0 2rem;
+  }
+
+  ol {
+    list-style-type: lower-alpha;
+  }
+}
+
+.posts {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: baseline;
+
+  .block {
+    margin: 1.2rem;
+    border-radius: 4px 4px 0 0;
+  }
+}
+
+.post {
+  box-shadow: 0 1px 4px rgba(0,0,0,.1);
+
+  &.content {
+    padding: 1.4rem 0 0;
+  }
+
+  .post-date {
+    color: var(--grey);
+    font-size: 12px;
+    margin: auto .2rem;
+  }
+
+  .meta {
+    background: var(--light);
+    padding: .2rem 1.2rem;
+
+    svg {
+      margin: 0 .4rem;
+    }
+  }
+}
+
+.blog-card {
+  width: 30%;
+}
+
+.post-title {
+  font-weight: 600;
+  margin: .4rem 1.8rem;
+
+  a {
+    color: var(--brand-alt);
+
+    &:hover {
+      color: var(--blue);
+    }
+  }
+}
+
+.adblock {
+  border: thin solid var(--mid-color);
+  padding: 4px;
+}
+
+.post-meta-container {
+  margin: auto;
+  padding: 2rem;
+  text-align: center;
+  background-color: #dcdcdc;
+}
+
+.block-meta {
+  border-top: var(--mid-color);
+  display: flex;
+  padding: .8rem;
+  justify-content: space-around;
+
+  .meta {
+    margin: 0 .2rem;
+    white-space: nowrap;
+    display: flex;
+  }
+}
+
+.pagination {
+  background-color: var(--light);
+  border-radius: 5px;
+
+  .active,
+  .current {
+    background-color: var(--accent-bg);
+    color: var(--light);
+    float: left;
+    padding: 8px 16px;
+  }
+
+  .disabled {
+    background-color: var(--mid-color);
+    color: var(--grey);
+    cursor: not-allowed;
+    padding: 8px 16px;
+  }
+
+  .gap {
+    padding: 8px 4px;
+  }
+
+  a {
+    color: var(--accent-bg);
+    float: left;
+    padding: 8px 16px;
+
+    &:hover {
+      background-color: var(--mid-color);
+    }
+  }
+
+  span {
+    color: var(--blackish);
+    float: left;
+    border: var(--mid-color);
+
+    &:last-child {
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+    }
+
+    &:first-child {
+      border-top-left-radius: 5px;
+      border-bottom-left-radius: 5px;
+    }
+  }
+}
+
+.link-underline {
+
+  &.read-more {
+    &:hover::after {
+      height: 130%;
+    }
+
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      bottom: -5px;
+      width: 120%;
+      height: 4px;
+      background: var(--accent-color);
+      left: -5px;
+      transition: height .2s;
+      z-index: -1;
+    }
+  }
+}
+
+.sub-section {
+  &.sm-icon {
+    margin: auto .2rem;
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  .sub-heading {
+    font-size: 16px;
+    margin: 0 4px;
+  }
+}
+
+.votes {
+  .vote {
+    color: var(--accent-bg);
+  }
+}
+
+.grouped {
+  .icon,p {
+    margin: 0 5px;
+  }
+}
+
+.author {
+  img {
+    border: 8px solid var(--light);
+    border-radius: 50%;
+    width: 100px;
+  }
+
+  h4 {
+    text-transform: uppercase;
+  }
+
+  .bio {
+    width: 100%;
+    padding: 4rem;
+  }
+}
+
+.hr-sectioned {
+  margin-bottom: 1.4rem;
+
+  .section {
+    &:not(:last-child) {
+      border-bottom: 1px solid var(--gainsboro);
+    }
+  }
+}
+
+.vt-sectioned {
+  .section {
+    &:not(:last-child) {
+      border-left: 1px solid var(--gainsboro);
+    }
+  }
+}
+
+.alt-overlay {
+  background-image: linear-gradient(var(--dark), var(--blackish));
+  cursor: pointer;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  top: 0;
+  opacity: 0;
+  position: absolute;
+  transition: opacity 1s ease-in-out;
+
+  &:hover {
+    opacity: .6;
+  }
+}
+
+.overlay {
+  background-image: linear-gradient(var(--dark), var(--blackish));
+  cursor: pointer;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  top: 0;
+  position: absolute;
+  transition: opacity 1s ease-in-out;
+
+  &:hover {
+    opacity: .5;
+  }
+}

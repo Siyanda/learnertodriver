@@ -1,0 +1,179 @@
+table {
+  border-collapse: collapse;
+  margin: var(--spacing) 0;
+  table-layout: fixed;
+  text-align: left;
+  width: 100%;
+}
+
+thead {
+  line-height: var(--line-height--heading);
+  vertical-align: bottom;
+}
+
+tbody {
+  vertical-align: top;
+}
+
+tr {
+  border-bottom: var(--border);
+}
+
+th {
+  font-weight: 600;
+}
+
+th,
+td {
+  padding: var(--spacing--small) var(--spacing--small) var(--spacing--small) 0;
+}
+
+table {
+  width: 100%;
+
+  tbody {
+    tr {
+      &:nth-child(odd) {
+        border: thin solid var(--gainsboro);
+      }
+
+      &:nth-child(even) {
+        background-color: var(--light);
+        border: thin solid var(--gainsboro);
+      }
+    }
+  }
+
+  td, th {
+    padding: 8px;
+    text-align: left;
+    text-transform: initial;
+    vertical-align: middle;
+    border-left: thin solid var(--gainsboro);
+
+    &.small-cell {
+      width: 80px;
+    }
+  }
+}
+
+.table {
+  font-size: 14px;
+  margin: .4em 0;
+
+  th {
+    font-weight: 400;
+  }
+
+  .profile-pic {
+    height: 50px;
+    width: 50px;
+    border: 3px solid var(--light);
+    border-radius: 50%;
+
+    img {
+      height: 50px;
+      width: 50px;
+    }
+  }
+
+  .profile-link {
+    font-weight: bold;
+    color: var(--accent-bg);
+  }
+
+  .tbody {
+    &:hover {
+      background: var(--light);
+      color: var(--accent-bg);
+    }
+  }
+}
+
+.information {
+  font-size: 16px;
+  margin: auto 0;
+}
+
+.question-content {
+  width: 65%;
+}
+
+.question {
+  font-size: 20px;
+  margin-bottom: .8rem;
+}
+
+.answers {
+  .answer {
+    background: var(--light);
+    border: thin solid var(--gainsboro);
+    border-radius: .2rem;
+    padding: .8rem;
+    margin: .4rem;
+    transition: background-color 100ms linear;
+
+    &:hover {
+      background: var(--light);
+      border: thin solid var(--brand-alt);
+    }
+  }
+}
+
+
+label input[type="radio"]:checked {
+  margin: 10px 0px;
+}
+
+.score {
+  width: 35%;
+}
+
+.sort-link {
+  font-weight: 600;
+  color: var(--accent-bg);
+
+  &.asc {
+    color: var(--blue);
+  }
+
+  &.desc {
+    color: var(--blue);
+  }
+
+  &:hover {
+    color: var(--mid-color);
+  }
+}
+
+@media screen and (max-width: 650px) {
+  th {
+    &:nth-child(3) {
+      display: none;
+    }
+
+    &:nth-child(4) {
+      display: none;
+    }
+  }
+
+  td {
+    &:nth-child(3) {
+      display: none;
+    }
+
+    &:nth-child(4) {
+      display: none;
+    }
+  }
+
+  .select-form {
+    td, th {
+      border: 0;
+    }
+
+    .score-header {
+      display: none;
+    }
+  }
+}

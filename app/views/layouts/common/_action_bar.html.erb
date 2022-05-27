@@ -1,5 +1,5 @@
 <div class="flex spaced-between action-bar">
-  <div class="lightly padded flex margin-sides">
+  <div class="padded flex margin-sides">
 
     <%= link_to url_for :controller => controller.controller_name,
                         :action => 'new' do %>
@@ -18,7 +18,7 @@
       <% end %>
   </div>
 
-  <div class="lightly padded flex">
+  <div class="padded flex">
     <%= link_to new_page_path, class: 'flex center-aligned rounded dark-btn right-margin outline-btn' do %>
       <div class="mdm-svg red-text icon">
         <%= inline_svg("icons/trash-o.svg") %>
