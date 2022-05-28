@@ -43,6 +43,7 @@ class EvaluationsController < ApplicationController
 
   # TODO: use form object for reactions_attributes
   def evaluation_params
-    params.require(:evaluation).permit(:score, :comment, :form_snapshot, :user_id, :created_at, :updated_at, reactions_attributes: %i[kind value question_id answer_id evaluation_id])
+    params.require(:evaluation).permit(:score, :comment, :form_snapshot, :user_id, :created_at, :updated_at,
+                                       reactions_attributes: %i[kind value question_id answer_id evaluation_id])
   end
 end

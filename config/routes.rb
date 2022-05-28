@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   require 'sidekiq/web'
 
-  authenticate :user, lambda { |u| u.admin? } do
+  authenticate :user, ->(u) { u.admin? } do
     mount Sidekiq::Web => '/jobs'
     resource :admin, only: %(show)
   end
@@ -37,8 +37,8 @@ Rails.application.routes.draw do
 
   resources :posts do
     resources :comments
-     member do
-      put 'like', to:    'posts#upvote'
+    member do
+      put 'like', to: 'posts#upvote'
       put 'dislike', to: 'posts#downvote'
     end
   end

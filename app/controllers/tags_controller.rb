@@ -2,8 +2,7 @@ class TagsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
   before_action :set_tag, only: %i[show edit update destroy]
 
-  def show
-  end
+  def show; end
 
   def new
     @tag = @tagable.tags.new

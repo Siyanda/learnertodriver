@@ -35,6 +35,7 @@ class QuizzesController < ApplicationController
   end
 
   def quiz_params
-    params.require(:quiz).permit(:title, :kind, :information, :duration, :description, :slug, questions_attributes: %i[content kind information _destroy])
+    params.require(:quiz).permit(:title, :kind, :information, :duration, :description, :slug,
+                                 questions_attributes: %i[content kind information _destroy])
   end
 end

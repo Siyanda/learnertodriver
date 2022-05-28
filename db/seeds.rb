@@ -4,9 +4,9 @@ models =  %w[user post comment page quiz question answer specification response 
 
 puts '... deleting all existing data 🗑'
 
-models.reverse.each { |m|
+models.reverse.each do |m|
   m.camelize.constantize.delete_all
-}
+end
 
 # seed_modules
 
@@ -39,6 +39,6 @@ end
 data = %w[page post comment tag]
 
 data.each do |model_name|
-   require seeds_path + "/generate/#{model_name}.rb"
-   puts "#{model_name.camelize.constantize.count} #{model_name.pluralize} created"
+  require seeds_path + "/generate/#{model_name}.rb"
+  puts "#{model_name.camelize.constantize.count} #{model_name.pluralize} created"
 end

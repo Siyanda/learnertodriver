@@ -13,7 +13,7 @@ class User < ApplicationRecord
   extend FriendlyId
   friendly_id :username, use: :slugged
 
-  validates_uniqueness_of :username
+  validates :username, uniqueness: true
 
   enum role: { subscriber: 0, contributor: 1, author: 2, editor: 3, administrator: 4 }
   enum status: { pending: 0, inactive: 1, active: 2, suspened: 3, blocked: 4 }

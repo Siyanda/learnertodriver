@@ -8,13 +8,13 @@ class Post < ApplicationRecord
   friendly_id :title, use: :slugged
   validates :title, presence: true
 
-# has_one_attached :cover_image
+  # has_one_attached :cover_image
 
   has_many :comments
   has_many :taggings, as: :taggable
   has_many :tags, through: :taggings
 
-  belongs_to :author, class_name: 'User', foreign_key: 'author_id'
+  belongs_to :author, class_name: 'User'
 
   enum status: { draft: 0, unpublished: 1, published: 2, restricted: 3, removed: 4 }
   scope :most_recent, -> { order(created_at: :desc).limit(5) }
