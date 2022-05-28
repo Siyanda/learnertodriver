@@ -26,7 +26,7 @@ class PagesController < ApplicationController
 
     respond_to do |format|
       if @page.save
-        format.html { redirect_to @page, notice: 'Page was successfully created.' }
+        format.html { redirect_to @page, notice: t('controllers.notices.create', model: 'Page') }
         format.json { render :show, status: :created, location: @page }
       else
         format.html { render :new }
@@ -38,7 +38,7 @@ class PagesController < ApplicationController
   def update
     respond_to do |format|
       if @page.update(page_params)
-        format.html { redirect_to @page, notice: 'Page was successfully updated.' }
+        format.html { redirect_to @page, notice: t('controllers.notices.update', model: 'Page') }
         format.json { render :show, status: :ok, location: @page }
       else
         format.html { render :edit }
@@ -50,7 +50,7 @@ class PagesController < ApplicationController
   def destroy
     @page.destroy
     respond_to do |format|
-      format.html { redirect_to pages_path, notice: 'Page was successfully destroyed.' }
+      format.html { redirect_to pages_path, notice: t('controllers.notices.destroy', model: 'Page') }
       format.json { head :no_content }
     end
   end
@@ -59,7 +59,7 @@ class PagesController < ApplicationController
 
   def require_same_user
     if current_user != @page.editor
-      flash[:danger] = 'Not authorized to edit this page'
+      flash[:danger] = t('controllers.notices.no_edit', model: 'Page')
       redirect_to root_path
     end
   end

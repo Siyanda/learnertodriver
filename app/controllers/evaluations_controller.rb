@@ -19,7 +19,7 @@ class EvaluationsController < ApplicationController
 
     if @evaluation.save
 
-      redirect_to root_path, notice: 'Completed Assessment'
+      redirect_to root_path, notice: t('.create')
     else
       render action: 'new'
     end

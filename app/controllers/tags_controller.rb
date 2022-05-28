@@ -13,7 +13,6 @@ class TagsController < ApplicationController
   def create
     @tag = @tagable.tags.new tag_params
     @tagable.save
-    redirect_to @tagable, notice: 'item was successfully tagged'
   end
 
   private

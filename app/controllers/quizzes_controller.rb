@@ -16,7 +16,7 @@ class QuizzesController < ApplicationController
     @quiz = Quiz.new(quiz_params)
 
     if @quiz.save
-      redirect_to @quiz, notice: 'Quiz was successfully created.'
+      redirect_to @quiz, notice: t('controllers.notices.create', model: 'Quiz')
     else
       render :new, status: :unprocessable_entity
     end
