@@ -8,6 +8,12 @@ AllCops:
 Bundler/OrderedGems:
   Enabled: false
 
+Rails/Output:
+  Enabled: false
+
+Layout/LineLength:
+  Enabled: false
+
 Layout/EmptyLinesAroundArguments:
   Enabled: false
 

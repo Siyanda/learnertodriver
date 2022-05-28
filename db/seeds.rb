@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'csv'
 
 models =  %w[user post comment page quiz question answer specification response tag]

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Evaluation < ApplicationRecord
   belongs_to :user, counter_cache: true
   belongs_to :quiz

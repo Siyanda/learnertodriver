@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 namespace :puma do
   Rake::Task[:restart].clear_actions
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class QuizzesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
   before_action :set_quiz, only: %i[show edit update destroy upvote downvote]

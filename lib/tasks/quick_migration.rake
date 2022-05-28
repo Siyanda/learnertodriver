@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 namespace :quick_migration do
   desc 'Quick migration to add db columns'
   task column_add: :environment do

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Question < ApplicationRecord
   has_many :specifications
   has_many :quizzes, through: :specifications

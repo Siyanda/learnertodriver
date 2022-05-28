@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Install non-ruby dependencies required by LearnertoDriver
 
 # Overmind (requires tmux)

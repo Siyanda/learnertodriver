@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 if Rails.env.development?
   MAX_LOG_SIZE = 2.megabytes
 

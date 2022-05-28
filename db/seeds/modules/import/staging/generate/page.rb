@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 pages = [
   { 'title' => 'About', 'content' => rendered_md('page/about'), 'slug' => 'about', 'status' => 'published',
     'editor_id' => User.first.id, 'parent_id' => '' },

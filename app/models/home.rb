@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Home < ApplicationRecord
   def self.stats
     totals = {
