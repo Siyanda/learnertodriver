@@ -10,8 +10,6 @@ models.reverse.each do |m|
   m.camelize.constantize.delete_all
 end
 
-# seed_modules
-
 puts '... seeding new data 💾'
 
 seeds_path = "#{Rails.root}/db/seeds/modules/import/#{Rails.env}"
@@ -38,7 +36,7 @@ def rendered_md(file_name)
   markdown.render(content)
 end
 
-data = %w[page post comment tag]
+data = %w[page post comment]
 
 data.each do |model_name|
   require seeds_path + "/generate/#{model_name}.rb"
