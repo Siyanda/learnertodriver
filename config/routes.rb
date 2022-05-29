@@ -4,8 +4,11 @@ Rails.application.routes.draw do
   require 'sidekiq/web'
 
   authenticate :user, ->(u) { u.admin? } do
-    mount Sidekiq::Web => '/jobs'
-    resource :admin, only: %(show)
+    mount Sidekiq::Web, at: 'jobs'
+
+    namespace :admin do
+      get '/', to: 'dashboard#index'
+    end
   end
 
   root 'home#index'
@@ -25,8 +28,7 @@ Rails.application.routes.draw do
              }
 
   resources :quizzes do
-    resources :evaluations do
-    end
+    resources :evaluations
   end
 
   resource :dashboard, only: %(show)
@@ -45,7 +47,7 @@ Rails.application.routes.draw do
     end
   end
 
-  get '/service-worker.js' => 'service_worker#service_worker'
-  get '/manifest.json' => 'service_worker#manifest'
-  get '/offline.html' => 'service_worker#offline'
+  get '/service-worker.js', to: 'service_worker#service_worker'
+  get '/manifest.json', to: 'service_worker#manifest'
+  get '/offline.html', to: 'service_worker#offline'
 end
