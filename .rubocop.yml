@@ -11,6 +11,9 @@ Bundler/OrderedGems:
 Rails/Output:
   Enabled: false
 
+Rails/CreateTableWithTimestamps:
+  Enabled: false
+
 Layout/LineLength:
   Enabled: false
 
