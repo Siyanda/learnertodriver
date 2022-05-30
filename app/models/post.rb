@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Post < ApplicationRecord
-  after_initialize :set_defaults
+  before_validation :set_defaults
 
   extend FriendlyId
 
@@ -10,13 +10,14 @@ class Post < ApplicationRecord
   friendly_id :title, use: :slugged
   validates :title, presence: true
 
-  # has_one_attached :cover_image
+  belongs_to :user
 
-  has_many :comments
-  has_many :taggings, as: :taggable
+  has_one_attached :cover_image
+  has_many_attached :images
+
+  has_many :comments, dependent: :delete_all
+  has_many :taggings, as: :taggable, dependent: :delete_all
   has_many :tags, through: :taggings
-
-  belongs_to :author, class_name: 'User'
 
   enum status: { draft: 0, unpublished: 1, published: 2, restricted: 3, removed: 4 }
   scope :most_recent, -> { order(created_at: :desc).limit(5) }
@@ -28,6 +29,6 @@ class Post < ApplicationRecord
   end
 
   def set_defaults
-    self.excerpt ||= ActionView::Base.full_sanitizer.sanitize(content).truncate(150)
+    self.excerpt = ActionView::Base.full_sanitizer.sanitize(content).truncate(150)
   end
 end
