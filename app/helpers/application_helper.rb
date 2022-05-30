@@ -30,6 +30,10 @@ module ApplicationHelper
     content_for(:title) { page_title }
   end
 
+  def url_contains?(klass, path)
+    klass if request.path.include?(path.to_s)
+  end
+
   # inline SVG
   def inline_svg(path)
     File.open("app/assets/images/svg/#{path}", 'rb') do |file|
