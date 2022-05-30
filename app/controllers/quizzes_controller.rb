@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class QuizzesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
   before_action :set_quiz, only: %i[show edit update destroy upvote downvote]
@@ -14,7 +16,7 @@ class QuizzesController < ApplicationController
     @quiz = Quiz.new(quiz_params)
 
     if @quiz.save
-      redirect_to @quiz, notice: 'Quiz was successfully created.'
+      redirect_to @quiz, notice: t('controllers.notices.create', model: 'Quiz')
     else
       render :new, status: :unprocessable_entity
     end
@@ -35,6 +37,7 @@ class QuizzesController < ApplicationController
   end
 
   def quiz_params
-    params.require(:quiz).permit(:title, :kind, :information, :duration, :description, :slug, questions_attributes: %i[content kind information _destroy])
+    params.require(:quiz).permit(:title, :kind, :information, :duration, :description, :slug,
+                                 questions_attributes: %i[content kind information _destroy])
   end
 end

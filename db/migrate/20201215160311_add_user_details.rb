@@ -1,16 +1,20 @@
+# frozen_string_literal: true
+
 class AddUserDetails < ActiveRecord::Migration[6.1]
   def change
-    add_column :users, :first_name, :string
-    add_column :users, :last_name, :string
-    add_column :users, :username, :string, null: false
-    add_column :users, :links, :jsonb
-    add_column :users, :bio, :text
-    add_column :users, :birthday, :date
-    add_column :users, :role, :integer, default: 0, null: false
-    add_column :users, :status, :integer, default: 0, null: false
-    add_column :users, :evaluations_count, :integer, default: 0, null: false
-    add_column :users, :admin, :boolean, null: false, default: false
-    add_column :users, :slug, :string
+    change_table :users, bulk: true do |t|
+      t.string :first_name
+      t.string :last_name
+      t.text :bio
+      t.jsonb :links
+      t.date :birthday
+      t.integer :role, default: 0, null: false
+      t.integer :status, default: 0, null: false
+      t.string :username, default: '', null: false
+      t.integer :evaluations_count, default: 0, null: false
+      t.string :slug
+    end
     add_index :users, :slug, unique: true
+    add_index :users, :username, unique: true
   end
 end

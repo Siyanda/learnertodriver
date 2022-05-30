@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CommentsController < ApplicationController
   before_action :set_comment, only: %i[show edit update destroy]
 
@@ -8,7 +10,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to @comment.post, notice: 'Comment was successfully created.' }
+        format.html { redirect_to @comment, notice: t('controllers.notices.create', model: 'Comment') }
         format.json { render json: @comment, status: :created, location: @comment }
       else
         format.html { render action: 'new' }
@@ -22,7 +24,7 @@ class CommentsController < ApplicationController
   def destroy
     @comment.destroy
     respond_to do |format|
-      format.html { redirect_to @comment.post, notice: 'Comment was successfully deleted.', status: :see_other }
+      format.html { redirect_to @comment.post, notice: t('controllers.notices.destroy', model: 'Comment'), status: :see_other }
       format.json { head :no_content }
     end
   end

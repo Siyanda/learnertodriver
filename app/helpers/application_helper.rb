@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ApplicationHelper
   include Pagy::Frontend
 
@@ -18,7 +20,7 @@ module ApplicationHelper
       url += option == options.first ? '?' : '&'
       key = option[0].to_s
       value = option[1].to_s
-      url += key + '=' + value
+      url += "#{key}=#{value}"
     end
     url
   end
@@ -26,6 +28,10 @@ module ApplicationHelper
   # Pretty Page Title
   def title(page_title)
     content_for(:title) { page_title }
+  end
+
+  def url_contains?(klass, path)
+    klass if request.path.include?(path.to_s)
   end
 
   # inline SVG

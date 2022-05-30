@@ -17,10 +17,10 @@
               <%= form.fields_for :reactions, Reaction.new do |builder| %>
 
               <%= builder.input :answer,
-                              as: :radio_buttons,
-                              label: false,
-                              item_label_class: 'flex rev-row spaced-between clickable answer',
-                              collection: question.answers.collect{ |a| [a.content, a.id] } %>
+                                as: :radio_buttons,
+                                label: false,
+                                item_label_class: 'flex rev-row spaced-between clickable answer',
+                                collection: question.answers.collect { |a| [a.content, a.id] } %>
               <% end %>
             </div>
         </div>
@@ -51,6 +51,6 @@
         </div>
       </div>
 
-    <%= form.submit "Submit", id: "form_submit" , class: "shown-end inner-button bttn dark" %>
+    <%= form.submit "Submit", id: "form_submit", class: "shown-end inner-button bttn dark" %>
   </div>
-<% end%>
+<% end %>

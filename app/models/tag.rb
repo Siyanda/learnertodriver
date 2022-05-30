@@ -1,10 +1,16 @@
+# frozen_string_literal: true
+
 class Tag < ApplicationRecord
   extend FriendlyId
 
-  belongs_to :tagable, polymorphic: true
+  has_many :posts, through: :taggings, source: :taggable,
+                   source_type: 'Post'
+
+  has_many :quizzes, through: :taggings, source: :taggable,
+                     source_type: 'Quiz'
 
   friendly_id :title, use: :slugged
-  validates_presence_of :title
+  enum status: { published: 0, unpublished: 1, restricted: 2, removed: 3 }
 
-  enum status: { draft: 0, unpublished: 1, published: 2, restricted: 3, removed: 4 }
+  validates :title, presence: true
 end

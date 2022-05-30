@@ -6,7 +6,7 @@ linters:
   PartialInstanceVariable:
     enabled: true
   HardCodedString:
-    enabled: true
+    enabled: false
     exclude:
       - '**/app/views/devise/*'
   Rubocop:

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class EvaluationsController < ApplicationController
   # skip_before_action :authenticate_user!, only: %i[show new]
   before_action :set_evaluation, only: %i[show edit update destroy]
@@ -17,7 +19,7 @@ class EvaluationsController < ApplicationController
 
     if @evaluation.save
 
-      redirect_to root_path, notice: 'Completed Assessment'
+      redirect_to root_path, notice: t('.create')
     else
       render action: 'new'
     end
@@ -43,6 +45,7 @@ class EvaluationsController < ApplicationController
 
   # TODO: use form object for reactions_attributes
   def evaluation_params
-    params.require(:evaluation).permit(:score, :comment, :form_snapshot, :user_id, :created_at, :updated_at, reactions_attributes: %i[kind value question_id answer_id evaluation_id])
+    params.require(:evaluation).permit(:score, :comment, :form_snapshot, :user_id, :created_at, :updated_at,
+                                       reactions_attributes: %i[kind value question_id answer_id evaluation_id])
   end
 end

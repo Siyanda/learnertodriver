@@ -31,7 +31,7 @@
   </div>
 
   <div class="copyright">
-    <p class="light-text">Created with ❤ by <strong><%= link_to_unless_current t('dev_company'), root_path, class: 'light-text' %> </strong> © <%= Date.today.year %></p>
+    <p class="light-text">Created with ❤ by <strong><%= link_to_unless_current t('dev_company'), root_path, class: 'light-text' %> </strong> © <%= Time.zone.today.year %></p>
     <ul>
       <li class="light-text">
         <%= link_to_unless_current 'Privacy Policy', page_path('privacy'), class: 'light-text' %>

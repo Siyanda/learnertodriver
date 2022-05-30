@@ -20,7 +20,7 @@
       <div class="flex spaced-between center-aligned">
         <div class="search-wrapper">
           <%= form_tag pages_path, method: :get do %>
-            <%= text_field_tag :"q[name_cont]", "", class: "search-input", placeholder: "filter name ..." %>
+            <%= text_field_tag 'q[name_cont]', "", class: "search-input", placeholder: "filter name ..." %>
               <div class="small-svg float-icon icon">
                 <%= inline_svg("icons/search.svg") %>
               </div>
@@ -75,7 +75,7 @@
                   Filter by Status
                 </button>
                 <div class="dropdown-menu" data-dropdown-target="menu">
-                  
+
                 </div>
               </div>
 
@@ -141,7 +141,7 @@
     <% @pages.each.with_index(1) do |page, index| %>
       <tr class="tbody">
         <td class="text-center numbered grey-text"><%= index %></td>
-        <td class="capatilize" ><%= page.title %></td>
+        <td class="capatilize"><%= page.title %></td>
         <td> <p class="truncate"><%= page.slug %></p></td>
         <td><%= page.status %></td>
         <td><p class="truncate"><%= page.content %></p></td>
@@ -170,7 +170,7 @@
 
   </table>
 
-    <br/>
+    <br>
 
   <div class="to-column flex spaced-between">
     <div class="tiny-text grey-text information">

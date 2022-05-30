@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PostsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
   before_action :set_post_options
@@ -25,7 +27,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to @post, notice: 'Post was successfully created.' }
+        format.html { redirect_to @post, notice: t('controllers.notices.create', model: 'Post') }
         format.json { render :show, status: :created, location: @post }
       else
         format.html { render :new }
@@ -37,7 +39,7 @@ class PostsController < ApplicationController
   def update
     respond_to do |format|
       if @post.update(post_params)
-        format.html { redirect_to @post, notice: 'Post was successfully updated.' }
+        format.html { redirect_to @post, notice: t('controllers.notices.update', model: 'Post') }
         format.json { render :show, status: :ok, location: @post }
       else
         format.html { render :edit }
@@ -49,7 +51,7 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy
     respond_to do |format|
-      format.html { redirect_to posts_path, notice: 'Post was successfully destroyed.' }
+      format.html { redirect_to posts_path, notice: t('controllers.notices.destroy', model: 'Post') }
       format.json { head :no_content }
     end
   end
@@ -67,10 +69,10 @@ class PostsController < ApplicationController
   private
 
   def require_same_user
-    if current_user != @post.author
-      flash[:danger] = 'Not authorized to edit this post'
-      redirect_to root_path
-    end
+    return unless current_user != @post.user
+
+    flash[:danger] = t('controllers.notices.no_edit', model: 'Post')
+    redirect_to root_path
   end
 
   def set_post_options

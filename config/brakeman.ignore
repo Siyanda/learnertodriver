@@ -1,0 +1,68 @@
+{
+  "ignored_warnings": [
+    {
+      "warning_type": "Cross-Site Scripting",
+      "warning_code": 2,
+      "fingerprint": "083224e8b51d54b60610022c8d96cdef4f9fa0154336d74ed626f53b1936a2e9",
+      "check_name": "CrossSiteScripting",
+      "message": "Unescaped model attribute",
+      "file": "app/views/pages/show.html.erb",
+      "line": 19,
+      "link": "https://brakemanscanner.org/docs/warning_types/cross_site_scripting",
+      "code": "from_markdown(liquidize(current_user.pages.build(page_params).content))",
+      "render_path": [
+        {
+          "type": "controller",
+          "class": "PagesController",
+          "method": "create",
+          "line": 30,
+          "file": "app/controllers/pages_controller.rb",
+          "rendered": {
+            "name": "pages/show",
+            "file": "app/views/pages/show.html.erb"
+          }
+        }
+      ],
+      "location": {
+        "type": "template",
+        "template": "pages/show"
+      },
+      "user_input": "current_user.pages.build(page_params)",
+      "confidence": "Weak",
+      "note": ""
+    },
+    {
+      "warning_type": "Cross-Site Scripting",
+      "warning_code": 2,
+      "fingerprint": "a18e39fce8f44a39b53ebdce38901ae45679476ead338c885081c5e17373facd",
+      "check_name": "CrossSiteScripting",
+      "message": "Unescaped model attribute",
+      "file": "app/views/posts/show.html.erb",
+      "line": 19,
+      "link": "https://brakemanscanner.org/docs/warning_types/cross_site_scripting",
+      "code": "current_user.posts.build(post_params).content",
+      "render_path": [
+        {
+          "type": "controller",
+          "class": "PostsController",
+          "method": "create",
+          "line": 31,
+          "file": "app/controllers/posts_controller.rb",
+          "rendered": {
+            "name": "posts/show",
+            "file": "app/views/posts/show.html.erb"
+          }
+        }
+      ],
+      "location": {
+        "type": "template",
+        "template": "posts/show"
+      },
+      "user_input": "current_user.posts.build(post_params)",
+      "confidence": "Weak",
+      "note": ""
+    }
+  ],
+  "updated": "2022-05-30 07:11:42 +0200",
+  "brakeman_version": "5.2.3"
+}

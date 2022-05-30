@@ -1,14 +1,14 @@
+# frozen_string_literal: true
+
 require 'csv'
 
 models =  %w[user post comment page quiz question answer specification response tag]
 
 puts '... deleting all existing data 🗑'
 
-models.reverse.each { |m|
+models.reverse.each do |m|
   m.camelize.constantize.delete_all
-}
-
-# seed_modules
+end
 
 puts '... seeding new data 💾'
 
@@ -36,9 +36,9 @@ def rendered_md(file_name)
   markdown.render(content)
 end
 
-data = %w[page post comment tag]
+data = %w[page post comment]
 
 data.each do |model_name|
-   require seeds_path + "/generate/#{model_name}.rb"
-   puts "#{model_name.camelize.constantize.count} #{model_name.pluralize} created"
+  require seeds_path + "/generate/#{model_name}.rb"
+  puts "#{model_name.camelize.constantize.count} #{model_name.pluralize} created"
 end
