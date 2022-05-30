@@ -120,7 +120,7 @@ ActiveRecord::Schema.define(version: 2021_12_23_161105) do
     t.string "layout"
     t.string "slug"
     t.integer "status", default: 0, null: false
-    t.bigint "editor_id"
+    t.bigint "user_id", null: false
     t.bigint "parent_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -141,11 +141,11 @@ ActiveRecord::Schema.define(version: 2021_12_23_161105) do
     t.string "excerpt"
     t.string "slug"
     t.integer "status", default: 0, null: false
-    t.bigint "author_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["author_id"], name: "index_posts_on_author_id"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["slug"], name: "index_posts_on_slug", unique: true
+    t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
   create_table "questions", force: :cascade do |t|
@@ -268,8 +268,8 @@ ActiveRecord::Schema.define(version: 2021_12_23_161105) do
   add_foreign_key "evaluations", "quizzes"
   add_foreign_key "evaluations", "users"
   add_foreign_key "pages", "pages", column: "parent_id"
-  add_foreign_key "pages", "users", column: "editor_id"
-  add_foreign_key "posts", "users", column: "author_id"
+  add_foreign_key "pages", "users"
+  add_foreign_key "posts", "users"
   add_foreign_key "reactions", "answers"
   add_foreign_key "reactions", "questions"
   add_foreign_key "reactions", "quizzes"

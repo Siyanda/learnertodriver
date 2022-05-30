@@ -8,7 +8,7 @@ class CreatePosts < ActiveRecord::Migration[6.1]
       t.string :excerpt
       t.string :slug
       t.integer :status, default: 0, null: false
-      t.references :author, foreign_key: { to_table: :users }, index: true
+      t.references :user, null: false, foreign_key: true, index: true
 
       t.timestamps
     end

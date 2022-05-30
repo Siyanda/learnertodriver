@@ -6,8 +6,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
-  has_many :posts, foreign_key: 'author_id'
-  has_many :pages, foreign_key: 'editor_id'
 
   has_many :comments
   has_many :evaluations
