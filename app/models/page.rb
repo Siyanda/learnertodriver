@@ -5,10 +5,10 @@ class Page < ApplicationRecord
   friendly_id :title, use: :slugged
   validates :title, presence: true
 
-  belongs_to :parent, class_name: 'Page', optional: true
-  has_many :children, class_name: 'Page', foreign_key: :parent_id, dependent: :delete_all
+  belongs_to :user
 
-  belongs_to :editor, class_name: 'User'
+  belongs_to :parent, class_name: 'Page', optional: true, inverse_of: :children
+  has_many :children, class_name: 'Page', foreign_key: :parent_id, dependent: :delete_all, inverse_of: :parent
 
   enum status: { draft: 0, unpublished: 1, published: 2, restricted: 3, removed: 4 }
 

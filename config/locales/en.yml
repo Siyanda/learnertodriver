@@ -6,6 +6,12 @@ en:
   description: "Learner to Driver K53 quiz application"
   mission: "The LearnertoDriver app offers the best preparation before taking the official test given by the Traffic Department, motor vehicle related advice"
   dev_company: "TypoGraphics"
+  controllers:
+    notices:
+      create: "%{model} was successfully created."
+      update: "%{model} was successfully updated."
+      destroy: "%{model} was successfully removed."
+      no_edit: "Not authorized to edit this %{model}"
   views:
     pagination:
       previous: "&lt; Previous"

@@ -24,7 +24,7 @@
               <% end %>
             </li>
 
-            <% if warden.user.admin == true %>
+            <% if warden.user.admin? %>
               <li class="full-width">
                 <%= link_to root_path, class: 'flex full-width user-menu-link' do %>
                 <div class="right-margin small-svg dark-fill icon">

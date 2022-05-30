@@ -58,10 +58,10 @@ class PagesController < ApplicationController
   private
 
   def require_same_user
-    if current_user != @page.editor
-      flash[:danger] = t('controllers.notices.no_edit', model: 'Page')
-      redirect_to root_path
-    end
+    return unless current_user != @page.user
+
+    flash[:danger] = t('controllers.notices.no_edit', model: 'Page')
+    redirect_to root_path
   end
 
   def set_page
