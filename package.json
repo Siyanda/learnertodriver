@@ -1,6 +1,5 @@
 {
   "name": "app",
-  "private": "true",
   "dependencies": {
     "@hotwired/stimulus": "^3.0.1",
     "@hotwired/turbo-rails": "^7.1.0",
@@ -24,5 +23,6 @@
   "scripts": {
     "build": "node esbuild.config.js",
     "build:css": "postcss -o app/assets/builds/application.css app/assets/stylesheets/application.scss"
-  }
+  },
+  "packageManager": "yarn@3.2.2"
 }
