@@ -69,8 +69,13 @@ RUN --mount=type=cache,id=prod-apt-cache,sharing=locked,target=/var/cache/apt \
     ${PACKAGES} \
     && rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
-COPY --from=build /app /app
+WORKDIR /app
+COPY ./Gemfile* /app/
+RUN bundle config --local without "staging production omit" && bundle install --jobs $(nproc) --retry 5
+COPY package.json yarn.lock /app/
+RUN yarn install
+COPY . /app
 
-ENV PORT 8080
+CMD ["bin/rails", "s", "-b", "0.0.0.0"]
 
-CMD ["bundle", "exec", "puma", "-C", "config/puma.rb"]
+EXPOSE 3000
