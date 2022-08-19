@@ -6,8 +6,6 @@ ARG NODE_VERSION=16.13.0
 ARG YARN_VERSION=3.2.2
 ARG BUNDLER_VERSION=2.3.20
 
-ARG RAILS_ENV=production
-ENV RAILS_ENV=${RAILS_ENV}
 ENV RAILS_SERVE_STATIC_FILES true
 ENV RAILS_LOG_TO_STDOUT true
 
@@ -47,16 +45,9 @@ RUN --mount=type=cache,id=dev-apt-cache,sharing=locked,target=/var/cache/apt \
     apt-get install --no-install-recommends -y ${DEV_PACKAGES} \
     && rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
-RUN gem install -N bundler -v ${BUNDLER_VERSION}
-
-COPY Gemfile* ./
-RUN bundle install &&  rm -rf vendor/bundle/ruby/*/cache
-
 COPY . .
 
 ENV SECRET_KEY_BASE 1
-
-RUN bundle exec rails assets:precompile
 
 FROM base
 
@@ -69,12 +60,16 @@ RUN --mount=type=cache,id=prod-apt-cache,sharing=locked,target=/var/cache/apt \
     ${PACKAGES} \
     && rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
-WORKDIR /app
-COPY ./Gemfile* /app/
-RUN bundle config --local without "staging production omit" && bundle install --jobs $(nproc) --retry 5
-COPY package.json yarn.lock /app/
-RUN yarn install
-COPY . /app
+COPY --from=build /app /app
+
+RUN gem install -N bundler -v ${BUNDLER_VERSION}
+
+COPY Gemfile* ./
+RUN bundle install && rm -rf vendor/bundle/ruby/*/cache
+
+RUN bundle exec rails assets:precompile
+
+ENV PORT 3000
 
 CMD ["bin/rails", "s", "-b", "0.0.0.0"]
 
