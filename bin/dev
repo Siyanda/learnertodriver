@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 PORT="${PORT:-3000}"
 export PORT
 
