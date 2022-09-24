@@ -44,7 +44,7 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec', require: false
-  gem 'erb_lint', require: false, github: 'Shopify/erb-lint'
+  gem 'erb_lint', require: false
 end
 
 group :development do
