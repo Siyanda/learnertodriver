@@ -9,14 +9,12 @@
     roboto,
     "Segoe UI";
   --mono-font: consolas, menlo, monaco, "Andale Mono", "Ubuntu Mono", monospace;
-  --spacing: 1.2rem;
   --font-size: 16px;
   --bg: #f5f7ff;
   --whitesmoke: #f5f5f5;
   --accent-bg: #2f3242;
   --text: #212121;
   --text-light: #585858;
-  --border: #d8dae1;
   --accent: #0d47a1;
   --code: #d81b60;
   --clear: #1110;
@@ -56,7 +54,7 @@
   --spacing: 1.5rem;
   --spacing--small: 0.75rem;
   --border-width: 0.0625rem;
-  --border: var(--border-width) solid currentColor;
+  --border: var(--border-width) solid currentcolor;
   --focus-outline-width: 0.1875rem;
   --focus-outline-offset: 0.125rem;
   --focus-outline: var(--focus-outline-width) solid var(--accent-color);
@@ -86,7 +84,7 @@ html {
 body {
   color: var(--text);
   font-size: var(--font-size);
-  text-rendering: optimizeLegibility;
+  text-rendering: optimizelegibility;
   margin: 0;
 }
 
@@ -107,8 +105,9 @@ p {
 }
 
 a {
-  color: var(--accent-color);
+  color: currentcolor;
   text-decoration-skip-ink: auto;
+  text-decoration: none;
   transition: color var(--duration) var(--timing);
 
   &:focus {
@@ -159,17 +158,11 @@ button {
   text-transform: none;
 }
 
-a {
-  text-decoration: none;
-  color: currentcolor;
-}
-
 svg {
   min-width: 10px;
   min-height: 10px;
   pointer-events: none;
 }
-
 
 fieldset {
   background-color: transparent;
@@ -198,14 +191,6 @@ img,
 picture {
   margin: 0;
   max-width: 100%;
-}
-
-input,
-select,
-textarea {
-  display: block;
-  font-family: var(--font-family);
-  font-size: 1rem;
 }
 
 ul,
@@ -274,11 +259,7 @@ textarea {
 }
 
 [type="search"] {
-  -webkit-appearance: textfield;
-}
-
-textarea {
-  resize: vertical;
+  appearance: textfield;
 }
 
 [type="checkbox"],

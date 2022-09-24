@@ -14,7 +14,7 @@
       font-size: 18px;
       position: relative;
       text-decoration: none;
-      transition-duration: .5s;
+      transition-duration: 0.5s;
 
       ul {
         display: none;
@@ -22,7 +22,7 @@
         min-width: 5rem;
         opacity: 0;
         position: absolute;
-        transition: color .5s ease;
+        transition: color 0.5s ease;
         visibility: hidden;
         z-index: 1;
       }
@@ -72,7 +72,7 @@
 }
 
 .logo {
-  padding: .4rem;
+  padding: 0.4rem;
 
   img {
     width: 150px;
@@ -85,7 +85,6 @@
 }
 
 .sidebar-container {
-
   li {
     max-width: 175px;
     min-width: 165px;
@@ -120,7 +119,7 @@
   margin-top: 45px;
 
   .icon {
-    margin: .12rem 1.2rem;
+    margin: 0.12rem 1.2rem;
     position: fixed;
   }
 
@@ -133,7 +132,7 @@
   display: inline-block;
   height: inherit;
   line-height: inherit;
-  padding: .8rem 1.2rem;
+  padding: 0.8rem 1.2rem;
   text-transform: uppercase;
   transition: color 150ms ease;
 
@@ -152,8 +151,8 @@
 }
 
 .nav-img {
-  border-radius: .8rem;
-  margin: .4rem .4rem 0;
+  border-radius: 0.8rem;
+  margin: 0.4rem 0.4rem 0;
 }
 
 .left-border {
@@ -169,7 +168,6 @@
 }
 
 .bottom-border {
-
   &:hover {
     border-bottom: 2px solid var(--brand-alt);
   }
@@ -184,15 +182,15 @@
 .secondary-nav {
   background-color: var(--white);
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
-  padding: .4rem;
+  padding: 0.4rem;
 }
 
 .outline {
   border: thin solid;
   border-radius: 4px;
-  padding: .4rem .8rem;
+  padding: 0.4rem 0.8rem;
   transition-property: background-color, color;
-  transition-duration: .2s;
+  transition-duration: 0.2s;
   transition-timing-function: ease-in-out;
 
   &:hover {
@@ -204,9 +202,9 @@
 .noline {
   border: thin var(--grey);
   border-radius: 4px;
-  padding: .4rem .8rem;
+  padding: 0.4rem 0.8rem;
   transition-property: background-color, color;
-  transition-duration: .2s;
+  transition-duration: 0.2s;
   transition-timing-function: ease-in-out;
 
   &:hover {
@@ -223,10 +221,11 @@
 .sidebar-logo {
   margin: auto;
 
-  svg, img {
+  svg,
+  img {
     width: 160px;
     max-width: 160px;
-    padding-left: .4rem;
+    padding-left: 0.4rem;
   }
 }
 
@@ -239,6 +238,19 @@
 }
 
 .icon {
+  .badge {
+    background-color: var(--clear);
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0.4rem;
+    border-radius: 50%;
+
+    &.active {
+      background-color: var(--red);
+      transition: background-color 0.3s;
+    }
+  }
 
   &.red-fill {
     svg {
@@ -291,7 +303,6 @@
   }
 
   &.ocean-fill {
-
     svg {
       fill: var(--brand-alt);
     }
@@ -370,10 +381,9 @@
 }
 
 .float-icon {
-
   &.search {
     svg {
-    top: 5px;
+      top: 5px;
     }
   }
 
@@ -387,13 +397,13 @@
 }
 
 .search-container {
-  padding: .5rem;
+  padding: 0.5rem;
 }
 
 .search-wrapper {
   position: relative;
   border: thin solid var(--mid-color);
-  border-radius: .2rem;
+  border-radius: 0.2rem;
 
   &.dark-bg {
     border: thin solid var(--grey);
@@ -410,7 +420,7 @@
 
   .search-input {
     margin: 0;
-    padding: .2em .2em .2em 1.5em;
+    padding: 0.2em 0.2em 0.2em 1.5em;
     font-size: 18px;
   }
 
@@ -448,7 +458,7 @@
     display: inline;
     font-size: 18px;
 
-    &+li {
+    & + li {
       &::before {
         color: var(--blackish);
         content: "/\00a0";
@@ -469,13 +479,12 @@
 }
 
 .mob-nav-item {
-  padding-top: .4rem;
-  padding-bottom: calc(.8rem + env(safe-area-inset-bottom));
+  padding-top: 0.4rem;
+  padding-bottom: calc(0.8rem + env(safe-area-inset-bottom));
   width: 100%;
 }
 
 @media screen and (max-width: 700px) {
-
   nav {
     &.navigation {
       flex-direction: column;
@@ -487,7 +496,7 @@
 
 @media screen and (max-width: 550px) {
   .secondary-nav {
-    padding: .8rem;
+    padding: 0.8rem;
   }
 
   .breadcrumbs-container {
@@ -496,11 +505,10 @@
   }
 
   .header-links {
-    padding: .4rem;
+    padding: 0.4rem;
     margin: 0;
   }
 }
-
 
 .profile-area,
 .profile-post-area {
@@ -537,7 +545,7 @@
 }
 
 .avatar {
-  border: .6rem var(--gainsboro) solid;
+  border: 0.6rem var(--gainsboro) solid;
   border-radius: 50%;
   min-width: 150px;
   width: 10%;
@@ -568,23 +576,6 @@
   }
 }
 
-.icon {
-
-  .badge {
-    background-color: var(--clear);
-    position: absolute;
-    top: 0;
-    right: 0;
-    padding: .4rem;
-    border-radius: 50%;
-
-    &.active {
-      background-color: var(--red);
-      transition: background-color .3s;
-    }
-  }
-}
-
 .spaced {
   margin: auto 1.1rem;
 }
@@ -602,19 +593,20 @@
     }
   }
 
-  svg, img {
+  svg,
+  img {
     display: block;
     width: auto;
     height: 60px;
     margin: 0 auto;
-    padding: .2rem;
+    padding: 0.2rem;
   }
 }
 
 .nav-avatar {
   cursor: pointer;
   display: block;
-  margin: 0 .1rem 0 .8rem;
+  margin: 0 0.1rem 0 0.8rem;
 
   img {
     min-width: 40px;
@@ -633,7 +625,6 @@
 }
 
 .v-menu {
-
   .menu-item {
     margin: 4px 0;
 
@@ -675,8 +666,8 @@
   .user-menu-link {
     color: var(--text);
     border-top: thin solid var(--gainsboro);
-    padding: .8rem;
-    transition: background-color .1s ease-in;
+    padding: 0.8rem;
+    transition: background-color 0.1s ease-in;
 
     &:hover {
       background-color: var(--accent-color);

@@ -2,7 +2,7 @@
   width: 98%;
   height: 17px;
   background-color: var(--light);
-  margin: .6em 0;
+  margin: 0.6em 0;
   border: thin double var(--slate);
   border-radius: 5px;
   box-shadow: 0 1px 5px var(--slate) inset, 0 1px 0 var(--gainsboro);
@@ -37,7 +37,7 @@
     display: block;
   }
 
-    &.active {
+  &.active {
     .open {
       display: block;
     }
@@ -48,13 +48,12 @@
   }
 }
 
-
 .conditional-message {
   background-color: var(--light);
   opacity: 0;
   padding: 1.2rem;
   position: sticky;
-  transition: .3s;
+  transition: 0.3s;
   top: 2.4rem;
   visibility: hidden;
 
@@ -64,9 +63,7 @@
   }
 }
 
-
 .controls {
-
   .hide-start {
     display: none;
   }

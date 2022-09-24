@@ -29,7 +29,7 @@
   }
 
   .commentlist {
-     > li {
+    > li {
       &:first-child {
         margin-top: 0;
       }
@@ -46,7 +46,7 @@
   position: relative;
 
   &::after {
-    content: '';
+    content: "";
     display: block;
     border: 12px solid transparent;
     border-right-color: var(--gainsboro);
@@ -66,8 +66,9 @@
 }
 
 .comment-header {
-  p , a {
-    font-size: .85em;
+  p,
+  a {
+    font-size: 0.85em;
   }
 
   cite {
@@ -90,9 +91,14 @@
 /* comment-content */
 
 .comment-content {
-  font-size: .9em;
+  font-size: 0.9em;
 
-  h1 , h2 , h3 , h4 , h5 , h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     margin: 50px 0 20px;
     font-weight: 400;
     font-size: 1.2em;
@@ -105,11 +111,13 @@
   }
 
   li {
-    margin-top: .5em;
+    margin-top: 0.5em;
     line-height: 170%;
   }
 
-  blockquote , p , li {
+  blockquote,
+  p,
+  li {
     padding: 10px;
     line-height: 150%;
     margin-top: 1em;
@@ -128,7 +136,6 @@
   }
 }
 
-
 @media screen and (max-width: 600px) {
   .comment-inner {
     margin-left: 80px;
@@ -143,7 +150,6 @@
 }
 
 @media screen and (max-width: 480px) {
-
   .comment-inner {
     margin: 0;
     padding: 5px;
@@ -157,7 +163,7 @@
   }
 
   .comment-section {
-    margin: .2rem;
+    margin: 0.2rem;
   }
 
   .comment-avatar {

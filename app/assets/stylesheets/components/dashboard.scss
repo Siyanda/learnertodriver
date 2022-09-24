@@ -1,5 +1,14 @@
 .app {
+  flex: 1;
   min-height: 100vh;
+
+  &.shared {
+    margin: 0 0 0 180px;
+  }
+
+  &.full {
+    margin: 0;
+  }
 
   .top-nav {
     top: -60px;
@@ -17,7 +26,10 @@
       }
     }
 
-    h1, h2, h3, h4 {
+    h1,
+    h2,
+    h3,
+    h4 {
       text-transform: capitalize;
     }
 
@@ -52,20 +64,18 @@
 }
 
 @media screen and (max-width: 550px) {
-.app {
+  .app {
+    .desktop {
+      display: none;
+    }
 
-  .desktop {
-    display: none;
-  }
-
-  .wrapper {
-    &.right-side {
-        margin-left: 0px;
+    .wrapper {
+      &.right-side {
+        margin-left: 0;
       }
     }
   }
 }
-
 
 .app-container {
   margin-top: 72px;
@@ -77,7 +87,7 @@
 }
 
 .sparkline {
-  padding: .8rem 0 0;
+  padding: 0.8rem 0 0;
 
   &.decreased {
     color: var(--red);
@@ -89,7 +99,6 @@
 }
 
 .overview-cards {
-
   .overview {
     border-radius: 4px;
     border-top: 2px solid var(--brand-color);
@@ -113,10 +122,6 @@
   }
 }
 
-.text-input {
-
-}
-
 .text-area {
   max-width: 80%;
   margin: auto 4rem;
@@ -124,18 +129,6 @@
 
   svg {
     width: 400px;
-  }
-}
-
-.app {
-  flex: 1;
-
-  &.shared {
-    margin: 0 0 0 180px;
-  }
-
-  &.full {
-    margin: 0;
   }
 }
 
@@ -163,7 +156,7 @@
     max-width: 750px;
     padding: 0 30px;
     position: relative;
-    text-shadow: 0 0 6px rgba(0,0,0,.3);
+    text-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
     z-index: 1;
   }
 }
@@ -173,7 +166,6 @@
   padding: 150px 0 90px;
 
   &.overlaid {
-
     &::after {
       background: url("bg/confetti.png");
       background-size: cover;
@@ -181,7 +173,7 @@
       content: "";
       display: block;
       height: 100%;
-      opacity: .6;
+      opacity: 0.6;
       pointer-events: none;
       position: absolute;
       top: 0;
@@ -222,12 +214,12 @@
   h2 {
     font-size: 1.1rem;
     display: block;
-    margin: .67rem 0;
+    margin: 0.67rem 0;
   }
 
   p {
     font-size: 1rem;
-    margin: 0 0 .75rem;
+    margin: 0 0 0.75rem;
   }
 
   svg,
@@ -251,7 +243,8 @@
 .item-blocks {
   margin-top: 1rem;
 
-  svg, img {
+  svg,
+  img {
     width: 20px;
   }
 
@@ -272,7 +265,7 @@
 
   .summaries {
     border-top: 2px solid var(--slate);
-    margin: .2rem -2rem;
+    margin: 0.2rem -2rem;
     padding: 1.8rem 2rem;
   }
 }
@@ -284,7 +277,7 @@
 
 hr {
   border-bottom: 2px solid var(--gainsboro);
-  margin: .5rem 0;
+  margin: 0.5rem 0;
 
   &.hr-blue {
     border-bottom: 2px solid var(--mid-color);
@@ -305,7 +298,7 @@ hr {
   color: var(--brand-alt);
 
   &.iconed {
-    padding: .4rem .4rem .4rem 1.8rem;
+    padding: 0.4rem 0.4rem 0.4rem 1.8rem;
   }
 
   &:hover {
@@ -315,9 +308,9 @@ hr {
 }
 
 .dropdown-menu {
-  margin: .1rem 0;
+  margin: 0.1rem 0;
   border: var(--mid-color);
-  border-radius: .4rem;
+  border-radius: 0.4rem;
   background: var(--light);
   position: absolute;
   width: 190px;
@@ -333,7 +326,7 @@ hr {
   color: var(--brand-alt);
   display: flex;
   font-weight: 600;
-  padding: .6rem .8rem .4rem .4rem;
+  padding: 0.6rem 0.8rem 0.4rem 0.4rem;
   width: 100%;
 
   &:hover {
@@ -344,15 +337,14 @@ hr {
 
 @media screen and (max-width: 250px) {
   .panel {
-
     .half-width {
       width: 100%;
-      margin: .8rem;
+      margin: 0.8rem;
     }
 
     .third-width {
       width: 100%;
-      margin: .8rem;
+      margin: 0.8rem;
     }
 
     &.flex {
@@ -363,15 +355,14 @@ hr {
 
 @media screen and (min-width: 250px) {
   .panel {
-
     .half-width {
       width: 100%;
-      margin: .8rem;
+      margin: 0.8rem;
     }
 
     .third-width {
       width: 100%;
-      margin: .8rem;
+      margin: 0.8rem;
     }
 
     &.flex {
@@ -382,7 +373,6 @@ hr {
 
 @media screen and (min-width: 800px) {
   .panel {
-
     .third-width {
       width: 29%;
     }
@@ -393,7 +383,7 @@ hr {
   .backimage {
     width: 100%;
     background-size: cover;
-    background-image: linear-gradient(rgba(0,0,0, .7),rgba(0,0,0,.6)),url("bg/main.png");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.6)), url("bg/main.png");
   }
 
   .sideimage {
@@ -402,7 +392,7 @@ hr {
 }
 
 @media screen and (min-width: 1000px) {
-.panel {
+  .panel {
     margin: 2rem 0 0;
 
     .half-width {
