@@ -2,7 +2,7 @@
 <% breadcrumb :page, @page %>
 
 <% content_for :action_bar do %>
-  <%= render partial: 'layouts/common/action_bar', locals: { item: @page } %>
+  <%= render partial: 'layouts/common/action_bar', item: @page %>
 <% end %>
 
 <div class="flex gapped">

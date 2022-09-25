@@ -4,7 +4,7 @@
 <div class="flex to-column gapped">
 
   <div class="flex full-width max-content rounded shadowed basic-border column white-bg page">
-    <%= render 'form' %>
+    <%= render 'form', page: @page %>
   </div>
 
   <div class="third-width to-full">
@@ -144,7 +144,7 @@
           </div>
           <hr class="third-width hr-grey">
           <div class="section">
-            <input type="text" class="full-width basic-border cream-bg">
+            <input type="text" class="full-width basic-border cream-bg" autocomplete="name">
             <ul class="flex top-padded wrapped tags">
               <li class="flex tag-container">
                 <span class="removeable-tag gainsboro-bg">test</span>

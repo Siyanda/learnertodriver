@@ -1,13 +1,13 @@
-<%= simple_form_for [@user, Evaluation.new] do |form| %>
+<%= simple_form_for [current_user, Evaluation.new] do |form| %>
   <div class="slider-form" data-controller="slides">
 
     <div class="alt-border gapped content">
-      <% @quiz.questions.random.each.with_index(1) do |question, index| %>
+      <% quiz.questions.random.each.with_index(1) do |question, index| %>
         <div class="column" data-slides-target="slide">
           <%= content_tag(:h1, "Question : #{index}", class: "bold question") %>
 
             <div class="progress-container full-width">
-              <progress value="<%= index %>" max="<%= @quiz.questions.size %>" class="full-width">
+              <progress value="<%= index %>" max="<%= quiz.questions.size %>" class="full-width">
               </progress>
             </div>
 
