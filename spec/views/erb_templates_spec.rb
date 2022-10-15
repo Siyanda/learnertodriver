@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'better_html'
 
 # Based on https://github.com/Shopify/better-html#testing-for-valid-html-and-erb
