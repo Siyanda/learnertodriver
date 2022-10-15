@@ -4,6 +4,7 @@
     "selector-class-pattern": null,
     "custom-property-pattern": null,
     "no-descending-specificity": null,
+    "scss/at-import-partial-extension": "always",
     "alpha-value-notation": "number",
     "color-function-notation": "legacy"
   }
