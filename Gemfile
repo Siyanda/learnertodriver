@@ -18,6 +18,8 @@ gem 'bootsnap', require: false
 
 gem 'redis'
 gem 'sidekiq'
+gem 'anycable-rails'
+gem 'anycable-rails-jwt'
 gem 'image_processing'
 gem 'aws-sdk-s3', require: false
 
@@ -59,4 +61,5 @@ group :test do
   gem 'capybara'
   gem 'webdrivers'
   gem 'selenium-webdriver'
+  gem 'simplecov', require: false
 end
