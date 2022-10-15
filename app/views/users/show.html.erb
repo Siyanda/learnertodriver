@@ -46,19 +46,3 @@
 
 </div>
 
-<div class="texture container">
-  <div class="profile-post-area">
-    <% if @user.posts.any? %>
-      <h1>Recent Posts:</h1>
-      <hr class="hr-grey">
-      <div class="posts" id="posts">
-        <%= render 'post' %>
-      </div>
-    <% else %>
-      <p>You havent posted anything yet, start today ?</p>
-        <%= link_to new_post_path, class: 'button' do %>
-          <span class="fa fa-plus-circle"></span> New Post
-        <% end %>
-    <% end %>
-  </div>
-</div>

@@ -2,7 +2,7 @@
 <% breadcrumb :page, @page %>
 
 <% content_for :action_bar do %>
-  <%= render partial: 'layouts/common/action_bar', item: @page %>
+  <%= render 'layouts/common/action_bar', item: @page %>
 <% end %>
 
 <div class="flex gapped">
@@ -16,7 +16,7 @@
 
     <div class="padded page-content">
       <div class="padded page-body">
-        <%= from_markdown(liquidize(@page.content)).html_safe %>
+        <%== from_markdown(liquidize(@page.content)) %>
       </div>
     </div>
 
