@@ -20,7 +20,7 @@
       <div class="flex spaced-between center-aligned">
         <div class="search-wrapper">
           <%= form_tag pages_path, method: :get do %>
-            <%= text_field_tag 'q[name_cont]', "", class: "search-input", placeholder: "filter name ..." %>
+            <%= text_field_tag 'q[name_cont]', "", class: "search-input", autocomplete: 'off', placeholder: "filter name ..." %>
               <div class="small-svg float-icon icon">
                 <%= inline_svg("icons/search.svg") %>
               </div>
@@ -30,7 +30,7 @@
         <div class="date-wrapper">
         <span class="small">From Date:</span>
           <div class="right-margin relative filter">
-            <input type="text" class="small left-padded">
+            <input type="text" class="small left-padded" autocomplete="off">
             <div class="small-svg dark-stroke float-icon icon">
               <%= inline_svg("icons/ui/date-calendar.svg") %>
             </div>

@@ -18,6 +18,6 @@ class Evaluation < ApplicationRecord
   def calulate_average_score
     reaction_values = reactions.pluck(:value)
     avg_scores = reaction_values.inject(0.0) { |sum, el| sum + el } / reaction_values.size
-    self.score = (avg_scores).round(2)
+    self.score = avg_scores.round(2)
   end
 end

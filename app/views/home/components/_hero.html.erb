@@ -9,17 +9,17 @@
     <div class="stats-box">
 
       <div class="stat">
-        <span class="large-text"><%= @users_count %></span>
+        <span class="large-text"><%= User.active.size %></span>
         <span class="small-text">Registered users</span>
       </div>
 
       <div class="stat">
-        <span class="large-text"><%= @quizzes_count %></span>
+        <span class="large-text"><%= Quiz.all.size %></span>
         <span class="small-text">Quizzes taken</span>
       </div>
 
       <div class="stat">
-        <span class="large-text"><%= @questions_count %></span>
+        <span class="large-text"><%= Question.all.size %></span>
         <span class="small-text">Sets of questions</span>
       </div>
     </div>

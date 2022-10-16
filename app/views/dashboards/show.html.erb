@@ -27,21 +27,21 @@
       <div class="flex evenly-spaced no-margin panel">
        <div class="alt-border third-width sparkline content" id="sparkline_comments">
          <div class="padded">
-           <h1 class="large">Comments : <%= @current_user_stats.posts.size %></h1>
+           <h1 class="large">Comments : <%= current_user.comments.size %></h1>
          </div>
          <!-- total completed eval for the period -->
        </div>
 
        <div class="alt-border third-width sparkline content" id="sparkline_pages_count">
          <div class="padded">
-           <h1 class="large">Pages : <%= @current_user_stats.posts.size %></h1>
+           <h1 class="large">Posts : <%= current_user.posts.size %></h1>
          </div>
          <!-- for each of total evals what was the avarage score for the selected period -->
        </div>
 
        <div class="alt-border third-width sparkline content" id="sparkline_average_score">
          <div class="padded">
-           <h1 class="large">Average Score :<%= @current_user_stats.posts.size %></h1>
+           <h1 class="large">Pages : <%= current_user.pages.size %></h1>
          </div>
          <!-- for each of total evals what was the avarage score for the selected period -->
        </div>

@@ -1,13 +1,13 @@
 input:-webkit-autofill,
 textarea:-webkit-autofill,
 select:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0 1000px var(--accent-color) inset;
+  box-shadow: 0 0 0 1000px var(--accent-color) inset;
   -webkit-text-fill-color: var(--blackish);
 }
 
 .log-in,
 .sign-up {
-  margin: 4rem .4rem;
+  margin: 4rem 0.4rem;
 
   h1,
   h2 {
@@ -57,7 +57,7 @@ select:-webkit-autofill {
 
   div,
   .boolean {
-    margin: .2rem;
+    margin: 0.2rem;
   }
 
   input {
@@ -68,7 +68,7 @@ select:-webkit-autofill {
     margin: 0;
     outline: 0;
     padding: 0.2rem;
-    transition: background-color .3s;
+    transition: background-color 0.3s;
   }
 }
 
@@ -83,7 +83,7 @@ select:-webkit-autofill {
 }
 
 .form {
-  border-radius: .4rem;
+  border-radius: 0.4rem;
   padding: 1.8rem 2rem;
 
   .form-actions {

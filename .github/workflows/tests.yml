@@ -1,0 +1,46 @@
+name: tests
+on: [push]
+jobs:
+  rspec:
+    name: rspec
+    runs-on: ubuntu-latest
+    env:
+      PGHOST: localhost
+      PGPASSWORD: postgres
+      PGUSER: postgres
+      RAILS_ENV: test
+      RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
+    services:
+      postgres:
+        image: postgres:14
+        ports:
+          - 5432:5432
+        env:
+          POSTGRES_PASSWORD: postgres
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - name: Install dependencies
+        run: sudo apt-get install -y libvips
+      - run: bin/rails db:create db:schema:load
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+          cache: 'yarn'
+      - run: yarn install
+      - run: yarn build
+      - run: bin/rspec
+      - name: Archive logs
+        if: failure()
+        uses: actions/upload-artifact@v2
+        with:
+          name: rails-logs
+          path: ${{ github.workspace }}/log/
+          retention-days: 4

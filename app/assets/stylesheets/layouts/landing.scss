@@ -6,34 +6,6 @@
 
 .bttn {
   user-select: none;
-
-  &.danger {
-    
-  }
-
-  &.success {
-    
-  }
-
-  &.warning {
-    
-  }
-
-  &.info {
-    
-  }
-
-  &.dark {
-    
-  }
-
-  &.light {
-    
-  }
-
-  &.clear {
-    
-  }
 }
 
 .wrap {
@@ -58,7 +30,7 @@
     z-index: 1;
   }
 
-  .svg  {
+  .svg {
     width: 70%;
     max-width: 200px;
     margin: auto;

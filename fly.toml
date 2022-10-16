@@ -15,7 +15,8 @@ processes = []
   release_command = "bundle exec rails db:migrate"
 
 [env]
-  PORT = "8080"
+  PORT = "3000"
+  ACTION_CABLE_ADAPTER = "redis"
   SERVER_COMMAND = "bundle exec puma -C config/puma.rb"
 
 [experimental]
@@ -24,7 +25,7 @@ processes = []
 
 [[services]]
   http_checks = []
-  internal_port = 8080
+  internal_port = 3000
   processes = ["app"]
   protocol = "tcp"
   script_checks = []

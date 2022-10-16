@@ -1,4 +1,4 @@
-<%= simple_form_for @post do |f| %>
+<%= simple_form_for post do |f| %>
   <div class="post-header">
     <h2 class="post-title">
       Post Title
@@ -20,7 +20,7 @@
 
       <div class="flex top-padded bottom-padded center-aligned">
         <p class="post-date">
-          Posted <span class="time_ago_in_words"><%= @post.created_at.iso8601 %></span>
+          Posted <span class="time_ago_in_words"><%= post.created_at.iso8601 %></span>
         </p>
       </div>
     </div>

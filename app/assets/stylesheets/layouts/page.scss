@@ -28,7 +28,7 @@
   .tab {
     background: var(--mid-color);
     cursor: pointer;
-    padding: 1.4rem .2rem;
+    padding: 1.4rem 0.2rem;
     text-align: center;
     text-transform: uppercase;
     border-left: 1px solid var(--gainsboro);
@@ -53,7 +53,6 @@
 }
 
 .grouped {
-
   .button {
     cursor: pointer;
     border: none;
@@ -66,25 +65,25 @@
     }
 
     &:first-child {
-      border-top-left-radius: .2rem;
-      border-bottom-left-radius: .2rem;
+      border-top-left-radius: 0.2rem;
+      border-bottom-left-radius: 0.2rem;
     }
 
     &:last-child {
-      border-top-right-radius: .2rem;
-      border-bottom-right-radius: .2rem;
+      border-top-right-radius: 0.2rem;
+      border-bottom-right-radius: 0.2rem;
     }
   }
 }
 
 .outline-btn {
-  border-radius: .4rem;
-  padding: .4rem;
+  border-radius: 0.4rem;
+  padding: 0.4rem;
 
   &.dark-btn {
     border: 2px solid var(--blackish);
     color: var(--brand-alt);
-    transition: color .3s ease;
+    transition: color 0.3s ease;
 
     &:hover {
       color: var(--light);
@@ -94,16 +93,17 @@
 }
 
 .button {
-  padding: .8rem 1.2rem;
+  padding: 0.8rem 1.2rem;
   background-color: var(--accent-bg);
   color: var(--light);
 
   &.thin-btn {
-    padding: .4rem 1.2rem;
+    padding: 0.4rem 1.2rem;
   }
 
   &.dark {
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       background-color: var(--accent-color);
       border: thin solid var(--accent-bg);
       color: var(--brand-alt);
@@ -111,7 +111,7 @@
 
     &:disabled {
       cursor: not-allowed;
-      opacity: .5;
+      opacity: 0.5;
 
       &:hover {
         background-color: var(--accent-color);
@@ -124,7 +124,8 @@
     border: thin solid var(--brand-alt);
     color: var(--brand-alt);
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       background-color: var(--brand-alt);
       border: thin solid var(--light);
       color: var(--brand-alt);
@@ -132,7 +133,7 @@
 
     &:disabled {
       cursor: not-allowed;
-      opacity: .5;
+      opacity: 0.5;
 
       &:hover {
         background-color: var(--light);
@@ -155,7 +156,6 @@
 }
 
 .controls {
-
   .filter-container {
     display: none;
 
@@ -172,7 +172,7 @@
 }
 
 .sparkline {
-  padding: 2rem .4rem;
+  padding: 2rem 0.4rem;
 }
 
 .heading {
@@ -245,13 +245,13 @@
 
 .tags {
   .tag-container {
-    margin: 0 .4rem .4rem 0;
+    margin: 0 0.4rem 0.4rem 0;
 
     .tag {
       border: thin solid var(--gainsboro);
-      border-radius: .2rem;
+      border-radius: 0.2rem;
       font-size: 14px;
-      padding: .4rem;
+      padding: 0.4rem;
 
       &:hover {
         background-color: var(--gainsboro);
@@ -262,13 +262,13 @@
     .removeable-tag {
       border: thin solid var(--gainsboro);
       font-size: 14px;
-      padding: .4rem;
+      padding: 0.4rem;
     }
 
     .tag-button {
       border: thin solid var(--gainsboro);
       font-size: 14px;
-      padding: .4rem;
+      padding: 0.4rem;
 
       &:hover {
         background-color: var(--gainsboro);
@@ -317,7 +317,8 @@
   text-align: left;
   width: 30%;
 
-  p, h2 {
+  p,
+  h2 {
     color: var(--light);
     text-align: center;
   }
@@ -327,7 +328,7 @@
   }
 
   &.content {
-    padding: .4rem 0 0;
+    padding: 0.4rem 0 0;
   }
 }
 
@@ -340,7 +341,6 @@
 }
 
 .striped {
-
   &:nth-child(even) {
     background-color: var(--gainsboro);
     border-top: 1px solid var(--mid-color);
@@ -349,7 +349,7 @@
 }
 
 .block-content {
-  border-radius: .2em;
+  border-radius: 0.2em;
   display: flex;
   flex-direction: column;
   padding: 1em;
@@ -464,15 +464,14 @@
   }
 
   .gapped {
-    margin: .8rem;
+    margin: 0.8rem;
   }
 }
 
 @media screen and (max-width: 650px) {
   .tabbar {
-
     .tab {
-      padding: 1.2rem .2rem;
+      padding: 1.2rem 0.2rem;
     }
   }
 

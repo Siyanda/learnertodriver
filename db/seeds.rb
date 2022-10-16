@@ -4,12 +4,6 @@ require 'csv'
 
 models =  %w[user post comment page quiz question answer specification response tag]
 
-puts '... deleting all existing data 🗑'
-
-models.reverse.each do |m|
-  m.camelize.constantize.delete_all
-end
-
 puts '... seeding new data 💾'
 
 seeds_path = "#{Rails.root}/db/seeds/modules/import/#{Rails.env}"

@@ -18,6 +18,8 @@ gem 'bootsnap', require: false
 
 gem 'redis'
 gem 'sidekiq'
+gem 'anycable-rails'
+gem 'anycable-rails-jwt'
 gem 'image_processing'
 gem 'aws-sdk-s3', require: false
 
@@ -44,7 +46,7 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec', require: false
-  gem 'erb_lint', require: false, github: 'Shopify/erb-lint'
+  gem 'erb_lint', require: false
 end
 
 group :development do
@@ -59,4 +61,5 @@ group :test do
   gem 'capybara'
   gem 'webdrivers'
   gem 'selenium-webdriver'
+  gem 'simplecov', require: false
 end

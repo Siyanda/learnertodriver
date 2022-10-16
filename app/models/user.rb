@@ -14,7 +14,6 @@ class User < ApplicationRecord
 
   extend FriendlyId
   friendly_id :username, use: :slugged
-
   validates :username, uniqueness: true
 
   enum role: { subscriber: 0, contributor: 1, author: 2, editor: 3, admin: 4 }
@@ -22,13 +21,5 @@ class User < ApplicationRecord
 
   def should_generate_new_friendly_id?
     slug.blank? || username_changed?
-  end
-
-  private
-
-  # TODO: check if username exists if true, suggest a similarname
-  # TODO: add Guest user option
-  def suggest_username
-    # before save ?
   end
 end
