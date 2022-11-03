@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
+  extend FriendlyId
+
+  friendly_id :username, use: :slugged
+
   has_person_name
 
   devise :database_authenticatable, :registerable,
@@ -12,8 +16,6 @@ class User < ApplicationRecord
   has_many :comments, dependent: :delete_all
   has_many :evaluations, dependent: :delete_all
 
-  extend FriendlyId
-  friendly_id :username, use: :slugged
   validates :username, uniqueness: true
 
   enum role: { subscriber: 0, contributor: 1, author: 2, editor: 3, admin: 4 }
