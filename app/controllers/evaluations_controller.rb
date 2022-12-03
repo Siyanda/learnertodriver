@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class EvaluationsController < ApplicationController
-  # skip_before_action :authenticate_user!, only: %i[show new]
   before_action :set_evaluation, only: %i[show edit update destroy]
   before_action :set_user, only: %i[show edit create update destroy]
 
