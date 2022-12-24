@@ -1,30 +1,32 @@
-name: Preview App
+---
+name: Fly PR preview
+
 on:
   pull_request:
-    types: [opened, reopened, synchronize, closed]
 
 env:
   FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
 
 jobs:
-  staging_app:
-    runs-on: ubuntu-latest
-    concurrency:
-      group: pr-${{ github.event.number }}
+  deploy:
 
-    environment:
-      name: pr-${{ github.event.number }}
-      url: ${{ steps.deploy.outputs.url }}
+      name: Deploy PR (Fly)
+      runs-on: ubuntu-latest
 
-    steps:
-      - uses: actions/checkout@v2
-      - name: Deploy
-        id: deploy
-        uses: superfly/fly-pr-review-apps@1.0.0
+      steps:
+        - uses: actions/checkout@v3
+        - uses: superfly/flyctl-actions/setup-flyctl@master
 
-      - name: Clean up GitHub environment
-        uses: strumwolf/delete-deployment-environment@v2
-        if: ${{ github.event.action == 'closed' }}
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          environment: pr-${{ github.event.number }}
+        - run: flyctl apps destroy temp-app --yes
+        - run: flyctl apps destroy temp-app-db --yes
+        - run: flyctl postgres create --name=temp-app-db --region=cdg --vm-size=shared-cpu-1x --volume-size=1 --initial-cluster-size=1
+        - run: flyctl apps create --name temp-app
+        - run: flyctl postgres attach temp-app-db --app temp-app
+
+        - run: flyctl scale memory 512 --app temp-app
+        - run: >
+            flyctl secrets set --app temp-app
+            RAILS_MASTER_KEY=${{ secrets.RAILS_MASTER_KEY }}
+
+        - run: flyctl deploy --remote-only --app temp-app
+        - run: flyctl ssh console -C "app/bin/rails db:seed" --app temp-app
