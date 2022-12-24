@@ -1,32 +1,12 @@
----
-name: Fly PR preview
-
-on:
-  pull_request:
-
+name: Fly Deploy Preview
+on: [push]
 env:
   FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
-
 jobs:
   deploy:
-
-      name: Deploy PR (Fly)
+      name: Deploy app
       runs-on: ubuntu-latest
-
       steps:
-        - uses: actions/checkout@v3
+        - uses: actions/checkout@v2
         - uses: superfly/flyctl-actions/setup-flyctl@master
-
-        - run: flyctl apps destroy temp-app --yes
-        - run: flyctl apps destroy temp-app-db --yes
-        - run: flyctl postgres create --name=temp-app-db --region=cdg --vm-size=shared-cpu-1x --volume-size=1 --initial-cluster-size=1
-        - run: flyctl apps create --name temp-app
-        - run: flyctl postgres attach temp-app-db --app temp-app
-
-        - run: flyctl scale memory 512 --app temp-app
-        - run: >
-            flyctl secrets set --app temp-app
-            RAILS_MASTER_KEY=${{ secrets.RAILS_MASTER_KEY }}
-
-        - run: flyctl deploy --remote-only --app temp-app
-        - run: flyctl ssh console -C "app/bin/rails db:seed" --app temp-app
+        - run: flyctl deploy --remote-only
