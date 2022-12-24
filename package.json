@@ -1,24 +1,24 @@
 {
   "name": "app",
   "dependencies": {
-    "@hotwired/stimulus": "^3.0.1",
-    "@hotwired/turbo-rails": "^7.1.0",
-    "@rails/actioncable": "^7.0.0",
-    "@rails/actiontext": "^7.0.0",
-    "dayjs": "^1.11.0",
-    "esbuild": "^0.14.8",
-    "postcss-cli": "^9.1.0",
-    "trix": "^2.0.0-beta.0"
+    "@hotwired/stimulus": "^3.2.1",
+    "@hotwired/turbo-rails": "^7.2.4",
+    "@rails/actioncable": "^7.0.4",
+    "@rails/actiontext": "^7.0.4",
+    "dayjs": "^1.11.7",
+    "esbuild": "^0.16.10",
+    "postcss-cli": "^10.1.0",
+    "trix": "^2.0.4"
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.4",
+    "autoprefixer": "^10.4.13",
     "chokidar": "^3.5.3",
-    "cssnano": "^5.1.7",
-    "postcss": "^8.4.12",
-    "postcss-import": "^14.1.0",
-    "postcss-nested": "^5.0.6",
-    "stylelint": "^14.6.1",
-    "stylelint-config-standard-scss": "^4.0.0"
+    "cssnano": "^5.1.14",
+    "postcss": "^8.4.20",
+    "postcss-import": "^15.1.0",
+    "postcss-nested": "^6.0.0",
+    "stylelint": "^14.16.0",
+    "stylelint-config-standard-scss": "^6.1.0"
   },
   "scripts": {
     "build": "node esbuild.config.js",
