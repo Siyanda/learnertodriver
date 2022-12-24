@@ -22,19 +22,6 @@ RUN mkdir /app
 WORKDIR /app
 RUN mkdir -p tmp/pids
 
-# We need NodeJS & Yarn for precompiling assets.
-RUN curl -fsSL https://deb.nodesource.com/setup_lts.x | bash -
-RUN apt-get install -y nodejs
-
-# Install JS dependencies using Yarn.
-COPY package.json .
-COPY yarn.lock .
-COPY .yarnrc.docker.yml .yarnrc.yml
-COPY .yarn/releases .yarn/releases
-RUN corepack enable
-
-RUN yarn install
-
 FROM base as build
 
 ENV DEV_PACKAGES git build-essential libpq-dev wget vim curl gzip xz-utils libsqlite3-dev
@@ -51,7 +38,7 @@ ENV SECRET_KEY_BASE 1
 
 FROM base
 
-ENV PACKAGES postgresql-client file vim curl gzip
+ENV PACKAGES postgresql-client curl gzip
 
 RUN --mount=type=cache,id=prod-apt-cache,sharing=locked,target=/var/cache/apt \
     --mount=type=cache,id=prod-apt-lib,sharing=locked,target=/var/lib/apt \

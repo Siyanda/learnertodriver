@@ -11,14 +11,6 @@
 !/log/.keep
 !/tmp/.keep
 
-# Ignore uploaded files in development
-/storage/*
-!/storage/.keep
-
-/yarn-error.log
-
-/public/assets
-
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
@@ -172,12 +164,6 @@ tags
 *.tar
 *.zip
 
-# Packages
-node_modules/
-.tmp
-test/
-app/assets/builds/
-
 # Sublime
 *.sublime-project
 *.sublime-workspace
@@ -194,19 +180,27 @@ rsync-credentials.json
 
 /public/packs
 /public/packs-test
-/node_modules
-yarn-debug.log*
-.yarn-integrity
 
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
 
+# Packages
+.tmp
+test/
+app/assets/builds/
+/public/assets
 
-/public/packs
-/public/packs-test
 /node_modules
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+/.pnp
+.pnp.js
+package-lock.json
+**/*.bun
+
+# Ignore uploaded files in development
+/storage/*
+!/storage/.keep

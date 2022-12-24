@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+bundle install
+bun install
+
 PORT="${PORT:-3000}"
 export PORT
 
