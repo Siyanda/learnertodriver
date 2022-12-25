@@ -1,24 +1,18 @@
+fly.toml
+
 .git
-.gitignore
-.github
+tmp
+!tmp/pids
+log
+public/assets
+public/packs
+.bundle
 
-.dockerignore
-.byebug_history
+db/*.sqlite3
+db/*.sqlite3-*
 
-.DS_Store
+storage
+config/master.key
+config/credentials/*.key
 
-/log/*
-/tmp/*
-!/log/.keep
-!/tmp/.keep
-
-node_modules/
-
-/public/packs
-/public/packs-test
-/public/assets
-
-/storage/*
-!/storage/.keep
-
-.overmind.sock
+node_modules
