@@ -18,7 +18,7 @@ jobs:
           reporter: github-pr-review
   erb-lint:
     name: erb-lint
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: ruby/setup-ruby@v1
@@ -27,7 +27,7 @@ jobs:
       - run: bundle exec erblint app/views
   brakeman:
     name: brakeman
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: ruby/setup-ruby@v1
@@ -36,10 +36,10 @@ jobs:
       - run: bundle exec brakeman
   stylelint:
     name: stylelint
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v3
         with:
           node-version: '16'
           cache: 'yarn'
