@@ -7,10 +7,14 @@ LABEL fly_launch_runtime="rails"
 
 ARG BUNDLER_VERSION=2.3.22
 
+ARG RAILS_MASTER_KEY
+ENV RAILS_MASTER_KEY=${RAILS_MASTER_KEY}
+
 ARG RAILS_ENV=production
 ENV RAILS_ENV=${RAILS_ENV}
 ENV RAILS_SERVE_STATIC_FILES true
 ENV RAILS_LOG_TO_STDOUT true
+ENV PORT 3000
 
 ENV PATH $PATH:/usr/local/bin
 
@@ -45,7 +49,17 @@ RUN bundle install
 
 COPY . .
 
+RUN chmod +x /app/bin/* && \
+    sed -i 's/ruby.exe\r*/ruby/' /app/bin/* && \
+    sed -i 's/ruby\r*/ruby/' /app/bin/* && \
+    sed -i '/^#!/aDir.chdir File.expand_path("..", __dir__)' /app/bin/*
 
-FROM base
+ARG BUILD_COMMAND="bin/rails fly:build"
+RUN ${BUILD_COMMAND}
 
-COPY --from=build /app /app
+ENV PORT 3000
+ARG SERVER_COMMAND="bin/rails fly:server"
+ENV SERVER_COMMAND ${SERVER_COMMAND}
+CMD ${SERVER_COMMAND}
+
+EXPOSE 3000

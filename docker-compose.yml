@@ -1,3 +1,5 @@
+# syntax=docker/dockerfile:1
+
 version: '3.2'
 services:
   db:
@@ -25,6 +27,7 @@ services:
       - DATABASE_URL=postgres://postgres:password@db:5432/postgres
       - REDIS_URL=redis://redis:6379
       - PORT=3000
+      - RAILS_MASTER_KEY=${RAILS_MASTER_KEY}
 
 volumes:
   dbdata:
