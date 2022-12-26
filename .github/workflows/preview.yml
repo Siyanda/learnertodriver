@@ -1,12 +1,78 @@
-name: Fly Deploy Preview
-on: [push]
+name: Deploy Preview
+on:
+  pull_request
+
 env:
   FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+  FLY_ORG: ${{ secrets.FLY_ORG }}
+  FLY_PREVIEW_APP: ...
+
 jobs:
-  deploy:
-      name: Deploy app
-      runs-on: ubuntu-latest
-      steps:
-        - uses: actions/checkout@v3
-        - uses: superfly/flyctl-actions/setup-flyctl@master
-        - run: flyctl deploy --remote-only
+  db:
+    if: github.event.action == 'opened'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Github repo
+        uses: actions/checkout@v3
+      - name: Get PR number
+        uses: jwalton/gh-find-current-pr@v1
+        id: findPr
+        with:
+          state: open
+      - name: Build DB
+        uses: superfly/flyctl-actions@1.3
+        with:
+          args:
+            'pg create --region ord --vm-size shared-cpu-1x --name pr-${{ steps.findPr.outputs.pr }}-dev-${{ env.FLY_PREVIEW_APP }}-db --volume-size 1 --organization ${{ env.FLY_ORG }}
+            --initial-cluster-size 1 '
+      - name: Create fly app
+        uses: superfly/flyctl-actions@1.3
+        with:
+          args: 'apps create pr-${{ steps.findPr.outputs.pr }}-dev-${{ env.FLY_PREVIEW_APP }} --org ${{ env.FLY_ORG }}'
+      - name: Connect app to DB
+        uses: superfly/flyctl-actions@1.3
+        env:
+          FLY_APP: pr-${{ steps.findPr.outputs.pr }}-dev-${{ env.FLY_PREVIEW_APP }}
+        with:
+          args: 'pg attach --postgres-app pr-${{ steps.findPr.outputs.pr }}-dev-${{ env.FLY_PREVIEW_APP }}-db'
+      - name: Set up secret_key_base with fly secrets
+        uses: superfly/flyctl-actions@1.3
+        env:
+          FLY_APP: pr-${{ steps.findPr.outputs.pr }}-dev-${{ env.FLY_PREVIEW_APP }}
+        with:
+          args: 'secrets set ...'
+      - name: Post link to PR Preview
+        uses: actions-ecosystem/action-create-comment@v1
+        with:
+          github_token: ${{ secrets.github_token }}
+          body: |
+            Delete the db [here](https://fly.io/apps/pr-${{ steps.findPr.outputs.pr }}-dev-${{ env.FLY_PREVIEW_APP }}-db/settings)
+
+  app:
+    if: github.event.action == 'synchronize'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Github repo
+        uses: actions/checkout@v3
+      - name: Get PR number
+        uses: jwalton/gh-find-current-pr@v1
+        id: findPr
+        with:
+          state: open
+      - name: Modify fly.preview.toml file
+        run: |
+          sed -i 's/<REPLACED_IN_CI>/pr-${{ steps.findPr.outputs.pr }}/g' fly.preview.toml
+      - name: Deploy app
+        uses: superfly/flyctl-actions@1.3
+        with:
+          args:
+            'deploy --region ord --app pr-${{ steps.findPr.outputs.pr }}-dev-${{ env.FLY_PREVIEW_APP }} -c
+            fly.preview.toml'
+      - name: Post link to PR Preview
+        uses: actions-ecosystem/action-create-comment@v1
+        with:
+          github_token: ${{ secrets.github_token }}
+          body: |
+            Your PR is deployed, see it [here](https://pr-${{ steps.findPr.outputs.pr }}-dev-${{ env.FLY_PREVIEW_APP }}.fly.dev)
+            ...
+            Delete the app [here](https://fly.io/apps/pr-${{ steps.findPr.outputs.pr }}-dev-${{ env.FLY_PREVIEW_APP }}/settings)
