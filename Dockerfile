@@ -25,6 +25,9 @@ RUN apt-get install -y nodejs
 COPY package.json .
 COPY yarn.lock .
 COPY .yarnrc.docker.yml .yarnrc.yml
+COPY .yarn/releases .yarn/releases
+RUN corepack enable
+
 RUN yarn install
 
 FROM base as build
@@ -42,11 +45,11 @@ RUN chmod +x /app/bin/* && \
     sed -i '/^#!/aDir.chdir File.expand_path("..", __dir__)' /app/bin/*
 
 ARG BUILD_COMMAND="bin/rails fly:build"
-RUN ${BUILD_COMMAND}
+# RUN ${BUILD_COMMAND}
 
 ENV PORT 3000
 ARG SERVER_COMMAND="bin/rails fly:server"
 ENV SERVER_COMMAND ${SERVER_COMMAND}
-CMD ${SERVER_COMMAND}
+# CMD ${SERVER_COMMAND}
 
 EXPOSE 3000
