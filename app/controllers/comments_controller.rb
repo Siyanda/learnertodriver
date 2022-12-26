@@ -3,6 +3,8 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: %i[show edit update destroy]
 
+  def edit; end
+
   def create
     @post = Post.friendly.find(params[:post_id])
     @comment = @post.comments.new(comment_params)
@@ -18,8 +20,6 @@ class CommentsController < ApplicationController
       end
     end
   end
-
-  def edit; end
 
   def destroy
     @comment.destroy

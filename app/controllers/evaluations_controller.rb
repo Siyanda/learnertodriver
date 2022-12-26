@@ -13,6 +13,10 @@ class EvaluationsController < ApplicationController
     @evaluation = Evaluation.new
   end
 
+  def edit
+    @evaluation.reactions.build
+  end
+
   def create
     @evaluation = @user.evaluations.new evaluation_params
 
@@ -26,10 +30,6 @@ class EvaluationsController < ApplicationController
 
   def update
     # when editing
-  end
-
-  def edit
-    @evaluation.reactions.build
   end
 
   private
