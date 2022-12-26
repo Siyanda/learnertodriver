@@ -8,8 +8,16 @@ class QuizzesController < ApplicationController
     @quizzes = Quiz.all
   end
 
+  def show
+    @questions = @quiz.questions.includes(:answers)
+  end
+
   def new
     @quiz = Quiz.new
+  end
+
+  def edit
+    @questions = @quiz.questions.includes(:answers)
   end
 
   def create
@@ -20,14 +28,6 @@ class QuizzesController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
-  end
-
-  def show
-    @questions = @quiz.questions.includes(:answers)
-  end
-
-  def edit
-    @questions = @quiz.questions.includes(:answers)
   end
 
   private
