@@ -24,7 +24,6 @@ services:
     environment:
       - DATABASE_URL=postgres://postgres:password@db:5432/postgres
       - REDIS_URL=redis://redis:6379
-      - PORT=3000
 
 volumes:
   dbdata:
