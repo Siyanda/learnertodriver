@@ -26,6 +26,12 @@ crumb :post do |post|
   parent :posts
 end
 
+# New Post
+crumb :new_post do
+  link 'New Post', posts_path
+  parent :posts
+end
+
 # Page list
 crumb :pages do
   link 'Pages', pages_path
