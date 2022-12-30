@@ -21,7 +21,7 @@
           <div class="dark-stroke mdm-svg icon">
             <%= inline_svg("icons/ui/date-calendar.svg") %>
           </div>
-          <h4 class="capitalized"><span class="bold margin-sides">Schedule Post : </span class="formatted_time"><%= form.date_field :created_at, value: Time.now.strftime('%Y-%m-%d') %></h4>
+          <h4 class="capitalized"><span class="bold margin-sides">Schedule Post : </span class="formatted_time"><%= form.date_field :created_at, value: Time.zone.now.strftime('%Y-%m-%d') %></h4>
         </div>
 
       </div>
@@ -89,7 +89,7 @@
         <hr class="third-width hr-grey">
           <div class="flex">
             <%= form.text_area :excerpt,
-                             class: 'txt-area' %>
+                               class: 'txt-area' %>
           </div>
       </div>
     </div>

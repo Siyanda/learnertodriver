@@ -92,13 +92,13 @@
 }
 
 .current-color-stroke {
-  stroke: currentColor;
+  stroke: currentcolor;
 }
 
 .icon {
   &.current-color-fill {
     svg {
-      fill: currentColor;
+      fill: currentcolor;
     }
   }
 
