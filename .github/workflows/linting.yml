@@ -39,9 +39,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: xhyrom/setup-bun@v0.1.8
         with:
-          node-version: '19'
-          cache: 'yarn'
-      - run: yarn install
-      - run: yarn stylelint app/assets/stylesheets
+          bun-version: latest
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - run: bun install
+      - run: bun run stylelint app/assets/stylesheets
