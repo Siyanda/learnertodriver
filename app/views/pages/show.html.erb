@@ -16,7 +16,7 @@
 
     <div class="padded page-content">
       <div class="padded page-body">
-        <%= sanitize(from_markdown(liquidize(@page.content))) %>
+        <%= sanitize from_markdown(liquidize(@page.content)) %>
       </div>
     </div>
 
