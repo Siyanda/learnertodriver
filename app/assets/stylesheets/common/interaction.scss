@@ -1,0 +1,39 @@
+[data-slides-state-value="start"] {
+  .controls {
+    .hide-start {
+      display: none;
+    }
+
+    .shown-end {
+      display: none;
+    }
+  }
+}
+
+[data-slides-state-value="in_progress"] {
+  .controls {
+    .hide-start {
+      display: block;
+    }
+
+    .shown-end {
+      display: none;
+    }
+  }
+}
+
+[data-slides-state-value="end"] {
+  .controls {
+    .hide-start {
+      display: block;
+    }
+
+    .hide-end {
+      display: none;
+    }
+
+    .shown-end {
+      display: block;
+    }
+  }
+}

@@ -1,0 +1,59 @@
+<div class="third-width hr-sectioned white-bg shadowed rounded basic-border aside to-full">
+
+  <div class="section">
+    <div class="padded section-heading">
+      <div class="flex">
+        <div class="sub-section dark-stroke sm-icon"><%= inline_svg('icons/hashtag.svg') %></div>
+        <h3 class="sub-heading">Tags</h3>
+      </div>
+      <hr class="third-width hr-grey">
+      <div class="section">
+        <ul class="flex top-padded wrapped tags">
+        <% post.tags.each do |tag| %>
+          <li class="flex tag-container">
+            <%= link_to tag.title, tag_path(tag), class: 'tag gainsboro-bg' %>
+          </li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="padded section-heading">
+      <div class="flex">
+        <div class="sub-section dark-stroke sm-icon"><%= inline_svg('icons/clock.svg') %></div>
+        <h3 class="sub-heading">Recent Posts</h3>
+      </div>
+      <hr class="third-width hr-grey">
+      <div class="section">
+        <% Post.most_recent.published.each do |post| %>
+          <div class="item">
+             <%= link_to post.title, post, class: 'link' %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="padded section-heading">
+      <div class="flex">
+        <div class="sub-section dark-stroke sm-icon"><%= inline_svg('icons/cash.svg') %></div>
+        <h3 class="sub-heading">Sponsored</h3>
+      </div>
+      <hr class="third-width hr-grey">
+      <div class="relative section">
+        <div class="clickable light-text alt-overlay">
+          <div class="full-height flex center large-svg icon">
+            <div class="auto-marg">
+              <%= inline_svg('icons/ui/editor-link.svg') %>
+            </div>
+          </div>
+        </div>
+        <%= image_tag('ads/shoe-ad.png', alt: 'Advert', class: 'rounded image') %>
+      </div>
+    </div>
+  </div>
+
+</div>

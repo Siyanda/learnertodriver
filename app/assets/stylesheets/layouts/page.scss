@@ -93,7 +93,7 @@
 }
 
 .button {
-  padding: 0.8rem 1.2rem;
+  padding: 0.4rem 0.8rem;
   background-color: var(--accent-bg);
   color: var(--light);
 
@@ -102,6 +102,8 @@
   }
 
   &.dark {
+    border: thin solid var(--accent-bg);
+
     &:hover,
     &:focus {
       background-color: var(--accent-color);

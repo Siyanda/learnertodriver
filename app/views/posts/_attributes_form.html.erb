@@ -1,0 +1,114 @@
+<%= form_for post do |form| %>
+<%= form.submit 'Save', class: 'margin-sides' %>
+  <div class="section">
+    <div class="padded section-heading">
+      <div class="flex">
+        <h3 class="sub-heading">Details</h3>
+      </div>
+      <hr class="third-width hr-grey">
+      <div class="section">
+        <div class="flex">
+          <div class="dark-stroke mdm-svg icon">
+            <%= inline_svg("icons/ui/info-o.svg") %>
+          </div>
+          <h4 class="capitalized">
+            <span class="bold margin-sides">status : </span>
+            <%= form.select :status, Post.statuses.keys, {}, class: 'form-select' %>
+          </h4>
+        </div>
+
+        <div class="flex">
+          <div class="dark-stroke mdm-svg icon">
+            <%= inline_svg("icons/ui/date-calendar.svg") %>
+          </div>
+          <h4 class="capitalized"><span class="bold margin-sides">Schedule Post : </span class="formatted_time"><%= form.date_field :created_at, value: Time.zone.now.strftime('%Y-%m-%d') %></h4>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="padded section-heading">
+      <div class="flex">
+        <div class="dark-stroke mdm-svg icon">
+          <%= inline_svg("icons/ui/user-o.svg") %>
+        </div>
+        <h3 class="sub-heading margin-sides">Author</h3>
+      </div>
+      <hr class="third-width hr-grey">
+
+        <div class="flex center-aligned">
+          <div class="full-width relative dropdown-select" data-controller="dropdown">
+            <div class="select-button" role="group">
+
+              <div class="rounded dropdown-button-area" role="group" data-action="click->dropdown#toggle">
+                <button class="full-width capitalized rounded dropdown-button iconed" type="button" aria-expanded="false">
+                  Siyanda
+                </button>
+                <div class="dropdown-menu" data-dropdown-target="menu">
+                  <% User.active.each do |user| %>
+                    <div class="select_item"><%= user.name %></div>
+                  <% end %>
+                </div>
+              </div>
+
+            </div>
+            <div class="mdm-svg grey-fill float-icon icon">
+              <%= inline_svg("icons/arrow-down.svg") %>
+            </div>
+          </div>
+        </div>
+
+  </div>
+  </div>
+
+  <div class="section">
+  <div class="padded section-heading">
+    <div class="flex">
+      <h3 class="sub-heading">Cover Image</h3>
+    </div>
+      <hr class="third-width hr-grey">
+      <%= form.file_field :cover_image,
+                          class: 'form-control',
+                          direct_upload: true %>
+      <div class="padded rounded dashed-brd basic-border clickable dropzone">
+        <div class="flex center-aligned just-centered mdm-svg icon">
+          <%= inline_svg("icons/image-o.svg") %>
+          Set Post Image
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <div class="section">
+      <div class="padded section-heading">
+          <div class="flex">
+            <h3 class="sub-heading">Post Excerpt</h3>
+          </div>
+        <hr class="third-width hr-grey">
+          <div class="flex">
+            <%= form.text_area :excerpt,
+                               class: 'txt-area' %>
+          </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hr-sectioned max-content white-bg shadowed rounded basic-border">
+    <div class="section">
+    <div class="padded section-heading">
+      <div class="flex">
+        <div class="sub-section dark-stroke sm-icon"><%= inline_svg("icons/hashtag.svg") %></div>
+        <h3 class="sub-heading">Tags</h3>
+      </div>
+      <hr class="third-width hr-grey">
+      <div class="section">
+        <input type="text" class="full-width basic-border cream-bg" autocomplete="name">
+        <ul class="flex top-padded wrapped tags">
+          <%= render partial: 'tag', collection: post.tags, as: :tag %>
+        </ul>
+      </div>
+    </div>
+  </div>
+<% end %>

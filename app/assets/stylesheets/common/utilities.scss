@@ -91,7 +91,17 @@
   }
 }
 
+.current-color-stroke {
+  stroke: currentcolor;
+}
+
 .icon {
+  &.current-color-fill {
+    svg {
+      fill: currentcolor;
+    }
+  }
+
   &.light-fill {
     svg {
       fill: var(--light);

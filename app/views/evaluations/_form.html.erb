@@ -27,12 +27,12 @@
       <% end %>
     </div>
 
-    <div class="flex spaced-between bottom full-width white-bg level-two fixed padded alt-border controls" data-slides-target="controls">
+    <div class="flex spaced-between bottom full-width white-bg level-two fixed padded alt-border controls" data-slides-target="controls" style="position: fixed;bottom: 0;z-index: 2;">
 
       <div class="clickable" data-action="click->slides#previous">
         <div class="hide-start left">
-          <div class="flex center-aligned inner-button bttn dark padded large-text">
-            <div class="standard-svg light-fill icon">
+          <div class="flex large-text dark center-aligned padded rounded button">
+            <div class="standard-svg current-color-fill icon">
               <%= inline_svg("icons/arrow-left.svg") %>
             </div>
             <div class="btn-text">Previous</div>
@@ -42,8 +42,8 @@
 
       <div class="clickable" data-action="click->slides#next">
         <div class="hide-end right">
-            <div class="flex rev-row center-aligned inner-button bttn dark padded large-text">
-            <div class="standard-svg light-fill icon">
+            <div class="flex rev-row large-text dark center-aligned padded rounded button">
+            <div class="standard-svg current-color-fill icon">
               <%= inline_svg("icons/arrow-right.svg") %>
             </div>
             <div class="btn-text">Next</div>
@@ -51,6 +51,6 @@
         </div>
       </div>
 
-    <%= form.submit "Submit", id: "form_submit", class: "shown-end inner-button bttn dark" %>
+    <%= form.submit "Submit", id: "form_submit", class: "clickable shown-end button dark" %>
   </div>
 <% end %>
