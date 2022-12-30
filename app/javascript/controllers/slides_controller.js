@@ -14,10 +14,6 @@ export default class extends Controller {
     this.sliderState()
   }
 
-  stateValueChanged() {
-   console.log(this.stateValue)
-  }
-
   next() {
     this.indexValue++
   }
@@ -33,15 +29,10 @@ export default class extends Controller {
   }
 
   sliderState() {
-    let i = this.indexValue
+    let position = this.indexValue
     let max = parseInt(this.slideTargets.length - 1)
 
-    if (i == 0) {
-      this.stateValue = 'start'
-    } else if (i == max) {
-      this.stateValue = 'end'
-    } else {
-      this.stateValue = 'during'
-    }
+    position <= 0 ? this.stateValue = 'start' :
+    position >= max ? this.stateValue = 'end' : this.stateValue = 'in_progress'
   }
 }
