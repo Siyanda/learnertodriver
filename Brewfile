@@ -9,5 +9,5 @@ brew 'overmind'
 # Imagemagick or libvips - for processing images (avatars, file uploads, etc)
 brew 'vips'
 
-# Yarn - for installing Javascript dependencies
-brew 'yarn'
+# Bun - for installing Javascript dependencies
+brew 'bun'

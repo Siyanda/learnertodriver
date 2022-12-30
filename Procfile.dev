@@ -1,6 +1,6 @@
 web: bin/rails server -p $PORT
 worker: bundle exec sidekiq
-js: yarn build --reload
-css: yarn build:css --watch
+js: bun run build --reload
+css: bun run build:css --watch
 anycable: bundle exec anycable
 ws: anycable-go --port=8080
