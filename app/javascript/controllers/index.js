@@ -18,5 +18,5 @@ application.register('tabs', TabsController)
 import SlidesController from './slides_controller.js'
 application.register('slides', SlidesController)
 
-import DayController from './day_controller.js'
-application.register('day', DayController)
+import DayjsController from './dayjs_controller.js'
+application.register('dayjs', DayjsController)
