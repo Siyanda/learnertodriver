@@ -30,12 +30,12 @@ jobs:
       - name: Install dependencies
         run: sudo apt-get install -y libvips
       - run: bin/rails db:create db:schema:load
-      - uses: actions/setup-node@v3
+      - uses: xhyrom/setup-bun@v0.1.8
         with:
-          node-version: '19'
-          cache: 'yarn'
-      - run: yarn install
-      - run: yarn build
+          bun-version: latest
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - run: bun install
+
       - run: bin/rspec
       - name: Archive logs
         if: failure()
