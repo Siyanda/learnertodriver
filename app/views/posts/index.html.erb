@@ -2,11 +2,7 @@
 <% breadcrumb :posts, @posts %>
 
 <div class="wrapper">
-  <div class="posts" id="posts">
-    <%= render partial: @posts %>
+  <div class="posts">
+    <%= render partial: 'post_preview', collection: @posts, as: :post %>
   </div>
-  <br>
-  <div class="flex just-centered pagination-container">
-  </div>
-  <br>
 </div>

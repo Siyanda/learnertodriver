@@ -1,0 +1,31 @@
+<div class="gapped comments content rounded basic-border">
+  <div class="comments-title-container">
+    <h2 class="comments-title fleft"><%= post.comments.count %> Comments</h2>
+  </div>
+
+  <div class="comment-section">
+
+    <% if post.comments.any? %>
+      <%= render partial: post.comments.includes(:user) %>
+    <% else %>
+
+    <div class="comment-header">
+      <h4>Be the first to comment</h4>
+    </div>
+
+    <% end %>
+
+    <div id="respond" class="comment-respond">
+      <h4 id="reply-title" class="comment-reply-title">Leave a Reply</h4>
+
+    <%= simple_form_for [post, Comment.new]  do |f| %>
+      <div class="field">
+        <%= f.text_area :content, class: 'basic-border form-textarea' %>
+      </div>
+    <br>
+        <%= f.submit 'Post Comment', class: 'rounded button btn-primary' %>
+    <% end %>
+
+    </div>
+  </div>
+</div>
