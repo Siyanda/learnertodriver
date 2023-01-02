@@ -5,7 +5,7 @@ FROM ruby:3.1.2 as builder
 ENV RAILS_ENV=production
 ENV SECRET_KEY_BASE 1
 
-RUN gem install "bundler:~>2" --no-document && gem update --system &&gem cleanup
+RUN gem install "bundler:~>2" --no-document && gem update --system && gem cleanup
 
 RUN curl https://deb.nodesource.com/setup_19.x | bash
 RUN curl https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
