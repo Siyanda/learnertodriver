@@ -2,6 +2,7 @@
 
 require 'better_html'
 require 'rails_helper'
+require 'spec_helper'
 
 # Based on https://github.com/Shopify/better-html#testing-for-valid-html-and-erb
 RSpec.describe 'ERB templates' do # rubocop:disable RSpec/DescribeClass
