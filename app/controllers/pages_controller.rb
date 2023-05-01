@@ -24,35 +24,24 @@ class PagesController < ApplicationController
   def create
     @page = current_user.pages.build(page_params)
 
-    respond_to do |format|
-      if @page.save
-        format.html { redirect_to @page, notice: t('controllers.notices.create', model: 'Page') }
-        format.json { render :show, status: :created, location: @page }
-      else
-        format.html { render :new }
-        format.json { render json: @page.errors, status: :unprocessable_entity }
-      end
+    if @page.save
+      redirect_to @page, notice: t('controllers.notices.create', model: 'Page')
+    else
+      render :new
     end
   end
 
   def update
-    respond_to do |format|
-      if @page.update(page_params)
-        format.html { redirect_to @page, notice: t('controllers.notices.update', model: 'Page') }
-        format.json { render :show, status: :ok, location: @page }
-      else
-        format.html { render :edit }
-        format.json { render json: @page.errors, status: :unprocessable_entity }
-      end
+    if @page.update(page_params)
+      redirect_to @page, notice: t('controllers.notices.update', model: 'Page')
+    else
+      render :edit
     end
   end
 
   def destroy
     @page.destroy
-    respond_to do |format|
-      format.html { redirect_to pages_path, notice: t('controllers.notices.destroy', model: 'Page') }
-      format.json { head :no_content }
-    end
+    redirect_to pages_path, notice: t('controllers.notices.destroy', model: 'Page')
   end
 
   private
