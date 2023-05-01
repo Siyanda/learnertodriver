@@ -1,6 +1,7 @@
+inherit_from: .rubocop_todo.yml
+
 require:
   - rubocop-rails
-  - rubocop-rspec
 
 AllCops:
   NewCops: enable
@@ -70,19 +71,6 @@ Rails/FilePath:
 Rails/OutputSafety:
   Enabled: false
 
-RSpec/Capybara/FeatureMethods:
-  Enabled: false
-
-RSpec/DescribeClass:
-  Exclude:
-    - '**/spec/{requests,system}/**/*'
-
-RSpec/ExampleLength:
-  Max: 25
-
-RSpec/MultipleExpectations:
-  Enabled: false
-
 Naming/BlockForwarding:
   Enabled: false
 
@@ -94,18 +82,3 @@ Style/HashSyntax:
 
 Rails/SkipsModelValidations:
   Enabled: false
-
-RSpec/ExpectInHook:
-  Enabled: false
-
-RSpec/ImplicitSubject:
-  EnforcedStyle: single_statement_only
-
-RSpec/MultipleMemoizedHelpers:
-  Max: 20
-
-RSpec/NestedGroups:
-  Max: 6
-
-RSpec/Pending:
-  Enabled: true
