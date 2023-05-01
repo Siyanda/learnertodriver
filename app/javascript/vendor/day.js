@@ -1,5 +1,3 @@
-// move to stimulus controller
-
 import dayjs from 'dayjs'
 
 document.addEventListener('turbo:load', () => {

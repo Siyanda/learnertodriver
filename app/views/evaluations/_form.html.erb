@@ -1,4 +1,4 @@
-<%= simple_form_for [@quiz.evaluations.new] do |form| %>
+<%= form_for [@quiz.evaluations.new] do |form| %>
   <div class="slider-form" data-controller="slides">
 
     <div class="alt-border gapped content">
@@ -16,13 +16,13 @@
             <div class="answers">
               <%= form.fields_for :reactions, Reaction.new do |builder| %>
 
-              <%= builder.input :answer,
-                                as: :radio_buttons,
-                                label: false,
-                                item_label_class: 'flex rev-row spaced-between clickable answer',
-                                collection: question.answers.collect { |a| [a.content, a.id] } %>
+              <%= builder.collection_radio_buttons :answer, question.answers, :id, :content do |b| %>
+                  <%= b.label(class: "flex rev-row spaced-between clickable answer") { b.radio_button(class: "radio_button") + b.label } %>
+                <% end %>
+
               <% end %>
             </div>
+
         </div>
       <% end %>
     </div>

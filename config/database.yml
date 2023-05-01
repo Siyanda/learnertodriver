@@ -1,18 +1,17 @@
 default: &default
-  adapter: postgresql
-  encoding: unicode
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  adapter: litedb
+  strict: false
+  pool: 5
+  timeout: 5000
 
 development:
   <<: *default
-  database: learnertodriver_development
+  database: db/development.sqlite3
 
 test:
   <<: *default
-  database: learnertodriver_test
+  database: db/test.sqlite3
 
 production:
   <<: *default
-  database: <%= ENV['DATABASE_NAME'] %>
-  username: <%= ENV['DATABASE_USERNAME'] %>
-  password: <%= ENV['DATABASE_PASSWORD'] %>
+  database: db/production.sqlite3

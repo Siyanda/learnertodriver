@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 Allow: /sitemap.htm
-Sitemap: https://learnertodriver.co.za/sitemap.xml
+Sitemap: https://learnertodriver.co.za/sitemap.json

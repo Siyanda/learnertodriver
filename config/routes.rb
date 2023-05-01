@@ -1,11 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  require 'sidekiq/web'
-
   authenticate :user, ->(u) { u.admin? } do
-    mount Sidekiq::Web, at: 'jobs'
-
     namespace :admin do
       get '/', to: 'dashboard#index'
     end

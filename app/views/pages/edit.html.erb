@@ -50,12 +50,12 @@
                 <div class="select-button" role="group">
 
                   <div class="rounded dropdown-button-area" role="group" data-action="click->dropdown#toggle">
-                    <button class="capitalized rounded dropdown-button iconed" type="button" aria-expanded="false">
-                      <%= @page.title %>
+                    <button class="full-width capitalized rounded dropdown-button iconed" type="button" aria-expanded="false">
+                      <%= @page.user.name %>
                     </button>
                     <div class="dropdown-menu" data-dropdown-target="menu">
-                      <% @pages.each do |page| %>
-                        <div class="select_item"><%= page.title %></div>
+                      <% @users.each do |user| %>
+                        <div class="select_item"><%= user.name %></div>
                       <% end %>
                     </div>
                   </div>
@@ -85,12 +85,12 @@
                 <div class="select-button" role="group">
 
                   <div class="rounded dropdown-button-area" role="group" data-action="click->dropdown#toggle">
-                    <button class="capitalized rounded dropdown-button iconed" type="button" aria-expanded="false">
-                      <%= @page.user.name %>
+                    <button class="full-width capitalized rounded dropdown-button iconed" type="button" aria-expanded="false">
+                      <%= @page.title %>
                     </button>
                     <div class="dropdown-menu" data-dropdown-target="menu">
-                      <% @users.each do |user| %>
-                        <div class="select_item"><%= user.name %></div>
+                      <% @pages.each do |page| %>
+                        <div class="select_item"><%= page.title %></div>
                       <% end %>
                     </div>
                   </div>
