@@ -2,26 +2,10 @@
   "private": true,
   "dependencies": {
     "@hotwired/stimulus": "^3.2.1",
-    "@hotwired/turbo-rails": "^7.2.4",
-    "@rails/actioncable": "^7.0.4",
-    "@rails/actiontext": "^7.0.4",
+    "@hotwired/turbo-rails": "^7.3.0",
+    "@rails/actioncable": "^7.0.4-3",
+    "@rails/actiontext": "^7.0.4-3",
     "dayjs": "^1.11.7",
-    "esbuild": "^0.16.10",
-    "postcss-cli": "^10.1.0",
     "trix": "^2.0.4"
-  },
-  "devDependencies": {
-    "autoprefixer": "^10.4.13",
-    "chokidar": "^3.5.3",
-    "cssnano": "^5.1.14",
-    "postcss": "^8.4.20",
-    "postcss-import": "^15.1.0",
-    "postcss-nested": "^6.0.0",
-    "stylelint": "^14.16.0",
-    "stylelint-config-standard-scss": "^6.1.0"
-  },
-  "scripts": {
-    "build": "node esbuild.config.js",
-    "build:css": "postcss -o app/assets/builds/application.css app/assets/stylesheets/application.scss"
   }
 }
