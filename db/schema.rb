@@ -161,12 +161,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_12_201031) do
     t.integer "kind", default: 0, null: false
     t.integer "answer_id", null: false
     t.integer "question_id", null: false
-    t.integer "quiz_id", null: false
+    t.integer "evaluation_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["answer_id"], name: "index_reactions_on_answer_id"
+    t.index ["evaluation_id"], name: "index_reactions_on_evaluation_id"
     t.index ["question_id"], name: "index_reactions_on_question_id"
-    t.index ["quiz_id"], name: "index_reactions_on_quiz_id"
   end
 
   create_table "responses", force: :cascade do |t|
@@ -268,8 +268,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_12_201031) do
   add_foreign_key "pages", "users"
   add_foreign_key "posts", "users"
   add_foreign_key "reactions", "answers"
+  add_foreign_key "reactions", "evaluations"
   add_foreign_key "reactions", "questions"
-  add_foreign_key "reactions", "quizzes"
   add_foreign_key "responses", "answers"
   add_foreign_key "responses", "questions"
   add_foreign_key "specifications", "questions"
