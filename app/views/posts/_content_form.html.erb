@@ -14,17 +14,24 @@
     </div>
   </div>
 
-    <div class="flex center-aligned spaced-between post-content">
-      <div class="flex top-padded bottom-padded center-aligned">
-      </div>
-
-      <div class="flex top-padded bottom-padded center-aligned">
-        <p class="post-date">
-          Published <span class="time_ago_in_words"><%= DateTime.now.iso8601 %></span>
-        </p>
-        <p class="post-date">
-          Updated <span class="time_ago_in_words"><%= DateTime.now.iso8601 %></span>
-        </p>
-      </div>
+  <div class="flex center-aligned spaced-between post-content">
+    <div class="flex top-padded bottom-padded center-aligned">
     </div>
+
+    <div class="flex top-padded bottom-padded center-aligned">
+      <p class="post-date">
+        Published
+        <span class="time_ago_in_words">
+          <%= DateTime.now.iso8601 %>
+        </span>
+      </p>
+      <p class="post-date">
+        Updated
+        <span class="time_ago_in_words">
+          <%= DateTime.now.iso8601 %>
+        </span>
+      </p>
+    </div>
+  </div>
+
 <% end %>

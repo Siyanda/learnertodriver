@@ -11,7 +11,6 @@ class CommentsController < ApplicationController
     @comment.user = current_user
 
     if @comment.save
-      redirect_to post_path(@comment.post), notice: t('controllers.notices.create', model: 'Comment')
       redirect_to @comment.post, notice: t('controllers.notices.create', model: 'Comment')
     else
       render action: 'new'
@@ -20,8 +19,6 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment.destroy
-
-    redirect_to post_path(@comment.post), notice: t('controllers.notices.destroy', model: 'Comment'), status: :see_other
     redirect_to @comment.post, notice: t('controllers.notices.destroy', model: 'Comment'), status: :see_other
   end
 

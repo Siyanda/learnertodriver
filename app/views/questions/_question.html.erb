@@ -1,7 +1,8 @@
 <tr class="tbody">
   <td class="small-cell text-center numbered grey-text"><%= question.id %></td>
   <td><p class="truncate"><%= question.content %></p></td>
-  <td><%= question.answer_ids %></td>
+  <td><% question.answers.each.with_index(1) do |a,i| %> <%= i %> : <%= a.content %> <br> <% end %>
+  </td>
   <td class="flex small-cell spaced-between">
     <%= link_to question_path(question) do %>
       <div class="mdm-svg dark-stroke icon">
