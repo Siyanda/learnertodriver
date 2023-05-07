@@ -18,5 +18,11 @@ application.register('tabs', TabsController)
 import SlidesController from './slides_controller.js'
 application.register('slides', SlidesController)
 
-import DayjsController from './dayjs_controller.js'
-application.register('dayjs', DayjsController)
+import DayjsTimeAgoController from './dayjs/time_ago_controller.js'
+application.register('dayjs-time-ago', DayjsTimeAgoController)
+
+import DayjsToDurationController from './dayjs/to_duration_controller.js'
+application.register('dayjs-to-duration', DayjsToDurationController)
+
+import DayjsFormattedDateTimeController from './dayjs/formatted_date_time_controller.js'
+application.register('dayjs-formatted-date-time', DayjsFormattedDateTimeController)
