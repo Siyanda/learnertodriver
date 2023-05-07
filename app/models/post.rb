@@ -1,26 +1,27 @@
 # frozen_string_literal: true
 
 class Post < ApplicationRecord
-  before_validation :set_defaults
-
   extend FriendlyId
+  friendly_id :title, use: :slugged
 
   acts_as_votable
 
-  friendly_id :title, use: :slugged
-  validates :title, presence: true
-
   belongs_to :user
+
+  has_many :comments, dependent: :destroy
+  has_many :taggings, as: :taggable, dependent: :destroy
+  has_many :tags, through: :taggings
 
   has_one_attached :cover_image
   has_many_attached :images
 
-  has_many :comments, dependent: :delete_all
-  has_many :taggings, as: :taggable, dependent: :delete_all
-  has_many :tags, through: :taggings
-
   enum status: { draft: 0, unpublished: 1, published: 2, restricted: 3, removed: 4 }
   scope :most_recent, -> { order(created_at: :desc).limit(5) }
+
+  before_validation :set_defaults
+
+  validates :title, presence: true
+  validates :status, presence: true
 
   private
 
