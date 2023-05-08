@@ -78,10 +78,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_12_201031) do
 
   create_table "evaluations", force: :cascade do |t|
     t.decimal "score", default: "0.0", null: false
-    t.string "comment", default: "", null: false
-    t.string "form_snapshot", default: "", null: false
     t.integer "status", default: 0, null: false
-    t.integer "kind", default: 0, null: false
     t.integer "user_id"
     t.integer "quiz_id"
     t.datetime "created_at", null: false
@@ -113,7 +110,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_12_201031) do
   create_table "pages", force: :cascade do |t|
     t.string "title", null: false
     t.text "content"
-    t.string "layout"
     t.string "slug"
     t.integer "status", default: 0, null: false
     t.integer "user_id", null: false
@@ -128,7 +124,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_12_201031) do
   create_table "posts", force: :cascade do |t|
     t.string "title", null: false
     t.text "content"
-    t.string "excerpt", default: "", null: false
+    t.string "excerpt", limit: 150, default: "", null: false
     t.string "slug"
     t.integer "status", default: 0, null: false
     t.integer "user_id", null: false
@@ -141,12 +137,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_12_201031) do
   create_table "questions", force: :cascade do |t|
     t.string "content", null: false
     t.integer "kind", default: 0, null: false
-    t.string "information", null: false
+    t.string "information"
   end
 
   create_table "quizzes", force: :cascade do |t|
     t.string "title", default: "", null: false
-    t.integer "kind", default: 0, null: false
     t.string "information", default: "", null: false
     t.integer "duration", default: 3600, null: false
     t.string "description", default: "", null: false

@@ -5,7 +5,6 @@ class CreatePages < ActiveRecord::Migration[6.1]
     create_table :pages do |t|
       t.string :title, null: false
       t.text :content
-      t.string :layout
       t.string :slug
       t.integer :status, default: 0, null: false
       t.references :user, null: false, foreign_key: true, index: true

@@ -5,7 +5,7 @@ class CreateQuestions < ActiveRecord::Migration[6.1]
     create_table :questions do |t|
       t.string :content, null: false
       t.integer :kind, null: false, default: 0
-      t.string :information, null: false
+      t.string :information
     end
   end
 end
