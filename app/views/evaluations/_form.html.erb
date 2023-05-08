@@ -17,7 +17,7 @@
             <div class="answers">
               <%= form.fields_for :reactions, Reaction.new do |reaction_fields| %>
 
-              <%= reaction_fields.collection_radio_buttons :answer_id, question.answers, :id, :content do |b| %>
+              <%= reaction_fields.collection_radio_buttons :answer, question.answers, :id, :content do |b| %>
                   <%= b.label(class: "flex rev-row spaced-between clickable answer") { b.radio_button(class: "radio_button") + b.label } %>
                 <% end %>
 
