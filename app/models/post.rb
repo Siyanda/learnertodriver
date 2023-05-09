@@ -22,6 +22,7 @@ class Post < ApplicationRecord
 
   validates :title, presence: true
   validates :status, presence: true
+  validates :excerpt, length: { maximum: 150 }, allow_blank: true
 
   private
 
