@@ -2,13 +2,13 @@
 
     <div class="post-header">
       <h1 class="post-title">
-        <%= @post.title %>
+        <%= post.title %>
       </h1>
     </div>
 
     <div class="post-content">
       <div class="post-body">
-        <%= sanitize from_markdown(liquidize(@post.content)) %>
+        <%= sanitize from_markdown(liquidize(post.content)) %>
       </div>
     </div>
 
@@ -17,20 +17,20 @@
         <div class="flex center-aligned">
           <div class="gray-stroke small-svg icon"><%= inline_svg('icons/clock.svg') %></div>
           <p class="post-date">
-            Posted <span class="time_ago_in_words"><%= @post.created_at.iso8601 %></span>
+            Posted <span class="time_ago_in_words"><%= post.created_at.iso8601 %></span>
           </p>
         </div>
 
       <div class="flex center-aligned">
-        <%= link_to like_post_path(@post), 'data-turbo-method': :put, class: 'vote' do %>
+        <%= link_to like_post_path(post), 'data-turbo-method': :put, class: 'vote' do %>
         <div class="dark-fill standard-svg icon">
           <%= inline_svg('icons/arrow-up.svg') %>
         </div>
       <% end %>
 
-      <%= @post.weighted_score %>
+      <%= post.weighted_score %>
 
-        <%= link_to dislike_post_path(@post), 'data-turbo-method': :put, class: 'vote' do %>
+        <%= link_to dislike_post_path(post), 'data-turbo-method': :put, class: 'vote' do %>
         <div class="dark-fill standard-svg icon">
           <%= inline_svg('icons/arrow-down.svg') %>
         </div>

@@ -10,7 +10,7 @@
             Filter
           </button>
           <div class="small-svg float-icon icon">
-            <%= inline_svg("icons/ui/filter.svg") %>
+            <%= inline_svg('icons/ui/filter.svg') %>
           </div>
         </div>
     </div>
@@ -20,9 +20,9 @@
       <div class="flex spaced-between center-aligned">
         <div class="search-wrapper">
           <%= form_tag pages_path, method: :get do %>
-            <%= text_field_tag 'q[name_cont]', "", class: "search-input", autocomplete: 'off', placeholder: "filter name ..." %>
+            <%= text_field_tag 'q[name_cont]', '', class: 'search-input', autocomplete: 'off', placeholder: 'filter name ...' %>
               <div class="small-svg float-icon icon">
-                <%= inline_svg("icons/search.svg") %>
+                <%= inline_svg('icons/search.svg') %>
               </div>
           <% end %>
         </div>
@@ -32,7 +32,7 @@
           <div class="right-margin relative filter">
             <input type="text" class="small left-padded" autocomplete="off">
             <div class="small-svg dark-stroke float-icon icon">
-              <%= inline_svg("icons/ui/date-calendar.svg") %>
+              <%= inline_svg('icons/ui/date-calendar.svg') %>
             </div>
           </div>
         </div>
@@ -49,7 +49,7 @@
                 PDF
               </button>
               <div class="small-svg grey-fill float-icon icon">
-                <%= inline_svg("icons/pdf.svg") %>
+                <%= inline_svg('icons/pdf.svg') %>
               </div>
             </div>
 
@@ -58,7 +58,7 @@
                 Excel
               </button>
               <div class="small-svg grey-fill float-icon icon">
-                <%= inline_svg("icons/xls.svg") %>
+                <%= inline_svg('icons/xls.svg') %>
               </div>
             </div>
 
@@ -81,7 +81,7 @@
 
             </div>
             <div class="small-svg grey-fill float-icon icon">
-              <%= inline_svg("icons/ui/chevron-down.svg") %>
+              <%= inline_svg('icons/ui/chevron-down.svg') %>
             </div>
           </div>
 
@@ -96,7 +96,7 @@
     <div class="flex top-padded bottom-padded center-aligned">
       <%= link_to new_page_path, class: 'flex center-aligned rounded dark-btn outline-btn' do %>
         <div class="mdm-svg icon">
-          <%= inline_svg("icons/plus-circle-o.svg") %>
+          <%= inline_svg('icons/plus-circle-o.svg') %>
         </div>
         <span class="margin-sides">New Page</span>
       <% end %>
@@ -111,16 +111,16 @@
             <%= params[:max] %> Items per page
             </button>
             <div class="dropdown-menu" data-dropdown-target="menu">
-              <%= link_to "5 Entries", pages_path(max: 5, page: params[:page]), class: "select_item" %>
-              <%= link_to "10 Entries", pages_path(max: 10, page: params[:page]), class: "select_item" %>
-              <%= link_to "15 Entries", pages_path(max: 15, page: params[:page]), class: "select_item" %>
-              <%= link_to "20 Entries", pages_path(max: 20, page: params[:page]), class: "select_item" %>
+              <%= link_to '5 Entries', pages_path(max: 5, page: params[:page]), class: 'select_item' %>
+              <%= link_to '10 Entries', pages_path(max: 10, page: params[:page]), class: 'select_item' %>
+              <%= link_to '15 Entries', pages_path(max: 15, page: params[:page]), class: 'select_item' %>
+              <%= link_to '20 Entries', pages_path(max: 20, page: params[:page]), class: 'select_item' %>
             </div>
           </div>
 
         </div>
         <div class="small-svg grey-fill float-icon icon">
-          <%= inline_svg("icons/ui/chevron-down.svg") %>
+          <%= inline_svg('icons/ui/chevron-down.svg') %>
         </div>
       </div>
     </div>
@@ -131,8 +131,8 @@
   <table class="table">
     <tr class="thead night-bg light-text">
       <th></th>
-      <th><%= sort_link @q, :title, "Title" %></th>
-      <th><%= sort_link @q, :slug, "Slug" %></th>
+      <th><%= sort_link @q, :title, 'Title' %></th>
+      <th><%= sort_link @q, :slug, 'Slug' %></th>
       <th>Status</th>
       <th>Content</th>
       <th>Actions</th>
@@ -148,19 +148,19 @@
         <td class="flex spaced-between">
           <%= link_to page_path(page) do %>
             <div class="mdm-svg dark-stroke icon">
-              <%= inline_svg("icons/view-o.svg") %>
+              <%= inline_svg('icons/view-o.svg') %>
             </div>
           <% end %>
 
           <%= link_to edit_page_path(page) do %>
             <div class="mdm-svg dark-stroke icon">
-              <%= inline_svg("icons/edit.svg") %>
+              <%= inline_svg('icons/edit.svg') %>
             </div>
           <% end %>
 
           <%= link_to edit_page_path(page) do %>
             <div class="mdm-svg dark-stroke icon">
-              <%= inline_svg("icons/trash-o.svg") %>
+              <%= inline_svg('icons/trash-o.svg') %>
             </div>
           <% end %>
         </td>
@@ -174,10 +174,10 @@
 
   <div class="to-column flex spaced-between">
     <div class="tiny-text grey-text information">
-      <%= pagy_info(@pagy).html_safe %>
+      <%== pagy_info(@pagy) %>
     </div>
     <div class="small-text pagination-container">
-      <%= pagy_nav(@pagy).html_safe %>
+      <%== pagy_nav(@pagy) %>
     </div>
   </div>
 </div>
