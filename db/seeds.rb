@@ -10,7 +10,7 @@ seeds_path = "#{Rails.root}/db/seeds/modules/import/#{Rails.env}"
 
 models.each do |data|
   seed = File.read(seeds_path + "/data/#{data}.csv")
-  csv = CSV.parse(seed, :headers => true)
+  csv = CSV.parse(seed, headers: true)
 
   model = data.camelize.constantize
   puts "seeding #{model} 🌱"

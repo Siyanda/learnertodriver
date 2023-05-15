@@ -2,7 +2,7 @@
 
 posts = [
   { 'title' => 'Should I wear a seatbelt ?', 'content' => rendered_md('post/should-i-wear-a-seatblet'),
-    'slug' => 'should-i-wear-a-seatbelt', 'status' => 'published', 'user_id' => User.first.id, 'created_at' => 55.months.ago, 'updated_at' => 3.days.ago },
+    'slug' => 'should-i-wear-a-seatbelt', 'status' => 'published', 'user_id' => User.first.id },
   { 'title' => 'Test Post', 'content' => rendered_md('post/test-post'), 'slug' => 'test-post', 'status' => 'draft',
     'user_id' => User.first.id }
 ]
