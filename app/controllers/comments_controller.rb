@@ -3,6 +3,8 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: %i[show edit update destroy]
 
+  def show; end
+
   def edit; end
 
   def create
@@ -16,6 +18,8 @@ class CommentsController < ApplicationController
       render action: 'new'
     end
   end
+
+  def update; end
 
   def destroy
     @comment.destroy

@@ -3,6 +3,8 @@
 class EvaluationsController < ApplicationController
   before_action :set_evaluation, only: %i[show edit update destroy]
 
+  def show; end
+
   def new
     @quiz = Quiz.friendly.find(params[:quiz_id])
     @evaluation = @quiz.evaluations.build
@@ -22,6 +24,7 @@ class EvaluationsController < ApplicationController
   end
 
   def update; end
+  def destroy; end
 
   private
 
@@ -31,6 +34,7 @@ class EvaluationsController < ApplicationController
 
   def evaluation_params
     params.require(:evaluation).permit(:score, :comment, :form_snapshot, :user_id, :quiz_id,
-                                       reactions_attributes: %i[name content value kind answer_id question_id evaluation_id])
+                                       reactions_attributes:
+                                        %i[name content value kind answer_id question_id evaluation_id])
   end
 end

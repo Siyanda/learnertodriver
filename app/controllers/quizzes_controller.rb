@@ -2,7 +2,7 @@
 
 class QuizzesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
-  before_action :set_quiz, only: %i[show edit update destroy upvote downvote]
+  before_action :set_quiz, only: %i[show edit update]
 
   def index
     @quizzes = Quiz.all
@@ -30,6 +30,8 @@ class QuizzesController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
+
+  def update; end
 
   private
 
