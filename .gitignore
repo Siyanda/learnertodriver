@@ -177,7 +177,6 @@ tags
 # Packages
 node_modules/
 .tmp
-test/
 app/assets/builds/
 
 # Sublime
