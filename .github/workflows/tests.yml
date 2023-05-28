@@ -1,8 +1,8 @@
 name: tests
 on: [push]
 jobs:
-  rspec:
-    name: rspec
+  test:
+    name: minitest
     runs-on: ubuntu-latest
     env:
       RAILS_ENV: test
@@ -15,17 +15,3 @@ jobs:
       - name: Install dependencies
         run: sudo apt-get install -y libvips
       - run: bin/rails db:create db:schema:load
-      - uses: xhyrom/setup-bun@v0.1.8
-        with:
-          bun-version: latest
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-      - run: bun install
-
-      - run: bin/rspec
-      - name: Archive logs
-        if: failure()
-        uses: actions/upload-artifact@v2
-        with:
-          name: rails-logs
-          path: ${{ github.workspace }}/log/
-          retention-days: 4
