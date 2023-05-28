@@ -10,7 +10,7 @@ class AddUserDetails < ActiveRecord::Migration[6.1]
       t.date :birthday
       t.integer :role, default: 0, null: false
       t.integer :status, default: 0, null: false
-      t.string :username, default: '', null: false
+      t.string :username
       t.integer :evaluations_count, default: 0, null: false
       t.string :slug
     end
