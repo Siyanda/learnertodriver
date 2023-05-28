@@ -38,8 +38,13 @@ capybara-*.html
 .rspec
 /log
 /tmp
+queue.db
+queue.db-shm
+queue.db-wal
 /db/*.sqlite3
 /db/*.sqlite3-journal
+/db/*.sqlite3-shm
+/db/*.sqlite3-wal
 /public/system/
 /public/uploads/
 /coverage/
@@ -175,7 +180,6 @@ tags
 # Packages
 node_modules/
 .tmp
-test/
 app/assets/builds/
 
 # Sublime
@@ -210,3 +214,5 @@ yarn-debug.log*
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+/app/assets/builds/*
+!/app/assets/builds/.keep

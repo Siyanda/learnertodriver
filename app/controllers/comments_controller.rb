@@ -3,6 +3,8 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: %i[show edit update destroy]
 
+  def show; end
+
   def edit; end
 
   def create
@@ -11,15 +13,17 @@ class CommentsController < ApplicationController
     @comment.user = current_user
 
     if @comment.save
-      redirect_to post_path(@comment.post), notice: t('controllers.notices.create', model: 'Comment')
+      redirect_to @comment.post, notice: t('controllers.notices.create', model: 'Comment')
     else
       render action: 'new'
     end
   end
 
+  def update; end
+
   def destroy
     @comment.destroy
-    redirect_to post_path(@comment.post), notice: t('controllers.notices.destroy', model: 'Comment'), status: :see_other
+    redirect_to @comment.post, notice: t('controllers.notices.destroy', model: 'Comment'), status: :see_other
   end
 
   private

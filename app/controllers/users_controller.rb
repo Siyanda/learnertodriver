@@ -2,7 +2,9 @@
 
 class UsersController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
-  before_action :set_user, only: %i[show edit update destroy]
+  before_action :set_user, only: %i[show]
+
+  def index; end
 
   def show
     @user_posts = @user.posts

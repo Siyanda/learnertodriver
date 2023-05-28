@@ -5,7 +5,14 @@
           <cite class="comment-meta">
             <%= link_to comment.user.name, user_path(comment.user) %>
           </cite>
-          <p class="gray-text">Posted <span class="time_ago_in_words"><%= comment.created_at.iso8601 %></span></p>
+
+          <%= content_tag(:div,
+                          content_tag(:span, nil,
+                                      data: { 'dayjs-time-ago-target': 'formattedTime' }),
+                          class: 'time-ago-in-words',
+                          data: { controller: 'dayjs-time-ago',
+                                  'dayjs-time-ago-time-stamp-value': comment.created_at.iso8601 }) %>
+
           <div class="comment-actions">
             <% if comment.user == current_user %>
 

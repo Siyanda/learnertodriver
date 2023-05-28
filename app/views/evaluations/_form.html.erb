@@ -1,28 +1,29 @@
-<%= simple_form_for [@quiz.evaluations.new] do |form| %>
+<%= form_with(model: Evaluation.new, url: [quiz, Evaluation.new]) do |form| %>
+
   <div class="slider-form" data-controller="slides">
 
     <div class="alt-border gapped content">
       <% quiz.questions.random.each.with_index(1) do |question, index| %>
         <div class="column" data-slides-target="slide">
-          <%= content_tag(:h1, "Question : #{index}", class: "bold question") %>
+          <%= content_tag(:h1, "Question : #{index}", class: 'bold question') %>
 
             <div class="progress-container full-width">
               <progress value="<%= index %>" max="<%= quiz.questions.size %>" class="full-width">
               </progress>
             </div>
 
-            <%= content_tag(:h2, question.content, class: "question") %>
+            <%= content_tag(:h2, question.content, class: 'question') %>
 
             <div class="answers">
-              <%= form.fields_for :reactions, Reaction.new do |builder| %>
+              <%= form.fields_for :reactions, Reaction.new do |reaction_fields| %>
 
-              <%= builder.input :answer,
-                                as: :radio_buttons,
-                                label: false,
-                                item_label_class: 'flex rev-row spaced-between clickable answer',
-                                collection: question.answers.collect { |a| [a.content, a.id] } %>
+              <%= reaction_fields.collection_radio_buttons :answer, question.answers, :id, :content do |b| %>
+                  <%= b.label(class: 'flex rev-row spaced-between clickable answer') { b.radio_button(class: 'radio_button') + b.label } %>
+                <% end %>
+
               <% end %>
             </div>
+
         </div>
       <% end %>
     </div>
@@ -33,7 +34,7 @@
         <div class="hide-start left">
           <div class="flex large-text dark center-aligned padded rounded button">
             <div class="standard-svg current-color-fill icon">
-              <%= inline_svg("icons/arrow-left.svg") %>
+              <%= inline_svg('icons/arrow-left.svg') %>
             </div>
             <div class="btn-text">Previous</div>
           </div>
@@ -44,13 +45,13 @@
         <div class="hide-end right">
             <div class="flex rev-row large-text dark center-aligned padded rounded button">
             <div class="standard-svg current-color-fill icon">
-              <%= inline_svg("icons/arrow-right.svg") %>
+              <%= inline_svg('icons/arrow-right.svg') %>
             </div>
             <div class="btn-text">Next</div>
           </div>
         </div>
       </div>
 
-    <%= form.submit "Submit", id: "form_submit", class: "clickable shown-end button dark" %>
+    <%= form.submit 'Submit', id: 'form_submit', class: 'clickable shown-end button dark' %>
   </div>
 <% end %>

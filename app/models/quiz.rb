@@ -4,12 +4,14 @@ class Quiz < ApplicationRecord
   extend FriendlyId
   friendly_id :title, use: :slugged
 
-  has_many :evaluations, dependent: :delete_all
-
-  has_many :specifications, dependent: :delete_all
+  has_many :evaluations, dependent: :destroy
+  has_many :specifications, dependent: :destroy
   has_many :questions, through: :specifications
 
   accepts_nested_attributes_for :questions, allow_destroy: true
 
-  enum kind: { general: 0, truck: 1, car: 2, bike: 3 }
+  validates :title, presence: true
+  validates :duration, presence: true
+  validates :information, presence: true
+  validates :description, presence: true
 end

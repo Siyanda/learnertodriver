@@ -5,7 +5,7 @@ module ApplicationHelper
 
   def from_markdown(text)
     options = %i[autolink fenced_code_blocks highlight no_intra_emphasis]
-    Markdown.new(text, *options).to_html.html_safe
+    Markdown.new(text, *options).to_html
   end
 
   def liquidize(content)

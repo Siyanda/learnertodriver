@@ -1,6 +1,7 @@
+inherit_from: .rubocop_todo.yml
+
 require:
   - rubocop-rails
-  - rubocop-rspec
 
 AllCops:
   NewCops: enable
@@ -8,104 +9,8 @@ AllCops:
 Bundler/OrderedGems:
   Enabled: false
 
-Rails/Output:
+Style/Documentation:
   Enabled: false
 
 Rails/CreateTableWithTimestamps:
   Enabled: false
-
-Layout/LineLength:
-  Enabled: false
-
-Layout/EmptyLinesAroundArguments:
-  Enabled: false
-
-Style/StringLiterals:
-  Enabled: false
-
-Style/WordArray:
-  Enabled: false
-
-Metrics/BlockLength:
-  Enabled: false
-
-Metrics/CyclomaticComplexity:
-  Max: 10
-
-Metrics/MethodLength:
-  Max: 50
-Metrics/AbcSize:
-  Max: 50
-
-Metrics/PerceivedComplexity:
-  Max: 12
-
-Style/Documentation:
-  Enabled: false
-
-Style/NumericLiterals:
-  Enabled: false
-
-Style/PercentLiteralDelimiters:
-  Enabled: false
-
-Style/SymbolArray:
-  Enabled: false
-
-Style/ClassAndModuleChildren:
-  Enabled: false
-
-Style/GlobalStdStream:
-  Enabled: false
-
-Rails/LexicallyScopedActionFilter:
-  Enabled: false
-
-Rails/EnvironmentVariableAccess:
-  Enabled: false
-
-Rails/FilePath:
-  Enabled: false
-
-Rails/OutputSafety:
-  Enabled: false
-
-RSpec/Capybara/FeatureMethods:
-  Enabled: false
-
-RSpec/DescribeClass:
-  Exclude:
-    - '**/spec/{requests,system}/**/*'
-
-RSpec/ExampleLength:
-  Max: 25
-
-RSpec/MultipleExpectations:
-  Enabled: false
-
-Naming/BlockForwarding:
-  Enabled: false
-
-Naming/InclusiveLanguage:
-  Enabled: false
-
-Style/HashSyntax:
-  Enabled: false
-
-Rails/SkipsModelValidations:
-  Enabled: false
-
-RSpec/ExpectInHook:
-  Enabled: false
-
-RSpec/ImplicitSubject:
-  EnforcedStyle: single_statement_only
-
-RSpec/MultipleMemoizedHelpers:
-  Max: 20
-
-RSpec/NestedGroups:
-  Max: 6
-
-RSpec/Pending:
-  Enabled: true

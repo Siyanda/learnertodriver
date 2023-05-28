@@ -1,19 +1,19 @@
 <nav role="navigation" class="dark-bg full-width flex spaced-between top-nav">
   <div class="flex auto-marg navlist">
-    <%= link_to "Home",
+    <%= link_to 'Home',
                 root_path,
                 class: "link #{class_names(active: current_page?(root_path))}" %>
 
-    <%= link_to "Quizz",
+    <%= link_to 'Quizz',
                 quizzes_path,
                 class: "link #{url_contains?('active', 'quiz')}" %>
 
-    <%= link_to "Blog",
+    <%= link_to 'Blog',
                 posts_path,
                 class: "link #{url_contains?('active', 'posts')}" %>
 
-    <%= link_to "About",
-                page_path("about"),
+    <%= link_to 'About',
+                page_path('about'),
                 class: "link #{url_contains?('active', 'about')}" %>
   </div>
 </nav>

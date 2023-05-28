@@ -11,9 +11,6 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2022_05_12_201031) do
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -40,7 +37,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_12_201031) do
     t.string "content_type"
     t.text "metadata"
     t.string "service_name", null: false
-    t.bigint "byte_size", null: false
+    t.integer "byte_size", null: false
     t.string "checksum"
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
@@ -57,13 +54,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_12_201031) do
     t.integer "value", default: 1, null: false
     t.string "content", default: "", null: false
     t.string "information", default: "", null: false
-    t.bigint "correct_id"
+    t.integer "correct_id"
     t.index ["correct_id"], name: "index_answers_on_correct_id"
   end
 
   create_table "choices", force: :cascade do |t|
-    t.bigint "answer_id", null: false
-    t.bigint "question_id", null: false
+    t.integer "answer_id", null: false
+    t.integer "question_id", null: false
     t.index ["answer_id"], name: "index_choices_on_answer_id"
     t.index ["question_id"], name: "index_choices_on_question_id"
   end
@@ -71,8 +68,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_12_201031) do
   create_table "comments", force: :cascade do |t|
     t.string "content"
     t.integer "status", default: 0, null: false
-    t.bigint "post_id", null: false
-    t.bigint "user_id", null: false
+    t.integer "post_id", null: false
+    t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["post_id"], name: "index_comments_on_post_id"
@@ -81,12 +78,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_12_201031) do
 
   create_table "evaluations", force: :cascade do |t|
     t.decimal "score", default: "0.0", null: false
-    t.string "comment", default: "", null: false
-    t.string "form_snapshot", default: "", null: false
     t.integer "status", default: 0, null: false
-    t.integer "kind", default: 0, null: false
-    t.bigint "user_id"
-    t.bigint "quiz_id"
+    t.integer "user_id"
+    t.integer "quiz_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["quiz_id"], name: "index_evaluations_on_quiz_id"
@@ -106,7 +100,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_12_201031) do
 
   create_table "notifications", force: :cascade do |t|
     t.string "notifiable_type", null: false
-    t.bigint "notifiable_id", null: false
+    t.integer "notifiable_id", null: false
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -116,11 +110,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_12_201031) do
   create_table "pages", force: :cascade do |t|
     t.string "title", null: false
     t.text "content"
-    t.string "layout"
     t.string "slug"
     t.integer "status", default: 0, null: false
-    t.bigint "user_id", null: false
-    t.bigint "parent_id"
+    t.integer "user_id", null: false
+    t.integer "parent_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["parent_id"], name: "index_pages_on_parent_id"
@@ -131,10 +124,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_12_201031) do
   create_table "posts", force: :cascade do |t|
     t.string "title", null: false
     t.text "content"
-    t.string "excerpt", default: "", null: false
+    t.string "excerpt", limit: 150, default: "", null: false
     t.string "slug"
     t.integer "status", default: 0, null: false
-    t.bigint "user_id", null: false
+    t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["slug"], name: "index_posts_on_slug", unique: true
@@ -144,12 +137,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_12_201031) do
   create_table "questions", force: :cascade do |t|
     t.string "content", null: false
     t.integer "kind", default: 0, null: false
-    t.string "information", null: false
+    t.string "information"
   end
 
   create_table "quizzes", force: :cascade do |t|
     t.string "title", default: "", null: false
-    t.integer "kind", default: 0, null: false
     t.string "information", default: "", null: false
     t.integer "duration", default: 3600, null: false
     t.string "description", default: "", null: false
@@ -162,19 +154,19 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_12_201031) do
     t.string "content", default: "", null: false
     t.integer "value", default: 0, null: false
     t.integer "kind", default: 0, null: false
-    t.bigint "answer_id", null: false
-    t.bigint "question_id", null: false
-    t.bigint "quiz_id", null: false
+    t.integer "answer_id", null: false
+    t.integer "question_id", null: false
+    t.integer "evaluation_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["answer_id"], name: "index_reactions_on_answer_id"
+    t.index ["evaluation_id"], name: "index_reactions_on_evaluation_id"
     t.index ["question_id"], name: "index_reactions_on_question_id"
-    t.index ["quiz_id"], name: "index_reactions_on_quiz_id"
   end
 
   create_table "responses", force: :cascade do |t|
-    t.bigint "question_id", null: false
-    t.bigint "answer_id", null: false
+    t.integer "question_id", null: false
+    t.integer "answer_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["answer_id"], name: "index_responses_on_answer_id"
@@ -182,8 +174,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_12_201031) do
   end
 
   create_table "specifications", force: :cascade do |t|
-    t.bigint "question_id", null: false
-    t.bigint "quiz_id", null: false
+    t.integer "question_id", null: false
+    t.integer "quiz_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["question_id"], name: "index_specifications_on_question_id"
@@ -193,7 +185,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_12_201031) do
   create_table "taggings", force: :cascade do |t|
     t.bigint "taggable_id"
     t.string "taggable_type"
-    t.bigint "tag_id", null: false
+    t.integer "tag_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["tag_id"], name: "index_taggings_on_tag_id"
@@ -228,11 +220,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_12_201031) do
     t.string "first_name"
     t.string "last_name"
     t.text "bio"
-    t.jsonb "links"
+    t.text "links"
     t.date "birthday"
     t.integer "role", default: 0, null: false
     t.integer "status", default: 0, null: false
-    t.string "username", default: "", null: false
+    t.string "username"
     t.integer "evaluations_count", default: 0, null: false
     t.string "slug"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
@@ -244,9 +236,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_12_201031) do
 
   create_table "votes", force: :cascade do |t|
     t.string "votable_type"
-    t.bigint "votable_id"
+    t.integer "votable_id"
     t.string "voter_type"
-    t.bigint "voter_id"
+    t.integer "voter_id"
     t.boolean "vote_flag"
     t.string "vote_scope"
     t.integer "vote_weight"
@@ -271,8 +263,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_12_201031) do
   add_foreign_key "pages", "users"
   add_foreign_key "posts", "users"
   add_foreign_key "reactions", "answers"
+  add_foreign_key "reactions", "evaluations"
   add_foreign_key "reactions", "questions"
-  add_foreign_key "reactions", "quizzes"
   add_foreign_key "responses", "answers"
   add_foreign_key "responses", "questions"
   add_foreign_key "specifications", "questions"

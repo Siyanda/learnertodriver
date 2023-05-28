@@ -6,11 +6,11 @@ class AddUserDetails < ActiveRecord::Migration[6.1]
       t.string :first_name
       t.string :last_name
       t.text :bio
-      t.jsonb :links
+      t.text :links
       t.date :birthday
       t.integer :role, default: 0, null: false
       t.integer :status, default: 0, null: false
-      t.string :username, default: '', null: false
+      t.string :username
       t.integer :evaluations_count, default: 0, null: false
       t.string :slug
     end

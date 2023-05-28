@@ -9,6 +9,10 @@ export default class extends Controller {
 
   static targets = [ 'slide', 'progress', 'controls' ]
 
+  initialize() {
+    console.log('load quiz')
+  }
+
   indexValueChanged() {
     this.currentSlide()
     this.sliderState()

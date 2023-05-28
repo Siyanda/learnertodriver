@@ -4,13 +4,13 @@
         Page Title
       </h2>
       <h1 class="post-title">
-        <%= f.text_field :title, class: "basic-border form-textarea" %>
+        <%= f.text_field :title, class: 'basic-border form-textarea' %>
       </h1>
     </div>
 
     <div class="post-content">
       <div class="post-body">
-        <%= f.text_area :content, class: "basic-border lg-form-textarea" %>
+        <%= f.text_area :content, class: 'basic-border lg-form-textarea' %>
       </div>
     </div>
 
@@ -30,7 +30,7 @@
           <div class="flex top-padded bottom-padded center-aligned">
             <%= link_to pages_path, class: 'flex center-aligned red-text rounded dark ' do %>
               <div class="red-stroke mdm-svg icon">
-                <%= inline_svg("icons/trash-o.svg") %>
+                <%= inline_svg('icons/trash-o.svg') %>
               </div>
               <span class="margin-sides">Move to Trash</span>
             <% end %>

@@ -10,7 +10,7 @@ class CreateReactions < ActiveRecord::Migration[6.1]
 
       t.references :answer, null: false, foreign_key: true
       t.references :question, null: false, foreign_key: true
-      t.references :quiz, null: false, foreign_key: true
+      t.references :evaluation, null: false, foreign_key: true
 
       t.timestamps
     end

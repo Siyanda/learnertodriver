@@ -18,13 +18,16 @@
     <div id="respond" class="comment-respond">
       <h4 id="reply-title" class="comment-reply-title">Leave a Reply</h4>
 
-    <%= simple_form_for [post, Comment.new]  do |f| %>
-      <div class="field">
-        <%= f.text_area :content, class: 'basic-border form-textarea' %>
-      </div>
-    <br>
+      <%= form_for [post, Comment.new]  do |f| %>
+
+        <div class="field">
+          <%= f.text_area :content, class: 'basic-border form-textarea' %>
+        </div>
+
+        <br>
+
         <%= f.submit 'Post Comment', class: 'rounded button btn-primary' %>
-    <% end %>
+      <% end %>
 
     </div>
   </div>

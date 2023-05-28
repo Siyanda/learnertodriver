@@ -2,35 +2,29 @@
 
 class EvaluationsController < ApplicationController
   before_action :set_evaluation, only: %i[show edit update destroy]
-  before_action :set_user, only: %i[show edit create update destroy]
 
-  def show
-    # view completed
-  end
+  def show; end
 
   def new
     @quiz = Quiz.friendly.find(params[:quiz_id])
-    @evaluation = Evaluation.new
+    @evaluation = @quiz.evaluations.build
   end
 
-  def edit
-    @evaluation.reactions.build
-  end
+  def edit; end
 
   def create
-    @evaluation = @user.evaluations.new evaluation_params
+    @quiz = Quiz.friendly.find(params[:quiz_id])
+    @evaluation = @quiz.evaluations.build(user: current_user)
 
     if @evaluation.save
-
-      redirect_to root_path, notice: t('.create')
+      redirect_to quizzes_path, notice: t('.create')
     else
-      render action: 'new'
+      redirect_to quizzes_path, notice: t('controllers.notices.error', model: 'Evaluation')
     end
   end
 
-  def update
-    # when editing
-  end
+  def update; end
+  def destroy; end
 
   private
 
@@ -38,13 +32,9 @@ class EvaluationsController < ApplicationController
     @evaluation = Evaluation.find(params[:id])
   end
 
-  def set_user
-    @user = User.friendly.find(params[:user_id])
-  end
-
-  # TODO: use form object for reactions_attributes
   def evaluation_params
-    params.require(:evaluation).permit(:score, :comment, :form_snapshot, :user_id, :created_at, :updated_at,
-                                       reactions_attributes: %i[kind value question_id answer_id evaluation_id])
+    params.require(:evaluation).permit(:score, :comment, :form_snapshot, :user_id, :quiz_id,
+                                       reactions_attributes:
+                                        %i[name content value kind answer_id question_id evaluation_id])
   end
 end

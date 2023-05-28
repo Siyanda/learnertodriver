@@ -4,27 +4,34 @@
       Post Title
     </h2>
     <h1 class="post-title">
-      <%= f.text_field :title, class: "basic-border form-textarea" %>
+      <%= f.text_field :title, class: 'basic-border form-textarea' %>
     </h1>
   </div>
 
   <div class="post-content">
     <div class="post-body">
-      <%= f.text_area :content, class: "basic-border lg-form-textarea" %>
+      <%= f.text_area :content, class: 'basic-border lg-form-textarea' %>
     </div>
   </div>
 
-    <div class="flex center-aligned spaced-between post-content">
-      <div class="flex top-padded bottom-padded center-aligned">
-      </div>
-
-      <div class="flex top-padded bottom-padded center-aligned">
-        <p class="post-date">
-          Published <span class="time_ago_in_words"><%= DateTime.now.iso8601 %></span>
-        </p>
-        <p class="post-date">
-          Updated <span class="time_ago_in_words"><%= DateTime.now.iso8601 %></span>
-        </p>
-      </div>
+  <div class="flex center-aligned spaced-between post-content">
+    <div class="flex top-padded bottom-padded center-aligned">
     </div>
+
+    <div class="flex top-padded bottom-padded center-aligned">
+      <p class="post-date">
+        Published
+        <span class="time_ago_in_words">
+          <%= DateTime.now.iso8601 %>
+        </span>
+      </p>
+      <p class="post-date">
+        Updated
+        <span class="time_ago_in_words">
+          <%= DateTime.now.iso8601 %>
+        </span>
+      </p>
+    </div>
+  </div>
+
 <% end %>
