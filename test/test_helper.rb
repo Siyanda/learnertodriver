@@ -1,0 +1,26 @@
+# frozen_string_literal: true
+
+ENV['RAILS_ENV'] ||= 'test'
+
+if ENV['COVERAGE'].present?
+  require 'simplecov'
+  SimpleCov.start('rails')
+end
+
+require_relative '../config/environment'
+require 'application_system_test_case'
+require 'rails/test_help'
+require 'factory_bot'
+
+ActiveRecord::Schema.verbose = false
+
+Rails.logger.level = :info
+
+module ActiveSupport
+  class TestCase
+    make_my_diffs_pretty!
+    fixtures :all
+
+    include FactoryBot::Syntax::Methods
+  end
+end
