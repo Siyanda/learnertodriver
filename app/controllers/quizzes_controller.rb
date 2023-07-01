@@ -10,7 +10,6 @@ class QuizzesController < ApplicationController
 
   def show
     @questions = @quiz.questions.includes(:answers)
-    @question_answers_content = @question.answers.pluck(:content)
   end
 
   def new
