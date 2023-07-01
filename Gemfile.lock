@@ -70,28 +70,6 @@ GEM
     addressable (2.8.4)
       public_suffix (>= 2.0.2, < 6.0)
     ast (2.4.2)
-    async (2.6.2)
-      console (~> 1.10)
-      fiber-annotation
-      io-event (~> 1.1)
-      timers (~> 4.1)
-    async-container (0.16.12)
-      async
-      async-io
-    async-http (0.60.2)
-      async (>= 1.25)
-      async-io (>= 1.28)
-      async-pool (>= 0.2)
-      protocol-http (~> 0.24.0)
-      protocol-http1 (~> 0.15.0)
-      protocol-http2 (~> 0.15.0)
-      traces (>= 0.10.0)
-    async-http-cache (0.4.3)
-      async-http (~> 0.56)
-    async-io (1.35.0)
-      async
-    async-pool (0.4.0)
-      async (>= 1.25)
     aws-eventstream (1.2.0)
     aws-partitions (1.782.0)
     aws-sdk-core (3.176.1)
@@ -120,7 +98,6 @@ GEM
     bootsnap (1.16.0)
       msgpack (~> 1.2)
     brakeman (6.0.0)
-    build-environment (1.13.0)
     builder (3.2.4)
     capybara (3.39.2)
       addressable
@@ -132,9 +109,6 @@ GEM
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
     concurrent-ruby (1.2.2)
-    console (1.17.2)
-      fiber-annotation
-      fiber-local
     crass (1.0.6)
     cssbundling-rails (1.2.0)
       railties (>= 6.0.0)
@@ -167,22 +141,7 @@ GEM
       railties (>= 5.0.0)
     faker (3.2.0)
       i18n (>= 1.8.11, < 2)
-    falcon (0.42.3)
-      async
-      async-container (~> 0.16.0)
-      async-http (~> 0.57)
-      async-http-cache (~> 0.4.0)
-      async-io (~> 1.22)
-      build-environment (~> 1.13)
-      bundler
-      localhost (~> 1.1)
-      openssl (~> 3.0)
-      process-metrics (~> 0.2.0)
-      protocol-rack (~> 0.1)
-      samovar (~> 2.1)
     ffi (1.15.5)
-    fiber-annotation (0.2.0)
-    fiber-local (1.0.0)
     friendly_id (5.5.0)
       activerecord (>= 4.0.0)
     globalid (1.1.0)
@@ -197,7 +156,6 @@ GEM
       mini_magick (>= 4.9.5, < 5)
       ruby-vips (>= 2.0.17, < 3)
     io-console (0.6.0)
-    io-event (1.2.2)
     irb (1.7.0)
       reline (>= 0.3.0)
     jmespath (1.6.2)
@@ -216,7 +174,6 @@ GEM
     litestack (0.2.3)
       oj
       sqlite3
-    localhost (1.1.10)
     loofah (2.21.3)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
@@ -225,7 +182,6 @@ GEM
       net-imap
       net-pop
       net-smtp
-    mapping (1.1.1)
     marcel (1.0.2)
     matrix (0.4.2)
     method_source (1.0.0)
@@ -248,7 +204,6 @@ GEM
     nokogiri (1.15.2-arm64-darwin)
       racc (~> 1.4)
     oj (3.15.0)
-    openssl (3.1.0)
     orm_adapter (0.5.0)
     pagy (6.0.4)
     parallel (1.23.0)
@@ -260,25 +215,14 @@ GEM
     postmark-rails (0.22.1)
       actionmailer (>= 3.0.0)
       postmark (>= 1.21.3, < 2.0)
-    process-metrics (0.2.1)
-      console (~> 1.8)
-      samovar (~> 2.1)
     propshaft (0.7.0)
       actionpack (>= 7.0.0)
       activesupport (>= 7.0.0)
       rack
       railties (>= 7.0.0)
-    protocol-hpack (1.4.2)
-    protocol-http (0.24.4)
-    protocol-http1 (0.15.0)
-      protocol-http (~> 0.22)
-    protocol-http2 (0.15.1)
-      protocol-hpack (~> 1.4)
-      protocol-http (~> 0.18)
-    protocol-rack (0.2.6)
-      protocol-http (~> 0.23)
-      rack (>= 1.0)
     public_suffix (5.0.1)
+    puma (6.3.0)
+      nio4r (~> 2.0)
     racc (1.7.1)
     rack (2.2.7)
     rack-test (2.1.0)
@@ -349,9 +293,6 @@ GEM
     ruby-vips (2.1.4)
       ffi (~> 1.12)
     rubyzip (2.3.2)
-    samovar (2.2.0)
-      console (~> 1.0)
-      mapping (~> 1.0)
     sass-embedded (1.63.6-arm64-darwin)
       google-protobuf (~> 3.23)
     selenium-webdriver (4.10.0)
@@ -373,8 +314,6 @@ GEM
       railties (>= 6.0.0)
     thor (1.2.2)
     timeout (0.4.0)
-    timers (4.3.5)
-    traces (0.11.1)
     turbo-rails (1.4.0)
       actionpack (>= 6.0.0)
       activejob (>= 6.0.0)
@@ -417,7 +356,6 @@ DEPENDENCIES
   erb_lint
   factory_bot_rails
   faker
-  falcon
   friendly_id
   gretel
   image_processing
@@ -430,6 +368,7 @@ DEPENDENCIES
   pagy
   postmark-rails
   propshaft
+  puma
   rails
   ransack
   redcarpet
