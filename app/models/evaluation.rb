@@ -5,7 +5,7 @@ class Evaluation < ApplicationRecord
   belongs_to :quiz
 
   has_many :reactions, dependent: :destroy
-  accepts_nested_attributes_for :reactions, :allow_destroy
+  accepts_nested_attributes_for :reactions, allow_destroy: true
 
   validates :score, presence: true
   validates :status, presence: true
