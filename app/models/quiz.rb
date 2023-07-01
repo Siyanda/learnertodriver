@@ -10,6 +10,8 @@ class Quiz < ApplicationRecord
 
   accepts_nested_attributes_for :questions, allow_destroy: true
 
+  has_one_attached :cover_image
+
   validates :title, presence: true
   validates :duration, presence: true
   validates :information, presence: true
