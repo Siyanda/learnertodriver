@@ -147,6 +147,7 @@ GEM
     globalid (1.1.0)
       activesupport (>= 5.0)
     google-protobuf (3.23.3-arm64-darwin)
+    google-protobuf (3.23.3-x86_64-linux)
     gretel (4.5.0)
       actionview (>= 5.1, < 7.1)
       railties (>= 5.1, < 7.1)
@@ -202,6 +203,8 @@ GEM
       net-protocol
     nio4r (2.5.9)
     nokogiri (1.15.2-arm64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.15.2-x86_64-linux)
       racc (~> 1.4)
     oj (3.15.0)
     orm_adapter (0.5.0)
@@ -295,6 +298,8 @@ GEM
     rubyzip (2.3.2)
     sass-embedded (1.63.6-arm64-darwin)
       google-protobuf (~> 3.23)
+    sass-embedded (1.63.6-x86_64-linux-gnu)
+      google-protobuf (~> 3.23)
     selenium-webdriver (4.10.0)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
@@ -310,6 +315,7 @@ GEM
     smart_properties (1.17.0)
     spring (4.1.1)
     sqlite3 (1.6.3-arm64-darwin)
+    sqlite3 (1.6.3-x86_64-linux)
     stimulus-rails (1.2.1)
       railties (>= 6.0.0)
     thor (1.2.2)
@@ -342,6 +348,7 @@ GEM
 
 PLATFORMS
   arm64-darwin-22
+  x86_64-linux
 
 DEPENDENCIES
   acts_as_votable
