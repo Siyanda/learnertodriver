@@ -33,6 +33,7 @@ gem 'acts_as_votable'
 group :development, :test do
   gem 'debug'
   gem 'faker'
+  gem 'rails_live_reload'
   gem 'shoulda-matchers'
   gem 'factory_bot_rails'
   gem 'rubocop-rails', require: false
