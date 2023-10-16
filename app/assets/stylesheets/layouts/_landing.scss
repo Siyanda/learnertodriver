@@ -4,8 +4,12 @@
   }
 }
 
-.button {
+.icon,
+.button,
+.non-selectable,
+.btn-text {
   user-select: none;
+  -webkit-user-select: none;
 }
 
 .wrap {

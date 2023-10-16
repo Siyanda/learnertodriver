@@ -233,8 +233,24 @@
   border-bottom: thin solid var(--mid-color);
 }
 
+.disabled {
+  opacity: 50%;
+
+  &:active {
+    pointer-events: none;
+  }
+  &:hover {
+    cursor: not-allowed;
+  }
+}
+
 .hidden {
   display: none;
+}
+
+.non-selectable {
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .auto-marg {

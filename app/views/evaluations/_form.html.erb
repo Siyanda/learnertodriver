@@ -1,6 +1,8 @@
-<%= form_with(model: Evaluation.new, url: [quiz, Evaluation.new]) do |form| %>
+<% if quiz.questions.any? %>
 
-  <div class="slider-form" data-controller="slides">
+<%= form_with(model: evaluation, url: [quiz, evaluation]) do |form| %>
+
+  <div class="slider-form" data-controller="slides" data-slides-total-value="<%= quiz.questions.size %>">
 
     <div class="alt-border gapped content">
       <% quiz.questions.random.each.with_index(1) do |question, index| %>
@@ -15,12 +17,11 @@
             <%= content_tag(:h2, question.content, class: 'question') %>
 
             <div class="answers">
-              <%= form.fields_for :reactions, Reaction.new do |reaction_fields| %>
+              <%= form.fields_for :choices, Choice.new do |choice| %>
 
-              <%= reaction_fields.collection_radio_buttons :answer, question.answers, :id, :content do |b| %>
-                  <%= b.label(class: 'flex rev-row spaced-between clickable answer') { b.radio_button(class: 'radio_button') + b.label } %>
+                <%= choice.collection_radio_buttons :answer_id, question.answers, :id, :content do |answer| %>
+                  <%= answer.label(class: 'flex rev-row spaced-between clickable answer') { answer.radio_button(class: 'radio_button') + answer.label } %>
                 <% end %>
-
               <% end %>
             </div>
 
@@ -31,18 +32,18 @@
     <div class="flex spaced-between bottom full-width white-bg level-two fixed padded alt-border controls" data-slides-target="controls" style="position: fixed;bottom: 0;z-index: 2;">
 
       <div class="clickable" data-action="click->slides#previous">
-        <div class="hide-start left">
+        <div class="left hide-at-start non-selectable">
           <div class="flex large-text dark center-aligned padded rounded button">
             <div class="standard-svg current-color-fill icon">
               <%= inline_svg('icons/arrow-left.svg') %>
             </div>
-            <div class="btn-text">Previous</div>
+            <div class="btn-text">Prev</div>
           </div>
         </div>
       </div>
 
-      <div class="clickable" data-action="click->slides#next">
-        <div class="hide-end right">
+      <div class="clickable hide-at-end non-selectable" data-action="click->slides#next">
+        <div class="right">
             <div class="flex rev-row large-text dark center-aligned padded rounded button">
             <div class="standard-svg current-color-fill icon">
               <%= inline_svg('icons/arrow-right.svg') %>
@@ -52,6 +53,12 @@
         </div>
       </div>
 
-    <%= form.submit 'Submit', id: 'form_submit', class: 'clickable shown-end button dark' %>
+    <div class="hide-at-start shown-at-end non-selectable">
+      <%= form.submit 'Submit', id: 'form_submit', class: 'flex clickable large-text dark center-aligned padded rounded button' %>
+    </div>
   </div>
+<% end %>
+
+<% else %>
+  No Questions for this quiz
 <% end %>

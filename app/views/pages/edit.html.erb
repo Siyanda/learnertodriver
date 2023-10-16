@@ -29,6 +29,8 @@
                 <%= inline_svg('icons/ui/date-calendar.svg') %>
               </div>
               <h4 class="capitalized"><span class="bold margin-sides">Schedule Page : </span><%= @page.created_at.iso8601 %></h4>
+
+              <%= content_tag(:span, nil, data: { 'dayjs-formatted-date-time-target': 'formattedTime', controller: 'dayjs-formatted-date-time', 'dayjs-formatted-date-time-date-value': @page.created_at.iso8601 }, class: 'date-value') %>
             </div>
 
           </div>

@@ -2,11 +2,11 @@
 
 require 'csv'
 
-models =  %w[user post comment page quiz question answer specification response tag]
+models =  %w[user post comment page quiz question answer quiz_question_linkage tag]
 
 puts '... seeding new data 💾'
 
-seeds_path = "#{Rails.root}/db/seeds/modules/import/#{Rails.env}"
+seeds_path = Rails.root.join("db/seeds/modules/import/#{Rails.env}").to_s
 
 models.each do |data|
   seed = File.read(seeds_path + "/data/#{data}.csv")
@@ -24,7 +24,7 @@ puts '... generating post and page content from markdown 📝'
 
 def rendered_md(file_name)
   markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true, tables: true)
-  seeds_path = "#{Rails.root}/db/seeds/modules/import/#{Rails.env}"
+  seeds_path = Rails.root.join("db/seeds/modules/import/#{Rails.env}").to_s
 
   content = File.read(seeds_path + "/content/#{file_name}.markdown")
   markdown.render(content)
@@ -41,8 +41,8 @@ puts '... attaching images 🖼️'
 
 models =  %w[quiz]
 
-models.each do |model_name|
-  data = File.read(seeds_path + "/assets/images/image_list.csv")
+models.each do |_model_name|
+  data = File.read("#{seeds_path}/assets/images/image_list.csv")
   image_list = CSV.parse(data, headers: true)
 
   image_list.each do |image_row|
@@ -55,7 +55,7 @@ models.each do |model_name|
 
     record = model.find_by!(search_by => search_value)
     record.send(attachment_name).attach(io: File.open("#{seeds_path}/assets/images/#{model}/#{file_name}"),
-                        filename: file_name,
-                        content_type: file_type)
+                                        filename: file_name,
+                                        content_type: file_type)
   end
 end

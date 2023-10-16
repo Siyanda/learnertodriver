@@ -4,8 +4,8 @@ class Evaluation < ApplicationRecord
   belongs_to :user
   belongs_to :quiz
 
-  has_many :reactions, dependent: :destroy
-  accepts_nested_attributes_for :reactions, allow_destroy: true
+  has_many :choices, dependent: :destroy
+  accepts_nested_attributes_for :choices, allow_destroy: true
 
   validates :score, presence: true
   validates :status, presence: true
@@ -15,8 +15,8 @@ class Evaluation < ApplicationRecord
   private
 
   def calulate_average_score
-    self.score = reactions
+    self.score = choices
                  .pluck(:value)
-                 .inject(0.0) { |sum, el| sum + el } / reaction_values.size
+                 .inject(0.0) { |sum, el| sum + el } / choice_values.size
   end
 end

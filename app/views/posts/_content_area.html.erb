@@ -16,10 +16,10 @@
       <div class="flex center-aligned spaced-between post-meta">
         <div class="flex center-aligned">
           <div class="gray-stroke small-svg icon"><%= inline_svg('icons/clock.svg') %></div>
-          <p class="post-date">
-            Posted <span class="time_ago_in_words"><%= post.created_at.iso8601 %></span>
-          </p>
-        </div>
+              <p class="post-date">Posted
+              <%= content_tag(:span, nil, data: { 'dayjs-time-ago-target': 'formattedTime', controller: 'dayjs-time-ago', 'dayjs-time-ago-time-stamp-value': post.created_at.iso8601 }, class: 'date-value') %>
+              </p>
+          </div>
 
       <div class="flex center-aligned">
         <%= link_to like_post_path(post), 'data-turbo-method': :put, class: 'vote' do %>
