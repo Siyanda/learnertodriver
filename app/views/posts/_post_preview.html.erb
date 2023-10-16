@@ -38,7 +38,9 @@
         <%= inline_svg('icons/clock-fill.svg') %>
       </div>
       <div class="light-text">
-        <span class="time_ago_in_words"><%= post.created_at.iso8601 %></span>
+        <p class="post-date">
+              <%= content_tag(:span, nil, data: { 'dayjs-time-ago-target': 'formattedTime', controller: 'dayjs-time-ago', 'dayjs-time-ago-time-stamp-value': post.created_at.iso8601 }, class: 'date-value') %>
+          </p>
       </div>
     </div>
 

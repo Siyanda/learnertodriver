@@ -8,14 +8,14 @@ export default class extends Controller {
   }
 
   static values = {
-    timeStamp: String
+    date: String
   }
 
   initialize() {
-    updateText()
+    this.updateText()
   }
 
   updateText() {
-    this.formattedTimeTarget.innerText = dayjs(this.timeStampValue).format('D MMM YYYY')
+    this.formattedTimeTarget.innerText = dayjs(this.dateValue).format('D MMM YYYY')
   }
 }

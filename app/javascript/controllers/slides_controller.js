@@ -4,14 +4,11 @@ export default class extends Controller {
 
  static values = {
                    state: { type: String, default: 'start' },
+                   total: { type: Number, default: 0 },
                    index: { type: Number, default: 0 }
                   }
 
   static targets = [ 'slide', 'progress', 'controls' ]
-
-  initialize() {
-    console.log('load quiz')
-  }
 
   indexValueChanged() {
     this.currentSlide()
@@ -19,11 +16,11 @@ export default class extends Controller {
   }
 
   next() {
-    this.indexValue++
+    (this.indexValue < this.totalValue -1 ) ? this.indexValue++ : this.indexValue
   }
 
   previous() {
-    this.indexValue--
+    (this.indexValue > 0) ? this.indexValue-- : this.indexValue
   }
 
   currentSlide() {
@@ -34,9 +31,11 @@ export default class extends Controller {
 
   sliderState() {
     let position = this.indexValue
-    let max = parseInt(this.slideTargets.length - 1)
+    let total = this.totalValue - 1
 
-    position <= 0 ? this.stateValue = 'start' :
-    position >= max ? this.stateValue = 'end' : this.stateValue = 'in_progress'
+    return position > 0 && (position == total) ? this.stateValue = 'end'
+      : position == 0 && (position < total) ? this.stateValue = 'start'
+      : position > 0 && (position < total) ? this.stateValue = 'in_progress'
+      : this.stateValue = 'at_start_end_and_in_progress';
   }
 }

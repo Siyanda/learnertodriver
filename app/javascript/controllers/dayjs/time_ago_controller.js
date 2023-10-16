@@ -19,7 +19,7 @@ export default class extends Controller {
     this.autoSlide()
   }
 
-   autoSlide() {
+  autoSlide() {
     this.interval = setInterval(() => { console.log('1 min')}, 60000)
 
     this.timeout = setTimeout(() => {

@@ -11,7 +11,15 @@
         <%= quiz.information.truncate(165) %>
       </p>
       <p class="item-meta">
-        Duration : <span class="s_to_duration"><%= quiz.duration %></span>
+        <p class="post-date">Duration:
+          <%= content_tag(
+            :span, nil, data: {
+                    'dayjs-to-duration-target': 'formattedTime',
+                    controller: 'dayjs-to-duration',
+                    'dayjs-to-duration-time-stamp-value': quiz.duration
+                  },
+            class: 'duration-value') %>
+          </p>
       </p>
     </div>
       <div class="cta">
