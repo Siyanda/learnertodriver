@@ -5,8 +5,8 @@ class Quiz < ApplicationRecord
   friendly_id :title, use: :slugged
 
   has_many :evaluations, dependent: :destroy
-  has_many :specifications, dependent: :destroy
-  has_many :questions, through: :specifications
+  has_many :quiz_question_linkages, dependent: :destroy
+  has_many :questions, through: :quiz_question_linkages
 
   accepts_nested_attributes_for :questions, allow_destroy: true
 
