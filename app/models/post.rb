@@ -31,6 +31,6 @@ class Post < ApplicationRecord
   end
 
   def set_defaults
-    excerpt = ActionView::Base.full_sanitizer.sanitize(content).truncate(150)
+    self.excerpt = ActionView::Base.full_sanitizer.sanitize(content).truncate(150)
   end
 end
