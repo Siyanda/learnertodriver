@@ -8,7 +8,7 @@ en:
   dev_company: "TypoGraphics"
   controllers:
     notices:
-      create: "%{model} was successfully created."
+      create: "Successfully saved %{model}."
       update: "%{model} was successfully updated."
       destroy: "%{model} was successfully removed."
       no_edit: "Not authorized to edit this %{model}"

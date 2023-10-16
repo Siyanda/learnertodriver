@@ -27,14 +27,12 @@ class User < ApplicationRecord
   def acceptable_avatar_image
     return unless avatar.attached?
 
-    unless avatar.blob.byte_size <= 1.megabyte
-      errors.add(:avatar, 'file is too larger than 1Mb')
-    end
+    errors.add(:avatar, 'file is too larger than 1Mb') unless avatar.blob.byte_size <= 1.megabyte
 
     acceptable_types = ['image/jpeg', 'image/png']
-    unless acceptable_types.include?(avatar.content_type)
-      errors.add(:avatar, 'must be a JPEG or PNG')
-    end
+    return if acceptable_types.include?(avatar.content_type)
+
+    errors.add(:avatar, 'must be a JPEG or PNG')
   end
 
   def should_generate_new_friendly_id?
