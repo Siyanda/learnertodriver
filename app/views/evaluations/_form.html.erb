@@ -1,6 +1,6 @@
 <% if quiz.questions.any? %>
 
-<%= form_with(model: @evaluation, url: [quiz, @evaluation]) do |form| %>
+<%= form_with(model: evaluation, url: [quiz, evaluation]) do |form| %>
 
   <div class="slider-form" data-controller="slides" data-slides-total-value="<%= quiz.questions.size %>">
 

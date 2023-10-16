@@ -13,12 +13,13 @@
       <p class="item-meta">
         <p class="post-date">Duration:
           <%= content_tag(
-            :span, nil, data: {
-                    'dayjs-to-duration-target': 'formattedTime',
-                    controller: 'dayjs-to-duration',
-                    'dayjs-to-duration-time-stamp-value': quiz.duration
-                  },
-            class: 'duration-value') %>
+                :span, nil, data: {
+                              'dayjs-to-duration-target': 'formattedTime',
+                              controller: 'dayjs-to-duration',
+                              'dayjs-to-duration-time-stamp-value': quiz.duration
+                            },
+                            class: 'duration-value'
+              ) %>
           </p>
       </p>
     </div>
