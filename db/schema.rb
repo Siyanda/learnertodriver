@@ -54,14 +54,23 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_12_201031) do
     t.integer "value", default: 1, null: false
     t.string "content", default: "", null: false
     t.string "information", default: "", null: false
+    t.integer "question_id", null: false
     t.integer "correct_id"
     t.index ["correct_id"], name: "index_answers_on_correct_id"
+    t.index ["question_id"], name: "index_answers_on_question_id"
   end
 
   create_table "choices", force: :cascade do |t|
+    t.string "name", default: "", null: false
+    t.string "content", default: "", null: false
+    t.integer "value", default: 0, null: false
     t.integer "answer_id", null: false
     t.integer "question_id", null: false
+    t.integer "evaluation_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["answer_id"], name: "index_choices_on_answer_id"
+    t.index ["evaluation_id"], name: "index_choices_on_evaluation_id"
     t.index ["question_id"], name: "index_choices_on_question_id"
   end
 
@@ -140,6 +149,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_12_201031) do
     t.string "information"
   end
 
+  create_table "quiz_question_linkages", force: :cascade do |t|
+    t.integer "question_id", null: false
+    t.integer "quiz_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["question_id"], name: "index_quiz_question_linkages_on_question_id"
+    t.index ["quiz_id"], name: "index_quiz_question_linkages_on_quiz_id"
+  end
+
   create_table "quizzes", force: :cascade do |t|
     t.string "title", default: "", null: false
     t.string "information", default: "", null: false
@@ -149,21 +167,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_12_201031) do
     t.index ["slug"], name: "index_quizzes_on_slug", unique: true
   end
 
-  create_table "reactions", force: :cascade do |t|
-    t.string "name", default: "", null: false
-    t.string "content", default: "", null: false
-    t.integer "value", default: 0, null: false
-    t.integer "kind", default: 0, null: false
-    t.integer "answer_id", null: false
-    t.integer "question_id", null: false
-    t.integer "evaluation_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["answer_id"], name: "index_reactions_on_answer_id"
-    t.index ["evaluation_id"], name: "index_reactions_on_evaluation_id"
-    t.index ["question_id"], name: "index_reactions_on_question_id"
-  end
-
   create_table "responses", force: :cascade do |t|
     t.integer "question_id", null: false
     t.integer "answer_id", null: false
@@ -171,15 +174,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_12_201031) do
     t.datetime "updated_at", null: false
     t.index ["answer_id"], name: "index_responses_on_answer_id"
     t.index ["question_id"], name: "index_responses_on_question_id"
-  end
-
-  create_table "specifications", force: :cascade do |t|
-    t.integer "question_id", null: false
-    t.integer "quiz_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["question_id"], name: "index_specifications_on_question_id"
-    t.index ["quiz_id"], name: "index_specifications_on_quiz_id"
   end
 
   create_table "taggings", force: :cascade do |t|
@@ -253,7 +247,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_12_201031) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "answers", "answers", column: "correct_id"
+  add_foreign_key "answers", "questions"
   add_foreign_key "choices", "answers"
+  add_foreign_key "choices", "evaluations"
   add_foreign_key "choices", "questions"
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
@@ -262,12 +258,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_12_201031) do
   add_foreign_key "pages", "pages", column: "parent_id"
   add_foreign_key "pages", "users"
   add_foreign_key "posts", "users"
-  add_foreign_key "reactions", "answers"
-  add_foreign_key "reactions", "evaluations"
-  add_foreign_key "reactions", "questions"
+  add_foreign_key "quiz_question_linkages", "questions"
+  add_foreign_key "quiz_question_linkages", "quizzes"
   add_foreign_key "responses", "answers"
   add_foreign_key "responses", "questions"
-  add_foreign_key "specifications", "questions"
-  add_foreign_key "specifications", "quizzes"
   add_foreign_key "taggings", "tags"
 end
