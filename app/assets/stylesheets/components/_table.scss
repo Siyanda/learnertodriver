@@ -111,15 +111,17 @@ table {
     transition: background-color 100ms linear;
 
     &:hover {
-      background: var(--light);
+      background: var(--gainsboro);
+      border: thin solid var(--brand-alt);
+    }
+
+    &:has(:checked) {
+      background: var(--gainsboro);
       border: thin solid var(--brand-alt);
     }
   }
 }
 
-label input[type="radio"]:checked {
-  margin: 10px 0;
-}
 
 .score {
   width: 35%;

@@ -1,10 +1,10 @@
 [data-slides-state-value="start"] {
   .controls {
-    .hide-start {
+    .hide-at-start {
       display: none;
     }
 
-    .shown-end {
+    .shown-at-end {
       display: none;
     }
   }
@@ -12,11 +12,11 @@
 
 [data-slides-state-value="in_progress"] {
   .controls {
-    .hide-start {
+    .hide-at-start {
       display: block;
     }
 
-    .shown-end {
+    .shown-at-end {
       display: none;
     }
   }
@@ -24,15 +24,31 @@
 
 [data-slides-state-value="end"] {
   .controls {
-    .hide-start {
+    .hide-at-start {
       display: block;
     }
 
-    .hide-end {
+    .hide-at-end {
       display: none;
     }
 
-    .shown-end {
+    .shown-at-end {
+      display: block;
+    }
+  }
+}
+
+[data-slides-state-value="at_start_end_and_in_progress"] {
+  .controls {
+    .hide-at-start {
+      display: none;
+    }
+
+    .hide-at-end {
+      display: none;
+    }
+
+    .shown-at-end {
       display: block;
     }
   }
