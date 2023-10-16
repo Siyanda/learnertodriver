@@ -24,6 +24,7 @@ gem 'ransack'
 gem 'redcarpet'
 gem 'name_of_person'
 
+gem 'kamal'
 gem 'devise'
 gem 'gretel'
 gem 'friendly_id'
