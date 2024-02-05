@@ -1,4 +1,3 @@
 web: bin/rails server -p $PORT
-worker: sidekiq
 js: bun run build --watch
 css: bun run build:css --watch

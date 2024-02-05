@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_12_201031) do
+ActiveRecord::Schema[7.1].define(version: 2022_05_12_201031) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -37,7 +37,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_12_201031) do
     t.string "content_type"
     t.text "metadata"
     t.string "service_name", null: false
-    t.integer "byte_size", null: false
+    t.bigint "byte_size", null: false
     t.string "checksum"
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true

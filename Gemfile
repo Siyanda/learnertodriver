@@ -6,9 +6,6 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 gem 'rails'
 gem 'puma'
 gem 'litestack'
-gem 'pg'
-gem 'sidekiq'
-gem 'redis'
 gem 'bootsnap', require: false
 
 gem 'propshaft'
