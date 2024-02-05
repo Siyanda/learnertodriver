@@ -1,12 +1,17 @@
 {
-  "private": true,
+  "name": "app",
+  "private": "true",
+  "scripts": {
+    "build": "bun bun.config.js",
+    "build:css": "sass ./app/assets/stylesheets/application.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules"
+  },
   "dependencies": {
     "@hotwired/stimulus": "^3.2.1",
     "@hotwired/turbo-rails": "^7.3.0",
+    "hotwire-animate": "^1.0.1",
     "@rails/actioncable": "^7.0.6",
     "@rails/actiontext": "^7.0.6",
     "dayjs": "^1.11.8",
-    "hotwire-animate": "^1.0.1",
     "trix": "^2.0.5"
   }
 }
