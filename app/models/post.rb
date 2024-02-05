@@ -3,7 +3,6 @@
 class Post < ApplicationRecord
   extend FriendlyId
   friendly_id :title, use: :slugged
-
   acts_as_votable
 
   belongs_to :user
@@ -18,11 +17,11 @@ class Post < ApplicationRecord
   enum status: { draft: 0, unpublished: 1, published: 2, restricted: 3, removed: 4 }
   scope :most_recent, -> { order(created_at: :desc).limit(5) }
 
-  before_validation :set_defaults
-
   validates :title, presence: true
   validates :status, presence: true
   validates :excerpt, length: { maximum: 150 }, allow_blank: true
+
+  before_validation :set_defaults
 
   private
 

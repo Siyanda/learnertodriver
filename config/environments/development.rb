@@ -35,6 +35,8 @@ Rails.application.configure do
     config.cache_store = :null_store
   end
 
+  config.log_file_size = 2.megabytes
+
   # Ensure that the development server always compiles assets on-the-fly
   config.assets.prefix = '/dev-assets'
 
