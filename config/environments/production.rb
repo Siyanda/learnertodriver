@@ -62,9 +62,9 @@ Rails.application.configure do
   config.log_tags = [:request_id]
 
   # Use a different cache store in production.
-  config.cache_store = :litecache, YAML.load_file(Rails.root.join('config/litecache.yml'), aliases: true).
-                                      fetch(Rails.env, {}).
-                                      symbolize_keys
+  config.cache_store = :litecache, YAML.load_file(Rails.root.join('config/litecache.yml'), aliases: true)
+                                       .fetch(Rails.env, {})
+                                       .symbolize_keys
 
   # Use a real queuing backend for Active Job (and separate queues per environment).
   config.active_job.queue_adapter = :litejob
