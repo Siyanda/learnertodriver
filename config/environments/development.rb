@@ -35,6 +35,8 @@ Rails.application.configure do
     config.cache_store = :null_store
   end
 
+  config.log_file_size = 2.megabytes
+
   # Ensure that the development server always compiles assets on-the-fly
   config.assets.prefix = '/dev-assets'
 
@@ -72,6 +74,9 @@ Rails.application.configure do
 
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
+
+  # Use a real queuing backend for Active Job (and separate queues per environment).
+  config.active_job.queue_adapter = :litejob
 
   # allow for localhost subdomain testing
   config.hosts.clear

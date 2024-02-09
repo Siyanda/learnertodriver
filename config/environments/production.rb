@@ -4,9 +4,9 @@ require 'active_support/core_ext/integer/time'
 
 Rails.application.configure do
   # Specify AnyCable WebSocket server URL to use by JS client
-  config.after_initialize do
-    config.action_cable.url = ActionCable.server.config.url = ENV.fetch('CABLE_URL', '/cable') if AnyCable::Rails.enabled?
-  end
+  # config.after_initialize do
+  #   config.action_cable.url = ActionCable.server.config.url = ENV.fetch('CABLE_URL', '/cable') if AnyCable::Rails.enabled?
+  # end
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
@@ -62,10 +62,12 @@ Rails.application.configure do
   config.log_tags = [:request_id]
 
   # Use a different cache store in production.
-  # config.cache_store = :mem_cache_store
+  config.cache_store = :litecache, YAML.load_file(Rails.root.join('config/litecache.yml'), aliases: true).
+                                      fetch(Rails.env, {}).
+                                      symbolize_keys
 
   # Use a real queuing backend for Active Job (and separate queues per environment).
-  # config.active_job.queue_adapter     = :resque
+  config.active_job.queue_adapter = :litejob
   # config.active_job.queue_name_prefix = "learnertodriver_production"
 
   config.action_mailer.perform_caching = false
@@ -97,9 +99,8 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.action_mailer.default_url_options = { host: 'https://learnertodriver.co.za' }
   config.action_mailer.perform_deliveries = true
-
   config.action_mailer.delivery_method = :postmark
+  config.action_mailer.default_url_options = { host: Rails.application.credentials.app_url }
   config.action_mailer.postmark_settings = { api_token: Rails.application.credentials.postmark_api_token }
 end

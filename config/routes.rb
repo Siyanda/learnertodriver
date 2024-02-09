@@ -28,7 +28,6 @@ Rails.application.routes.draw do
   end
 
   resource :dashboard, only: %(show)
-  resources :users, only: %i[show edit]
   resources :tags, only: %i[show index]
   resources :pages
   resources :photos

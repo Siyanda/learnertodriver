@@ -9,11 +9,11 @@ gem 'litestack'
 gem 'bootsnap', require: false
 
 gem 'propshaft'
-gem 'dartsass-rails'
-gem 'cssbundling-rails'
 gem 'turbo-rails'
 gem 'stimulus-rails'
+gem 'dartsass-rails'
 gem 'jsbundling-rails'
+gem 'cssbundling-rails'
 
 gem 'image_processing'
 gem 'aws-sdk-s3', require: false
@@ -24,7 +24,6 @@ gem 'ransack'
 gem 'redcarpet'
 gem 'name_of_person'
 
-gem 'kamal'
 gem 'devise'
 gem 'gretel'
 gem 'friendly_id'
@@ -47,6 +46,7 @@ group :development do
   gem 'brakeman'
   gem 'web-console'
   gem 'letter_opener'
+  gem 'dockerfile-rails'
 end
 
 group :test do
