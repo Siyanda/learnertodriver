@@ -41,7 +41,7 @@
 
 #### Starting the application
 
-1.  `rails s`
+1.  `bin/dev`
 
 <br/>
 
