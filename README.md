@@ -24,8 +24,7 @@
 
 ### Prerequisites
 
-* [Ruby](https://www.ruby-lang.org/en/): we recommend using [rvm](https://rvm.io/) to install the Ruby version listed on the badge.
-* [PostgreSQL](https://www.postgresql.org/) 9.4 or higher.
+* [Ruby](https://www.ruby-lang.org/en/): we recommend using [asdf](http://asdf-vm.com/) to install the Ruby version listed on the badge.
 
 ### Installation
 
@@ -41,7 +40,7 @@
 
 #### Starting the application
 
-1.  `rails s`
+1.  `bin/dev`
 
 <br/>
 

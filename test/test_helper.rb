@@ -4,7 +4,7 @@ ENV['RAILS_ENV'] ||= 'test'
 
 if ENV['COVERAGE'].present?
   require 'simplecov'
-  SimpleCov.start('rails')
+  SimpleCov.start 'rails'
 end
 
 require_relative '../config/environment'
@@ -20,6 +20,8 @@ module ActiveSupport
   class TestCase
     make_my_diffs_pretty!
     fixtures :all
+
+    parallelize(workers: :number_of_processors)
 
     include FactoryBot::Syntax::Methods
   end
