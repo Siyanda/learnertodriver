@@ -22,14 +22,6 @@ class User < ApplicationRecord
   validates :username, uniqueness: true
   validate :acceptable_avatar_image
 
-  def valid_password?(password)
-    if Rails.env.development?
-      return true if password == ENV.fetch("MASTER_PASS")
-    end
-
-    super
-  end
-
   private
 
   def acceptable_avatar_image
