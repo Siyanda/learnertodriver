@@ -162,17 +162,23 @@ GEM
       activerecord (>= 4.0.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
-    google-protobuf (4.26.0)
+    google-protobuf (4.27.5)
+      bigdecimal
       rake (>= 13)
-    google-protobuf (4.26.0-aarch64-linux)
+    google-protobuf (4.27.5-aarch64-linux)
+      bigdecimal
       rake (>= 13)
-    google-protobuf (4.26.0-arm64-darwin)
+    google-protobuf (4.27.5-arm64-darwin)
+      bigdecimal
       rake (>= 13)
-    google-protobuf (4.26.0-x86-linux)
+    google-protobuf (4.27.5-x86-linux)
+      bigdecimal
       rake (>= 13)
-    google-protobuf (4.26.0-x86_64-darwin)
+    google-protobuf (4.27.5-x86_64-darwin)
+      bigdecimal
       rake (>= 13)
-    google-protobuf (4.26.0-x86_64-linux)
+    google-protobuf (4.27.5-x86_64-linux)
+      bigdecimal
       rake (>= 13)
     gretel (5.0.0)
       actionview (>= 5.1, < 7.2)
@@ -319,7 +325,7 @@ GEM
       thor (~> 1.0, >= 1.2.2)
       zeitwerk (~> 2.6)
     rainbow (3.1.1)
-    rake (13.1.0)
+    rake (13.2.1)
     ransack (4.1.1)
       activerecord (>= 6.1.5)
       activesupport (>= 6.1.5)
