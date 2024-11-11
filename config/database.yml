@@ -21,7 +21,7 @@ default: &default
 
 development:
   <<: *default
-  database: <%= Litesupport.root("development").join("data.sqlite3") %>
+  database: <%= ENV['DB_PATH'] %>
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -37,4 +37,4 @@ test:
 # `LITESTACK_DATA_PATH` environment variable.
 production:
   <<: *default
-  database: <%= ENV.fetch('LITESTACK_DATA_PATH', '/data/production/') %>
+  database: <%= ENV['DB_PATH'] %>
