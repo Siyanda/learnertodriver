@@ -70,9 +70,6 @@ RUN groupadd --system --gid 1000 rails && \
     chown -R 1000:1000 db log storage tmp /data
 USER 1000:1000
 
-# Deployment options
-ENV DATABASE_URL="sqlite3:///data/production.sqlite3"
-
 # Entrypoint prepares the database.
 ENTRYPOINT ["/rails/bin/docker-entrypoint"]
 
