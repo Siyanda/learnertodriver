@@ -56,5 +56,4 @@ USER 1000:1000
 ENTRYPOINT ["/rails/bin/docker-entrypoint"]
 
 EXPOSE 3000
-VOLUME /data
 CMD ["./bin/rails", "server"]
