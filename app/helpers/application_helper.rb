@@ -23,7 +23,7 @@ module ApplicationHelper
   end
 
   def meta_tag(name, content)
-    tag.meta(name: , content: ) unless content.nil?
+    tag.meta(name:, content:) unless content.nil?
   end
 
   def liquidize(content)

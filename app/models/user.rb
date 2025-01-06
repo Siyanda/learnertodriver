@@ -16,8 +16,8 @@ class User < ApplicationRecord
 
   has_one_attached :avatar
 
-  enum role: { subscriber: 0, contributor: 1, author: 2, editor: 3, admin: 4 }
-  enum status: { pending: 0, inactive: 1, active: 2, suspened: 3, blocked: 4 }
+  enum :role, { subscriber: 0, contributor: 1, author: 2, editor: 3, admin: 4 }
+  enum :status, { pending: 0, inactive: 1, active: 2, suspened: 3, blocked: 4 }
 
   validates :username, uniqueness: true
   validate :acceptable_avatar_image
