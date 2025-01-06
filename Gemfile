@@ -5,7 +5,10 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 gem 'rails'
 gem 'puma'
-gem 'litestack'
+gem 'sqlite3'
+gem 'solid_cache'
+gem 'solid_queue'
+gem 'solid_cable'
 gem 'bootsnap', require: false
 
 gem 'propshaft'
