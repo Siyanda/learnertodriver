@@ -11,15 +11,15 @@ Rails.application.routes.draw do
 
   devise_for :users,
              controllers: {
-               sessions: 'users/sessions',
+               sessions:      'users/sessions',
                confirmations: 'users/confirmations',
-               passwords: 'users/passwords',
-               unlocks: 'users/unlocks',
+               passwords:     'users/passwords',
+               unlocks:       'users/unlocks',
                registrations: 'users/registrations'
              },
              path: '/',
              path_names: {
-               sign_in: 'login',
+               sign_in:  'login',
                sign_out: 'logout'
              }
 
@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   end
 
   resource :dashboard, only: %(show)
-  resources :tags, only: %i[show index]
+  resources :tags,     only: %i[show index]
   resources :pages
   resources :photos
   resources :questions
@@ -37,12 +37,13 @@ Rails.application.routes.draw do
   resources :posts do
     resources :comments
     member do
-      put 'like', to: 'posts#upvote'
+      put 'like',    to: 'posts#upvote'
       put 'dislike', to: 'posts#downvote'
     end
   end
 
-  get '/service-worker.js', to: 'service_worker#service_worker'
-  get '/manifest.json', to: 'service_worker#manifest'
-  get '/offline.html', to: 'service_worker#offline'
+  get '/service-worker.js',        to: 'service_worker#service_worker'
+  get '/manifest.json',            to: 'service_worker#manifest'
+  get '/offline.html',             to: 'service_worker#offline'
+  get 'up' => 'rails/health#show', as: :rails_health_check
 end
