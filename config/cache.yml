@@ -10,6 +10,10 @@ development:
 test:
   <<: *default
 
+preview:
+  database: cache
+  <<: *default
+
 production:
   database: cache
   <<: *default

@@ -21,6 +21,19 @@ test:
   <<: *default
   database: storage/test.sqlite3
 
+staging:
+  <<: *default
+  database: storage/preview.sqlite3
+  cache:
+    <<: *default
+    database: storage/preview_cache.sqlite3
+  queue:
+    <<: *default
+    database: storage/preview_queue.sqlite3
+  cable:
+    <<: *default
+    database: storage/preview_cable.sqlite3
+
 preview:
   <<: *default
   database: storage/preview.sqlite3
