@@ -32,8 +32,8 @@ class EvaluationsController < ApplicationController
   end
 
   def evaluation_params
-    params.require(:evaluation).permit(:score, :comment, :form_snapshot, :user_id, :quiz_id,
-                                       choices_attributes:
-                                                           %i[name content kind answer_id question_id evaluation_id])
+    params.expect(evaluation: [:score, :comment, :form_snapshot, :user_id, :quiz_id,
+                               { choices_attributes:
+                                                     %i[name content kind answer_id question_id evaluation_id] }])
   end
 end

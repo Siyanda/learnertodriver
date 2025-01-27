@@ -60,6 +60,6 @@ class PagesController < ApplicationController
   end
 
   def page_params
-    params.require(:page).permit(:title, :content, :user_id)
+    params.expect(page: [:title, :content, :user_id])
   end
 end
