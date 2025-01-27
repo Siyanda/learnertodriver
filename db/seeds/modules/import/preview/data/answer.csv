@@ -1,0 +1,94 @@
+id,content,information,question_id
+1,"Longer if the vehicle is traveling at a higher speed.","Rules of the road answer type",1
+2,"Longer on a wet road than on a dry road","Rules of the road answer type",1
+3,"Longer if the vehicle is loaded.","Rules of the road answer type",1
+4,"If the road is clear for a long distance and can be done so without obstructing traffic.","Rules of the road answer type",2
+5,"In any manner as long as you use your indicator in time.","Rules of the road answer type",2
+6,"If the road is clear of traffic for a short distance.","Rules of the road answer type",2
+7,"60","Rules of the road answer type",3
+8,"45","Rules of the road answer type",3
+9,"30","Rules of the road answer type",3
+10,"Indicates that is is going to turn right.","Rules of the road answer type",4
+11,"Drives on the right hand side of the road with a shoulder where you can pass.","Rules of the road answer type",4
+12,"Drives in a town in the right-hand lane with two lanes in the same direction.","Rules of the road answer type",4
+13,"45","Rules of the road answer type",5
+14,"100","Rules of the road answer type",5
+15,"150","Rules of the road answer type",5
+16,"Switch on your indicator.","Rules of the road answer type",6
+17,"Check the bling spot","Rules of the road answer type",6
+18,"Looking the mirror","Rules of the road answer type",6
+19,"There is not enough space in the intersection to turn right without blocking other traffic","Rules of the road answer type",7
+20,"The vehicle in front of you wants to turn right and the road is wide enough to pass on the left-hand side","Rules of the road answer type",7
+21,"The robot (traffic signal) is yellow and you are already in the intersection","Rules of the road answer type",7
+22,"Pedestrians, who are already crossing the road when the red man signal starts showing, have right of way.","Rules of the road answer type",8
+23,"You can pass another vehicle waiting to turn right on its left side by going off the road.","Rules of the road answer type",8
+24,"You can stop in to off load passengers.","Rules of the road answer type",8
+25,"Stop and wait for the light to change to green before you go.","Rules of the road answer type",9
+26,"stop and go only if it is safe to do so.","Rules of the road answer type",9
+27,"Look out for road block as the light show you a police stop.","Rules of the road answer type",9
+28,"Call the local traffic department to report it","Rules of the road answer type",9
+29,"60","Rules of the road answer type",10
+30,"80","Rules of the road answer type",10
+31,"100","Rules of the road answer type",10
+32,"As fast as the other vehicle’s in the area","Rules of the road answer type",10
+33,"When is rains and you cannot see vehicles 100 m in front of you.","Rules of the road answer type",11
+34,"You tow another vehicle with a tow-bar.","Rules of the road answer type",11
+35,"At any time of day when you cannot see persons and vehicles 150 m in front of you.","Rules of the road answer type",11
+36,"Not pass any vehicle on the left-hand side.","Rules of the road answer type",12
+37,"Pass another vehicle at any place on the left hand side if it is turning right.","Rules of the road answer type",12
+38,"Pass another vehicle turning right,on the left-hand side without driving on the shoulder of the road.","Rules of the road answer type",12
+39,"Stop without swerving","Rules of the road answer type",13
+40,"swerve and stop next to it","Rules of the road answer type",13
+41,"swerve and pass","Rules of the road answer type",13
+42,"There must be someone with you in the vehicle with the same driving licence.","Rules of the road answer type",14
+43,"You are not allowed to drive on a freeway.","Rules of the road answer type",14
+44,"No passengers are allowed with you in the vehicle.","Rules of the road answer type",14
+45,"When you switch the emergency lights of your motor vehicle on.","Rules of the road answer type",15
+46,"When a traffic officer orders you to do so.","Rules of the road answer type",15
+47,"Under no circumstances.","Rules of the road answer type",15
+48,"If your vehicle has seat belts in the rear, it must be worn","Rules of the road answer type",16
+49,"You need not wear seat belt when reversing.","Rules of the road answer type",16
+50,"Children younger than 14 years need not wear seat belts.","Rules of the road answer type",16
+51,"If the front seat has a belt, your only passenger may not sit in the back","Rules of the road answer type",16
+52,"You already have a licence that authorizes the driving of the same vehicle class.","Rules of the road answer type",17
+53,"You are declared unfit to obtain a driving licence for a certain period and that period still prevails","Rules of the road answer type",17
+54,"Your licence was suspended temporarily and the suspension has not yet expired.","Rules of the road answer type",17
+55,"Opposite a vehicle, where the roadway is 10 m wide.","Rules of the road answer type",18
+56,"Where you are not allowed to park","Rules of the road answer type",18
+57,"5 m from a bridge","Rules of the road answer type",18
+58,"With a rope","Rules of the road answer type",19
+59,"With a tow-bar","Rules of the road answer type",19
+60,"On a trailer","Rules of the road answer type",19
+61,"0.75","Rules of the road answer type",20
+62,"1","Rules of the road answer type",20
+63,"1.5","Rules of the road answer type",20
+64,"When you are with in a traffic circle.","Rules of the road answer type",21
+65,"When you have stopped fist at a four way stop.","Rules of the road answer type",21
+66,"When you want to turn right at an intersection in a two way road.","Rules of the road answer type",21
+67,"Are nearing the top of a hill","Rules of the road answer type",22
+68,"Nearing a curve","Rules of the road answer type",22
+69,"Can only see 100 m in front of you because of smoke over the road.","Rules of the road answer type",22
+70,"With a rope","Rules of the road answer type",23
+71,"With a tow-bar","Rules of the road answer type",23
+72,"On a trailer","Rules of the road answer type",23
+73,"A motor car tows another motorcar with a rope and drive 40 km/h.","Rules of the road answer type",24
+74,"You tow another vehicle with a tow-bar.","Rules of the road answer type",24
+75,"A tractor tows a trailer with 10 passengers on it at a speed of 30km/h","Rules of the road answer type",24
+76,"Drinking and driving","Rules of the road answer type",24
+77,"Always be courteous and considerate towards fellow road users.","Rules of the road answer type",25
+78,"Do not exceed the speed limit.","Rules of the road answer type",25
+79,"Keep to the left side of the road as far as safe.","Rules of the road answer type",25
+80,"is always 120 km/m outside towns/cities?","Rules of the road answer type",26
+81,"can be determined by yourself if you look at the number on lanes which the road has","Rules of the road answer type",26
+82,"is shown to you by the signs next you the road","Rules of the road answer type",26
+83,"Slow down","Rules of the road answer type",27
+84,"Give other vehicle’s room to pass","Rules of the road answer type",27
+85,"Indicate your intensions and give the necessary signal in time","Rules of the road answer type",27
+86,"may use a little bit of alcohol for the shock","Rules of the road answer type",28
+87,"must check if anyone is injured","Rules of the road answer type",28
+88,"must immediately stop your vehicle","Rules of the road answer type",28
+89,"Switch on your indicator and change lanes.","Rules of the road answer type",29
+90," Give the necessary signal after looking for other traffic, change lanes.","Rules of the road answer type",29
+91,"Take a selfie","Rules of the road answer type",29
+92,"Apply the brakes lightly and then change lanes.","Rules of the road answer type",29
+93,"All of the above","Rules of the road answer type",1
