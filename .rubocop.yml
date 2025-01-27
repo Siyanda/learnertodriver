@@ -14,3 +14,6 @@ Style/Documentation:
 
 Rails/CreateTableWithTimestamps:
   Enabled: false
+
+Layout/HashAlignment:
+  EnforcedColonStyle: table

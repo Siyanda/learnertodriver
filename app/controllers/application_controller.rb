@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   layout :determine_layout
 
   def not_found!
-    raise ActionController::RoutingError.new("Not Found")
+    raise ActionController::RoutingError.new('Not Found')
   end
 
   private

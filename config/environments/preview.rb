@@ -100,6 +100,6 @@ Rails.application.configure do
 
   config.action_mailer.perform_deliveries = true
   config.action_mailer.delivery_method = :postmark
-  config.action_mailer.default_url_options = { host: ENV['APP_URL'] }
-  config.action_mailer.postmark_settings = { api_token: ENV['POSTMARK_API_TOKEN'] }
+  config.action_mailer.default_url_options = { host: ENV.fetch('APP_URL', nil) }
+  config.action_mailer.postmark_settings = { api_token: ENV.fetch('POSTMARK_API_TOKEN', nil) }
 end

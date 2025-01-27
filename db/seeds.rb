@@ -54,8 +54,8 @@ models.each do |_model_name|
     file_name = image_row['file_name'].to_s
 
     record = model.find_by!(search_by => search_value)
-    record.send(attachment_name).attach(io: File.open("#{seeds_path}/assets/images/#{image_row['model']}/#{file_name}"),
-                                        filename: file_name,
+    record.send(attachment_name).attach(io:           File.open("#{seeds_path}/assets/images/#{image_row['model']}/#{file_name}"),
+                                        filename:     file_name,
                                         content_type: file_type)
   end
 end

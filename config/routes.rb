@@ -17,8 +17,8 @@ Rails.application.routes.draw do
                unlocks:       'users/unlocks',
                registrations: 'users/registrations'
              },
-             path: '/',
-             path_names: {
+             path:        '/',
+             path_names:  {
                sign_in:  'login',
                sign_out: 'logout'
              }
