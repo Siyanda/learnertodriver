@@ -2,6 +2,8 @@ inherit_from: .rubocop_todo.yml
 
 require:
   - rubocop-rails
+  - rubocop-factory_bot
+  - rubocop-capybara
 
 AllCops:
   NewCops: enable
@@ -14,3 +16,6 @@ Style/Documentation:
 
 Rails/CreateTableWithTimestamps:
   Enabled: false
+
+Layout/HashAlignment:
+  EnforcedColonStyle: table

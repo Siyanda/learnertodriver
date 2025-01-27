@@ -76,6 +76,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :user_id, :content, :status, :excerpt, :slug, :author)
+    params.expect(post: %i[title user_id content status excerpt slug author])
   end
 end

@@ -1,32 +1,62 @@
-# SQLite. Versions 3.8.0 and up are supported.
-#   gem install sqlite3
-#
-#   Ensure the SQLite 3 gem is defined in your Gemfile
-#   gem "sqlite3"
-#
-# `Litesupport.root.join("data.sqlite3")` stores
-# application data in the path `./db/#{Rails.env}/data.sqlite3`
-#
-# `Litesupport.root(env).join(path)` stores
-# application data in the path `./db/#{env}/#{path}`
-#
-# idle_timeout should be set to zero, to avoid recycling sqlite connections
-# and losing the page cache
-#
-
 default: &default
-  adapter: litedb
+  adapter: sqlite3
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  database: storage/development.sqlite3
+  migrations_paths: db/cable_migrate
   idle_timeout: 0
 
 development:
   <<: *default
-  database: <%= Litesupport.root("development").join("data.sqlite3") %>
+  cache:
+    <<: *default
+    database: storage/development_cache.sqlite3
+  queue:
+    <<: *default
+    database: storage/development_queue.sqlite3
+  cable:
+    <<: *default
+    database: storage/development_cable.sqlite3
 
 test:
   <<: *default
-  database: <%= Litesupport.root("test").join("data.sqlite3") %>
+  database: storage/test.sqlite3
+
+staging:
+  <<: *default
+  database: storage/preview.sqlite3
+  cache:
+    <<: *default
+    database: storage/preview_cache.sqlite3
+  queue:
+    <<: *default
+    database: storage/preview_queue.sqlite3
+  cable:
+    <<: *default
+    database: storage/preview_cable.sqlite3
+
+preview:
+  <<: *default
+  database: storage/preview.sqlite3
+  cache:
+    <<: *default
+    database: storage/preview_cache.sqlite3
+  queue:
+    <<: *default
+    database: storage/preview_queue.sqlite3
+  cable:
+    <<: *default
+    database: storage/preview_cable.sqlite3
 
 production:
-  <<: *default
-  database: <%= Litesupport.root("production").join("data.sqlite3") %>
+  primary:
+    <<: *default
+    database: storage/production.sqlite3
+  cache:
+    <<: *default
+    database: storage/production_cache.sqlite3
+  queue:
+    <<: *default
+    database: storage/production_queue.sqlite3
+  cable:
+    <<: *default
+    database: storage/production_cable.sqlite3

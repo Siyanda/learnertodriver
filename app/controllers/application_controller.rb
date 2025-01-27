@@ -9,6 +9,10 @@ class ApplicationController < ActionController::Base
 
   layout :determine_layout
 
+  def not_found!
+    raise ActionController::RoutingError, 'Not Found'
+  end
+
   private
 
   def determine_layout

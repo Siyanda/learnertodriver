@@ -7,30 +7,45 @@ jobs:
     steps:
       - name: Check out code
         uses: actions/checkout@v1
-      - uses: ruby/setup-ruby@v1
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.3.0
-      - name: rubocop
+          ruby-version: 3.3.5
+          bundler-cache: true
+      - name: Install Gems
+        run: bundle install --with development test
+      - name: Run RuboCop
         uses: reviewdog/action-rubocop@v2
         with:
           rubocop_version: gemfile
-          rubocop_extensions: rubocop-rails:gemfile
+          rubocop_extensions: |
+            rubocop-rails:gemfile
+            rubocop-capybara:gemfile
+            rubocop-factory_bot:gemfile
           reporter: github-pr-review
   erb-lint:
     name: erb-lint
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: ruby/setup-ruby@v1
+      - name: Check out code
+        uses: actions/checkout@v3
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
+      - name: Install Gems
+        run: bundle install --with development test
       - run: bundle exec erblint app/views
   brakeman:
     name: brakeman
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: ruby/setup-ruby@v1
+      - name: Check out code
+        uses: actions/checkout@v3
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
+      - name: Install Gems
+        run: bundle install --with development test
       - run: bundle exec brakeman

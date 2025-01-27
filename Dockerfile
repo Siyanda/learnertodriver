@@ -19,7 +19,7 @@ FROM base AS build
 RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y build-essential curl libvips pkg-config unzip
 
-ARG BUN_VERSION=1.0.26
+ARG BUN_VERSION=1.1.45
 ENV BUN_INSTALL=/usr/local/bun
 ENV PATH=/usr/local/bun/bin:$PATH
 RUN curl -fsSL https://bun.sh/install | bash -s -- "bun-v${BUN_VERSION}"
@@ -29,7 +29,7 @@ RUN bundle install && \
     bundle exec bootsnap precompile --gemfile && \
     rm -rf ~/.bundle/ "${BUNDLE_PATH}"/ruby/*/cache "${BUNDLE_PATH}"/ruby/*/bundler/gems/*/.git
 
-COPY --link package.json bun.lockb ./
+COPY --link package.json bun.lock ./
 RUN bun install --frozen-lockfile
 
 COPY --link . .

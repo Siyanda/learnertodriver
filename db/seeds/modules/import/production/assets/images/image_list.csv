@@ -1,4 +1,1 @@
 file_name,file_type,model,attachment_name,find_by,find_value
-bike.jpg,image/jpeg,quiz,cover_image,slug,motorcycle-test
-car.jpg,image/jpeg,quiz,cover_image,slug,light-motor-vehicle
-truck.jpg,image/jpeg,quiz,cover_image,slug,heavy-motor-vehicle

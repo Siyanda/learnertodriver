@@ -10,7 +10,8 @@ class Tag < ApplicationRecord
                      source_type: 'Quiz'
 
   friendly_id :title, use: :slugged
-  enum status: { published: 0, unpublished: 1, restricted: 2, removed: 3 }
+
+  enum :status, { published: 0, unpublished: 1, restricted: 2, removed: 3 }
 
   validates :title, presence: true
 end

@@ -36,6 +36,6 @@ class QuestionsController < ApplicationController
   end
 
   def question_params
-    params.require(:question).permit(:content, :kind, :information)
+    params.expect(question: [:content, :kind, :information])
   end
 end
