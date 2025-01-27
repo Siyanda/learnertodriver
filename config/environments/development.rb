@@ -76,7 +76,9 @@ Rails.application.configure do
   # config.action_cable.disable_request_forgery_protection = true
 
   # Use a real queuing backend for Active Job (and separate queues per environment).
-  config.active_job.queue_adapter = :litejob
+  config.active_job.queue_adapter = :solid_queue
+  config.solid_queue.connects_to = { database: { writing: :queue } }
+  config.solid_queue.logger = ActiveSupport::Logger.new(STDOUT)
 
   # allow for localhost subdomain testing
   config.hosts.clear
