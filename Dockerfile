@@ -29,7 +29,7 @@ RUN bundle install && \
     bundle exec bootsnap precompile --gemfile && \
     rm -rf ~/.bundle/ "${BUNDLE_PATH}"/ruby/*/cache "${BUNDLE_PATH}"/ruby/*/bundler/gems/*/.git
 
-COPY --link package.json bun.lockb ./
+COPY --link package.json bun.lock ./
 RUN bun install --frozen-lockfile
 
 COPY --link . .
