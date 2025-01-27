@@ -1,10 +1,12 @@
 # frozen_string_literal: true
 
 class PagesController < ApplicationController
+  include AuthorizationConcern
+
   skip_before_action :authenticate_user!, only: %i[show]
   before_action :set_page_options
   before_action :set_page, only: %i[show edit update destroy]
-  before_action :require_same_user, only: %i[edit update destroy]
+  before_action -> { require_same_user(@page) }, only: %i[edit update destroy]
 
   def index
     @q = Page.ransack(params[:q])
@@ -46,15 +48,8 @@ class PagesController < ApplicationController
 
   private
 
-  def require_same_user
-    return unless current_user != @page.user
-
-    flash[:danger] = t('controllers.notices.no_edit', model: 'Page')
-    redirect_to root_path
-  end
-
   def set_page
-    @page = Page.friendly.find(params[:id])
+    @page = Page.friendly.find(params[:id]) or not_found!
   end
 
   def set_page_options
