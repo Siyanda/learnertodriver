@@ -9,7 +9,7 @@
   </a>
   <br/>
   <h1>📚 📝 🚗</h1>
-  <strong>Rails PWA with quizzes to get yo jbnju ready for the SA learners test</strong>
+  <strong>Rails PWA with quizzes to get you ready for the SA learners test</strong>
 </div>
 <br/>
 <p align="center">
