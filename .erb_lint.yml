@@ -28,3 +28,5 @@ linters:
         Enabled: false
       Lint/UselessAssignment:
         Enabled: false
+      Layout/HashAlignment:
+        Enabled: false
