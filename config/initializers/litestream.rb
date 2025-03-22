@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Use this hook to configure the litestream-ruby gem.
 # All configuration options will be available as environment variables, e.g.
 # config.replica_bucket becomes LITESTREAM_REPLICA_BUCKET
