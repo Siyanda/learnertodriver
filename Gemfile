@@ -28,6 +28,7 @@ gem 'ransack'
 gem 'redcarpet'
 gem 'name_of_person'
 
+gem 'csv'
 gem 'devise'
 gem 'gretel'
 gem 'friendly_id'
