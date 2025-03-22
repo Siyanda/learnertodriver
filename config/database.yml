@@ -1,51 +1,37 @@
 default: &default
   adapter: sqlite3
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  database: storage/development.sqlite3
-  migrations_paths: db/cable_migrate
-  idle_timeout: 0
+  timeout: 5000
 
 development:
-  <<: *default
+  primary:
+    <<: *default
+    database: storage/development.sqlite3
   cache:
     <<: *default
-    database: storage/development_cache.sqlite3
+    database: storage/development_solid_cache.sqlite3
   queue:
     <<: *default
     database: storage/development_queue.sqlite3
+    migrations_paths: db/queue_migrate
   cable:
     <<: *default
-    database: storage/development_cable.sqlite3
+    database: storage/development_solid_cable.sqlite3
 
 test:
-  <<: *default
-  database: storage/test.sqlite3
-
-staging:
-  <<: *default
-  database: storage/preview.sqlite3
+  primary:
+    <<: *default
+    database: storage/test.sqlite3
   cache:
     <<: *default
-    database: storage/preview_cache.sqlite3
+    database: storage/test_solid_cache.sqlite3
   queue:
     <<: *default
-    database: storage/preview_queue.sqlite3
+    database: storage/test_solid_queue.sqlite3
+    migrations_paths: db/queue_migrate
   cable:
     <<: *default
-    database: storage/preview_cable.sqlite3
-
-preview:
-  <<: *default
-  database: storage/preview.sqlite3
-  cache:
-    <<: *default
-    database: storage/preview_cache.sqlite3
-  queue:
-    <<: *default
-    database: storage/preview_queue.sqlite3
-  cable:
-    <<: *default
-    database: storage/preview_cable.sqlite3
+    database: storage/test_solid_cable.sqlite3
 
 production:
   primary:
@@ -53,10 +39,11 @@ production:
     database: storage/production.sqlite3
   cache:
     <<: *default
-    database: storage/production_cache.sqlite3
+    database: storage/production_solid_cache.sqlite3
   queue:
     <<: *default
-    database: storage/production_queue.sqlite3
+    database: storage/production_solid_queue.sqlite3
+    migrations_paths: db/queue_migrate
   cable:
     <<: *default
-    database: storage/production_cable.sqlite3
+    database: storage/production_solid_cable.sqlite3
