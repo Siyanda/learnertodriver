@@ -19,3 +19,4 @@ Rails/CreateTableWithTimestamps:
 
 Layout/HashAlignment:
   EnforcedColonStyle: table
+  EnforcedHashRocketStyle: table
