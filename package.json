@@ -7,11 +7,10 @@
   },
   "dependencies": {
     "@hotwired/stimulus": "^3.2.2",
-    "@hotwired/turbo-rails": "^8.0.12",
+    "@hotwired/turbo-rails": "^8.0.13",
     "@rails/actioncable": "^7.2.201",
     "@rails/actiontext": "^7.2.201",
     "dayjs": "^1.11.13",
-    "hotwire-animate": "^1.0.1",
     "trix": "^2.1.12"
   }
 }
