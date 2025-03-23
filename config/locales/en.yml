@@ -13,6 +13,11 @@ en:
       destroy: "%{model} was successfully removed."
       no_edit: "Not authorized to edit this %{model}"
       error: "There was an error saving this %{model}"
+    passwords:
+      reset_instructions: "Password reset instructions sent (if user with that email address exists)."
+      reset_sent: "Password has been reset."
+      missmatch: "Passwords did not match."
+      reset_invalid: "Password reset link is invalid or has expired."
   views:
     pagination:
       previous: "&lt; Previous"

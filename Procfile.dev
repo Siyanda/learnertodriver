@@ -1,4 +1,3 @@
-web: bin/rails server -p $PORT
-worker: bin/rails solid_queue:start
+web: env RUBY_DEBUG_OPEN=true bin/rails server
 js: bun run build --watch
 css: bun run build:css --watch

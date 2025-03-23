@@ -1,10 +1,10 @@
-import { Controller } from '@hotwired/stimulus'
-import dayjs from 'dayjs'
+import { Controller } from "@hotwired/stimulus"
+import dayjs from "dayjs"
 
 export default class extends Controller {
 
   static get targets() {
-    return ['formattedTime']
+    return ["formattedTime"]
   }
 
   static values = {
@@ -16,6 +16,6 @@ export default class extends Controller {
   }
 
   updateText() {
-    this.formattedTimeTarget.innerText = dayjs(this.dateValue).format('D MMM YYYY')
+    this.formattedTimeTarget.innerText = dayjs(this.dateValue).format("MMMM D, YYYY h:mm A")
   }
 }

@@ -1,0 +1,28 @@
+<%= tag.div(flash[:alert], style: "color:red") if flash[:alert] %>
+<%= tag.div(flash[:notice], style: "color:green") if flash[:notice] %>
+
+<%= form_with url: session_path do |form| %>
+  <h1 class="text-center">Sign in</h1>
+
+  <div class="form-floating mb-3">
+    <%= form.email_field :email_address, class: "form-control", required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email address", value: params[:email_address] %><br>
+    <label for="floatingInput">Email address</label>
+  </div>
+  <div class="form-floating">
+    <%= form.password_field :password, class: "form-control", required: true, autocomplete: "current-password", placeholder: "Enter your password", maxlength: 72 %><br>
+    <label for="floatingPassword">Password</label>
+  </div>
+
+  <br>
+  <%= form.submit "Sign in", class: "rounded button btn-primary p-4 text-white" %>
+<% end %>
+<br>
+<div class="mb-2">
+  <%= link_to "Not used us before? Sign up", new_password_path %>
+</div>
+<br>
+<div class="mb-2">
+  <%= link_to "Forgot password?", new_password_path %>
+<br>
+  <%= link_to "Didn't receive confirmation instructions?", new_password_path %>
+</div>

@@ -9,28 +9,12 @@ Rails.application.routes.draw do
 
   root 'home#index'
 
-  devise_for :users,
-             controllers: {
-               sessions:      'users/sessions',
-               confirmations: 'users/confirmations',
-               passwords:     'users/passwords',
-               unlocks:       'users/unlocks',
-               registrations: 'users/registrations'
-             },
-             path:        '/',
-             path_names:  {
-               sign_in:  'login',
-               sign_out: 'logout'
-             }
-
   resources :quizzes do
     resources :evaluations
   end
 
-  resource :dashboard, only: %(show)
-  resources :tags,     only: %i[show index]
+  resources :tags, only: [:show, :index]
   resources :pages
-  resources :photos
   resources :questions
   resources :evaluations
 
@@ -41,6 +25,11 @@ Rails.application.routes.draw do
       put 'dislike', to: 'posts#downvote'
     end
   end
+
+  resource :user,      only: [:show, :edit, :update], path: 'profile'
+  resource :dashboard, only: [:show]
+  resource :session
+  resources :passwords, param: :token
 
   get '/service-worker.js',        to: 'service_worker#service_worker'
   get '/manifest.json',            to: 'service_worker#manifest'
