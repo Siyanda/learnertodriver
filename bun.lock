@@ -5,11 +5,10 @@
       "name": "app",
       "dependencies": {
         "@hotwired/stimulus": "^3.2.2",
-        "@hotwired/turbo-rails": "^8.0.12",
+        "@hotwired/turbo-rails": "^8.0.13",
         "@rails/actioncable": "^7.2.201",
         "@rails/actiontext": "^7.2.201",
         "dayjs": "^1.11.13",
-        "hotwire-animate": "^1.0.1",
         "trix": "^2.1.12",
       },
     },
@@ -17,9 +16,9 @@
   "packages": {
     "@hotwired/stimulus": ["@hotwired/stimulus@3.2.2", "", {}, "sha512-eGeIqNOQpXoPAIP7tC1+1Yc1yl1xnwYqg+3mzqxyrbE5pg5YFBZcA6YoTiByJB6DKAEsiWtl6tjTJS4IYtbB7A=="],
 
-    "@hotwired/turbo": ["@hotwired/turbo@8.0.12", "", {}, "sha512-l3BiQRkD7qrnQv6ms6sqPLczvwbQpXt5iAVwjDvX0iumrz6yEonQkNAzNjeDX25/OJMFDTxpHjkJZHGpM9ikWw=="],
+    "@hotwired/turbo": ["@hotwired/turbo@8.0.13", "", {}, "sha512-M7qXUqcGab6G5PKOiwhgbByTtrPgKPFCTMNQ52QhzUEXEqmp0/ApEguUesh/FPiUjrmFec+3lq98KsWnYY2C7g=="],
 
-    "@hotwired/turbo-rails": ["@hotwired/turbo-rails@8.0.12", "", { "dependencies": { "@hotwired/turbo": "^8.0.12", "@rails/actioncable": "^7.0" } }, "sha512-ZXwu9ez+Gd4RQNeHIitqOQgi/LyqY8J4JqsUN0nnYiZDBRq7IreeFdMbz29VdJpIsmYqwooE4cFzPU7QvJkQkA=="],
+    "@hotwired/turbo-rails": ["@hotwired/turbo-rails@8.0.13", "", { "dependencies": { "@hotwired/turbo": "^8.0.13", "@rails/actioncable": "^7.0" } }, "sha512-6SCnnOSzhtaJ0pNkAjncZxjtKsK3sP/vPEkCnTXBXSHkr+vF7DTZkOlwjhms1DbbQNTsjCsBoKvzSMbh/omSCQ=="],
 
     "@rails/actioncable": ["@rails/actioncable@7.2.201", "", {}, "sha512-wsTdWoZ5EfG5k3t7ORdyQF0ZmDEgN4aVPCanHAiNEwCROqibSZMXXmCbH7IDJUVri4FOeAVwwbPINI7HVHPKBw=="],
 
@@ -32,8 +31,6 @@
     "dayjs": ["dayjs@1.11.13", "", {}, "sha512-oaMBel6gjolK862uaPQOVTA7q3TZhuSvuMQAAglQDOWYO9A91IrAOUJEyKVlqJlHE0vq5p5UXxzdPfMH/x6xNg=="],
 
     "dompurify": ["dompurify@3.2.3", "", { "optionalDependencies": { "@types/trusted-types": "^2.0.7" } }, "sha512-U1U5Hzc2MO0oW3DF+G9qYN0aT7atAou4AgI0XjWz061nyBPbdxkfdhfy5uMgGn6+oLFCfn44ZGbdDqCzVmlOWA=="],
-
-    "hotwire-animate": ["hotwire-animate@1.0.1", "", {}, "sha512-YG2yi3yQchcopzcYBPxaVqsduRon9nkdAxNheTI2GB/IGIIA6uGGjxO7FscRKTetk5qyTLO6rrG6X8GtRhXEBw=="],
 
     "spark-md5": ["spark-md5@3.0.2", "", {}, "sha512-wcFzz9cDfbuqe0FZzfi2or1sgyIrsDwmPwfZC4hiNidPdPINjeUwNfv5kldczoEAcjl9Y1L3SM7Uz2PUEQzxQw=="],
 

@@ -3,12 +3,12 @@
 class CreatePosts < ActiveRecord::Migration[6.1]
   def change
     create_table :posts do |t|
-      t.string :title, null: false
-      t.text :content
-      t.string :excerpt, default: '', null: false, limit: 150
-      t.string :slug
-      t.integer :status, default: 0, null: false
-      t.references :user, null: false, foreign_key: true, index: true
+      t.string     :title, null: false
+      t.text       :content
+      t.string     :slug
+      t.integer    :status,  default: 0,  null: false
+      t.string     :excerpt, default: '', null: false,       limit: 150
+      t.references :user,    null: false, foreign_key: true, index: true
 
       t.timestamps
     end

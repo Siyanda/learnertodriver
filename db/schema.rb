@@ -216,9 +216,9 @@ ActiveRecord::Schema[8.0].define(version: 2022_05_12_201031) do
     t.text "bio"
     t.text "links"
     t.date "birthday"
+    t.string "username"
     t.integer "role", default: 0, null: false
     t.integer "status", default: 0, null: false
-    t.string "username"
     t.integer "evaluations_count", default: 0, null: false
     t.string "slug"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true

@@ -5,6 +5,7 @@ class CreateTaggings < ActiveRecord::Migration[7.0]
     create_table :taggings do |t|
       t.bigint  :taggable_id
       t.string  :taggable_type
+
       t.references :tag, null: false, foreign_key: true
       t.timestamps
     end

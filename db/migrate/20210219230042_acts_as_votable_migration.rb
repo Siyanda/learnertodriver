@@ -4,10 +4,10 @@ class ActsAsVotableMigration < ActiveRecord::Migration[6.0]
   def self.up
     create_table :votes do |t|
       t.references :votable, polymorphic: true
-      t.references :voter, polymorphic: true
+      t.references :voter,   polymorphic: true
 
       t.boolean :vote_flag
-      t.string :vote_scope
+      t.string  :vote_scope
       t.integer :vote_weight
 
       t.timestamps
