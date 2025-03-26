@@ -15,13 +15,13 @@
 
     <%= yield :head %>
 
-    <%= javascript_include_tag 'application', 'data-turbo-track': 'reload', type: 'module' %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbo-track': 'reload' %>
   </head>
 
   <body class="main-bg full-height">
 
-    <div class="full-height mid-center devise">
+    <div class="full-height mid-center auth">
       <%= render 'layouts/common/messages' %>
       <div class="alt-border content form">
         <div class="full-width">

@@ -5,9 +5,11 @@ class User < ApplicationRecord
   friendly_id :username, use: :slugged
 
   has_person_name
+  has_secure_password
 
-  devise :database_authenticatable, :registerable, :confirmable,
-         :recoverable, :rememberable, :trackable, :validatable
+  has_many :sessions, dependent: :destroy
+
+  normalizes :email_address, with: ->(e) { e.strip.downcase }
 
   has_many :posts, dependent: :destroy
   has_many :pages, dependent: :destroy

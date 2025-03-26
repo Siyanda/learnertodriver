@@ -3,8 +3,8 @@
 class CreateChoices < ActiveRecord::Migration[6.1]
   def change
     create_table :choices do |t|
-      t.string  :name, null: false, default: ''
-      t.string  :content, null: false, default: ''
+      t.string :name, null: false, default: 'index_active_storage_variant_records_uniqueness'
+      t.string :content, null: false, default: 'index_active_storage_variant_records_uniqueness'
       t.integer :value, null: false, default: 0
 
       t.references :answer, null: false, foreign_key: true

@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 class HomeController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index]
+  allow_unauthenticated_access only: %i[index]
 
   def index
-    return unless current_user
+    return if Current.user.blank?
 
     redirect_to dashboard_path
   end

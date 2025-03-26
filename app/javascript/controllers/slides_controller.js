@@ -3,12 +3,12 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
 
  static values = {
-                   state: { type: String, default: 'start' },
+                   state: { type: String, default: "start" },
                    total: { type: Number, default: 0 },
                    index: { type: Number, default: 0 }
                   }
 
-  static targets = [ 'slide', 'progress', 'controls' ]
+  static targets = [ "slide", "progress", "controls" ]
 
   indexValueChanged() {
     this.currentSlide()
@@ -33,9 +33,9 @@ export default class extends Controller {
     let position = this.indexValue
     let total = this.totalValue - 1
 
-    return position > 0 && (position == total) ? this.stateValue = 'end'
-      : position == 0 && (position < total) ? this.stateValue = 'start'
-      : position > 0 && (position < total) ? this.stateValue = 'in_progress'
-      : this.stateValue = 'at_start_end_and_in_progress';
+    return position > 0 && (position == total) ? this.stateValue = "end"
+      : position == 0 && (position < total) ? this.stateValue = "start"
+      : position > 0 && (position < total) ? this.stateValue = "in_progress"
+      : this.stateValue = "at_start_end_and_in_progress";
   }
 }

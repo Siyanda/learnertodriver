@@ -8,9 +8,12 @@
   "dependencies": {
     "@hotwired/stimulus": "^3.2.2",
     "@hotwired/turbo-rails": "^8.0.13",
-    "@rails/actioncable": "^7.2.201",
-    "@rails/actiontext": "^7.2.201",
+    "@rails/actioncable": "^8.0.200",
+    "@rails/actiontext": "^8.0.200",
     "dayjs": "^1.11.13",
-    "trix": "^2.1.12"
+    "trix": "^2.1.13"
+  },
+  "devDependencies": {
+    "@testing-library/dom": "^10.4.0"
   }
 }

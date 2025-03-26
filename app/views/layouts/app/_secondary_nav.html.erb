@@ -2,7 +2,6 @@
 
     <%= breadcrumbs separator: ' / ' %>
 
-    <!-- search -->
     <div class="search-container">
     </div>
 
@@ -17,14 +16,14 @@
           <ul class="user-menu">
 
             <li class="full-width">
-              <%= link_to edit_user_registration_path, class: 'flex full-width user-menu-link' do %>
+              <%= link_to user_path, class: 'flex full-width user-menu-link' do %>
                 <div class="right-margin small-svg dark-fill icon">
                   <%= inline_svg('icons/user-icon.svg') %>
                 </div> Profile
               <% end %>
             </li>
 
-            <% if warden.user.admin? %>
+            <% if current_user.admin? %>
               <li class="full-width">
                 <%= link_to root_path, class: 'flex full-width user-menu-link' do %>
                 <div class="right-margin small-svg dark-fill icon">
@@ -37,7 +36,7 @@
             <div class="divider"></div>
 
             <li class="full-width">
-              <%= link_to destroy_user_session_path, data: { 'turbo-method': :delete }, class: 'flex full-width user-menu-link' do %>
+              <%= link_to session_path, data: { 'turbo-method': :delete }, class: 'flex full-width user-menu-link' do %>
                 <div class="right-margin small-svg dark-fill icon">
                   <%= inline_svg('icons/log-out.svg') %>
                 </div> Log Out

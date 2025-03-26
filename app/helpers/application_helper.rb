@@ -3,6 +3,10 @@
 module ApplicationHelper
   include Pagy::Frontend
 
+  def current_user
+    Current.user
+  end
+
   def title(page_title)
     content_for(:title) { page_title }
   end
@@ -18,7 +22,7 @@ module ApplicationHelper
   end
 
   def from_markdown(text)
-    options = %i[autolink fenced_code_blocks highlight no_intra_emphasis]
+    options = [:autolink, :fenced_code_blocks, :highlight, :no_intra_emphasis]
     Markdown.new(text, *options).to_html
   end
 

@@ -1,0 +1,20 @@
+<div class="full-width basic-border padded flex center-aligned spaced-between secondary-nav">
+
+    <%= breadcrumbs separator: ' / ' %>
+
+    <!-- search -->
+    <div class="search-container">
+    </div>
+
+    <div class="nav-profile">
+        <div class="flex center-aligned header-links">
+          <%= link_to root_path, class: 'nav-link noline' do %>
+            Sign In
+          <% end %>
+          <span class="margin-sides gray-text">or</span>
+          <%= link_to root_path, class: 'nav-link outline' do %>
+            Sign Up
+          <% end %>
+        </div>
+    </div>
+  </div>

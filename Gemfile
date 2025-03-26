@@ -13,7 +13,7 @@ gem 'solid_cache'
 gem 'solid_queue'
 gem 'solid_cable'
 gem 'turbo-rails'
-gem 'litestream'
+
 gem 'stimulus-rails'
 gem 'dartsass-rails'
 gem 'jsbundling-rails'
@@ -29,8 +29,8 @@ gem 'redcarpet'
 gem 'name_of_person'
 
 gem 'csv'
-gem 'devise'
 gem 'gretel'
+gem 'litestream'
 gem 'friendly_id'
 gem 'postmark-rails'
 gem 'acts_as_votable'
@@ -41,10 +41,10 @@ group :development, :test do
   gem 'rails_live_reload'
   gem 'shoulda-matchers'
   gem 'factory_bot_rails'
-  gem 'rubocop-rails', require: false
-  gem 'rubocop-capybara', require: false
+  gem 'rubocop-rails',       require: false
+  gem 'rubocop-capybara',    require: false
   gem 'rubocop-factory_bot', require: false
-  gem 'erb_lint', require: false
+  gem 'erb_lint',            require: false
 end
 
 group :development do
@@ -62,3 +62,5 @@ group :test do
   gem 'selenium-webdriver'
   gem 'simplecov', require: false
 end
+
+gem 'bcrypt', '~> 3.1'
