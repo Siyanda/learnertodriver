@@ -14,7 +14,7 @@
                                   'dayjs-time-ago-time-stamp-value': comment.created_at.iso8601 }) %>
 
           <div class="comment-actions">
-            <% if comment.user == current_user %>
+            <% if comment.user == Current.user %>
 
               <%= link_to post_comment_path(comment.post, comment), 'data-turbo-method': :delete, 'data-turbo-confirm': 'Are you sure?', class: 'confirmation' do %>
               <div class="clickable grey-fill standard-svg svg icon">

@@ -6,14 +6,14 @@ class EvaluationsController < ApplicationController
   def show; end
 
   def new
-    @evaluation = current_user.evaluations.build
+    @evaluation = Current.user.evaluations.build
     @quiz = Quiz.includes(questions: :answers).references(:questions).friendly.find(params[:quiz_id])
   end
 
   def edit; end
 
   def create
-    @evaluation = current_user.evaluations.new(evaluation_params)
+    @evaluation = Current.user.evaluations.new(evaluation_params)
 
     if @evaluation.save
       redirect_to root_path, notice: t('controllers.notices.create', model: 'Evaluation')
@@ -33,7 +33,6 @@ class EvaluationsController < ApplicationController
 
   def evaluation_params
     params.expect(evaluation: [:score, :comment, :form_snapshot, :user_id, :quiz_id,
-                               { choices_attributes:
-                                                     %i[name content kind answer_id question_id evaluation_id] }])
+                               { choices_attributes: %i[name content kind answer_id question_id evaluation_id] }])
   end
 end

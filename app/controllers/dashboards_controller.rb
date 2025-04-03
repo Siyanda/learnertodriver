@@ -10,6 +10,6 @@ class DashboardsController < ApplicationController
   end
 
   def show
-    @current_user_stats = current_user
+    @current_user_stats = Current.user
   end
 end

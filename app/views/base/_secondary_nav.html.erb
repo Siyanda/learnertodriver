@@ -23,7 +23,7 @@
               <% end %>
             </li>
 
-            <% if current_user.admin? %>
+            <% if Current.user.admin? %>
               <li class="full-width">
                 <%= link_to root_path, class: 'flex full-width user-menu-link' do %>
                 <div class="right-margin small-svg dark-fill icon">

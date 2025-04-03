@@ -2,10 +2,8 @@
 
 class PagesController < ApplicationController
   allow_unauthenticated_access only: %i[index show]
-
   before_action :set_page_options
   before_action :set_page, only: %i[show edit update destroy]
-  before_action -> { require_same_user(@page) }, only: %i[edit update destroy]
 
   def index
     @q = Page.ransack(params[:q])
@@ -17,13 +15,13 @@ class PagesController < ApplicationController
   end
 
   def new
-    @page = current_user.pages.build
+    @page = Current.user.pages.build
   end
 
   def edit; end
 
   def create
-    @page = current_user.pages.build(page_params)
+    @page = Current.user.pages.build(page_params)
 
     if @page.save
       redirect_to @page, notice: t('controllers.notices.create', model: 'Page')

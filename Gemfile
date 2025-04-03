@@ -8,6 +8,7 @@ gem 'puma'
 gem 'sqlite3'
 gem 'bootsnap', require: false
 
+gem 'bcrypt'
 gem 'propshaft'
 gem 'solid_cache'
 gem 'solid_queue'
@@ -32,6 +33,8 @@ gem 'csv'
 gem 'gretel'
 gem 'litestream'
 gem 'friendly_id'
+gem 'light-service'
+gem 'action_policy'
 gem 'postmark-rails'
 gem 'acts_as_votable'
 
@@ -50,6 +53,7 @@ end
 group :development do
   gem 'listen'
   gem 'spring'
+  gem 'debugbar'
   gem 'brakeman'
   gem 'web-console'
   gem 'letter_opener'
@@ -62,5 +66,3 @@ group :test do
   gem 'selenium-webdriver'
   gem 'simplecov', require: false
 end
-
-gem 'bcrypt', '~> 3.1'

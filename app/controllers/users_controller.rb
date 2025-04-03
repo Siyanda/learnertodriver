@@ -1,19 +1,18 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[show]
+  allow_unauthenticated_access only: %i[new create]
+  layout 'registrations', only: [:new, :create]
 
   def index; end
 
-  def show
-    @user_posts = @user.posts
-  end
+  def show; end
+
+  def new; end
+
+  def create; end
 
   private
-
-  def set_user
-    @user = User.friendly.find(params[:id])
-  end
 
   def user_params
     params.expect(user: %i[first_name last_name username bio birthday])

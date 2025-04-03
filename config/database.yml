@@ -10,6 +10,7 @@ development:
   cache:
     <<: *default
     database: storage/development_solid_cache.sqlite3
+    migrations_paths: db/cache_migrate
   queue:
     <<: *default
     database: storage/development_queue.sqlite3

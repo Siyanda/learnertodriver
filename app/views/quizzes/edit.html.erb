@@ -9,6 +9,8 @@
       </h1>
     </div>
 
+    <%= image_tag @quiz.cover_image, class: 'image' if @quiz.cover_image.attached? %>
+
     <div class="padded post-content">
 
     <% if @questions.any? %>

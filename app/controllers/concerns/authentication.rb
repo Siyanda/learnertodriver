@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Authentication
   extend ActiveSupport::Concern
 
@@ -7,8 +9,9 @@ module Authentication
   end
 
   class_methods do
-    def allow_unauthenticated_access(**options)
-      skip_before_action :require_authentication, **options
+    def allow_unauthenticated_access(**)
+      before_action :resume_session
+      skip_before_action(:require_authentication, **) unless Current.session
     end
   end
 

@@ -3,10 +3,6 @@
 module ApplicationHelper
   include Pagy::Frontend
 
-  def current_user
-    Current.user
-  end
-
   def title(page_title)
     content_for(:title) { page_title }
   end

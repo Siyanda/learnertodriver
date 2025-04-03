@@ -1,14 +1,15 @@
 <!DOCTYPE html>
-<html class="texture" lang="<%= I18n.locale %>">
+<html class="<%= yield(:classes_for_html).presence %>" lang="<%= I18n.locale %>">
   <head>
     <title><%= t("site_name") %> | <%= yield(:title).presence || t("tagline") %></title>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <%= render "layouts/common/meta" %>
+    <%= render "layouts/common/link_rel" %>
     <%= render "layouts/common/tracking" %>
+
     <%= favicon_link_tag asset_path("favicon.png"), rel: "icon", type: "image/png" %>
+
+    <%= debugbar_head  if defined? Debugbar %>
 
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -19,11 +20,13 @@
     <%= stylesheet_link_tag "application", media: "all", "data-turbo-track": "reload" %>
   </head>
 
-  <body class="app-body">
-    <%= render "layouts/common/side_menu_overlay" %>
-    <%= render "layouts/app/header" %>
-    <%= yield %>
-    <%= render "layouts/common/messages" %>
-    <%= render "layouts/app/footer" %>
+  <body class="app-body <%= yield(:classes_for_body).presence %>">
+    <%= yield(:side_menu_overlay) %>
+    <%= yield(:header) %>
+    <%= yield(:primary_nav) %>
+    <%= yield(:secondary_nav) %>
+    <%= content_for?(:body) ? yield(:body) : yield %>
+    <%= yield(:footer) %>
+    <%= debugbar_body if defined? Debugbar %>
   </body>
 </html>
