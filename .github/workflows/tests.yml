@@ -20,8 +20,10 @@ jobs:
           ruby-version: 3.4.2
           bundler-cache: true
 
-      - name: Install libvips (for image processing)
-        run: sudo apt-get install -y libvips
+      - name: Install Bun
+        run: |
+          curl -fsSL https://bun.sh/install | bash
+          echo "$HOME/.bun/bin" >> $GITHUB_PATH
 
       - name: Set up database
         run: bin/rails db:create db:schema:load
