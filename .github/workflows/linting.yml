@@ -1,19 +1,24 @@
 name: linting
+
 on: [push]
+
 jobs:
   rubocop:
-    name: rubocop
+    name: RuboCop
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
-        uses: actions/checkout@v1
+        uses: actions/checkout@v3
+
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.4.2
           bundler-cache: true
+
       - name: Install Gems
         run: bundle install --with development test
+
       - name: Run RuboCop
         uses: reviewdog/action-rubocop@v2
         with:
@@ -23,29 +28,41 @@ jobs:
             rubocop-capybara:gemfile
             rubocop-factory_bot:gemfile
           reporter: github-pr-review
+
   erb-lint:
-    name: erb-lint
+    name: ERB Lint
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
         uses: actions/checkout@v3
+
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
+          ruby-version: 3.4.2
           bundler-cache: true
+
       - name: Install Gems
         run: bundle install --with development test
-      - run: bundle exec erblint app/views
+
+      - name: Run ERB Lint
+        run: bundle exec erb_lint app/views
+
   brakeman:
-    name: brakeman
+    name: Brakeman
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
         uses: actions/checkout@v3
+
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
+          ruby-version: 3.4.2
           bundler-cache: true
+
       - name: Install Gems
         run: bundle install --with development test
-      - run: bundle exec brakeman
+
+      - name: Run Brakeman
+        run: bundle exec brakeman

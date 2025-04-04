@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   resources :pages
   resources :questions
   resources :evaluations
-  resources :tags, only: [:show, :index]
+  resources :tags, only: %i[show index]
 
   resources :posts do
     resources :comments

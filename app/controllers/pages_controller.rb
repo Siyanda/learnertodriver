@@ -57,6 +57,6 @@ class PagesController < ApplicationController
   end
 
   def page_params
-    params.expect(page: [:title, :content, :user_id])
+    params.expect(page: %i[title content user_id])
   end
 end

@@ -33,6 +33,6 @@ class CommentsController < ApplicationController
   end
 
   def comment_params
-    params.expect(comment: [:content, :post_id, :user_id])
+    params.expect(comment: %i[content post_id user_id])
   end
 end
