@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class PostsController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[index show]
+  allow_unauthenticated_access only: %i[index show]
   before_action :set_post_options
   before_action :set_post, only: %i[show edit update destroy upvote downvote]
   before_action :require_same_user, only: %i[edit update destroy]
@@ -15,7 +15,7 @@ class PostsController < ApplicationController
   end
 
   def new
-    @post = current_user.posts.build
+    @post = Current.user.posts.build
   end
 
   def edit
@@ -23,7 +23,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = current_user.posts.build(post_params)
+    @post = Current.user.posts.build(post_params)
 
     if @post.save
       redirect_to @post, notice: t('controllers.notices.create', model: 'Post')
@@ -46,12 +46,12 @@ class PostsController < ApplicationController
   end
 
   def upvote
-    @post.upvote_by current_user
+    @post.upvote_by Current.user
     redirect_back(fallback_location: posts_path)
   end
 
   def downvote
-    @post.downvote_from current_user
+    @post.downvote_from Current.user
     redirect_back(fallback_location: posts_path)
   end
 

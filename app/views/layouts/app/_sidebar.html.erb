@@ -9,7 +9,7 @@
 
       <li>
         <div class="non-clickable light-fill small-svg icon"><%= inline_svg('icons/user.svg') %></div>
-        <%= link_to_active 'Appriasals', users_path(current_user), class: 'full-width light-text nav-item' %>
+        <%= link_to_active 'Appriasals', users_path(Current.user), class: 'full-width light-text nav-item' %>
       </li>
 
     </ul>

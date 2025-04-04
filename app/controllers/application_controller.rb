@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
   private
 
   def determine_layout
-    current_user ? 'application' : 'static'
+    Current.user ? 'application' : 'static'
   end
 
   def redirect_to_last_page(exception)

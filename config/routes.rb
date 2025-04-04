@@ -1,28 +1,11 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  authenticate :user, ->(u) { u.admin? } do
-    namespace :admin do
-      get '/', to: 'dashboard#index'
-    end
+  namespace :admin, constraints: AdminConstraint do
+    get '/', to: 'dashboard#index'
   end
 
   root 'home#index'
-
-  devise_for :users,
-             controllers: {
-               sessions:      'users/sessions',
-               confirmations: 'users/confirmations',
-               passwords:     'users/passwords',
-               unlocks:       'users/unlocks',
-               registrations: 'users/registrations'
-             },
-             path:        '/',
-             path_names:  {
-               sign_in:  'login',
-               sign_out: 'logout'
-             }
-
   resources :quizzes do
     resources :evaluations
   end

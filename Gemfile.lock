@@ -134,12 +134,6 @@ GEM
     debug (1.10.0)
       irb (~> 1.10)
       reline (>= 0.3.8)
-    devise (4.9.4)
-      bcrypt (~> 3.0)
-      orm_adapter (~> 0.1)
-      railties (>= 4.1.0)
-      responders
-      warden (~> 1.2.3)
     docile (1.4.1)
     dockerfile-rails (1.7.9)
       rails (>= 3.0.0)
@@ -300,7 +294,6 @@ GEM
       racc (~> 1.4)
     nokogiri (1.18.5-x86_64-linux-musl)
       racc (~> 1.4)
-    orm_adapter (0.5.0)
     pagy (9.3.4)
     parallel (1.26.3)
     parser (3.3.7.2)
@@ -384,9 +377,6 @@ GEM
     regexp_parser (2.10.0)
     reline (0.6.0)
       io-console (~> 0.5)
-    responders (3.1.1)
-      actionpack (>= 5.2)
-      railties (>= 5.2)
     rexml (3.4.1)
     rubocop (1.74.0)
       json (~> 2.3)
@@ -491,8 +481,6 @@ GEM
     unicode-emoji (4.0.4)
     uri (1.0.3)
     useragent (0.16.11)
-    warden (1.2.9)
-      rack (>= 2.0.9)
     web-console (4.2.1)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -528,6 +516,7 @@ PLATFORMS
 DEPENDENCIES
   acts_as_votable
   aws-sdk-s3
+  bcrypt (~> 3.1)
   bootsnap
   brakeman
   capybara
@@ -535,7 +524,6 @@ DEPENDENCIES
   csv
   dartsass-rails
   debug
-  devise
   dockerfile-rails
   erb_lint
   factory_bot_rails
@@ -613,7 +601,6 @@ CHECKSUMS
   dartsass-rails (0.5.1) sha256=f19510fb1b29c76c1739a06954d615f1d20ad653b6fc668dd7c68542bb303a1a
   date (3.4.1) sha256=bf268e14ef7158009bfeaec40b5fa3c7271906e88b196d958a89d4b408abe64f
   debug (1.10.0) sha256=11e28ca74875979e612444104f3972bd5ffb9e79179907d7ad46dba44bd2e7a4
-  devise (4.9.4) sha256=920042fe5e704c548aa4eb65ebdd65980b83ffae67feb32c697206bfd975a7f8
   docile (1.4.1) sha256=96159be799bfa73cdb721b840e9802126e4e03dfc26863db73647204c727f21e
   dockerfile-rails (1.7.9) sha256=a27d2f8c772ca2cd8cf8f3fcaea09a2a00c5bb1eaaca125f92e86cab3f5e35f8
   drb (2.2.1) sha256=e9d472bf785f558b96b25358bae115646da0dbfd45107ad858b0bc0d935cb340
@@ -681,7 +668,6 @@ CHECKSUMS
   nokogiri (1.18.5-x86_64-darwin) sha256=28659cf43eedb652ae2fb94a8c7a14d368b6944db97e63b4158c8d5d5b4f49d8
   nokogiri (1.18.5-x86_64-linux-gnu) sha256=195f4a139961f3c892ac22fda6ae4e665919e6573149f0adc786adc8c20402be
   nokogiri (1.18.5-x86_64-linux-musl) sha256=8c2786d259e3c73687f8c595e1ab040a66809799ad066dad8eb492fd58f4f8fd
-  orm_adapter (0.5.0) sha256=aa5d0be5d540cbb46d3a93e88061f4ece6a25f6e97d6a47122beb84fe595e9b9
   pagy (9.3.4) sha256=b058e064bd02237e76d591e90fadc02c795426dd51f90d0c51089558bf3ab5f7
   parallel (1.26.3) sha256=d86babb7a2b814be9f4b81587bf0b6ce2da7d45969fab24d8ae4bf2bb4d4c7ef
   parser (3.3.7.2) sha256=c71de9076be0b84459a268581b5aa75e5eeaac892b564430371d1f8eb55fb65f
@@ -713,7 +699,6 @@ CHECKSUMS
   redcarpet (3.6.1) sha256=d444910e6aa55480c6bcdc0cdb057626e8a32c054c29e793fa642ba2f155f445
   regexp_parser (2.10.0) sha256=cb6f0ddde88772cd64bff1dbbf68df66d376043fe2e66a9ef77fcb1b0c548c61
   reline (0.6.0) sha256=57620375dcbe56ec09bac7192bfb7460c716bbf0054dc94345ecaa5438e539d2
-  responders (3.1.1) sha256=92f2a87e09028347368639cfb468f5fefa745cb0dc2377ef060db1cdd79a341a
   rexml (3.4.1) sha256=c74527a9a0a04b4ec31dbe0dc4ed6004b960af943d8db42e539edde3a871abca
   rubocop (1.74.0) sha256=06138a35d7d11c963d5abc0148b355e3999007cb0225a619940db0e75521379b
   rubocop-ast (1.41.0) sha256=0eeff9ad3743f42823e3c687cbc15f8c552ff63c9f8e3d35fbafe746977c7c0d
@@ -761,7 +746,6 @@ CHECKSUMS
   unicode-emoji (4.0.4) sha256=2c2c4ef7f353e5809497126285a50b23056cc6e61b64433764a35eff6c36532a
   uri (1.0.3) sha256=e9f2244608eea2f7bc357d954c65c910ce0399ca5e18a7a29207ac22d8767011
   useragent (0.16.11) sha256=700e6413ad4bb954bb63547fa098dddf7b0ebe75b40cc6f93b8d54255b173844
-  warden (1.2.9) sha256=46684f885d35a69dbb883deabf85a222c8e427a957804719e143005df7a1efd0
   web-console (4.2.1) sha256=e7bcf37a10ea2b4ec4281649d1cee461b32232d0a447e82c786e6841fd22fe20
   webdrivers (5.2.0) sha256=8387bdeed5df329b85bd5303a2198c91418e5887e2d71298de677a9bc249b35b
   websocket (1.2.11) sha256=b7e7a74e2410b5e85c25858b26b3322f29161e300935f70a0e0d3c35e0462737

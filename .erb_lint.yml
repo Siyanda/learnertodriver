@@ -7,8 +7,6 @@ linters:
     enabled: true
   HardCodedString:
     enabled: false
-    exclude:
-      - '**/app/views/devise/*'
   Rubocop:
     enabled: true
     rubocop_config:
