@@ -4,7 +4,6 @@ class PagesController < ApplicationController
   allow_unauthenticated_access only: %i[show]
   before_action :set_page_options
   before_action :set_page, only: %i[show edit update destroy]
-  before_action -> { require_same_user(@page) }, only: %i[edit update destroy]
 
   def index
     @q = Page.ransack(params[:q])

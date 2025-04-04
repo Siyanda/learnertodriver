@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2022_05_12_201031) do
+ActiveRecord::Schema[8.0].define(version: 2025_04_04_211633) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -176,6 +176,15 @@ ActiveRecord::Schema[8.0].define(version: 2022_05_12_201031) do
     t.index ["question_id"], name: "index_responses_on_question_id"
   end
 
+  create_table "sessions", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "ip_address"
+    t.string "user_agent"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_sessions_on_user_id"
+  end
+
   create_table "solid_cable_messages", force: :cascade do |t|
     t.binary "channel", limit: 1024, null: false
     t.binary "payload", limit: 536870912, null: false
@@ -272,5 +281,6 @@ ActiveRecord::Schema[8.0].define(version: 2022_05_12_201031) do
   add_foreign_key "quiz_question_linkages", "quizzes"
   add_foreign_key "responses", "answers"
   add_foreign_key "responses", "questions"
+  add_foreign_key "sessions", "users"
   add_foreign_key "taggings", "tags"
 end

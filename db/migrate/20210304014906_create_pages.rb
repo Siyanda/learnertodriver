@@ -7,6 +7,7 @@ class CreatePages < ActiveRecord::Migration[6.1]
       t.text    :content
       t.string  :slug
       t.integer :status, default: 0, null: false
+
       t.references :user, null: false, foreign_key: true, index: true
       t.references :parent, foreign_key: { to_table: :pages }, index: true
 

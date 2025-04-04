@@ -5,17 +5,20 @@ Rails.application.routes.draw do
     get '/', to: 'dashboard#index'
   end
 
-  root 'home#index'
   resources :quizzes do
     resources :evaluations
   end
 
-  resource :dashboard, only: %(show)
-  resources :tags,     only: %i[show index]
+  resource :dashboard, only: [:show]
+  resource :user,      only: %i[show edit update create new], path: 'profile'
+  resource :session
+
+  resources :passwords, param: :token
+
   resources :pages
-  resources :photos
   resources :questions
   resources :evaluations
+  resources :tags, only: [:show, :index]
 
   resources :posts do
     resources :comments
@@ -25,8 +28,9 @@ Rails.application.routes.draw do
     end
   end
 
-  get '/service-worker.js',        to: 'service_worker#service_worker'
   get '/manifest.json',            to: 'service_worker#manifest'
   get '/offline.html',             to: 'service_worker#offline'
   get 'up' => 'rails/health#show', as: :rails_health_check
+
+  root 'home#index'
 end

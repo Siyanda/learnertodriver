@@ -4,7 +4,6 @@ class PostsController < ApplicationController
   allow_unauthenticated_access only: %i[index show]
   before_action :set_post_options
   before_action :set_post, only: %i[show edit update destroy upvote downvote]
-  before_action :require_same_user, only: %i[edit update destroy]
 
   def index
     @posts = Post.published
@@ -56,13 +55,6 @@ class PostsController < ApplicationController
   end
 
   private
-
-  def require_same_user
-    return unless current_user != @post.user
-
-    flash[:danger] = t('controllers.notices.no_edit', model: 'Post')
-    redirect_to root_path
-  end
 
   def set_post_options
     @users = User.active
