@@ -1,17 +1,32 @@
 name: tests
+
 on: [push]
+
 jobs:
   test:
-    name: minitest
+    name: Parallel Tests with SQLite & Solid Queue
     runs-on: ubuntu-latest
     env:
       RAILS_ENV: test
       RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
+
     steps:
-      - uses: actions/checkout@v2
-      - uses: ruby/setup-ruby@v1
+      - name: Check out code
+        uses: actions/checkout@v3
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
         with:
+          ruby-version: 3.4.2
           bundler-cache: true
-      - name: Install dependencies
+
+      - name: Install libvips (for ActiveStorage/ImageProcessing)
         run: sudo apt-get install -y libvips
-      - run: bin/rails db:create db:schema:load
+
+      - name: Prepare databases for parallel tests
+        run: |
+          bundle exec rake parallel:create
+          bundle exec rake parallel:load_schema
+
+      - name: Run tests in parallel
+        run: bundle exec parallel_test test -n 4 --type test
