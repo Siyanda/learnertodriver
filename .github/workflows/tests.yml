@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
   test:
-    name: Parallel Tests with SQLite & Solid Queue
+    name: Minitest
     runs-on: ubuntu-latest
     env:
       RAILS_ENV: test
@@ -20,13 +20,11 @@ jobs:
           ruby-version: 3.4.2
           bundler-cache: true
 
-      - name: Install libvips (for ActiveStorage/ImageProcessing)
+      - name: Install libvips (for image processing)
         run: sudo apt-get install -y libvips
 
-      - name: Prepare databases for parallel tests
-        run: |
-          bundle exec rake parallel:create
-          bundle exec rake parallel:load_schema
+      - name: Set up database
+        run: bin/rails db:create db:schema:load
 
-      - name: Run tests in parallel
-        run: bundle exec parallel_test test -n 4 --type test
+      - name: Run tests
+        run: bin/rails test
