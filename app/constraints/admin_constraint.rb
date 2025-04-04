@@ -2,7 +2,7 @@
 
 class AdminConstraint
   def self.matches?(request)
-    user = User.find_by(id: request.session[:user_id])
+    user = Current.user
     user&.admin?
   end
 end
