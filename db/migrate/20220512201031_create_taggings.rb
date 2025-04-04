@@ -10,6 +10,6 @@ class CreateTaggings < ActiveRecord::Migration[7.0]
       t.timestamps
     end
 
-    add_index :taggings, [:taggable_type, :taggable_id]
+    add_index :taggings, %i[taggable_type taggable_id]
   end
 end

@@ -10,7 +10,7 @@ class CommentsController < ApplicationController
   def create
     @post = Post.friendly.find(params[:post_id])
     @comment = @post.comments.new(comment_params)
-    @comment.user = current_user
+    @comment.user = Current.user
 
     if @comment.save
       redirect_to @comment.post, notice: t('controllers.notices.create', model: 'Comment')
@@ -33,6 +33,6 @@ class CommentsController < ApplicationController
   end
 
   def comment_params
-    params.expect(comment: [:content, :post_id, :user_id])
+    params.expect(comment: %i[content post_id user_id])
   end
 end

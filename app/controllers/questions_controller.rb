@@ -36,6 +36,6 @@ class QuestionsController < ApplicationController
   end
 
   def question_params
-    params.expect(question: [:content, :kind, :information])
+    params.expect(question: %i[content kind information])
   end
 end

@@ -4,11 +4,10 @@ class User < ApplicationRecord
   extend FriendlyId
   friendly_id :username, use: :slugged
 
+  has_secure_password
   has_person_name
 
-  devise :database_authenticatable, :registerable, :confirmable,
-         :recoverable, :rememberable, :trackable, :validatable
-
+  has_many :sessions, dependent: :destroy
   has_many :posts, dependent: :destroy
   has_many :pages, dependent: :destroy
   has_many :comments, dependent: :destroy
@@ -18,6 +17,8 @@ class User < ApplicationRecord
 
   enum :role, { subscriber: 0, contributor: 1, author: 2, editor: 3, admin: 4 }
   enum :status, { pending: 0, inactive: 1, active: 2, suspened: 3, blocked: 4 }
+
+  normalizes :email_address, with: ->(e) { e.strip.downcase }
 
   validates :username, uniqueness: true
   validate :acceptable_avatar_image

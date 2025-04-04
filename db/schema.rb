@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2022_05_12_201031) do
+ActiveRecord::Schema[8.0].define(version: 2025_04_04_211633) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -108,9 +108,9 @@ ActiveRecord::Schema[8.0].define(version: 2022_05_12_201031) do
   end
 
   create_table "notifications", force: :cascade do |t|
+    t.text "content"
     t.string "notifiable_type", null: false
     t.integer "notifiable_id", null: false
-    t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["notifiable_type", "notifiable_id"], name: "index_notifications_on_notifiable"
@@ -133,9 +133,9 @@ ActiveRecord::Schema[8.0].define(version: 2022_05_12_201031) do
   create_table "posts", force: :cascade do |t|
     t.string "title", null: false
     t.text "content"
-    t.string "excerpt", limit: 150, default: "", null: false
     t.string "slug"
     t.integer "status", default: 0, null: false
+    t.string "excerpt", limit: 150, default: "", null: false
     t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -176,6 +176,15 @@ ActiveRecord::Schema[8.0].define(version: 2022_05_12_201031) do
     t.index ["question_id"], name: "index_responses_on_question_id"
   end
 
+  create_table "sessions", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "ip_address"
+    t.string "user_agent"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_sessions_on_user_id"
+  end
+
   create_table "taggings", force: :cascade do |t|
     t.bigint "taggable_id"
     t.string "taggable_type"
@@ -187,27 +196,25 @@ ActiveRecord::Schema[8.0].define(version: 2022_05_12_201031) do
   end
 
   create_table "tags", force: :cascade do |t|
-    t.text "title", null: false
     t.string "slug"
+    t.text "title", null: false
     t.integer "status", default: 0, null: false
     t.index ["slug"], name: "index_tags_on_slug", unique: true
     t.index ["title"], name: "index_tags_on_title", unique: true
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at", precision: nil
-    t.datetime "remember_created_at", precision: nil
+    t.string "email_address", null: false
+    t.string "password_digest", null: false
+    t.datetime "remember_created_at"
     t.integer "sign_in_count", default: 0, null: false
-    t.datetime "current_sign_in_at", precision: nil
-    t.datetime "last_sign_in_at", precision: nil
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
     t.string "confirmation_token"
-    t.datetime "confirmed_at", precision: nil
-    t.datetime "confirmation_sent_at", precision: nil
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -222,8 +229,7 @@ ActiveRecord::Schema[8.0].define(version: 2022_05_12_201031) do
     t.integer "evaluations_count", default: 0, null: false
     t.string "slug"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["email_address"], name: "index_users_on_email_address", unique: true
     t.index ["slug"], name: "index_users_on_slug", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
   end
@@ -262,5 +268,6 @@ ActiveRecord::Schema[8.0].define(version: 2022_05_12_201031) do
   add_foreign_key "quiz_question_linkages", "quizzes"
   add_foreign_key "responses", "answers"
   add_foreign_key "responses", "questions"
+  add_foreign_key "sessions", "users"
   add_foreign_key "taggings", "tags"
 end

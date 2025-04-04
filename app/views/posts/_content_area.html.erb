@@ -21,22 +21,6 @@
               </p>
           </div>
 
-      <div class="flex center-aligned">
-        <%= link_to like_post_path(post), 'data-turbo-method': :put, class: 'vote' do %>
-        <div class="dark-fill standard-svg icon">
-          <%= inline_svg('icons/arrow-up.svg') %>
-        </div>
-      <% end %>
-
-      <%= post.weighted_score %>
-
-        <%= link_to dislike_post_path(post), 'data-turbo-method': :put, class: 'vote' do %>
-        <div class="dark-fill standard-svg icon">
-          <%= inline_svg('icons/arrow-down.svg') %>
-        </div>
-        <% end %>
-      </div>
-
     </div>
   </div>
 </div>

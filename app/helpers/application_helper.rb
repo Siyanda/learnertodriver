@@ -30,9 +30,9 @@ module ApplicationHelper
     Liquid::Template.parse(content).render
   end
 
-  def gravatar_url(email, options = {})
+  def gravatar_url(email_address, options = {})
     require 'digest/md5'
-    hash = Digest::MD5.hexdigest(email)
+    hash = Digest::MD5.hexdigest(email_address)
     url = "https://www.gravatar.com/avatar/#{hash}"
     options.each do |option|
       url += option == options.first ? '?' : '&'

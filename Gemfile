@@ -29,7 +29,6 @@ gem 'redcarpet'
 gem 'name_of_person'
 
 gem 'csv'
-gem 'devise'
 gem 'gretel'
 gem 'friendly_id'
 gem 'postmark-rails'
@@ -41,10 +40,10 @@ group :development, :test do
   gem 'rails_live_reload'
   gem 'shoulda-matchers'
   gem 'factory_bot_rails'
-  gem 'rubocop-rails', require: false
-  gem 'rubocop-capybara', require: false
+  gem 'rubocop-rails',       require: false
+  gem 'rubocop-capybara',    require: false
   gem 'rubocop-factory_bot', require: false
-  gem 'erb_lint', require: false
+  gem 'erb_lint',            require: false
 end
 
 group :development do
@@ -62,3 +61,5 @@ group :test do
   gem 'selenium-webdriver'
   gem 'simplecov', require: false
 end
+
+gem 'bcrypt', '~> 3.1'
