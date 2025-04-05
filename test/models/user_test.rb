@@ -41,7 +41,7 @@ class UserTest < ActiveSupport::TestCase
     user.avatar.blob.byte_size = 2.megabytes
     user.valid?
 
-    assert_includes user.errors[:avatar], 'file is too larger than 1Mb'
+    assert_includes user.errors[:avatar], 'file is too large, maximum is 1Mb'
   end
 
   test 'rejects avatar with unsupported content type' do
