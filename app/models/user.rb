@@ -28,7 +28,7 @@ class User < ApplicationRecord
   def acceptable_avatar_image
     return unless avatar.attached?
 
-    errors.add(:avatar, 'file is too larger than 1Mb') unless avatar.blob.byte_size <= 1.megabyte
+    errors.add(:avatar, 'file is too large, the maximum is 1Mb') unless avatar.blob.byte_size <= 1.megabyte
 
     acceptable_types = ['image/jpeg', 'image/png']
     return if acceptable_types.include?(avatar.content_type)
