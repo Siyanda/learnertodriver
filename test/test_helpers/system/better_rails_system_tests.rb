@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module BetterRailsSystemTests
-  def absolute_image_path
+  def absolute_image_path(image_name)
     Rails.root.join("#{Capybara.save_path}/screenshots/#{image_name}.png")
   end
 
