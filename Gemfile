@@ -8,6 +8,7 @@ gem 'puma'
 gem 'sqlite3'
 gem 'bootsnap', require: false
 
+gem 'bcrypt'
 gem 'propshaft'
 gem 'solid_cache'
 gem 'solid_queue'
@@ -56,10 +57,7 @@ group :development do
 end
 
 group :test do
+  gem 'cuprite'
   gem 'capybara'
-  gem 'webdrivers'
-  gem 'selenium-webdriver'
   gem 'simplecov', require: false
 end
-
-gem 'bcrypt', '~> 3.1'

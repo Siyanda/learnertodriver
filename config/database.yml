@@ -21,7 +21,7 @@ development:
 test:
   primary:
     <<: *default
-    database: storage/test.sqlite3
+    database: db/test<%= ENV['TEST_ENV_NUMBER'] %>.sqlite3
   cache:
     <<: *default
     database: storage/test_solid_cache.sqlite3
