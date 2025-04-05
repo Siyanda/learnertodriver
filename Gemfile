@@ -57,8 +57,7 @@ group :development do
 end
 
 group :test do
+  gem 'cuprite'
   gem 'capybara'
-  gem 'webdrivers'
-  gem 'selenium-webdriver'
   gem 'simplecov', require: false
 end
