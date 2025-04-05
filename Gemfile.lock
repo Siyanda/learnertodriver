@@ -224,39 +224,6 @@ GEM
     listen (3.9.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
-    litestream (0.12.0)
-      actionpack (>= 7.0)
-      actionview (>= 7.0)
-      activejob (>= 7.0)
-      activesupport (>= 7.0)
-      logfmt (>= 0.0.10)
-      railties (>= 7.0)
-      sqlite3
-    litestream (0.12.0-arm64-darwin)
-      actionpack (>= 7.0)
-      actionview (>= 7.0)
-      activejob (>= 7.0)
-      activesupport (>= 7.0)
-      logfmt (>= 0.0.10)
-      railties (>= 7.0)
-      sqlite3
-    litestream (0.12.0-x86_64-darwin)
-      actionpack (>= 7.0)
-      actionview (>= 7.0)
-      activejob (>= 7.0)
-      activesupport (>= 7.0)
-      logfmt (>= 0.0.10)
-      railties (>= 7.0)
-      sqlite3
-    litestream (0.12.0-x86_64-linux)
-      actionpack (>= 7.0)
-      actionview (>= 7.0)
-      activejob (>= 7.0)
-      activesupport (>= 7.0)
-      logfmt (>= 0.0.10)
-      railties (>= 7.0)
-      sqlite3
-    logfmt (0.0.10)
     logger (1.6.6)
     loofah (2.24.0)
       crass (~> 1.0.2)
@@ -532,7 +499,6 @@ DEPENDENCIES
   letter_opener
   liquid
   listen
-  litestream
   name_of_person
   pagy
   postmark-rails
@@ -637,11 +603,6 @@ CHECKSUMS
   lint_roller (1.1.0) sha256=2c0c845b632a7d172cb849cc90c1bce937a28c5c8ccccb50dfd46a485003cc87
   liquid (5.8.2) sha256=a22f1660115a76bab9ec2548b3c98f99b2230b6a2f297fd8f5b9470edebad9f3
   listen (3.9.0) sha256=db9e4424e0e5834480385197c139cb6b0ae0ef28cc13310cfd1ca78377d59c67
-  litestream (0.12.0) sha256=d622732819f3831db537bba88e0e2e453638fa8e18f98d08b821de5cd11ab8ec
-  litestream (0.12.0-arm64-darwin) sha256=d48e90167a44f5efe605e7247b4cecddecc8917c04af1c24907943c7f10f4eb1
-  litestream (0.12.0-x86_64-darwin) sha256=566fa632653373f3f2036cbcdacf3626d7dfdec42a119ff511d6d16a4ee682bb
-  litestream (0.12.0-x86_64-linux) sha256=a28a60264fad4151fccd992362a05edee0dd672e6deefee06a00fc4059e509c4
-  logfmt (0.0.10) sha256=dd0a66f9a717b3d535963a4c84b3d377c40efadffa68a565253200d13c35d36c
   logger (1.6.6) sha256=dd618d24e637715472732e7eed02e33cfbdf56deaad225edd0f1f89d38024017
   loofah (2.24.0) sha256=61e6a710883abb8210887f3dc868cf3ed66594c509d9ff6987621efa6651ee1e
   mail (2.8.1) sha256=ec3b9fadcf2b3755c78785cb17bc9a0ca9ee9857108a64b6f5cfc9c0b5bfc9ad
