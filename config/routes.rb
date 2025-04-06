@@ -19,13 +19,11 @@ Rails.application.routes.draw do
     resources :comments
   end
 
-  constraints AdminConstraint.new do
-    namespace :admin do
-      get '/', to: 'dashboard#index'
+  namespace :admin do
+    get '/', to: 'dashboard#index'
 
-      resources :pages, :posts, :users, :questions,
-                :evaluations, :tags, :comments, :quizzes
-    end
+    resources :pages, :posts, :users, :questions,
+              :evaluations, :tags, :comments, :quizzes
   end
 
   get '/manifest.json',            to: 'service_worker#manifest'
