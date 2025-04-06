@@ -1,43 +1,6 @@
-<!DOCTYPE html>
-<html class="texture" lang="<%= I18n.locale %>">
-  <head>
-    <title><%= t('site_name') %> | <%= t('tagline') %></title>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<% content_for(:classes_for_html) { 'texture' } %>
+<% content_for(:classes_for_body) { 'main-bg full-height' } %>
 
-    <%= render 'layouts/common/meta' %>
-    <%= render 'layouts/common/tracking' %>
-    <%= favicon_link_tag asset_path('favicon.png'), rel: 'icon', type: 'image/png' %>
+<% content_for(:body) { render 'registrations/form' } %>
 
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <%= yield :head %>
-
-    <%= javascript_include_tag 'application', 'data-turbo-track': 'reload', type: 'module' %>
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbo-track': 'reload' %>
-
-  </head>
-
-  <body class="main-bg full-height">
-
-    <div class="full-height mid-center authentication">
-      <%= render 'layouts/common/messages' %>
-      <div class="alt-border content form">
-        <div class="full-width">
-
-          <div class="flex just-centered logo">
-            <%= link_to root_path do %>
-              <%= image_tag 'svg/company_logo_black.svg' %>
-            <% end %>
-          </div>
-
-        </div>
-        <%= yield %>
-      </div>
-
-    </div>
-
-  </body>
-</html>
+<%= render template: 'layouts/application' %>

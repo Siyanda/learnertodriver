@@ -1,0 +1,4 @@
+<%= render 'layouts/user/primary_nav', cached: true %>
+<%= render 'layouts/user/secondary_nav', cached: true %>
+
+<%= yield(:action_bar) if Current.user&.admin? %>

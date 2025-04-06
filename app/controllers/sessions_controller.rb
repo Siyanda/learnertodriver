@@ -6,6 +6,8 @@ class SessionsController < ApplicationController
     redirect_to new_session_url, alert: t('.rate_limit_message')
   }
 
+  layout 'registrations'
+
   def new; end
 
   def create
