@@ -20,10 +20,18 @@ jobs:
           ruby-version: 3.4.2
           bundler-cache: true
 
-      - name: Install Bun
+      - name: Read Bun version from .tool-versions
+        id: bun_version
         run: |
-          curl -fsSL https://bun.sh/install | bash
-          echo "$HOME/.bun/bin" >> $GITHUB_PATH
+          echo "BUN_VERSION=$(awk '/^bun / { print $2 }' .tool-versions)" >> "$GITHUB_OUTPUT"
+
+      - name: Set up Bun
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: ${{ steps.bun_version.outputs.BUN_VERSION }}
+
+      - name: Install JS dependencies
+        run: bun install
 
       - name: Set up database
         run: bin/rails db:create db:schema:load

@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
+# Dashboard
 crumb :root do
-  link 'Dashboard', dashboard_path
+  link 'Home', root_path
 end
 
 # User list
@@ -9,10 +10,9 @@ crumb :users do
   link 'Users', user_path
 end
 
-# User
+# Profile
 crumb :user do |user|
   link user.username, user
-  parent :users
 end
 
 # Post list
@@ -60,7 +60,7 @@ crumb :evaluations do
 end
 
 # Quiz
-crumb :evaluation do |_evaluation|
-  link 'New Quiz', quiz_evaluations_path
+crumb :evaluation do |evaluation|
+  link "New #{evaluation.title} Quiz", quiz_evaluations_path
   parent :evaluations
 end

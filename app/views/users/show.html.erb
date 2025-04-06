@@ -1,0 +1,6 @@
+<% breadcrumb :user, Current.user %>
+
+<div class="flex to-column gapped">
+  <%= render 'right_area', user: Current.user %>
+  <%= render 'left_area', user: Current.user %>
+</div>

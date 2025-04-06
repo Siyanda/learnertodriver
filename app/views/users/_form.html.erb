@@ -1,0 +1,34 @@
+<%= form_with url: session_path do |form| %>
+  <div class="padded-sides">
+
+  <div class="flex">
+    <div class="form-floating full-width">
+        <label for="floatingInput">First Name</label>
+        <%= form.email_field :email_address, class: 'form-control', required: true, autofocus: true, autocomplete: 'username', placeholder: 'Enter your email address', value: params[:email_address] %>
+      </div>
+
+      <div class="form-floating full-width left-margin">
+        <label for="floatingPassword">Last Name</label>
+        <%= form.password_field :password, class: 'form-control', required: true, autocomplete: 'current-password', placeholder: 'Enter your password', maxlength: 72 %>
+      </div>
+  </div>
+
+  <div class="form-floating">
+    <label for="floatingPassword">Phone</label>
+    <%= form.password_field :password, class: 'form-control', required: true, autocomplete: 'current-password', placeholder: 'Enter your password', maxlength: 72 %>
+  </div>
+
+  <div class="form-floating">
+    <label for="floatingPassword">Email</label>
+    <%= form.password_field :password, class: 'form-control', required: true, autocomplete: 'current-password', placeholder: 'Enter your password', maxlength: 72 %>
+  </div>
+
+  <div class="form-floating">
+    <label for="floatingPassword">Bio</label>
+    <%= form.text_area :password, class: 'form-control', required: true, autocomplete: 'current-password', placeholder: 'Enter your password', maxlength: 72 %>
+  </div>
+
+  <br>
+  <%= form.submit 'Submit', class: 'rounded button btn-primary p-4 text-white' %>
+  </div>
+<% end %>

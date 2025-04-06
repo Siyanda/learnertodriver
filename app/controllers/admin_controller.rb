@@ -6,7 +6,6 @@ class AdminController < ApplicationController
   layout 'admin'
 
   def authenticate_admin
-    return unless Current.user
     return if Current.user.admin?
 
     flash[:error] = t('.not_authorized')

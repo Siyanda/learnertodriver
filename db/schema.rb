@@ -220,10 +220,12 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_04_211633) do
     t.datetime "updated_at", null: false
     t.string "first_name"
     t.string "last_name"
+    t.string "title"
     t.text "bio"
     t.text "links"
     t.date "birthday"
     t.string "username"
+    t.text "phone"
     t.integer "role", default: 0, null: false
     t.integer "status", default: 0, null: false
     t.integer "evaluations_count", default: 0, null: false

@@ -1,30 +1,7 @@
 ---
 EnableDefaultLinters: true
-linters:
-  DeprecatedClasses:
-    enabled: true
-  PartialInstanceVariable:
-    enabled: true
-  HardCodedString:
-    enabled: false
-  Rubocop:
-    enabled: true
-    rubocop_config:
-      inherit_from:
-        - .rubocop.yml
-      Layout/InitialIndentation:
-        Enabled: false
-      Layout/LeadingEmptyLines:
-        Enabled: false
-      Layout/LineLength:
-        Enabled: false
-      Layout/TrailingEmptyLines:
-        Enabled: false
-      Layout/TrailingWhitespace:
-        Enabled: false
-      Style/FrozenStringLiteralComment:
-        Enabled: false
-      Lint/UselessAssignment:
-        Enabled: false
-      Layout/HashAlignment:
-        Enabled: false
+Rubocop:
+  enabled: true
+  rubocop_config:
+    inherit_from:
+      - .rubocop.yml

@@ -1,0 +1,56 @@
+<div class="third-width hr-sectioned white-bg shadowed rounded basic-border aside fit-h">
+  <div class="section">
+    <div class="padded section-heading">
+      <div class="flex">
+        <div class="sub-heading">
+          <div class="flex">
+            <div class="gray-fill small-svg icon margin-sides">
+              <%= inline_svg('icons/user.svg') %>
+            </div>
+            <div class="bold-font"><%= Current.user.name %></div>
+          </div>
+        </div>
+      </div>
+      <hr class="third-width hr-grey">
+      <div class="section">
+        <%= image_tag Current.user.avatar, class: 'image rounded shadowed' if Current.user.avatar.attached? %>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="padded">
+      <div class="flex">
+        <div class="gray-fill small-svg icon margin-sides">
+          <%= inline_svg('icons/user.svg') %>
+        </div>
+        <%= Current.user.phone %>
+      </div>
+    </div>
+  </div>
+  <div class="section">
+    <div class="padded">
+      <div class="flex">
+        <div class="gray-fill small-svg icon margin-sides">
+          <%= inline_svg('icons/user.svg') %>
+        </div>
+        <%= Current.user.email_address %>
+      </div>
+    </div>
+  </div>
+  <div class="section">
+    <div class="padded section-heading">
+      <div class="flex">
+        <div class="gray-fill small-svg icon margin-sides">
+          <%= inline_svg('icons/user.svg') %>
+        </div>
+        <div class="bold-font">Biography</div>
+      </div>
+      <div class="section">
+        <div class="top-padded bottom-padded left-margin">
+          <%= Current.user.bio %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

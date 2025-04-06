@@ -1,30 +1,6 @@
-<!DOCTYPE html>
-<html class="texture" lang="<%= I18n.locale %>">
-  <head>
-    <title><%= t('site_name') %> | <%= yield(:title).presence || t('tagline') %></title>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <%= render 'layouts/common/meta' %>
-    <%= render 'layouts/common/link_rel' %>
-    <%= render 'layouts/common/tracking' %>
-    <%= favicon_link_tag asset_path('favicon.png'), rel: 'icon', type: 'image/png' %>
+<% content_for(:side_menu_overlay) { render 'layouts/admin/side_menu_overlay' } %>
+<% content_for(:header) { render 'layouts/admin/header' } %>
+<% content_for(:body) %>
+<% content_for(:footer) { render 'layouts/admin/footer' } %>
 
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <%= yield :head %>
-
-    <%= javascript_include_tag 'application', 'data-turbo-track': 'reload', type: 'module' %>
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbo-track': 'reload' %>
-
-  </head>
-
-  <body class="app-body">
-    <%= render 'layouts/common/side_menu_overlay' %>
-    <%= render 'layouts/common/messages' %>
-    <%= render 'layouts/app/header' %>
-    <%= yield %>
-    <%= render 'layouts/app/footer' %>
-  </body>
-</html>
+<%= render template: 'layouts/application' %>

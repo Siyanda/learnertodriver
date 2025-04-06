@@ -3,6 +3,7 @@
   padding: 1.2rem;
 }
 
+.profile-header,
 .post-header {
   border-bottom: thin solid var(--gainsboro);
 
@@ -11,15 +12,18 @@
   }
 }
 
+.profile-body,
 .post-body {
   padding: 1.2rem 0;
 }
 
+.profile-footer,
 .post-footer {
   border-top: thin solid var(--gainsboro);
   padding: 0 1.5rem;
 }
 
+.profile-conten,
 .post-content {
   flex: 1;
   padding: 0.4rem 1.8rem;
@@ -88,6 +92,7 @@
   width: 30%;
 }
 
+.profile-title,
 .post-title {
   font-weight: 600;
   margin: 0.4rem 1.8rem;
