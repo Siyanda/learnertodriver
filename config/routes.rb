@@ -1,17 +1,6 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  namespace :admin do
-    get '/', to: 'dashboard#index'
-
-    resources :pages, :posts, :users, :questions,
-              :evaluations, :tags, :comments, :quizzes
-  end
-
-  resources :quizzes do
-    resources :evaluations
-  end
-
   resource :user,      path: 'profile'
   resource :dashboard, only: :show
   resource :session
@@ -28,6 +17,15 @@ Rails.application.routes.draw do
 
   resources :posts do
     resources :comments
+  end
+
+  constraints AdminConstraint.new do
+    namespace :admin do
+      get '/', to: 'dashboard#index'
+
+      resources :pages, :posts, :users, :questions,
+                :evaluations, :tags, :comments, :quizzes
+    end
   end
 
   get '/manifest.json',            to: 'service_worker#manifest'
