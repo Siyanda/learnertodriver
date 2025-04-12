@@ -26,3 +26,8 @@ en:
   notifications:
     new_comment:
       message: "New comment post"
+  evaluations:
+    components:
+      header:
+        title: "%{title} quiz"
+        question: Question

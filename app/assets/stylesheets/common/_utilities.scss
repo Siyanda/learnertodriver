@@ -651,9 +651,13 @@
   .mobile-only {
     display: inherit;
   }
+
+  .tablet-only {
+    display: inherit;
+  }
 }
 
-@media screen and (max-width: 420px) {
+@media screen and (max-width: 799px) {
   .app-body {
     padding-bottom: 80px;
   }
@@ -661,16 +665,11 @@
   .tablet-only {
     display: inherit;
   }
-}
 
-@media screen and (max-width: 800px) {
-  .app-body {
-    padding-bottom: 80px;
+  .third-width {
+    width: 100%;
   }
 
-  .tablet-only {
-    display: inherit;
-  }
 }
 
 @media screen and (min-width: 800px) {

@@ -6,17 +6,15 @@ Rails.application.routes.draw do
   resource :session
 
   resources :passwords, param: :token
-  resources :pages
-  resources :questions
-  resources :evaluations
-  resources :tags, only: %i[show index]
+  resources :pages,     only: :show
+  resources :tags,      only: %i[show index]
 
-  resources :quizzes do
-    resources :evaluations
+  resources :posts, only: %i[show index] do
+    resources :comments
   end
 
-  resources :posts do
-    resources :comments
+  resources :quizzes, only: %i[show index] do
+    resources :evaluations, only: %i[new create edit update]
   end
 
   namespace :admin do

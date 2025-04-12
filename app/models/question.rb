@@ -5,7 +5,7 @@ class Question < ApplicationRecord
   has_many :quizzes, through: :quiz_question_linkages
   has_many :answers, dependent: :destroy
 
-  enum :kind, { single_choice: 0, multiple_choice: 1, long_answer: 2 }
+  enum :kind, { single_correct: 0, multiple_correct: 1, text_response: 2 }, validate: true
 
   scope :random, -> { order(Arel::Nodes::NamedFunction.new('RANDOM', [])) }
 

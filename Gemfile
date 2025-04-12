@@ -33,6 +33,7 @@ gem 'gretel'
 gem 'friendly_id'
 gem 'postmark-rails'
 gem 'acts_as_votable'
+gem 'rack-mini-profiler', require: false
 
 group :development, :test do
   gem 'debug'
@@ -50,6 +51,7 @@ group :development do
   gem 'listen'
   gem 'spring'
   gem 'brakeman'
+  gem 'debugbar'
   gem 'web-console'
   gem 'letter_opener'
   gem 'dockerfile-rails'

@@ -3,7 +3,7 @@
 class PostsController < ApplicationController
   allow_unauthenticated_access only: %i[index show]
   before_action :set_post_options
-  before_action :set_post, only: %i[show edit update destroy upvote downvote]
+  before_action :set_post, only: %i[show edit update destroy]
 
   def index
     @posts = Post.published
@@ -42,16 +42,6 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy
     redirect_to posts_path, notice: t('controllers.notices.destroy', model: 'Post')
-  end
-
-  def upvote
-    @post.upvote_by Current.user
-    redirect_back(fallback_location: posts_path)
-  end
-
-  def downvote
-    @post.downvote_from Current.user
-    redirect_back(fallback_location: posts_path)
   end
 
   private

@@ -1,10 +1,6 @@
 <% title @page.title.titleize %>
 <% breadcrumb :page, @page %>
 
-<% content_for :action_bar do %>
-  <%= render 'layouts/common/action_bar', item: @page %>
-<% end %>
-
 <div class="flex gapped">
   <div class="flex full-width rounded basic-border column content page">
 

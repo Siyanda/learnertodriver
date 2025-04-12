@@ -2,6 +2,7 @@
 
 class ServiceWorkerController < ApplicationController
   protect_from_forgery except: :service_worker
+  allow_unauthenticated_access
 
   def service_worker; end
 

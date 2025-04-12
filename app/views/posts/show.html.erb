@@ -1,10 +1,6 @@
 <% title @post.title %>
 <% breadcrumb :post, @post %>
 
-<% content_for :action_bar do %>
-  <%= render partial: 'layouts/common/action_bar', locals: { item: @post } %>
-<% end %>
-
 <div class="flex to-column gapped">
   <%= render 'content_area', post: @post %>
   <%= render 'side_bar', post: @post %>

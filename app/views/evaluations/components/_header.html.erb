@@ -2,10 +2,10 @@
   <div class="flex column">
     <div class="flex spaced-between">
       <div class="info">
-        <%= content_tag(:h1, nil, data: { 'dayjs-formatted-date-time-target': 'formattedTime', controller: 'dayjs-formatted-date-time', 'dayjs-formatted-date-time-date-value': DateTime.now.iso8601 }, class: 'bold') %>
-        <%= content_tag(:h1, "Quiz : #{@quiz.title}") %>
-        <%= content_tag(:h1, "#{@quiz.questions.count} Questions") %>
-        <%= content_tag(:h1, Current.user.name) %>
+        <%= content_tag(:h1, t('.title', title: @quiz.title)) %>
+        <%= content_tag(:h2, nil, data: { 'dayjs-formatted-date-time-target': 'formattedTime', controller: 'dayjs-formatted-date-time', 'dayjs-formatted-date-time-date-value': DateTime.now.iso8601 }, class: 'bold') %>
+        <%= content_tag(:h2, pluralize(@quiz.questions.count, t('.question'))) %>
+        <%= content_tag(:h2, Current.user.name) %>
       </div>
 
       <div class="long-svg icon">

@@ -2,6 +2,7 @@
 
 class ApplicationController < ActionController::Base
   include Authentication
+  include RackMiniProfilerAuthorization
 
   include Pagy::Backend
   rescue_from Pagy::OverflowError, with: :redirect_to_last_page
