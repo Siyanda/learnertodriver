@@ -30,6 +30,14 @@ jobs:
         with:
           bun-version: ${{ steps.bun_version.outputs.BUN_VERSION }}
 
+      - name: Cache Bun install cache
+        uses: actions/cache@v3
+        with:
+          path: ~/.bun/install/cache
+          key: bun-cache-${{ runner.os }}-${{ steps.bun_version.outputs.BUN_VERSION }}-${{ hashFiles('bun.lockb') }}
+          restore-keys: |
+            bun-cache-${{ runner.os }}-${{ steps.bun_version.outputs.BUN_VERSION }}-
+
       - name: Install JS dependencies
         run: bun install
 

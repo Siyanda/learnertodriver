@@ -22,6 +22,8 @@ Rails.application.routes.draw do
 
     resources :pages, :posts, :users, :questions,
               :evaluations, :tags, :comments, :quizzes
+
+    mount MissionControl::Jobs::Engine, at: '/jobs'
   end
 
   get '/manifest.json',            to: 'service_worker#manifest'

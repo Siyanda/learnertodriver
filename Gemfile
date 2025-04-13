@@ -19,7 +19,7 @@ gem 'dartsass-rails'
 gem 'jsbundling-rails'
 gem 'cssbundling-rails'
 
-gem 'image_processing'
+gem 'image_processing', require: 'image_processing/vips'
 gem 'aws-sdk-s3', require: false
 
 gem 'pagy'
@@ -27,6 +27,7 @@ gem 'liquid'
 gem 'ransack'
 gem 'redcarpet'
 gem 'name_of_person'
+gem 'mission_control-jobs'
 
 gem 'csv'
 gem 'gretel'
@@ -54,7 +55,6 @@ group :development do
   gem 'debugbar'
   gem 'web-console'
   gem 'letter_opener'
-  gem 'dockerfile-rails'
 end
 
 group :test do

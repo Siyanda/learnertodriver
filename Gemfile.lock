@@ -142,8 +142,6 @@ GEM
       actioncable
       rails
     docile (1.4.1)
-    dockerfile-rails (1.7.9)
-      rails (>= 3.0.0)
     drb (2.2.1)
     erb_lint (0.9.0)
       activesupport
@@ -205,6 +203,10 @@ GEM
     image_processing (1.14.0)
       mini_magick (>= 4.9.5, < 6)
       ruby-vips (>= 2.0.17, < 3)
+    importmap-rails (2.1.0)
+      actionpack (>= 6.0.0)
+      activesupport (>= 6.0.0)
+      railties (>= 6.0.0)
     io-console (0.8.0)
     irb (1.15.2)
       pp (>= 0.6.0)
@@ -244,6 +246,16 @@ GEM
       logger
     mini_mime (1.1.5)
     minitest (5.25.5)
+    mission_control-jobs (1.0.2)
+      actioncable (>= 7.1)
+      actionpack (>= 7.1)
+      activejob (>= 7.1)
+      activerecord (>= 7.1)
+      importmap-rails (>= 1.2.1)
+      irb (~> 1.13)
+      railties (>= 7.1)
+      stimulus-rails
+      turbo-rails
     msgpack (1.8.0)
     name_of_person (1.1.3)
       activesupport (>= 5.2.0)
@@ -497,7 +509,6 @@ DEPENDENCIES
   dartsass-rails
   debug
   debugbar
-  dockerfile-rails
   erb_lint
   factory_bot_rails
   faker
@@ -508,6 +519,7 @@ DEPENDENCIES
   letter_opener
   liquid
   listen
+  mission_control-jobs
   name_of_person
   pagy
   postmark-rails
@@ -575,7 +587,6 @@ CHECKSUMS
   debug (1.10.0) sha256=11e28ca74875979e612444104f3972bd5ffb9e79179907d7ad46dba44bd2e7a4
   debugbar (0.4.3) sha256=39e681f66ab5a250b1f78acccd9c16cc283ee9c4af76395c67b27fcc0214e1b8
   docile (1.4.1) sha256=96159be799bfa73cdb721b840e9802126e4e03dfc26863db73647204c727f21e
-  dockerfile-rails (1.7.9) sha256=a27d2f8c772ca2cd8cf8f3fcaea09a2a00c5bb1eaaca125f92e86cab3f5e35f8
   drb (2.2.1) sha256=e9d472bf785f558b96b25358bae115646da0dbfd45107ad858b0bc0d935cb340
   erb_lint (0.9.0) sha256=dfb5e40ad839e8d1f0d56ca85ec9a7ac4c9cd966ec281138282f35b323ca7c31
   erubi (1.13.1) sha256=a082103b0885dbc5ecf1172fede897f9ebdb745a4b97a5e8dc63953db1ee4ad9
@@ -603,6 +614,7 @@ CHECKSUMS
   gretel (5.0.1) sha256=c352b73d9f7d135d6620bbf4105638cf41e72ec2dd0a203c0a593d83025f7f4c
   i18n (1.14.7) sha256=ceba573f8138ff2c0915427f1fc5bdf4aa3ab8ae88c8ce255eb3ecf0a11a5d0f
   image_processing (1.14.0) sha256=754cc169c9c262980889bec6bfd325ed1dafad34f85242b5a07b60af004742fb
+  importmap-rails (2.1.0) sha256=9f10c67d60651a547579f448100d033df311c5d5db578301374aeb774faae741
   io-console (0.8.0) sha256=cd6a9facbc69871d69b2cb8b926fc6ea7ef06f06e505e81a64f14a470fddefa2
   irb (1.15.2) sha256=222f32952e278da34b58ffe45e8634bf4afc2dc7aa9da23fed67e581aa50fdba
   jmespath (1.6.2) sha256=238d774a58723d6c090494c8879b5e9918c19485f7e840f2c1c7532cf84ebcb1
@@ -622,6 +634,7 @@ CHECKSUMS
   mini_magick (5.2.0) sha256=2757ffbfdb1d38242d1da9ff1505360ab75d59dc02eb7ab79ff6d5acb1243f4a
   mini_mime (1.1.5) sha256=8681b7e2e4215f2a159f9400b5816d85e9d8c6c6b491e96a12797e798f8bccef
   minitest (5.25.5) sha256=391b6c6cb43a4802bfb7c93af1ebe2ac66a210293f4a3fb7db36f2fc7dc2c756
+  mission_control-jobs (1.0.2) sha256=0f9e115afdd77e3b10a1988870b9b32bdc99350a952c7a85a3b3f440bf473eb4
   msgpack (1.8.0) sha256=e64ce0212000d016809f5048b48eb3a65ffb169db22238fb4b72472fecb2d732
   name_of_person (1.1.3) sha256=e12291250987ef79c413314f698f15d53e7a602c42231de99c276ef9585bc18c
   net-imap (0.5.6) sha256=1ede8048ee688a14206060bf37a716d18cb6ea00855f6c9b15daee97ee51fbe5
@@ -722,4 +735,4 @@ CHECKSUMS
   zeitwerk (2.7.2) sha256=842e067cb11eb923d747249badfb5fcdc9652d6f20a1f06453317920fdcd4673
 
 BUNDLED WITH
-   2.6.6
+   2.6.7
