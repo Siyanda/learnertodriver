@@ -663,13 +663,17 @@
   }
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 799px) {
   .app-body {
     padding-bottom: 80px;
   }
 
   .tablet-only {
     display: inherit;
+  }
+
+  .third-width {
+    width: 100%;
   }
 }
 
