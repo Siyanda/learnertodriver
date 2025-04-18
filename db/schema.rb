@@ -120,6 +120,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_04_211633) do
     t.string "title", null: false
     t.text "content"
     t.string "slug"
+    t.datetime "published_at", precision: nil
     t.integer "status", default: 0, null: false
     t.integer "user_id", null: false
     t.integer "parent_id"
@@ -134,6 +135,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_04_211633) do
     t.string "title", null: false
     t.text "content"
     t.string "slug"
+    t.datetime "published_at", precision: nil
     t.integer "status", default: 0, null: false
     t.string "excerpt", limit: 150, default: "", null: false
     t.integer "user_id", null: false
@@ -159,11 +161,12 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_04_211633) do
   end
 
   create_table "quizzes", force: :cascade do |t|
-    t.string "title", default: "", null: false
-    t.string "information", default: "", null: false
+    t.string "title", null: false
+    t.string "information", null: false
+    t.string "description", null: false
     t.integer "duration", default: 3600, null: false
-    t.string "description", default: "", null: false
     t.string "slug"
+    t.datetime "published_at", precision: nil
     t.index ["slug"], name: "index_quizzes_on_slug", unique: true
   end
 
@@ -225,7 +228,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_04_211633) do
     t.text "links"
     t.date "birthday"
     t.string "username"
-    t.text "phone"
+    t.text "phone_number"
     t.integer "role", default: 0, null: false
     t.integer "status", default: 0, null: false
     t.integer "evaluations_count", default: 0, null: false
@@ -234,22 +237,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_04_211633) do
     t.index ["email_address"], name: "index_users_on_email_address", unique: true
     t.index ["slug"], name: "index_users_on_slug", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
-  end
-
-  create_table "votes", force: :cascade do |t|
-    t.string "votable_type"
-    t.integer "votable_id"
-    t.string "voter_type"
-    t.integer "voter_id"
-    t.boolean "vote_flag"
-    t.string "vote_scope"
-    t.integer "vote_weight"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["votable_id", "votable_type", "vote_scope"], name: "index_votes_on_votable_id_and_votable_type_and_vote_scope"
-    t.index ["votable_type", "votable_id"], name: "index_votes_on_votable_type_and_votable_id"
-    t.index ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope"
-    t.index ["voter_type", "voter_id"], name: "index_votes_on_voter_type_and_voter_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
