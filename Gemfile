@@ -19,24 +19,29 @@ gem 'dartsass-rails'
 gem 'jsbundling-rails'
 gem 'cssbundling-rails'
 
-gem 'image_processing'
+gem 'image_processing', require: 'image_processing/vips'
 gem 'aws-sdk-s3', require: false
 
 gem 'pagy'
 gem 'liquid'
 gem 'ransack'
 gem 'redcarpet'
+gem 'action_policy'
 gem 'name_of_person'
+
+gem 'mission_control-jobs'
 
 gem 'csv'
 gem 'gretel'
 gem 'friendly_id'
 gem 'postmark-rails'
 gem 'acts_as_votable'
+gem 'rack-mini-profiler', require: false
 
 group :development, :test do
   gem 'debug'
   gem 'faker'
+  gem 'debugbar'
   gem 'rails_live_reload'
   gem 'shoulda-matchers'
   gem 'factory_bot_rails'
