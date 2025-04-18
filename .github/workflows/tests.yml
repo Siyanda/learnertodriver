@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
   test:
-    name: Minitest
+    name: Rails + Bun Tests
     runs-on: ubuntu-latest
     env:
       RAILS_ENV: test
@@ -30,11 +30,22 @@ jobs:
         with:
           bun-version: ${{ steps.bun_version.outputs.BUN_VERSION }}
 
+      - name: Cache Bun install cache
+        uses: actions/cache@v3
+        with:
+          path: ~/.bun/install/cache
+          key: bun-cache-${{ runner.os }}-${{ steps.bun_version.outputs.BUN_VERSION }}-${{ hashFiles('bun.lockb') }}
+          restore-keys: |
+            bun-cache-${{ runner.os }}-${{ steps.bun_version.outputs.BUN_VERSION }}-
+
       - name: Install JS dependencies
         run: bun install
 
       - name: Set up database
         run: bin/rails db:create db:schema:load
 
-      - name: Run tests
+      - name: Run Ruby tests
         run: bin/rails test
+
+      - name: Run JS tests
+        run: bun test
