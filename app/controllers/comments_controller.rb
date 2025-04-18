@@ -19,9 +19,13 @@ class CommentsController < ApplicationController
     end
   end
 
-  def update; end
+  def update
+    authorize! @comment
+  end
 
   def destroy
+    authorize! @comment
+
     @comment.destroy
     redirect_to @comment.post, notice: t('controllers.notices.destroy', model: 'Comment'), status: :see_other
   end

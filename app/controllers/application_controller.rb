@@ -8,6 +8,8 @@ class ApplicationController < ActionController::Base
 
   layout :determine_layout
 
+  authorize :user, through: -> { Current.user }
+
   def not_found!
     raise ActionController::RoutingError, 'Not Found'
   end
