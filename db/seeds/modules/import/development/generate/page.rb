@@ -38,7 +38,7 @@ pages = [
   { 'title' => 'Security Overview', 'content' => rendered_md('page/security'), 'slug' => 'security',
     'status' => 'published', 'user_id' => User.first.id, 'parent_id' => '' },
   { 'title' => 'Taxes', 'content' => rendered_md('page/taxes'), 'slug' => 'taxes', 'status' => 'published',
-    'user_id' => User.first.id, 'parent_id' => '' }
+    'user_id' => User.first.id, 'parent_id' => '' },
 ]
 
 pages.each do |data|
