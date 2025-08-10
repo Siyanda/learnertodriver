@@ -4,3 +4,9 @@
   <%= render 'right_area', user: Current.user %>
   <%= render 'left_area', user: Current.user %>
 </div>
+
+<div class="flex to-column gapped">
+  evaluations completed: <%= Current.user.evaluations.completed.count %>
+  evaluations in_progress: <%= Current.user.evaluations.in_progress.count %>
+  evaluations total: <%= Current.user.evaluations.count %>
+</div>

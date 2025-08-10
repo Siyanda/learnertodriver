@@ -1,6 +1,6 @@
 <% if record.errors.any? %>
   <div id="error_explanation" class="form-errors">
-  <h2><%= pluralize(record.errors.count, 'error') %> prohibited this evaluation from being saved:</h2>
+  <h2><%= pluralize(record.errors.count, 'error') %> prohibited this record from being saved:</h2>
     <ul>
     <% record.errors.each do |error| %>
       <li><%= error.full_messages %></li>

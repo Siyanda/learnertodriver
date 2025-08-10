@@ -1,0 +1,18 @@
+<% content_for(:form_navigation) do %>
+  <div class="flex full-width padded spaced-between">
+      <%= link_to edit_quiz_evaluation_path(
+            evaluation.quiz,
+            evaluation,
+            choice_id: current_choice.higher_items.ids.first
+          ),
+          disabled: current_choice.lower_items.none?,
+          class: 'clickable rounded heavily-padded-sides lighly-padded dark-bg light-text btn-primary' do %>
+            <div class="flex center-aligned icon big-svg"><%= inline_svg('icons/arrow-left.svg') %> Previous</div>
+      <% end %>
+
+      <%= link_to edit_quiz_evaluation_path(evaluation.quiz, evaluation, choice_id: current_choice.lower_items.ids.first),
+          class: 'clickable rounded heavily-padded-sides lighly-padded dark-bg light-text btn-primary' do %>
+            <div class="flex center-aligned icon big-svg">Next <%= inline_svg('icons/arrow-right.svg') %></div>
+      <% end %>
+  </div>
+<% end %>

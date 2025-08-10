@@ -1,0 +1,13 @@
+<% breadcrumb :evaluation, @evaluation.quiz %>
+
+<%= render 'evaluations/components/header', quiz: @evaluation.quiz, date: @evaluation.created_at %>
+<h3>Score: <%= @evaluation.score %></h3>
+<p>Status: <%= @evaluation.status %></p>
+<div class="alt-border gapped content">
+  <% @evaluation.choices.each do |choice| %>
+    <h4 class="question"><%= choice.question.content %></h4>
+    <div class="answer">
+      <%= choice.answer&.content %>
+    </div>
+  <% end %>
+</div>
