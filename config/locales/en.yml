@@ -26,3 +26,26 @@ en:
   notifications:
     new_comment:
       message: "New comment post"
+  comments:
+    singular: "Comment"
+    plural: "Comments"
+    none: "Be the first to comment"
+    leave_comment: "Leave a Comment"
+    submit: "Post Comment"
+  page_views:
+    singular: "View"
+    plural: "Views"
+  posts:
+    posted_at: "Posted"
+  evaluations:
+    edit:
+      question_with_numb: "Question %{number}"
+
+    update:
+      choice_selection_updated: "Good choice"
+
+    load_error: "Unable to load evaluation page"
+    components:
+      header:
+        title: "%{title} quiz"
+        question: Question
