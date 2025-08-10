@@ -3,7 +3,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-gem 'rails'
+gem 'rails', '~> 8.0', '>= 8.0.2'
 gem 'puma'
 gem 'sqlite3'
 gem 'bootsnap', require: false
@@ -19,30 +19,29 @@ gem 'dartsass-rails'
 gem 'jsbundling-rails'
 gem 'cssbundling-rails'
 
-gem 'image_processing', require: 'image_processing/vips'
+gem 'image_processing'
 gem 'aws-sdk-s3', require: false
 
 gem 'pagy'
 gem 'liquid'
 gem 'ransack'
 gem 'redcarpet'
+gem 'light-service'
 gem 'action_policy'
 gem 'name_of_person'
-
 gem 'mission_control-jobs'
 
 gem 'csv'
 gem 'gretel'
 gem 'friendly_id'
+gem 'acts_as_list'
 gem 'postmark-rails'
-gem 'acts_as_votable'
 gem 'rack-mini-profiler', require: false
 
 group :development, :test do
   gem 'debug'
   gem 'faker'
-  gem 'debugbar'
-  gem 'rails_live_reload'
+  gem 'hotwire-spark'
   gem 'shoulda-matchers'
   gem 'factory_bot_rails'
   gem 'rubocop-rails',       require: false
@@ -55,6 +54,7 @@ group :development do
   gem 'listen'
   gem 'spring'
   gem 'brakeman'
+  gem 'annotate'
   gem 'web-console'
   gem 'letter_opener'
   gem 'dockerfile-rails'

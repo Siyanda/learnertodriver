@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
-module ApplicationCable
-  class Connection < ActionCable::Connection::Base
-    identified_by :current_user
+class ApplicationCable::Connection < ActionCable::Connection::Base
+  identified_by :current_user
 
     def connect
       set_current_user || set_guest_user
