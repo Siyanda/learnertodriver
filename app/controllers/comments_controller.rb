@@ -1,36 +1,32 @@
 # frozen_string_literal: true
 
 class CommentsController < ApplicationController
-  before_action :set_comment, only: %i[show edit update destroy]
-
-  def show; end
-
-  def edit; end
+  before_action :set_post,    only: :create
+  before_action :set_comment, only: :destroy
 
   def create
-    @post = Post.friendly.find(params[:post_id])
-    @comment = @post.comments.new(comment_params)
+    @comment      = @post.comments.new(comment_params)
     @comment.user = Current.user
 
     if @comment.save
-      redirect_to @comment.post, notice: t('controllers.notices.create', model: 'Comment')
+      redirect_to @post, notice: t('controllers.notices.create', model: 'Comment')
     else
-      render action: 'new'
+      render :new, status: :unprocessable_entity
     end
-  end
-
-  def update
-    authorize! @comment
   end
 
   def destroy
     authorize! @comment
-
     @comment.destroy
-    redirect_to @comment.post, notice: t('controllers.notices.destroy', model: 'Comment'), status: :see_other
+
+    redirect_to @comment.post, notice: t('controllers.notices.destroy', model: 'Comment')
   end
 
   private
+
+  def set_post
+    @post = Post.friendly.find(params[:post_id])
+  end
 
   def set_comment
     @comment = Comment.find(params[:id])

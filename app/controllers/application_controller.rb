@@ -8,6 +8,8 @@ class ApplicationController < ActionController::Base
 
   layout :determine_layout
 
+  allow_browser versions: :modern
+
   authorize :user, through: -> { Current.user }
 
   def not_found!
