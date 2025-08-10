@@ -20,6 +20,9 @@ models.each do |data|
   puts "#{data.camelize.constantize.count} #{data.pluralize} created"
 end
 
+Quiz.with_questions.unpublished.find_each(&:published!)
+Question.find_each { |question| CorrectAnswer.create!(question:, answer: question.answers.sample) }
+
 puts '... generating post and page content from markdown 📝'
 
 def rendered_md(file_name)
@@ -46,16 +49,16 @@ models.each do |_model_name|
   image_list = CSV.parse(data, headers: true)
 
   image_list.each do |image_row|
-    model = image_row['model'].camelize.constantize
-    search_value = image_row['find_value'].to_s
-    search_by = image_row['find_by'].parameterize.underscore.to_sym
-    attachment_name = image_row['attachment_name'].to_s
-    file_type = image_row['file_type'].to_s
-    file_name = image_row['file_name'].to_s
+    search_val = image_row['find_value'].to_s
+    file_type  = image_row['file_type'].to_s
+    file_name  = image_row['file_name'].to_s
+    att_name   = image_row['attachment_name'].to_s
+    search_by  = image_row['find_by'].parameterize.underscore.to_sym
+    model      = image_row['model'].camelize.constantize
 
-    record = model.find_by!(search_by => search_value)
-    record.send(attachment_name).attach(io:           File.open("#{seeds_path}/assets/images/#{image_row['model']}/#{file_name}"),
-                                        filename:     file_name,
-                                        content_type: file_type)
+    record = model.find_by!(search_by => search_val)
+    record.send(att_name).attach(io:           File.open("#{seeds_path}/assets/images/#{image_row['model']}/#{file_name}"),
+                                 filename:     file_name,
+                                 content_type: file_type)
   end
 end

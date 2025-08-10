@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_04_04_211633) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_04_144854) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -85,6 +85,15 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_04_211633) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
+  create_table "correct_answers", force: :cascade do |t|
+    t.integer "question_id", null: false
+    t.integer "answer_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["answer_id"], name: "index_correct_answers_on_answer_id"
+    t.index ["question_id"], name: "index_correct_answers_on_question_id"
+  end
+
   create_table "evaluations", force: :cascade do |t|
     t.decimal "score", default: "0.0", null: false
     t.integer "status", default: 0, null: false
@@ -92,6 +101,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_04_211633) do
     t.integer "quiz_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "active_choice_id"
+    t.index ["active_choice_id"], name: "index_evaluations_on_active_choice_id"
     t.index ["quiz_id"], name: "index_evaluations_on_quiz_id"
     t.index ["user_id"], name: "index_evaluations_on_user_id"
   end
@@ -141,6 +152,24 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_04_211633) do
     t.datetime "updated_at", null: false
     t.index ["slug"], name: "index_posts_on_slug", unique: true
     t.index ["user_id"], name: "index_posts_on_user_id"
+  end
+
+  create_table "progress_items", force: :cascade do |t|
+    t.integer "state", default: 0, null: false
+    t.datetime "answered_at"
+    t.integer "progress_id", null: false
+    t.integer "choice_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["choice_id"], name: "index_progress_items_on_choice_id"
+    t.index ["progress_id"], name: "index_progress_items_on_progress_id"
+  end
+
+  create_table "progresses", force: :cascade do |t|
+    t.integer "evaluation_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["evaluation_id"], name: "index_progresses_on_evaluation_id"
   end
 
   create_table "questions", force: :cascade do |t|
@@ -239,29 +268,12 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_04_211633) do
     t.integer "role", default: 0, null: false
     t.integer "status", default: 0, null: false
     t.string "username"
-    t.integer "evaluations_count", default: 0, null: false
     t.string "slug"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["slug"], name: "index_users_on_slug", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
-  end
-
-  create_table "votes", force: :cascade do |t|
-    t.string "votable_type"
-    t.integer "votable_id"
-    t.string "voter_type"
-    t.integer "voter_id"
-    t.boolean "vote_flag"
-    t.string "vote_scope"
-    t.integer "vote_weight"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["votable_id", "votable_type", "vote_scope"], name: "index_votes_on_votable_id_and_votable_type_and_vote_scope"
-    t.index ["votable_type", "votable_id"], name: "index_votes_on_votable_type_and_votable_id"
-    t.index ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope"
-    t.index ["voter_type", "voter_id"], name: "index_votes_on_voter_type_and_voter_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
@@ -273,11 +285,17 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_04_211633) do
   add_foreign_key "choices", "questions"
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
+  add_foreign_key "correct_answers", "answers"
+  add_foreign_key "correct_answers", "questions"
+  add_foreign_key "evaluations", "choices", column: "active_choice_id"
   add_foreign_key "evaluations", "quizzes"
   add_foreign_key "evaluations", "users"
   add_foreign_key "pages", "pages", column: "parent_id"
   add_foreign_key "pages", "users"
   add_foreign_key "posts", "users"
+  add_foreign_key "progress_items", "choices"
+  add_foreign_key "progress_items", "progresses"
+  add_foreign_key "progresses", "evaluations"
   add_foreign_key "quiz_question_linkages", "questions"
   add_foreign_key "quiz_question_linkages", "quizzes"
   add_foreign_key "responses", "answers"

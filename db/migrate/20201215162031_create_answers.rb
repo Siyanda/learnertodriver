@@ -9,7 +9,6 @@ class CreateAnswers < ActiveRecord::Migration[6.1]
       t.string  :information,  null: false, default: ''
 
       t.references :question,  null: false, foreign_key: true
-      t.references :correct,   foreign_key: { to_table: :answers }, index: true
     end
   end
 end

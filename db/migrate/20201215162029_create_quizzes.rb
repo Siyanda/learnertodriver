@@ -7,6 +7,7 @@ class CreateQuizzes < ActiveRecord::Migration[6.1]
       t.string   :information, null: false
       t.string   :description, null: false
       t.integer  :duration,    null: false, default: 3600
+      t.integer  :status,      null: false, default: 0
       t.string   :slug
       t.datetime :published_at
     end

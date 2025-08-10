@@ -13,7 +13,6 @@ class AddUserDetails < ActiveRecord::Migration[6.1]
       t.text     :phone_number
       t.integer  :role,              default: 0, null: false
       t.integer  :status,            default: 0, null: false
-      t.integer  :evaluations_count, default: 0, null: false
       t.string   :slug
     end
     add_index :users, :slug,     unique: true
