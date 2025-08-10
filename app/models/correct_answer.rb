@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: responses
+# Table name: correct_answers
 #
 #  id          :integer          not null, primary key
 #  question_id :integer          not null
@@ -10,13 +10,14 @@
 #
 # Indexes
 #
-#  index_responses_on_answer_id    (answer_id)
-#  index_responses_on_question_id  (question_id)
+#  index_correct_answers_on_answer_id                  (answer_id)
+#  index_correct_answers_on_question_id                (question_id)
+#  index_correct_answers_on_question_id_and_answer_id  (question_id,answer_id) UNIQUE
 #
 
 # frozen_string_literal: true
 
-class Response < ApplicationRecord
-  belongs_to :answer
+class CorrectAnswer < ApplicationRecord
   belongs_to :question
+  belongs_to :answer
 end

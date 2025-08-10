@@ -12,8 +12,13 @@ class Quiz < ApplicationRecord
 
   has_one_attached :cover_image
 
-  validates :title, presence: true
-  validates :duration, presence: true
+  enum :status, { draft: 0, unpublished: 1, published: 2, restricted: 3, removed: 4 }, validate: true
+
+  validates :title,       presence: true
+  validates :duration,    presence: true
   validates :information, presence: true
   validates :description, presence: true
+
+  scope :with_questions,    -> { joins(:questions).distinct }
+  scope :without_questions, -> { where.missing(:questions) }
 end

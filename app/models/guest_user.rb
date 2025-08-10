@@ -1,15 +1,9 @@
 # frozen_string_literal: true
 
 class GuestUser
-  def guest?
-    true
-  end
+  def name = 'Guest User'
 
-  def id
-    nil
-  end
+  def guest? = true
 
-  def name
-    'Guest User'
-  end
+  def id = nil
 end
