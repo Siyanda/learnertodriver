@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
 require 'test_helper'
-module ApplicationCable
-  class ConnectionTest < ActionCable::Connection::TestCase
-  end
+class ApplicationCable::ConnectionTest < ActionCable::Connection::TestCase
 end

@@ -3,6 +3,9 @@
 
 import { application } from './application'
 
+import AutoSubmitController from './auto_submit_controller'
+application.register('auto-submit', AutoSubmitController)
+
 import DropdownController from './dropdown_controller.js'
 application.register('dropdown', DropdownController)
 
