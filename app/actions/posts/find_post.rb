@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Evaluations::FindPost
+class Posts::FindPost
   extend ::LightService::Action
 
   expects  :post

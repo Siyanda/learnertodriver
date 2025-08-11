@@ -38,10 +38,10 @@ class UserTest < ActiveSupport::TestCase
     file = fixture_file_upload('avatar.jpg', 'image/jpeg')
     user.avatar.attach(file)
 
-    user.avatar.blob.byte_size = 2.megabytes
+    user.avatar.blob.byte_size = 5.megabytes
     user.valid?
 
-    assert_includes user.errors[:avatar], 'file is too large, the maximum is 1Mb'
+    assert_includes user.errors[:avatar], 'file is too large, the maximum is 4Mb'
   end
 
   test 'rejects avatar with unsupported content type' do
