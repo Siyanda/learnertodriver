@@ -7,7 +7,7 @@ module ApplicationHelper
     content_for(:title) { page_title }
   end
 
-  def url_contains?(klass, path)
+  def url_contains?(klass, path) # rubocop:disable Naming/PredicateMethod
     klass if request.path.include?(path.to_s)
   end
 
@@ -22,12 +22,34 @@ module ApplicationHelper
     Markdown.new(text, *options).to_html
   end
 
-  def meta_tag(name, content)
-    tag.meta(name:, content:) unless content.nil?
-  end
-
   def liquidize(content)
     Liquid::Template.parse(content).render
+  end
+
+  def time_ago_span(datetime, html_class: 'date-value')
+    content_tag(
+      :span,
+      nil,
+      data:  {
+        controller:                        'dayjs-time-ago',
+        'dayjs-time-ago-target':           'formattedTime',
+        'dayjs-time-ago-time-stamp-value': datetime.iso8601
+      },
+      class: html_class
+    )
+  end
+
+  def duration_value_span(duration, html_class: 'duration-value')
+    content_tag(
+      :span,
+      nil,
+      data:  {
+        controller:                           'dayjs-to-duration',
+        'dayjs-to-duration-target':           'formattedTime',
+        'dayjs-to-duration-time-stamp-value': duration
+      },
+      class: html_class
+    )
   end
 
   def gravatar_url(email_address, options = {})

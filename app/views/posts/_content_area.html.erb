@@ -1,26 +1,27 @@
 <div class="flex full-width rounded shadowed basic-border max-content column white-bg post">
+  <div class="post-header">
+    <%= content_tag(:h1, post.title, class: "post-title") %>
+  </div>
 
-    <div class="post-header">
-      <h1 class="post-title">
-        <%= post.title %>
-      </h1>
-    </div>
+  <div class="post-content">
+    <%= content_tag(:div,
+                    sanitize(from_markdown(liquidize(post.content))),
+                    class: "post-body") %>
+  </div>
 
-    <div class="post-content">
-      <div class="post-body">
-        <%= sanitize from_markdown(liquidize(post.content)) %>
+  <div class="post-footer">
+    <div class="flex center-aligned spaced-between post-meta">
+      <div class="flex">
+
+        <%= content_tag(:div, class: "gray-stroke small-svg icon") do %>
+          <%= inline_svg('icons/clock.svg') %>
+        <% end %>
+
+        <%= content_tag(:p, class: "post-date") do %>
+          <%= t('posts.posted_at') %> <%= time_ago_span(post.created_at) %>
+        <% end %>
+
       </div>
-    </div>
-
-    <div class="post-footer">
-      <div class="flex center-aligned spaced-between post-meta">
-        <div class="flex center-aligned">
-          <div class="gray-stroke small-svg icon"><%= inline_svg('icons/clock.svg') %></div>
-              <p class="post-date">Posted
-              <%= content_tag(:span, nil, data: { 'dayjs-time-ago-target': 'formattedTime', controller: 'dayjs-time-ago', 'dayjs-time-ago-time-stamp-value': post.created_at.iso8601 }, class: 'date-value') %>
-              </p>
-          </div>
-
     </div>
   </div>
 </div>

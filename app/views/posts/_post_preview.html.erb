@@ -14,23 +14,22 @@
   </div>
 
   <div class="dark-bg block-meta">
-    <div class="meta meta-votes">
+    <div class="meta meta-views">
       <div class="light-fill small-svg icon">
-        <%= inline_svg('icons/arrow-up.svg') %>
+        <%= inline_svg('icons/eye.svg') %>
       </div>
-      <div class="light-text"><%= post.get_upvotes.size %></div>
-
-      <div class="light-fill small-svg icon">
-        <%= inline_svg('icons/arrow-down.svg') %>
+      <div class="light-text">
+        <%= pluralize(post.comments.size, t('page_views.singular'), t('page_views.plural')) %>
       </div>
-      <div class="light-text"><%= post.get_downvotes.size %></div>
     </div>
 
     <div class="meta meta-comments">
       <div class="light-fill small-svg icon">
         <%= inline_svg('icons/comments.svg') %>
       </div>
-      <div class="light-text"><%= post.comments.count %></div>
+      <div class="light-text">
+        <%= pluralize(post.comments.size, t('comments.singular'), t('comments.plural')) %>
+      </div>
     </div>
 
    <div class="meta meta-date">
@@ -38,11 +37,8 @@
         <%= inline_svg('icons/clock-fill.svg') %>
       </div>
       <div class="light-text">
-        <p class="post-date">
-              <%= content_tag(:span, nil, data: { 'dayjs-time-ago-target': 'formattedTime', controller: 'dayjs-time-ago', 'dayjs-time-ago-time-stamp-value': post.created_at.iso8601 }, class: 'date-value') %>
-          </p>
+        <%= time_ago_span(post.created_at) %>
       </div>
     </div>
-
   </div>
 </div>

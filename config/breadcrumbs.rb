@@ -32,15 +32,9 @@ crumb :new_post do
   parent :posts
 end
 
-# Page list
-crumb :pages do
-  link 'Pages', pages_path
-end
-
-# Page
+# Page show
 crumb :page do |page|
   link page.title, page
-  parent :pages
 end
 
 # Quiz list

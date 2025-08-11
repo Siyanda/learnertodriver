@@ -1,64 +1,24 @@
-<% if quiz.questions.any? %>
+<%= form_with(model: evaluation, url: [evaluation.quiz, evaluation], method: :patch, data: { controller: "auto-submit" }) do |form| %>
+  <div class="alt-border gapped content">
+    <div class="column">
+      <%= content_tag(:h2, current_choice.question.content, class: 'question') %>
+      <hr>
+      <div class="answers">
+        <%= form.fields_for :choices, current_choice do |choice| %>
+          <%= choice.hidden_field :question_id, value: current_choice.question.id %>
+          <%= choice.collection_radio_buttons :answer_id, current_choice.question.answers, :id, :content do |answer| %>
+            <%= answer.label(class: 'flex rev-row spaced-between clickable answer') do %>
+              <%= answer.radio_button(class: 'radio_button', data: { action: "change->auto-submit#submitOnChange" }) + answer.label %>
+            <% end %>
+          <% end %>
 
-<%= form_with(model: evaluation, url: [quiz, evaluation]) do |form| %>
-
-  <div class="slider-form" data-controller="slides" data-slides-total-value="<%= quiz.questions.size %>">
-
-    <div class="alt-border gapped content">
-      <% quiz.questions.random.each.with_index(1) do |question, index| %>
-        <div class="column" data-slides-target="slide">
-          <%= content_tag(:h1, "Question : #{index}", class: 'bold question') %>
-
-            <div class="progress-container full-width">
-              <progress value="<%= index %>" max="<%= quiz.questions.size %>" class="full-width">
-              </progress>
-            </div>
-
-            <%= content_tag(:h2, question.content, class: 'question') %>
-
-            <div class="answers">
-              <%= form.fields_for :choices, Choice.new do |choice| %>
-
-                <%= choice.collection_radio_buttons :answer_id, question.answers, :id, :content do |answer| %>
-                  <%= answer.label(class: 'flex rev-row spaced-between clickable answer') { answer.radio_button(class: 'radio_button') + answer.label } %>
-                <% end %>
-              <% end %>
-            </div>
-
-        </div>
-      <% end %>
-    </div>
-
-    <div class="flex spaced-between bottom full-width white-bg level-two fixed padded alt-border controls" data-slides-target="controls" style="position: fixed;bottom: 0;z-index: 2;">
-
-      <div class="clickable" data-action="click->slides#previous">
-        <div class="left hide-at-start non-selectable">
-          <div class="flex large-text dark center-aligned padded rounded button">
-            <div class="standard-svg current-color-fill icon">
-              <%= inline_svg('icons/arrow-left.svg') %>
-            </div>
-            <div class="btn-text">Prev</div>
-          </div>
-        </div>
+        <% end %>
       </div>
 
-      <div class="clickable hide-at-end non-selectable" data-action="click->slides#next">
-        <div class="right">
-            <div class="flex rev-row large-text dark center-aligned padded rounded button">
-            <div class="standard-svg current-color-fill icon">
-              <%= inline_svg('icons/arrow-right.svg') %>
-            </div>
-            <div class="btn-text">Next</div>
-          </div>
-        </div>
-      </div>
+      <%= form.hidden_field :last_choice_id, value: current_choice.id %>
 
-    <div class="hide-at-start shown-at-end non-selectable">
-      <%= form.submit 'Submit', id: 'form_submit', class: 'flex clickable large-text dark center-aligned padded rounded button' %>
+      <%= content_for(:form_navigation) %>
+      <%= form.submit 'Submit', class: 'clickable rounded button btn-primary p-4 text-white' %>
     </div>
   </div>
-<% end %>
-
-<% else %>
-  No Questions for this quiz
 <% end %>

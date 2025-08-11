@@ -16,13 +16,11 @@ ActiveRecord::Schema.verbose = false
 
 Rails.logger.level = :info
 
-module ActiveSupport
-  class TestCase
-    make_my_diffs_pretty!
-    fixtures :all
+class ActiveSupport::TestCase
+  make_my_diffs_pretty!
+  fixtures :all
 
-    parallelize(workers: :number_of_processors)
+  parallelize(workers: :number_of_processors)
 
-    include FactoryBot::Syntax::Methods
-  end
+  include FactoryBot::Syntax::Methods
 end

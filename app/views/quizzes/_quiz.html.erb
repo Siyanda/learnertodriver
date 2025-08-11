@@ -11,20 +11,11 @@
         <%= quiz.information.truncate(165) %>
       </p>
       <p class="item-meta">
-        <p class="post-date">Duration:
-          <%= content_tag(
-                :span, nil, data: {
-                              'dayjs-to-duration-target': 'formattedTime',
-                              controller: 'dayjs-to-duration',
-                              'dayjs-to-duration-time-stamp-value': quiz.duration
-                            },
-                            class: 'duration-value'
-              ) %>
-          </p>
+        <p class="post-date">Duration: <%= duration_value_span(quiz.duration) %></p>
       </p>
     </div>
       <div class="cta">
-        <%= link_to new_quiz_evaluation_path(quiz), class: 'light-text padded full-width dark rounded button' do %> Practice Quiz <% end %>
+        <%= content_tag(:a, t('practice_quiz'), href: new_quiz_evaluation_path(quiz), class: 'light-text padded full-width dark rounded button') %>
       </div>
     </div>
 </div>
