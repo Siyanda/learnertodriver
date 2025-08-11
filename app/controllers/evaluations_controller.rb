@@ -34,7 +34,7 @@ class EvaluationsController < ApplicationController
         format.turbo_stream do
           @current_choice = @evaluation.last_active_choice
           render turbo_stream: turbo_stream.replace('choice_frame', partial: 'form',
-                                                                    locals:  { evaluation: @evaluation, current_choice: @current_choice })
+                                                                    locals:  { evaluation: @evaluation, current_choice: @current_choice }) # rubocop:disable Layout/LineLength
         end
         format.html do
           redirect_to edit_quiz_evaluation_path(@evaluation.quiz, @evaluation), notice: t('.choice_selection_updated')
@@ -60,6 +60,6 @@ class EvaluationsController < ApplicationController
   end
 
   def evaluation_params
-    params.require(:evaluation).permit(:last_choice_id, choices_attributes: %i[id answer_id question_id])
+    params.require(:evaluation).permit(:last_choice_id, choices_attributes: %i[id answer_id question_id]) # rubocop:disable Rails/StrongParametersExpect
   end
 end

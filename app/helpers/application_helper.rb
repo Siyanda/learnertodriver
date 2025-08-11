@@ -7,7 +7,7 @@ module ApplicationHelper
     content_for(:title) { page_title }
   end
 
-  def url_contains?(klass, path)
+  def url_contains?(klass, path) # rubocop:disable Naming/PredicateMethod
     klass if request.path.include?(path.to_s)
   end
 
