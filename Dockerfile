@@ -8,8 +8,9 @@ WORKDIR /rails
 ENV BUNDLE_DEPLOYMENT="1" \
   BUNDLE_PATH="/usr/local/bundle" \
   BUNDLE_WITHOUT="development:test" \
-  LITESTACK_DATA_PATH="/data" \
-  RAILS_ENV="production"
+  DATA_PATH="/data" \
+  RAILS_ENV="production" \
+  PATH="/rails/bin:$PATH"
 
 RUN gem update --system --no-document && \
   gem install -N bundler
@@ -30,7 +31,7 @@ RUN bundle install && \
   rm -rf ~/.bundle/ "${BUNDLE_PATH}"/ruby/*/cache "${BUNDLE_PATH}"/ruby/*/bundler/gems/*/.git
 
 COPY --link package.json bun.lock ./
-RUN bun install --frozen-lockfile
+RUN bun install --frozen-lockfile --save-text-lockfile
 
 COPY --link . .
 
