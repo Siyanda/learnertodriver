@@ -36,14 +36,14 @@ test:
 production:
   primary:
     <<: *default
-    database: storage/production.sqlite3
+    database: <%= File.join(ENV.fetch("DB_PATH", "storage"), "production.sqlite3") %>
   cache:
     <<: *default
-    database: storage/production_solid_cache.sqlite3
+    database: <%= File.join(ENV.fetch("DB_PATH", "storage"), "production_solid_cache.sqlite3") %>
   queue:
     <<: *default
-    database: storage/production_solid_queue.sqlite3
+    database: <%= File.join(ENV.fetch("DB_PATH", "storage"), "production_solid_queue.sqlite3") %>
     migrations_paths: db/queue_migrate
   cable:
     <<: *default
-    database: storage/production_solid_cable.sqlite3
+    database: <%= File.join(ENV.fetch("DB_PATH", "storage"), "production_solid_cable.sqlite3") %>
