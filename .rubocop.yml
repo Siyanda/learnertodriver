@@ -20,3 +20,9 @@ Rails/CreateTableWithTimestamps:
 Layout/HashAlignment:
   EnforcedColonStyle: table
   EnforcedHashRocketStyle: table
+
+TrailingCommaInArrayLiteral:
+  EnforcedStyleForMultiline: comma
+
+Style/ClassAndModuleChildren:
+  EnforcedStyle: compact

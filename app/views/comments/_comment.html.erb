@@ -1,33 +1,30 @@
-<div class="comment">
+<div class="comment top-margin">
   <%= image_tag gravatar_url(comment.user.email_address), class: 'comment-avatar' %>
   <div class="comment-inner">
-      <div class="comment-header">
-          <cite class="comment-meta">
-            <%= link_to comment.user.name %>
-          </cite>
+    <div class="comment-header">
 
-          <%= content_tag(:div,
-                          content_tag(:span, nil,
-                                      data: { 'dayjs-time-ago-target': 'formattedTime' }),
-                          class: 'time-ago-in-words',
-                          data: { controller: 'dayjs-time-ago',
-                                  'dayjs-time-ago-time-stamp-value': comment.created_at.iso8601 }) %>
+      <cite class="comment-meta">
+        <%= link_to comment.user.name %>
+      </cite>
 
-          <div class="comment-actions">
-            <% if comment.user == Current.user %>
+      <%= time_ago_span(comment.created_at) %>
 
-              <%= link_to post_comment_path(comment.post, comment), 'data-turbo-method': :delete, 'data-turbo-confirm': 'Are you sure?', class: 'confirmation' do %>
-              <div class="clickable grey-fill standard-svg svg icon">
-                <%= inline_svg('icons/trash.svg') %>
-              </div>
-              <% end %>
-            <% end %>
-          </div>
+      <div class="comment-actions">
+        <% if comment.user == Current.user %>
+          <%= link_to post_comment_path(comment.post, comment),
+                      'data-turbo-method': :delete,
+                      'data-turbo-confirm': 'Are you sure?',
+                      class: 'confirmation' do %>
+            <div class="clickable grey-fill standard-svg svg icon">
+              <%= inline_svg('icons/trash.svg') %>
+            </div>
+          <% end %>
+        <% end %>
       </div>
+    </div>
 
-      <div class="comment-content">
-        <p><%= comment.content %></p>
-      </div>
-
+    <div class="comment-content">
+      <p><%= comment.content %></p>
+    </div>
   </div>
 </div>

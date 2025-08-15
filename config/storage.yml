@@ -13,3 +13,5 @@ cloudflare:
   secret_access_key: <%= Rails.application.credentials.dig(:cloudflare, :secret_access_key) %>
   region: auto
   bucket: learnertodriver-<%= Rails.env %>
+  request_checksum_calculation: "when_required"
+  response_checksum_validation: "when_required"

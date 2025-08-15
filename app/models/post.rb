@@ -2,8 +2,10 @@
 
 class Post < ApplicationRecord
   extend FriendlyId
+
   friendly_id :title, use: :slugged
-  acts_as_votable
+
+  broadcasts_refreshes
 
   belongs_to :user
 
@@ -14,22 +16,19 @@ class Post < ApplicationRecord
   has_one_attached :cover_image
   has_many_attached :images
 
-  enum :status, { draft: 0, unpublished: 1, published: 2, restricted: 3, removed: 4 }
+  enum :status, {
+    draft:       0,
+    unpublished: 1,
+    published:   2,
+    restricted:  3,
+    removed:     4
+  }, validate: true
+
   scope :most_recent, -> { order(created_at: :desc).limit(5) }
 
   validates :title, presence: true
   validates :status, presence: true
   validates :excerpt, length: { maximum: 150 }, allow_blank: true
 
-  before_validation :set_defaults
-
-  private
-
-  def should_generate_new_friendly_id?
-    slug.blank? || title_changed?
-  end
-
-  def set_defaults
-    self.excerpt = ActionView::Base.full_sanitizer.sanitize(content).truncate(150)
-  end
+  def should_generate_new_friendly_id? = slug.blank? || title_changed?
 end

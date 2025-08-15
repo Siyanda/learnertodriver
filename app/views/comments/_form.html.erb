@@ -1,0 +1,6 @@
+<%= content_tag :div, id: dom_id(post, :new_comment), data: { turbo_permanent: true } do %>
+  <%= form_with model: [post, Comment.new] do |form| %>
+    <%= form.text_area :content, class: 'basic-border form-textarea' %>
+    <%= form.submit t('comments.submit'), class: 'clickable rounded button btn-primary' %>
+  <% end %>
+<% end %>

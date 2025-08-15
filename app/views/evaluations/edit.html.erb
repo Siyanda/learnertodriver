@@ -1,0 +1,13 @@
+<% breadcrumb :evaluation, @evaluation.quiz %>
+<% content_for :evaluation_details, content_tag(:h2, t('.question_with_numb', number: @current_choice.position)) %>
+
+<%= render 'evaluations/components/header', quiz: @evaluation.quiz, date: DateTime.now %>
+<%= render 'evaluations/components/navigation', evaluation: @evaluation, current_choice: @current_choice %>
+
+<%= turbo_frame_tag dom_id(@evaluation, :frame) do %>
+  <%= content_for(:evaluation_details) %>
+  <div class="progress-container full-width">
+    <%= content_tag(:progress, "", value: @current_choice.position, max: @evaluation.quiz.questions.count, class: "full-width") %>
+  </div>
+  <%= render partial: 'form', locals: { evaluation: @evaluation, current_choice: @current_choice } %>
+<% end %>

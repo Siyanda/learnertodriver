@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_04_04_211633) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_04_143517) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -55,16 +55,15 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_04_211633) do
     t.string "content", default: "", null: false
     t.string "information", default: "", null: false
     t.integer "question_id", null: false
-    t.integer "correct_id"
-    t.index ["correct_id"], name: "index_answers_on_correct_id"
     t.index ["question_id"], name: "index_answers_on_question_id"
   end
 
   create_table "choices", force: :cascade do |t|
-    t.string "name", default: "", null: false
-    t.string "content", default: "", null: false
-    t.integer "value", default: 0, null: false
-    t.integer "answer_id", null: false
+    t.string "name"
+    t.string "content"
+    t.float "value", default: 1.0, null: false
+    t.integer "position", default: 0, null: false
+    t.integer "answer_id"
     t.integer "question_id", null: false
     t.integer "evaluation_id", null: false
     t.datetime "created_at", null: false
@@ -85,13 +84,27 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_04_211633) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
+  create_table "correct_answers", force: :cascade do |t|
+    t.integer "question_id", null: false
+    t.integer "answer_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["answer_id"], name: "index_correct_answers_on_answer_id"
+    t.index ["question_id", "answer_id"], name: "index_correct_answers_on_question_id_and_answer_id", unique: true
+    t.index ["question_id"], name: "index_correct_answers_on_question_id"
+  end
+
   create_table "evaluations", force: :cascade do |t|
     t.decimal "score", default: "0.0", null: false
     t.integer "status", default: 0, null: false
+    t.datetime "started_at", precision: nil
+    t.datetime "completed_at", precision: nil
     t.integer "user_id"
     t.integer "quiz_id"
+    t.integer "last_choice_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["last_choice_id"], name: "index_evaluations_on_last_choice_id"
     t.index ["quiz_id"], name: "index_evaluations_on_quiz_id"
     t.index ["user_id"], name: "index_evaluations_on_user_id"
   end
@@ -120,6 +133,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_04_211633) do
     t.string "title", null: false
     t.text "content"
     t.string "slug"
+    t.datetime "published_at", precision: nil
     t.integer "status", default: 0, null: false
     t.integer "user_id", null: false
     t.integer "parent_id"
@@ -134,6 +148,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_04_211633) do
     t.string "title", null: false
     t.text "content"
     t.string "slug"
+    t.datetime "published_at", precision: nil
     t.integer "status", default: 0, null: false
     t.string "excerpt", limit: 150, default: "", null: false
     t.integer "user_id", null: false
@@ -159,11 +174,13 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_04_211633) do
   end
 
   create_table "quizzes", force: :cascade do |t|
-    t.string "title", default: "", null: false
-    t.string "information", default: "", null: false
+    t.string "title", null: false
+    t.string "information", null: false
+    t.string "description", null: false
     t.integer "duration", default: 3600, null: false
-    t.string "description", default: "", null: false
+    t.integer "status", default: 0, null: false
     t.string "slug"
+    t.datetime "published_at", precision: nil
     t.index ["slug"], name: "index_quizzes_on_slug", unique: true
   end
 
@@ -225,10 +242,9 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_04_211633) do
     t.text "links"
     t.date "birthday"
     t.string "username"
-    t.text "phone"
+    t.text "phone_number"
     t.integer "role", default: 0, null: false
     t.integer "status", default: 0, null: false
-    t.integer "evaluations_count", default: 0, null: false
     t.string "slug"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email_address"], name: "index_users_on_email_address", unique: true
@@ -236,31 +252,17 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_04_211633) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
-  create_table "votes", force: :cascade do |t|
-    t.string "votable_type"
-    t.integer "votable_id"
-    t.string "voter_type"
-    t.integer "voter_id"
-    t.boolean "vote_flag"
-    t.string "vote_scope"
-    t.integer "vote_weight"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["votable_id", "votable_type", "vote_scope"], name: "index_votes_on_votable_id_and_votable_type_and_vote_scope"
-    t.index ["votable_type", "votable_id"], name: "index_votes_on_votable_type_and_votable_id"
-    t.index ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope"
-    t.index ["voter_type", "voter_id"], name: "index_votes_on_voter_type_and_voter_id"
-  end
-
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "answers", "answers", column: "correct_id"
   add_foreign_key "answers", "questions"
   add_foreign_key "choices", "answers"
   add_foreign_key "choices", "evaluations"
   add_foreign_key "choices", "questions"
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
+  add_foreign_key "correct_answers", "answers"
+  add_foreign_key "correct_answers", "questions"
+  add_foreign_key "evaluations", "choices", column: "last_choice_id", on_delete: :nullify
   add_foreign_key "evaluations", "quizzes"
   add_foreign_key "evaluations", "users"
   add_foreign_key "pages", "pages", column: "parent_id"

@@ -1,36 +1,37 @@
 # syntax = docker/dockerfile:1
 
-ARG RUBY_VERSION=3.4.2
+ARG RUBY_VERSION=3.4.4
 FROM ruby:$RUBY_VERSION AS base
 
 WORKDIR /rails
 
 ENV BUNDLE_DEPLOYMENT="1" \
-    BUNDLE_PATH="/usr/local/bundle" \
-    BUNDLE_WITHOUT="development:test" \
-    LITESTACK_DATA_PATH="/data" \
-    RAILS_ENV="production"
+  BUNDLE_PATH="/usr/local/bundle" \
+  BUNDLE_WITHOUT="development:test" \
+  DATA_PATH="/data" \
+  RAILS_ENV="production" \
+  PATH="/rails/bin:$PATH"
 
 RUN gem update --system --no-document && \
-    gem install -N bundler
+  gem install -N bundler
 
 FROM base AS build
 
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y build-essential curl libvips pkg-config unzip
+  apt-get install --no-install-recommends -y build-essential curl libvips pkg-config unzip
 
-ARG BUN_VERSION=1.1.45
+ARG BUN_VERSION=1.2.15
 ENV BUN_INSTALL=/usr/local/bun
 ENV PATH=/usr/local/bun/bin:$PATH
 RUN curl -fsSL https://bun.sh/install | bash -s -- "bun-v${BUN_VERSION}"
 
 COPY --link Gemfile Gemfile.lock ./
 RUN bundle install && \
-    bundle exec bootsnap precompile --gemfile && \
-    rm -rf ~/.bundle/ "${BUNDLE_PATH}"/ruby/*/cache "${BUNDLE_PATH}"/ruby/*/bundler/gems/*/.git
+  bundle exec bootsnap precompile --gemfile && \
+  rm -rf ~/.bundle/ "${BUNDLE_PATH}"/ruby/*/cache "${BUNDLE_PATH}"/ruby/*/bundler/gems/*/.git
 
 COPY --link package.json bun.lock ./
-RUN bun install --frozen-lockfile
+RUN bun install --frozen-lockfile --save-text-lockfile
 
 COPY --link . .
 
@@ -41,16 +42,16 @@ RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
 FROM base
 
 RUN apt-get update -qq && apt-get install --no-install-recommends -y \
-    curl imagemagick libsqlite3-0 libvips build-essential pkg-config unzip && \
-    rm -rf /var/lib/apt/lists /var/cache/apt/archives
+  curl imagemagick libsqlite3-0 libvips build-essential pkg-config unzip && \
+  rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
 COPY --from=build "${BUNDLE_PATH}" "${BUNDLE_PATH}"
 COPY --from=build /rails /rails
 
 RUN groupadd --system --gid 1000 rails && \
-    useradd rails --uid 1000 --gid 1000 --create-home --shell /bin/bash && \
-    mkdir /data && \
-    chown -R 1000:1000 db log storage tmp /data
+  useradd rails --uid 1000 --gid 1000 --create-home --shell /bin/bash && \
+  mkdir /data && \
+  chown -R 1000:1000 db log storage tmp /data
 USER 1000:1000
 
 ENTRYPOINT ["/rails/bin/docker-entrypoint"]

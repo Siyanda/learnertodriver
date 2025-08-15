@@ -5,7 +5,7 @@
       <div class="post-content">
 
         <div class="main grid cards">
-          <%= render partial: @quizzes, cached: true %>
+          <%= render partial: @quizzes, cached: true if @quizzes.any? %>
         </div>
 
     </div>

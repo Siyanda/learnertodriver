@@ -4,9 +4,14 @@ class ApplicationController < ActionController::Base
   include Authentication
 
   include Pagy::Backend
+
   rescue_from Pagy::OverflowError, with: :redirect_to_last_page
 
   layout :determine_layout
+
+  allow_browser versions: :modern
+
+  authorize :user, through: -> { Current.user }
 
   def not_found!
     raise ActionController::RoutingError, 'Not Found'
