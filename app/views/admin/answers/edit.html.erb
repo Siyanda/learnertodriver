@@ -1,0 +1,12 @@
+<% content_for :title, "Editing answer" %>
+
+<h1>Editing answer</h1>
+
+<%= render "form", admin_answer: @admin_answer %>
+
+<br>
+
+<div>
+  <%= link_to "Show this answer", @admin_answer %> |
+  <%= link_to "Back to answers", admin_answers_path %>
+</div>

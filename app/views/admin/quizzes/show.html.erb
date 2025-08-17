@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @admin_quiz %>
+
+<div>
+  <%= link_to "Edit this quiz", edit_admin_quiz_path(@admin_quiz) %> |
+  <%= link_to "Back to quizzes", admin_quizzes_path %>
+
+  <%= button_to "Destroy this quiz", @admin_quiz, method: :delete %>
+</div>

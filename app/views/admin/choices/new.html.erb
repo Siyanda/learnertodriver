@@ -1,0 +1,11 @@
+<% content_for :title, "New choice" %>
+
+<h1>New choice</h1>
+
+<%= render "form", admin_choice: @admin_choice %>
+
+<br>
+
+<div>
+  <%= link_to "Back to choices", admin_choices_path %>
+</div>

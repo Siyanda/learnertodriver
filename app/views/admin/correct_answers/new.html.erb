@@ -1,0 +1,11 @@
+<% content_for :title, "New correct answer" %>
+
+<h1>New correct answer</h1>
+
+<%= render "form", admin_correct_answer: @admin_correct_answer %>
+
+<br>
+
+<div>
+  <%= link_to "Back to correct answers", admin_correct_answers_path %>
+</div>

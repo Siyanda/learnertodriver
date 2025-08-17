@@ -1,0 +1,104 @@
+<div class="navbar-expand-md">
+  <div class="collapse navbar-collapse" id="navbar-menu">
+    <div class="navbar navbar-light">
+      <div class="container-xl">
+        <ul class="navbar-nav">
+
+          <!-- Dashboard -->
+          <li class="nav-item <%= active_nav_item("admin/dashboard") %>">
+            <%= link_to admin_path, class: "nav-link" do %>
+              <span class="nav-link-icon d-md-none d-lg-inline-block">
+                <!-- Home Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><polyline points="5 12 3 12 12 3 21 12 19 12" /><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" /><path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" /></svg>
+              </span>
+              <span class="nav-link-title">Dashboard</span>
+            <% end %>
+          </li>
+
+          <!-- Users -->
+          <li class="nav-item <%= active_nav_item("admin/users") %>">
+            <%= link_to admin_users_path, class: "nav-link" do %>
+              <span class="nav-link-icon d-md-none d-lg-inline-block">
+                <!-- Users Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7" r="4"></circle><path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path><path d="M21 21v-2a4 4 0 0 0 -3 -3.85"></path></svg>
+              </span>
+              <span class="nav-link-title">Users</span>
+            <% end %>
+          </li>
+
+          <!-- Quizzes -->
+          <li class="nav-item <%= active_nav_item("admin/quizzes") %>">
+            <%= link_to admin_quizzes_path, class: "nav-link" do %>
+              <span class="nav-link-icon d-md-none d-lg-inline-block">
+                <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-list-check"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3.5 5.5l1.5 1.5l2.5 -2.5" /><path d="M3.5 11.5l1.5 1.5l2.5 -2.5" /><path d="M3.5 17.5l1.5 1.5l2.5 -2.5" /><path d="M11 6l9 0" /><path d="M11 12l9 0" /><path d="M11 18l9 0" /></svg>
+              </span>
+              <span class="nav-link-title">Quizzes</span>
+            <% end %>
+          </li>
+
+          <!-- Questions -->
+          <li class="nav-item <%= active_nav_item("admin/questions") %>">
+            <%= link_to admin_questions_path, class: "nav-link" do %>
+              <span class="nav-link-icon d-md-none d-lg-inline-block">
+                <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-pencil-question"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M8 20l6 -6l3 -3l1.5 -1.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4h4z" /><path d="M13.5 6.5l4 4" /><path d="M19 22v.01" /><path d="M19 19a2.003 2.003 0 0 0 .914 -3.782a1.98 1.98 0 0 0 -2.414 .483" /></svg>
+              </span>
+              <span class="nav-link-title">Questions</span>
+            <% end %>
+          </li>
+
+          <!-- Answers -->
+          <li class="nav-item <%= active_nav_item("admin/answers") %>">
+            <%= link_to admin_answers_path, class: "nav-link" do %>
+              <span class="nav-link-icon d-md-none d-lg-inline-block">
+                <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-message-reply"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M18 4a3 3 0 0 1 3 3v8a3 3 0 0 1 -3 3h-5l-5 3v-3h-2a3 3 0 0 1 -3 -3v-8a3 3 0 0 1 3 -3h12z" /><path d="M11 8l-3 3l3 3" /><path d="M16 11h-8" /></svg>
+              </span>
+              <span class="nav-link-title">Answers</span>
+            <% end %>
+          </li>
+
+          <!-- Posts -->
+          <li class="nav-item <%= active_nav_item("admin/posts") %>">
+            <%= link_to admin_posts_path, class: "nav-link" do %>
+              <span class="nav-link-icon d-md-none d-lg-inline-block">
+                <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-news"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M16 6h3a1 1 0 0 1 1 1v11a2 2 0 0 1 -4 0v-13a1 1 0 0 0 -1 -1h-10a1 1 0 0 0 -1 1v12a3 3 0 0 0 3 3h11" /><path d="M8 8l4 0" /><path d="M8 12l4 0" /><path d="M8 16l4 0" /></svg>
+              </span>
+              <span class="nav-link-title">Posts</span>
+            <% end %>
+          </li>
+
+          <!-- Pages -->
+          <li class="nav-item <%= active_nav_item("admin/pages") %>">
+            <%= link_to admin_pages_path, class: "nav-link" do %>
+              <span class="nav-link-icon d-md-none d-lg-inline-block">
+                <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-file-dots"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M14 3v4a1 1 0 0 0 1 1h4" /><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z" /><path d="M9 14v.01" /><path d="M12 14v.01" /><path d="M15 14v.01" /></svg>
+              </span>
+              <span class="nav-link-title">Pages</span>
+            <% end %>
+          </li>
+
+          <!-- Comments -->
+          <li class="nav-item <%= active_nav_item("admin/comments") %>">
+            <%= link_to admin_comments_path, class: "nav-link" do %>
+              <span class="nav-link-icon d-md-none d-lg-inline-block">
+                <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-messages"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M21 14l-3 -3h-7a1 1 0 0 1 -1 -1v-6a1 1 0 0 1 1 -1h9a1 1 0 0 1 1 1v10" /><path d="M14 15v2a1 1 0 0 1 -1 1h-7l-3 3v-10a1 1 0 0 1 1 -1h2" /></svg>
+              </span>
+              <span class="nav-link-title">Comments</span>
+            <% end %>
+          </li>
+
+          <!-- Tags -->
+          <li class="nav-item <%= active_nav_item("admin/tags") %>">
+            <%= link_to admin_tags_path, class: "nav-link" do %>
+              <span class="nav-link-icon d-md-none d-lg-inline-block">
+                <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-tag"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7.5 7.5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M3 6v5.172a2 2 0 0 0 .586 1.414l7.71 7.71a2.41 2.41 0 0 0 3.408 0l5.592 -5.592a2.41 2.41 0 0 0 0 -3.408l-7.71 -7.71a2 2 0 0 0 -1.414 -.586h-5.172a3 3 0 0 0 -3 3z" /></svg>
+              </span>
+              <span class="nav-link-title">Tags</span>
+            <% end %>
+          </li>
+
+        </ul>
+        <div class="my-2 my-md-0 flex-grow-1 flex-md-grow-0 order-first order-md-last"></div>
+      </div>
+    </div>
+  </div>
+</div>

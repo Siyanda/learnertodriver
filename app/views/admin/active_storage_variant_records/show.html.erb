@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @admin_active_storage_variant_record %>
+
+<div>
+  <%= link_to "Edit this active storage variant record", edit_admin_active_storage_variant_record_path(@admin_active_storage_variant_record) %> |
+  <%= link_to "Back to active storage variant records", admin_active_storage_variant_records_path %>
+
+  <%= button_to "Destroy this active storage variant record", @admin_active_storage_variant_record, method: :delete %>
+</div>

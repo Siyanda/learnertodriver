@@ -1,0 +1,19 @@
+
+<%= form_for(@admin_evaluation) do |form| %>
+  <%= form.error_notification %>
+  <%= form.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= form.input :score %>
+    <%= form.input :status %>
+    <%= form.input :started_at %>
+    <%= form.input :completed_at %>
+    <%= form.association :user %>
+    <%= form.association :quiz %>
+    <%= form.association :last_choice %>
+  </div>
+
+  <div class="form-actions">
+    <%= form.button :submit %>
+  </div>
+<% end %>

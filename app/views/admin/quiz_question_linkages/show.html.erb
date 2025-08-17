@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @admin_quiz_question_linkage %>
+
+<div>
+  <%= link_to "Edit this quiz question linkage", edit_admin_quiz_question_linkage_path(@admin_quiz_question_linkage) %> |
+  <%= link_to "Back to quiz question linkages", admin_quiz_question_linkages_path %>
+
+  <%= button_to "Destroy this quiz question linkage", @admin_quiz_question_linkage, method: :delete %>
+</div>

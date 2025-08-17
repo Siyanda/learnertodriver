@@ -3,8 +3,8 @@
 module ApplicationHelper
   include Pagy::Frontend
 
-  def title(page_title)
-    content_for(:title) { page_title }
+  def title(content)
+    content_for(:title) || content || Rails.application.class.to_s.split('::').first
   end
 
   def url_contains?(klass, path) # rubocop:disable Naming/PredicateMethod

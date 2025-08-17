@@ -1,0 +1,14 @@
+
+<%= form_for(@admin_active_storage_variant_record) do |form| %>
+  <%= form.error_notification %>
+  <%= form.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= form.input :blob_id %>
+    <%= form.input :variation_digest %>
+  </div>
+
+  <div class="form-actions">
+    <%= form.button :submit %>
+  </div>
+<% end %>

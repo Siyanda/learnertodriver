@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Correct answers" %>
+
+<h1>Correct answers</h1>
+
+<div id="admin_correct_answers">
+  <% @admin_correct_answers.each do |admin_correct_answer| %>
+    <%= render admin_correct_answer %>
+    <p>
+      <%= link_to "Show this correct answer", admin_correct_answer %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New correct answer", new_admin_correct_answer_path %>

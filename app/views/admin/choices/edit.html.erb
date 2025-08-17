@@ -1,0 +1,12 @@
+<% content_for :title, "Editing choice" %>
+
+<h1>Editing choice</h1>
+
+<%= render "form", admin_choice: @admin_choice %>
+
+<br>
+
+<div>
+  <%= link_to "Show this choice", @admin_choice %> |
+  <%= link_to "Back to choices", admin_choices_path %>
+</div>

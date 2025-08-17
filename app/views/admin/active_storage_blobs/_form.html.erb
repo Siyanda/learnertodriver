@@ -1,0 +1,19 @@
+
+<%= form_for(@admin_active_storage_blob) do |form| %>
+  <%= form.error_notification %>
+  <%= form.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= form.input :key %>
+    <%= form.input :filename %>
+    <%= form.input :content_type %>
+    <%= form.input :metadata %>
+    <%= form.input :service_name %>
+    <%= form.input :byte_size %>
+    <%= form.input :checksum %>
+  </div>
+
+  <div class="form-actions">
+    <%= form.button :submit %>
+  </div>
+<% end %>

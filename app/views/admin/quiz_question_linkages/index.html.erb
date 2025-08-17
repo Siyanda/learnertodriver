@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Quiz question linkages" %>
+
+<h1>Quiz question linkages</h1>
+
+<div id="admin_quiz_question_linkages">
+  <% @admin_quiz_question_linkages.each do |admin_quiz_question_linkage| %>
+    <%= render admin_quiz_question_linkage %>
+    <p>
+      <%= link_to "Show this quiz question linkage", admin_quiz_question_linkage %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New quiz question linkage", new_admin_quiz_question_linkage_path %>

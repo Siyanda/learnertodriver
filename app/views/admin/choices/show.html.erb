@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @admin_choice %>
+
+<div>
+  <%= link_to "Edit this choice", edit_admin_choice_path(@admin_choice) %> |
+  <%= link_to "Back to choices", admin_choices_path %>
+
+  <%= button_to "Destroy this choice", @admin_choice, method: :delete %>
+</div>
