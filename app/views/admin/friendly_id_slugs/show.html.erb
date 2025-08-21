@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @admin_friendly_id_slug %>
+
+<div>
+  <%= link_to "Edit this friendly id slug", edit_admin_friendly_id_slug_path(@admin_friendly_id_slug) %> |
+  <%= link_to "Back to friendly id slugs", admin_friendly_id_slugs_path %>
+
+  <%= button_to "Destroy this friendly id slug", @admin_friendly_id_slug, method: :delete %>
+</div>

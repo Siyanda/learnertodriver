@@ -1,0 +1,16 @@
+
+<%= form_for(@admin_action_text_rich_text) do |form| %>
+  <%= form.error_notification %>
+  <%= form.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= form.input :name %>
+    <%= form.input :body %>
+    <%= form.input :record_type %>
+    <%= form.input :record_id %>
+  </div>
+
+  <div class="form-actions">
+    <%= form.button :submit %>
+  </div>
+<% end %>

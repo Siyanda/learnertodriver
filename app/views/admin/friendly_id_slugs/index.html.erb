@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Friendly id slugs" %>
+
+<h1>Friendly id slugs</h1>
+
+<div id="admin_friendly_id_slugs">
+  <% @admin_friendly_id_slugs.each do |admin_friendly_id_slug| %>
+    <%= render admin_friendly_id_slug %>
+    <p>
+      <%= link_to "Show this friendly id slug", admin_friendly_id_slug %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New friendly id slug", new_admin_friendly_id_slug_path %>

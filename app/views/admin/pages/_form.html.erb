@@ -1,0 +1,19 @@
+
+<%= form_for(@admin_page) do |form| %>
+  <%= form.error_notification %>
+  <%= form.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= form.input :title %>
+    <%= form.input :content %>
+    <%= form.input :slug %>
+    <%= form.input :published_at %>
+    <%= form.input :status %>
+    <%= form.association :user %>
+    <%= form.input :parent_id %>
+  </div>
+
+  <div class="form-actions">
+    <%= form.button :submit %>
+  </div>
+<% end %>

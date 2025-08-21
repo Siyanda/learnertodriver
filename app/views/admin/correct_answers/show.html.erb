@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @admin_correct_answer %>
+
+<div>
+  <%= link_to "Edit this correct answer", edit_admin_correct_answer_path(@admin_correct_answer) %> |
+  <%= link_to "Back to correct answers", admin_correct_answers_path %>
+
+  <%= button_to "Destroy this correct answer", @admin_correct_answer, method: :delete %>
+</div>

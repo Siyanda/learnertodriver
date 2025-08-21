@@ -1,0 +1,12 @@
+<% content_for :title, "Editing page" %>
+
+<h1>Editing page</h1>
+
+<%= render "form", admin_page: @admin_page %>
+
+<br>
+
+<div>
+  <%= link_to "Show this page", @admin_page %> |
+  <%= link_to "Back to pages", admin_pages_path %>
+</div>

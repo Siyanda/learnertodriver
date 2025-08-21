@@ -20,7 +20,17 @@ class ActiveSupport::TestCase
   make_my_diffs_pretty!
   fixtures :all
 
+  # Run tests in parallel with specified workers
   parallelize(workers: :number_of_processors)
 
   include FactoryBot::Syntax::Methods
+
+  # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
+  fixtures :all
+
+  # Add more helper methods to be used by all tests here...
+  def sign_in_admin_as(user)
+    post(admin_sign_in_url, params: { email: user.email, password: 'Secret1*3*5*' })
+    user
+  end
 end

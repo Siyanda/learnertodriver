@@ -1,0 +1,16 @@
+
+<%= form_for(@admin_friendly_id_slug) do |form| %>
+  <%= form.error_notification %>
+  <%= form.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= form.input :slug %>
+    <%= form.input :sluggable_id %>
+    <%= form.input :sluggable_type %>
+    <%= form.input :scope %>
+  </div>
+
+  <div class="form-actions">
+    <%= form.button :submit %>
+  </div>
+<% end %>

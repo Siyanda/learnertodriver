@@ -1,0 +1,11 @@
+<% content_for :title, "New quiz" %>
+
+<h1>New quiz</h1>
+
+<%= render "form", admin_quiz: @admin_quiz %>
+
+<br>
+
+<div>
+  <%= link_to "Back to quizzes", admin_quizzes_path %>
+</div>

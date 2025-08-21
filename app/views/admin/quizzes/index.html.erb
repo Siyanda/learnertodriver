@@ -1,0 +1,19 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, controller.controller_name.titleize %>
+
+<div class="page-header d-print-none" aria-label="Page header">
+  <div class="container-xl">
+    <div class="row g-2 align-items-center">
+      <div class="col">
+        <h2 class="page-title"><%= controller.controller_name.titleize %></h2>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="admin_quizzes">
+  <% @admin_quizzes.each do |admin_quiz| %>
+    <%= render admin_quiz %>
+  <% end %>
+</div>

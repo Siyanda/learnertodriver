@@ -1,0 +1,66 @@
+<div class="container-xl">
+  <div class="card mb-3">
+    <div class="card-header">
+      <h3 class="card-title">
+        <%= link_to quiz.title, admin_quiz_path(quiz.id) %>
+      </h3>
+    </div>
+    <div class="card-body">
+      <div class="datagrid">
+        <div class="datagrid-item">
+          <div class="datagrid-title">ID</div>
+          <div class="datagrid-content"><%= quiz.id %></div>
+        </div>
+        <div class="datagrid-item">
+          <div class="datagrid-title">Information</div>
+          <div class="datagrid-content"><%= quiz.information %></div>
+        </div>
+        <div class="datagrid-item">
+          <div class="datagrid-title">Port number</div>
+          <div class="datagrid-content"><%= quiz.title %></div>
+        </div>
+        <div class="datagrid-item">
+          <div class="datagrid-title">Expiration date</div>
+          <div class="datagrid-content"><%= quiz.title %></div>
+        </div>
+        <div class="datagrid-item">
+          <div class="datagrid-title">Duration</div>
+          <div class="datagrid-content"><%= quiz.duration %> seconds</div>
+        </div>
+        <div class="datagrid-item">
+          <div class="datagrid-title">Status</div>
+          <div class="datagrid-content">
+            <span class="status status-green"> <%= quiz.status %> </span>
+          </div>
+        </div>
+        <div class="datagrid-item">
+          <div class="datagrid-title">Avatars list</div>
+          <div class="datagrid-content">
+            <div class="avatar-list avatar-list-stacked">
+              <span class="avatar avatar-xs" style="background-image: url(./static/avatars/000m.jpg)"> </span>
+              <span class="avatar avatar-xs" style="background-image: url(./static/avatars/052f.jpg)"> </span>
+              <span class="avatar avatar-xs" style="background-image: url(./static/avatars/002m.jpg)"> </span>
+              <span class="avatar avatar-xs" style="background-image: url(./static/avatars/003m.jpg)"> </span>
+              <span class="avatar avatar-xs" style="background-image: url(./static/avatars/000f.jpg)"> </span>
+              <span class="avatar avatar-xs"> +3 </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="datagrid-item">
+          <div class="datagrid-title">Status</div>
+          <div class="datagrid-content">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon text-green icon-2">
+              <path d="M5 12l5 5l10 -10"></path>
+            </svg>
+            <%= quiz.status %>
+          </div>
+        </div>
+        <div class="datagrid-item">
+          <div class="datagrid-title">Longer description</div>
+          <div class="datagrid-content"><%= quiz.description %></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

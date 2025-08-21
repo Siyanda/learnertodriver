@@ -1,0 +1,2 @@
+module Admin::FriendlyIdSlugsHelper
+end

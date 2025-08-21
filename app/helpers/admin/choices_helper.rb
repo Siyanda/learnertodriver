@@ -1,0 +1,2 @@
+module Admin::ChoicesHelper
+end

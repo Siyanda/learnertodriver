@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Active storage variant records" %>
+
+<h1>Active storage variant records</h1>
+
+<div id="admin_active_storage_variant_records">
+  <% @admin_active_storage_variant_records.each do |admin_active_storage_variant_record| %>
+    <%= render admin_active_storage_variant_record %>
+    <p>
+      <%= link_to "Show this active storage variant record", admin_active_storage_variant_record %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New active storage variant record", new_admin_active_storage_variant_record_path %>

@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Active storage blobs" %>
+
+<h1>Active storage blobs</h1>
+
+<div id="admin_active_storage_blobs">
+  <% @admin_active_storage_blobs.each do |admin_active_storage_blob| %>
+    <%= render admin_active_storage_blob %>
+    <p>
+      <%= link_to "Show this active storage blob", admin_active_storage_blob %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New active storage blob", new_admin_active_storage_blob_path %>
