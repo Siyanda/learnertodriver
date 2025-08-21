@@ -1,6 +1,6 @@
 <div align="center">
   <br>
-  <a href="http://learnertodriver.co.za/">
+  <a href="https://learnertodriver.co.za/">
     <img
       alt="Learner to Driver"
       src="app/assets/images/favicon.png"
@@ -14,10 +14,10 @@
 <br/>
 <p align="center">
   <a href="https://www.ruby-lang.org/en/">
-    <img src="https://img.shields.io/badge/Ruby-v3.1.0-green.svg" alt="ruby version"/>
+    <img src="https://img.shields.io/badge/Ruby-v3.4.4-red.svg" alt="ruby version"/>
   </a>
   <a href="http://rubyonrails.org/">
-    <img src="https://img.shields.io/badge/Rails-v7.0.0-green.svg" alt="rails version"/>
+    <img src="https://img.shields.io/badge/Rails-v8.0.2-red.svg" alt="rails version"/>
   </a>
 
 ## Getting Started
