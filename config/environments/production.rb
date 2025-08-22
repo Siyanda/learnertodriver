@@ -23,6 +23,8 @@ Rails.application.configure do
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.asset_host = "http://assets.example.com"
 
+  config.routes.default_url_options = { host: 'learnertodriver.co.za', protocol: 'https' }
+
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :cloudflare
 
@@ -53,7 +55,8 @@ Rails.application.configure do
 
   # Replace the default in-process and non-durable queuing backend for Active Job.
   config.active_job.queue_adapter = :solid_queue
-  config.solid_queue.connects_to = { database: { writing: :queue } }
+  config.solid_queue.connects_to  = { database: { writing: :queue } }
+
   config.active_job.queue_name_prefix = 'learnertodriver_production'
 
   config.active_support.to_time_preserves_timezone = :zone
@@ -87,10 +90,10 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.action_mailer.perform_deliveries = true
-  config.action_mailer.delivery_method = :postmark
+  config.action_mailer.perform_deliveries  = true
+  config.action_mailer.delivery_method     = :postmark
   config.action_mailer.default_url_options = { host: ENV.fetch('APP_URL', nil) }
-  config.action_mailer.postmark_settings = { api_token: ENV.fetch('POSTMARK_API_TOKEN', nil) }
+  config.action_mailer.postmark_settings   = { api_token: ENV.fetch('POSTMARK_API_TOKEN', nil) }
   # Skip DNS rebinding protection for the default health check endpoint.
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
 end

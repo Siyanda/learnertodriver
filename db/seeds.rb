@@ -21,6 +21,8 @@ models.each do |data|
 end
 
 Quiz.with_questions.unpublished.find_each(&:published!)
+Quiz.with_questions.draft.find_each(&:published!)
+Quiz.with_questions.published.each { |q| q.update!(published_at: Date.current) }
 Question.find_each { |question| CorrectAnswer.create!(question:, answer: question.answers.sample) }
 
 puts '... generating post and page content from markdown 📝'

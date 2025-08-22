@@ -73,15 +73,16 @@ Rails.application.configure do # rubocop:disable Metrics/BlockLength
 
   # Use a real queuing backend for Active Job (and separate queues per environment).
   config.active_job.queue_adapter = :solid_queue
-  config.solid_queue.connects_to = { database: { writing: :queue } }
+  config.solid_queue.connects_to  = { database: { writing: :queue } }
+
   config.solid_queue.logger = ActiveSupport::Logger.new($stdout)
 
   # allow for localhost subdomain testing
   config.hosts.clear
 
   # Use letter Opener Gem for viewing mail in development
-  config.action_mailer.delivery_method = :letter_opener
-  config.action_mailer.perform_deliveries = true
+  config.action_mailer.delivery_method     = :letter_opener
+  config.action_mailer.perform_deliveries  = true
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
   config.active_support.to_time_preserves_timezone = :zone
