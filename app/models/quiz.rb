@@ -13,7 +13,13 @@ class Quiz < ApplicationRecord
 
   has_one_attached :cover_image
 
-  enum :status, { draft: 0, unpublished: 1, published: 2, restricted: 3, removed: 4 }, validate: true
+  enum :status, {
+        draft:       0,
+        unpublished: 1,
+        published:   2,
+        restricted:  3,
+        removed:     4
+      }, validate: true
 
   validates :title,       presence: true
   validates :duration,    presence: true

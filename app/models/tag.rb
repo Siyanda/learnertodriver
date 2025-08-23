@@ -11,7 +11,13 @@ class Tag < ApplicationRecord
 
   friendly_id :title, use: :slugged
 
-  enum :status, { published: 0, unpublished: 1, restricted: 2, removed: 3 }, validate: true
+  enum :status,
+    {
+      published:   0,
+      unpublished: 1,
+      restricted:  2,
+      removed:     3
+    }, validate: true
 
   validates :title, presence: true
 end
