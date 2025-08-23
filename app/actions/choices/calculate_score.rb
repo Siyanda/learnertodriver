@@ -3,7 +3,7 @@
 class Choices::CalculateScore
   extend ::LightService::Action
 
-  expects :user, :quiz, :evaluation
+  expects  :user, :quiz, :evaluation
   promises :evaluation
 
   executed do |ctx|

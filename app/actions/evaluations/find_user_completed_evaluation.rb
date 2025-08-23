@@ -3,7 +3,7 @@
 class Evaluations::FindUserCompletedEvaluation
   extend ::LightService::Action
 
-  expects :user, :quiz
+  expects  :user, :quiz
   promises :evaluation
 
   executed do |ctx|
