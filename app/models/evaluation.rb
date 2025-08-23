@@ -14,7 +14,11 @@ class Evaluation < ApplicationRecord
   validates :score,  presence: true
   validates :status, presence: true
 
-  enum :status, { started: 0, in_progress: 1, completed: 2 }, validate: true
+  enum :status, {
+      started:     0,
+      in_progress: 1,
+      completed:   2
+    }, validate: true
 
   def no_question_choices?
     choices.empty? && quiz.questions.any?
