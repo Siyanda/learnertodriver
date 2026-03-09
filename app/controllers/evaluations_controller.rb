@@ -13,7 +13,7 @@ class EvaluationsController < ApplicationController
     if result.success?
       redirect_to edit_quiz_evaluation_path(@quiz, result.evaluation)
     else
-      redirect_to quizzes_path, alert: result.message, status: :unprocessable_entity
+      redirect_to quizzes_path, alert: result.message, status: :unprocessable_content
     end
   end
 
@@ -41,7 +41,7 @@ class EvaluationsController < ApplicationController
         end
       end
     else
-      render :edit, status: :unprocessable_entity
+      render :edit, status: :unprocessable_content
     end
   end
 

@@ -4,7 +4,6 @@ class Evaluations::CreateEvaluation
   extend ::LightService::Action
 
   expects  :user, :quiz, :evaluation
-  promises :evaluation
 
   executed do |ctx|
     ctx.evaluation = ctx.user.evaluations.create!(

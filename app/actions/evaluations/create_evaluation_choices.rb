@@ -8,8 +8,7 @@ class Evaluations::CreateEvaluationChoices
 
   executed do |ctx|
     evaluation  = ctx.evaluation
-    ctx.choices = evaluation.quiz.questions.ids.map {|id| evaluation.choices.create!(question_id: id)}
-
+    ctx.choices = evaluation.quiz.questions.ids.map { |question_id| evaluation.choices.create!(question_id:) }
   rescue ActiveRecord::RecordInvalid => e
     ctx.fail_and_return!("Failed to create choices: #{e.message}")
   end
