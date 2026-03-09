@@ -11,10 +11,6 @@ class Evaluations::CalculateScore
   end
 
   def self.actions
-    [
-      iterate(:choices, [
-                Choices::CalculateScore,
-              ]),
-    ]
+    [ iterate(:choices, [Choices::CalculateScore]) ]
   end
 end

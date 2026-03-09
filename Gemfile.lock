@@ -174,6 +174,7 @@ GEM
       concurrent-ruby (~> 1.1)
       webrick (~> 1.7)
       websocket-driver (~> 0.7)
+    ffi (1.17.2)
     ffi (1.17.2-aarch64-linux-gnu)
     ffi (1.17.2-aarch64-linux-musl)
     ffi (1.17.2-arm-linux-gnu)
@@ -265,7 +266,9 @@ GEM
     mini_magick (5.3.0)
       logger
     mini_mime (1.1.5)
-    minitest (5.25.5)
+    mini_portile2 (2.8.9)
+    minitest (6.0.1)
+      prism (~> 1.5)
     mission_control-jobs (1.1.0)
       actioncable (>= 7.1)
       actionpack (>= 7.1)
@@ -289,6 +292,9 @@ GEM
     net-smtp (0.5.1)
       net-protocol
     nio4r (2.7.4)
+    nokogiri (1.18.9)
+      mini_portile2 (~> 2.8.2)
+      racc (~> 1.4)
     nokogiri (1.18.9-aarch64-linux-gnu)
       racc (~> 1.4)
     nokogiri (1.18.9-aarch64-linux-musl)
@@ -318,7 +324,7 @@ GEM
     pp (0.6.2)
       prettyprint
     prettyprint (0.2.0)
-    prism (1.4.0)
+    prism (1.9.0)
     propshaft (1.2.1)
       actionpack (>= 7.0.0)
       activesupport (>= 7.0.0)
@@ -460,6 +466,8 @@ GEM
       railties (>= 7.1)
       thor (>= 1.3.1)
     spring (4.4.0)
+    sqlite3 (2.7.3)
+      mini_portile2 (~> 2.8.0)
     sqlite3 (2.7.3-aarch64-linux-gnu)
     sqlite3 (2.7.3-aarch64-linux-musl)
     sqlite3 (2.7.3-arm-linux-gnu)
@@ -481,7 +489,7 @@ GEM
       concurrent-ruby (~> 1.0)
     unicode-display_width (3.1.5)
       unicode-emoji (~> 4.0, >= 4.0.4)
-    unicode-emoji (4.0.4)
+    unicode-emoji (4.2.0)
     uri (1.0.3)
     useragent (0.16.11)
     web-console (4.2.1)
@@ -615,6 +623,7 @@ CHECKSUMS
   factory_bot_rails (6.5.0) sha256=4a7b61635424a57cc60412a18b72b9dcfb02fabfce2c930447a01dce8b37c0a2
   faker (3.5.2) sha256=f9a80291b2e3f259801d1dd552f0732fe04dce5d1f74e798365bc0413789c473
   ferrum (0.17.1) sha256=51d591120fc593e5a13b5d9d6474389f5145bb92a91e36eab147b5d096c8cbe7
+  ffi (1.17.2) sha256=297235842e5947cc3036ebe64077584bff583cd7a4e94e9a02fdec399ef46da6
   ffi (1.17.2-aarch64-linux-gnu) sha256=c910bd3cae70b76690418cce4572b7f6c208d271f323d692a067d59116211a1a
   ffi (1.17.2-aarch64-linux-musl) sha256=69e6556b091d45df83e6c3b19d3c54177c206910965155a6ec98de5e893c7b7c
   ffi (1.17.2-arm-linux-gnu) sha256=d4a438f2b40224ae42ec72f293b3ebe0ba2159f7d1bd47f8417e6af2f68dbaa5
@@ -657,7 +666,8 @@ CHECKSUMS
   matrix (0.4.3) sha256=a0d5ab7ddcc1973ff690ab361b67f359acbb16958d1dc072b8b956a286564c5b
   mini_magick (5.3.0) sha256=6f13309c90f9ebe204b4c3f04d0a5a9265c5f734950894e83fa2480d4aa79ba4
   mini_mime (1.1.5) sha256=8681b7e2e4215f2a159f9400b5816d85e9d8c6c6b491e96a12797e798f8bccef
-  minitest (5.25.5) sha256=391b6c6cb43a4802bfb7c93af1ebe2ac66a210293f4a3fb7db36f2fc7dc2c756
+  mini_portile2 (2.8.9) sha256=0cd7c7f824e010c072e33f68bc02d85a00aeb6fce05bb4819c03dfd3c140c289
+  minitest (6.0.1) sha256=7854c74f48e2e975969062833adc4013f249a4b212f5e7b9d5c040bf838d54bb
   mission_control-jobs (1.1.0) sha256=b13da9cde3344fec7c744b79d2a34c3ecd454f45d4d593d4c968ba762315e84c
   msgpack (1.8.0) sha256=e64ce0212000d016809f5048b48eb3a65ffb169db22238fb4b72472fecb2d732
   name_of_person (1.1.3) sha256=e12291250987ef79c413314f698f15d53e7a602c42231de99c276ef9585bc18c
@@ -666,6 +676,7 @@ CHECKSUMS
   net-protocol (0.2.2) sha256=aa73e0cba6a125369de9837b8d8ef82a61849360eba0521900e2c3713aa162a8
   net-smtp (0.5.1) sha256=ed96a0af63c524fceb4b29b0d352195c30d82dd916a42f03c62a3a70e5b70736
   nio4r (2.7.4) sha256=d95dee68e0bb251b8ff90ac3423a511e3b784124e5db7ff5f4813a220ae73ca9
+  nokogiri (1.18.9) sha256=ac5a7d93fd0e3cef388800b037407890882413feccca79eb0272a2715a82fa33
   nokogiri (1.18.9-aarch64-linux-gnu) sha256=5bcfdf7aa8d1056a7ad5e52e1adffc64ef53d12d0724fbc6f458a3af1a4b9e32
   nokogiri (1.18.9-aarch64-linux-musl) sha256=55e9e6ca46c4ad1715e313f407d8481d15be1e3b65d9f8e52ba1c124d01676a7
   nokogiri (1.18.9-arm-linux-gnu) sha256=fe611ae65880e445a9c0f650d52327db239f3488626df4173c05beafd161d46e
@@ -681,7 +692,7 @@ CHECKSUMS
   postmark-rails (0.22.1) sha256=fcea27dda4f7418123d7723622ec5447df4dacacc10a20a40add0f6789135d8f
   pp (0.6.2) sha256=947ec3120c6f92195f8ee8aa25a7b2c5297bb106d83b41baa02983686577b6ff
   prettyprint (0.2.0) sha256=2bc9e15581a94742064a3cc8b0fb9d45aae3d03a1baa6ef80922627a0766f193
-  prism (1.4.0) sha256=dc0e3e00e93160213dc2a65519d9002a4a1e7b962db57d444cf1a71565bb703e
+  prism (1.9.0) sha256=7b530c6a9f92c24300014919c9dcbc055bf4cdf51ec30aed099b06cd6674ef85
   propshaft (1.2.1) sha256=e9b91daf52f21152f851a59f8621af53ffb4dc4401f9b5f8fe16065190b98654
   psych (5.2.6) sha256=814328aa5dcb6d604d32126a20bc1cbcf05521a5b49dbb1a8b30a07e580f316e
   public_suffix (6.0.2) sha256=bfa7cd5108066f8c9602e0d6d4114999a5df5839a63149d3e8b0f9c1d3558394
@@ -732,6 +743,7 @@ CHECKSUMS
   solid_cache (1.0.7) sha256=58e690ccee057be7351f21b1940d5f9cf6bb132074316e70478e554a79e6a490
   solid_queue (1.2.1) sha256=7976b3690a08080ef63d1b11281f0b77398f7697dbeda0e2c5532682639d4b15
   spring (4.4.0) sha256=ec4e6cf5fb48d96b9ec9a80ebb40f962f2467b651c000693f33c14b6d6c340af
+  sqlite3 (2.7.3) sha256=d2b2fecd9341132f2cea3fde9061ee0fab9c9d532a8ecccfab4fe63d9621bf57
   sqlite3 (2.7.3-aarch64-linux-gnu) sha256=00bab7e2ceb7e911b0a2c516bcb9ec0aa7ee57b9b231419e1788515319ac4317
   sqlite3 (2.7.3-aarch64-linux-musl) sha256=035dca6c5bc0f45bb059f33cf774e96462563e460a2d5bd48972562bf3a78c8b
   sqlite3 (2.7.3-arm-linux-gnu) sha256=c22a2593a8274cba5fc55be415cfddab3ff5d3275b5a78878daf214bf2a60db1
@@ -748,7 +760,7 @@ CHECKSUMS
   turbo-rails (2.0.16) sha256=d24e1b60f0c575b3549ecda967e5391027143f8220d837ed792c8d48ea0ea38d
   tzinfo (2.0.6) sha256=8daf828cc77bcf7d63b0e3bdb6caa47e2272dcfaf4fbfe46f8c3a9df087a829b
   unicode-display_width (3.1.5) sha256=bf566817855ee7ee3adcf7bace0d5906cb14401417db59193f8a5fcedf02dd4e
-  unicode-emoji (4.0.4) sha256=2c2c4ef7f353e5809497126285a50b23056cc6e61b64433764a35eff6c36532a
+  unicode-emoji (4.2.0) sha256=519e69150f75652e40bf736106cfbc8f0f73aa3fb6a65afe62fefa7f80b0f80f
   uri (1.0.3) sha256=e9f2244608eea2f7bc357d954c65c910ce0399ca5e18a7a29207ac22d8767011
   useragent (0.16.11) sha256=700e6413ad4bb954bb63547fa098dddf7b0ebe75b40cc6f93b8d54255b173844
   web-console (4.2.1) sha256=e7bcf37a10ea2b4ec4281649d1cee461b32232d0a447e82c786e6841fd22fe20

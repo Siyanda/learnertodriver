@@ -7,11 +7,9 @@ class Evaluations::CreateEvaluationChoices
   promises :choices
 
   executed do |ctx|
-    evaluation = ctx.evaluation
+    evaluation  = ctx.evaluation
+    ctx.choices = evaluation.quiz.questions.ids.map {|id| evaluation.choices.create!(question_id: id)}
 
-    ctx.choices = evaluation.quiz.questions.ids.map do |question_id|
-      evaluation.choices.create!(question_id:)
-    end
   rescue ActiveRecord::RecordInvalid => e
     ctx.fail_and_return!("Failed to create choices: #{e.message}")
   end

@@ -11,7 +11,7 @@ class Posts::InitializePost
 
   def self.actions
     [
-      Posts::FindPost,
+      # Posts::FindPost,
     ]
   end
 end
