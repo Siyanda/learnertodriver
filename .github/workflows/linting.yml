@@ -12,8 +12,6 @@ jobs:
         with:
           ruby-version-file: .tool-versions
           bundler-cache: true
-      - name: Install Gems
-        run: bundle install
       - name: Run RuboCop
         uses: reviewdog/action-rubocop@v2
         with:
@@ -34,8 +32,6 @@ jobs:
         with:
           ruby-version-file: .tool-versions
           bundler-cache: true
-      - name: Install Gems
-        run: bundle install
       - name: Run ERB Lint
         run: bundle exec erb_lint app/views
   brakeman:
@@ -49,7 +45,5 @@ jobs:
         with:
           ruby-version-file: .tool-versions
           bundler-cache: true
-      - name: Install Gems
-        run: bundle install
       - name: Run Brakeman
         run: bundle exec brakeman
