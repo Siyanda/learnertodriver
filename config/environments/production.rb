@@ -55,11 +55,9 @@ Rails.application.configure do # rubocop:disable Metrics/BlockLength
 
   # Replace the default in-process and non-durable queuing backend for Active Job.
   config.active_job.queue_adapter = :solid_queue
-  config.solid_queue.connects_to  = { database: { writing: :queue } }
+  config.solid_queue.connects_to = { database: { writing: :queue } }
 
   config.active_job.queue_name_prefix = 'learnertodriver_production'
-
-  config.active_support.to_time_preserves_timezone = :zone
 
   config.action_mailer.perform_caching = false
 

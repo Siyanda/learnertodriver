@@ -27,7 +27,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ~/.bun/install/cache
-          key: bun-cache-${{ runner.os }}-${{ steps.bun_version.outputs.BUN_VERSION }}-${{ hashFiles('bun.lockb') }}
+          key: bun-cache-${{ runner.os }}-${{ steps.bun_version.outputs.BUN_VERSION }}-${{ hashFiles('bun.lock') }}
           restore-keys: |
             bun-cache-${{ runner.os }}-${{ steps.bun_version.outputs.BUN_VERSION }}-
       - name: Install JS dependencies

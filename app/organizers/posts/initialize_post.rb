@@ -3,15 +3,15 @@
 class Posts::InitializePost
   extend ::LightService::Organizer
 
-  def self.call(params)
+  def self.call(user:)
     with(
-      user: params[:post]
+      user:
     ).reduce(actions)
   end
 
   def self.actions
     [
-      # Posts::FindPost,
+      #
     ]
   end
 end

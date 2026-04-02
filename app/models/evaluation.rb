@@ -9,8 +9,6 @@ class Evaluation < ApplicationRecord
            inverse_of: :evaluation,
            dependent:  :destroy
 
-  accepts_nested_attributes_for :choices, allow_destroy: true
-
   validates :score,  presence: true
   validates :status, presence: true
 
@@ -19,6 +17,8 @@ class Evaluation < ApplicationRecord
     in_progress: 1,
     completed:   2
   }, validate: true
+
+  accepts_nested_attributes_for :choices, allow_destroy: true
 
   def no_question_choices?
     choices.empty? && quiz.questions.any?

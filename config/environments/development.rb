@@ -84,6 +84,4 @@ Rails.application.configure do # rubocop:disable Metrics/BlockLength
   config.action_mailer.delivery_method     = :letter_opener
   config.action_mailer.perform_deliveries  = true
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
-
-  config.active_support.to_time_preserves_timezone = :zone
 end
