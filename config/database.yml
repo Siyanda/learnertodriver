@@ -13,7 +13,6 @@ development:
   queue:
     <<: *default
     database: storage/development_queue.sqlite3
-    migrations_paths: db/queue_migrate
   cable:
     <<: *default
     database: storage/development_solid_cable.sqlite3
@@ -28,7 +27,6 @@ test:
   queue:
     <<: *default
     database: storage/test_solid_queue.sqlite3
-    migrations_paths: db/queue_migrate
   cable:
     <<: *default
     database: storage/test_solid_cable.sqlite3
@@ -43,7 +41,6 @@ production:
   queue:
     <<: *default
     database: <%= File.join(ENV.fetch("DB_PATH", "storage"), "production_solid_queue.sqlite3") %>
-    migrations_paths: db/queue_migrate
   cable:
     <<: *default
     database: <%= File.join(ENV.fetch("DB_PATH", "storage"), "production_solid_cable.sqlite3") %>
