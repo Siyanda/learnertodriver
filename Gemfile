@@ -54,7 +54,6 @@ group :development do
   gem 'listen'
   gem 'spring'
   gem 'brakeman'
-  gem 'annotate'
   gem 'web-console'
   gem 'letter_opener'
   gem 'dockerfile-rails'
