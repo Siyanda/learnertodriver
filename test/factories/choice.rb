@@ -2,8 +2,8 @@
 
 FactoryBot.define do
   factory :choice do
-    association :evaluation
-    association :question
+    evaluation
+    question
     position { 0 }
     value    { 1.0 }
   end

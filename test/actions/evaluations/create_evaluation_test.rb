@@ -1,24 +1,44 @@
 # frozen_string_literal: true
 
-require "test_helper"
+require 'test_helper'
 
 class Evaluations::CreateEvaluationTest < ActiveSupport::TestCase
-  test "creates an evaluation for the user and quiz" do
-    user = create(:user)
-    quiz = create(:quiz)
+  setup do
+    @user = create(:user)
+    @quiz = create(:quiz)
+  end
 
-    ctx = LightService::Testing::ContextFactory
-      .make_from(Evaluations::InitializeEvaluation)
-      .for(Evaluations::CreateEvaluation)
-      .with(user:, quiz:, evaluation: nil)
+  test 'creates an evaluation associated with the user and quiz' do
+    ctx = Evaluations::CreateEvaluation.execute(user: @user, quiz: @quiz, evaluation: nil)
 
-    result = Evaluations::CreateEvaluation.execute(ctx)
+    evaluation = ctx.evaluation
+    assert_equal @user, evaluation.user
+    assert_equal @quiz, evaluation.quiz
+  end
 
-    assert_predicate result, :success?
-    refute_nil result[:evaluation]
-    assert_equal user, result[:evaluation].user
-    assert_equal quiz, result[:evaluation].quiz
-    assert_predicate result[:evaluation], :started?
-    refute_nil result[:evaluation].started_at
+  test 'creates the evaluation with started status' do
+    ctx = Evaluations::CreateEvaluation.execute(user: @user, quiz: @quiz, evaluation: nil)
+
+    assert_predicate ctx.evaluation, :started?
+  end
+
+  test 'creates the evaluation with a score of 0' do
+    ctx = Evaluations::CreateEvaluation.execute(user: @user, quiz: @quiz, evaluation: nil)
+
+    assert_equal 0, ctx.evaluation.score
+  end
+
+  test 'sets started_at on the evaluation' do
+    freeze_time do
+      ctx = Evaluations::CreateEvaluation.execute(user: @user, quiz: @quiz, evaluation: nil)
+
+      assert_equal DateTime.now.to_i, ctx.evaluation.started_at.to_i
+    end
+  end
+
+  test 'persists the evaluation to the database' do
+    assert_difference 'Evaluation.count', 1 do
+      Evaluations::CreateEvaluation.execute(user: @user, quiz: @quiz, evaluation: nil)
+    end
   end
 end

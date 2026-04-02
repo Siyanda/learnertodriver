@@ -1,36 +1,50 @@
 # frozen_string_literal: true
 
-require "test_helper"
+require 'test_helper'
 
 class Evaluations::FindUserCompletedEvaluationTest < ActiveSupport::TestCase
-  test "finds a completed evaluation for the user and quiz" do
-    user       = create(:user)
-    quiz       = create(:quiz)
-    evaluation = create(:evaluation, user:, quiz:, status: :completed)
-
-    ctx = LightService::Testing::ContextFactory
-      .make_from(Evaluations::FindUserCompletedEvaluation)
-      .for(Evaluations::FindUserCompletedEvaluation)
-      .with(user:, quiz:)
-
-    result = Evaluations::FindUserCompletedEvaluation.execute(ctx)
-
-    assert_predicate result, :success?
-    assert_equal evaluation, result[:evaluation]
+  setup do
+    @user = create(:user)
+    @quiz = create(:quiz)
   end
 
-  test "sets evaluation to nil when no completed evaluation exists" do
-    user = create(:user)
-    quiz = create(:quiz)
+  test 'finds a completed evaluation for the user and quiz' do
+    evaluation = create(:evaluation, user: @user, quiz: @quiz, status: :completed)
 
-    ctx = LightService::Testing::ContextFactory
-      .make_from(Evaluations::FindUserCompletedEvaluation)
-      .for(Evaluations::FindUserCompletedEvaluation)
-      .with(user:, quiz:)
+    ctx = Evaluations::FindUserCompletedEvaluation.execute(user: @user, quiz: @quiz)
 
-    result = Evaluations::FindUserCompletedEvaluation.execute(ctx)
+    assert_equal evaluation, ctx.evaluation
+  end
 
-    assert_predicate result, :success?
-    assert_nil result[:evaluation]
+  test 'returns nil when the user has no completed evaluation for the quiz' do
+    create(:evaluation, user: @user, quiz: @quiz, status: :started)
+
+    ctx = Evaluations::FindUserCompletedEvaluation.execute(user: @user, quiz: @quiz)
+
+    assert_nil ctx.evaluation
+  end
+
+  test 'does not return a completed evaluation belonging to a different user' do
+    other_user = create(:user)
+    create(:evaluation, user: other_user, quiz: @quiz, status: :completed)
+
+    ctx = Evaluations::FindUserCompletedEvaluation.execute(user: @user, quiz: @quiz)
+
+    assert_nil ctx.evaluation
+  end
+
+  test 'does not return a completed evaluation for a different quiz' do
+    other_quiz = create(:quiz)
+    create(:evaluation, user: @user, quiz: other_quiz, status: :completed)
+
+    ctx = Evaluations::FindUserCompletedEvaluation.execute(user: @user, quiz: @quiz)
+
+    assert_nil ctx.evaluation
+  end
+
+  test 'action succeeds regardless of whether an evaluation is found' do
+    ctx = Evaluations::FindUserCompletedEvaluation.execute(user: @user, quiz: @quiz)
+
+    assert_predicate ctx, :success?
   end
 end

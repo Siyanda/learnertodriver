@@ -19,7 +19,7 @@
 
 FactoryBot.define do
   factory :correct_answer do
-    association :question
-    association :answer
+    question
+    answer
   end
 end

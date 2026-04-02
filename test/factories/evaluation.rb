@@ -2,8 +2,8 @@
 
 FactoryBot.define do
   factory :evaluation do
-    association :user
-    association :quiz
+    user
+    quiz
     score      { 0.0 }
     status     { :started }
     started_at { DateTime.now }
