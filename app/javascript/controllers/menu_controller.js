@@ -6,7 +6,7 @@ export default class extends Controller {
     return ['option','icon']
   }
 
-  toggle(event) {
+  toggle() {
     this.optionTarget.classList.toggle('active');
     this.iconTarget.classList.toggle('active');
   }

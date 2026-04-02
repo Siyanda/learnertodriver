@@ -10,36 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_04_143517) do
+ActiveRecord::Schema[8.1].define(version: 2025_05_04_143517) do
   create_table "action_text_rich_texts", force: :cascade do |t|
-    t.string "name", null: false
     t.text "body"
-    t.string "record_type", null: false
-    t.bigint "record_id", null: false
     t.datetime "created_at", null: false
+    t.string "name", null: false
+    t.bigint "record_id", null: false
+    t.string "record_type", null: false
     t.datetime "updated_at", null: false
     t.index ["record_type", "record_id", "name"], name: "index_action_text_rich_texts_uniqueness", unique: true
   end
 
   create_table "active_storage_attachments", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "record_type", null: false
-    t.bigint "record_id", null: false
     t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
+    t.string "name", null: false
+    t.bigint "record_id", null: false
+    t.string "record_type", null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
   end
 
   create_table "active_storage_blobs", force: :cascade do |t|
-    t.string "key", null: false
-    t.string "filename", null: false
-    t.string "content_type"
-    t.text "metadata"
-    t.string "service_name", null: false
     t.bigint "byte_size", null: false
     t.string "checksum"
+    t.string "content_type"
     t.datetime "created_at", null: false
+    t.string "filename", null: false
+    t.string "key", null: false
+    t.text "metadata"
+    t.string "service_name", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
@@ -50,24 +50,24 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_04_143517) do
   end
 
   create_table "answers", force: :cascade do |t|
-    t.string "name", default: "", null: false
-    t.integer "value", default: 1, null: false
     t.string "content", default: "", null: false
     t.string "information", default: "", null: false
+    t.string "name", default: "", null: false
     t.integer "question_id", null: false
+    t.integer "value", default: 1, null: false
     t.index ["question_id"], name: "index_answers_on_question_id"
   end
 
   create_table "choices", force: :cascade do |t|
-    t.string "name"
-    t.string "content"
-    t.float "value", default: 1.0, null: false
-    t.integer "position", default: 0, null: false
     t.integer "answer_id"
-    t.integer "question_id", null: false
-    t.integer "evaluation_id", null: false
+    t.string "content"
     t.datetime "created_at", null: false
+    t.integer "evaluation_id", null: false
+    t.string "name"
+    t.integer "position", default: 0, null: false
+    t.integer "question_id", null: false
     t.datetime "updated_at", null: false
+    t.float "value", default: 1.0, null: false
     t.index ["answer_id"], name: "index_choices_on_answer_id"
     t.index ["evaluation_id"], name: "index_choices_on_evaluation_id"
     t.index ["question_id"], name: "index_choices_on_question_id"
@@ -75,19 +75,19 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_04_143517) do
 
   create_table "comments", force: :cascade do |t|
     t.string "content"
-    t.integer "status", default: 0, null: false
-    t.integer "post_id", null: false
-    t.integer "user_id", null: false
     t.datetime "created_at", null: false
+    t.integer "post_id", null: false
+    t.integer "status", default: 0, null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
     t.index ["post_id"], name: "index_comments_on_post_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "correct_answers", force: :cascade do |t|
-    t.integer "question_id", null: false
     t.integer "answer_id", null: false
     t.datetime "created_at", null: false
+    t.integer "question_id", null: false
     t.datetime "updated_at", null: false
     t.index ["answer_id"], name: "index_correct_answers_on_answer_id"
     t.index ["question_id", "answer_id"], name: "index_correct_answers_on_question_id_and_answer_id", unique: true
@@ -95,26 +95,26 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_04_143517) do
   end
 
   create_table "evaluations", force: :cascade do |t|
-    t.decimal "score", default: "0.0", null: false
-    t.integer "status", default: 0, null: false
-    t.datetime "started_at", precision: nil
     t.datetime "completed_at", precision: nil
-    t.integer "user_id"
-    t.integer "quiz_id"
-    t.integer "last_choice_id"
     t.datetime "created_at", null: false
+    t.integer "last_choice_id"
+    t.integer "quiz_id"
+    t.decimal "score", default: "0.0", null: false
+    t.datetime "started_at", precision: nil
+    t.integer "status", default: 0, null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
     t.index ["last_choice_id"], name: "index_evaluations_on_last_choice_id"
     t.index ["quiz_id"], name: "index_evaluations_on_quiz_id"
     t.index ["user_id"], name: "index_evaluations_on_user_id"
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
+    t.datetime "created_at"
+    t.string "scope"
     t.string "slug", null: false
     t.integer "sluggable_id", null: false
     t.string "sluggable_type", limit: 50
-    t.string "scope"
-    t.datetime "created_at"
     t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
     t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
     t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
@@ -122,91 +122,91 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_04_143517) do
 
   create_table "notifications", force: :cascade do |t|
     t.text "content"
-    t.string "notifiable_type", null: false
-    t.integer "notifiable_id", null: false
     t.datetime "created_at", null: false
+    t.integer "notifiable_id", null: false
+    t.string "notifiable_type", null: false
     t.datetime "updated_at", null: false
     t.index ["notifiable_type", "notifiable_id"], name: "index_notifications_on_notifiable"
   end
 
   create_table "pages", force: :cascade do |t|
-    t.string "title", null: false
     t.text "content"
-    t.string "slug"
-    t.datetime "published_at", precision: nil
-    t.integer "status", default: 0, null: false
-    t.integer "user_id", null: false
-    t.integer "parent_id"
     t.datetime "created_at", null: false
+    t.integer "parent_id"
+    t.datetime "published_at", precision: nil
+    t.string "slug"
+    t.integer "status", default: 0, null: false
+    t.string "title", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
     t.index ["parent_id"], name: "index_pages_on_parent_id"
     t.index ["slug"], name: "index_pages_on_slug", unique: true
     t.index ["user_id"], name: "index_pages_on_user_id"
   end
 
   create_table "posts", force: :cascade do |t|
-    t.string "title", null: false
     t.text "content"
-    t.string "slug"
-    t.datetime "published_at", precision: nil
-    t.integer "status", default: 0, null: false
-    t.string "excerpt", limit: 150, default: "", null: false
-    t.integer "user_id", null: false
     t.datetime "created_at", null: false
+    t.string "excerpt", limit: 150, default: "", null: false
+    t.datetime "published_at", precision: nil
+    t.string "slug"
+    t.integer "status", default: 0, null: false
+    t.string "title", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
     t.index ["slug"], name: "index_posts_on_slug", unique: true
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
   create_table "questions", force: :cascade do |t|
     t.string "content", null: false
-    t.integer "kind", default: 0, null: false
     t.string "information"
+    t.integer "kind", default: 0, null: false
   end
 
   create_table "quiz_question_linkages", force: :cascade do |t|
+    t.datetime "created_at", null: false
     t.integer "question_id", null: false
     t.integer "quiz_id", null: false
-    t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["question_id"], name: "index_quiz_question_linkages_on_question_id"
     t.index ["quiz_id"], name: "index_quiz_question_linkages_on_quiz_id"
   end
 
   create_table "quizzes", force: :cascade do |t|
-    t.string "title", null: false
-    t.string "information", null: false
     t.string "description", null: false
     t.integer "duration", default: 3600, null: false
-    t.integer "status", default: 0, null: false
-    t.string "slug"
+    t.string "information", null: false
     t.datetime "published_at", precision: nil
+    t.string "slug"
+    t.integer "status", default: 0, null: false
+    t.string "title", null: false
     t.index ["slug"], name: "index_quizzes_on_slug", unique: true
   end
 
   create_table "responses", force: :cascade do |t|
-    t.integer "question_id", null: false
     t.integer "answer_id", null: false
     t.datetime "created_at", null: false
+    t.integer "question_id", null: false
     t.datetime "updated_at", null: false
     t.index ["answer_id"], name: "index_responses_on_answer_id"
     t.index ["question_id"], name: "index_responses_on_question_id"
   end
 
   create_table "sessions", force: :cascade do |t|
+    t.datetime "created_at", null: false
     t.string "ip_address"
+    t.datetime "updated_at", null: false
     t.string "user_agent"
     t.integer "user_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_sessions_on_user_id"
   end
 
   create_table "taggings", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.integer "tag_id", null: false
     t.bigint "taggable_id"
     t.string "taggable_type"
-    t.integer "tag_id", null: false
-    t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["tag_id"], name: "index_taggings_on_tag_id"
     t.index ["taggable_type", "taggable_id"], name: "index_taggings_on_taggable_type_and_taggable_id"
@@ -214,38 +214,38 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_04_143517) do
 
   create_table "tags", force: :cascade do |t|
     t.string "slug"
-    t.text "title", null: false
     t.integer "status", default: 0, null: false
+    t.text "title", null: false
     t.index ["slug"], name: "index_tags_on_slug", unique: true
     t.index ["title"], name: "index_tags_on_title", unique: true
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "email_address", null: false
-    t.string "password_digest", null: false
-    t.datetime "remember_created_at"
-    t.integer "sign_in_count", default: 0, null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string "current_sign_in_ip"
-    t.string "last_sign_in_ip"
+    t.text "bio"
+    t.date "birthday"
+    t.datetime "confirmation_sent_at"
     t.string "confirmation_token"
     t.datetime "confirmed_at"
-    t.datetime "confirmation_sent_at"
-    t.string "unconfirmed_email"
     t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "current_sign_in_at"
+    t.string "current_sign_in_ip"
+    t.string "email_address", null: false
     t.string "first_name"
     t.string "last_name"
-    t.string "title"
-    t.text "bio"
+    t.datetime "last_sign_in_at"
+    t.string "last_sign_in_ip"
     t.text "links"
-    t.date "birthday"
-    t.string "username"
+    t.string "password_digest", null: false
     t.text "phone_number"
+    t.datetime "remember_created_at"
     t.integer "role", default: 0, null: false
-    t.integer "status", default: 0, null: false
+    t.integer "sign_in_count", default: 0, null: false
     t.string "slug"
+    t.integer "status", default: 0, null: false
+    t.string "title"
+    t.string "unconfirmed_email"
+    t.datetime "updated_at", null: false
+    t.string "username"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email_address"], name: "index_users_on_email_address", unique: true
     t.index ["slug"], name: "index_users_on_slug", unique: true

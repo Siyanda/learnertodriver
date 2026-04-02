@@ -9,16 +9,16 @@ class Evaluation < ApplicationRecord
            inverse_of: :evaluation,
            dependent:  :destroy
 
-  accepts_nested_attributes_for :choices, allow_destroy: true
-
   validates :score,  presence: true
   validates :status, presence: true
 
   enum :status, {
-      started:     0,
-      in_progress: 1,
-      completed:   2
-    }, validate: true
+    started:     0,
+    in_progress: 1,
+    completed:   2
+  }, validate: true
+
+  accepts_nested_attributes_for :choices, allow_destroy: true
 
   def no_question_choices?
     choices.empty? && quiz.questions.any?

@@ -6,7 +6,7 @@ export default class extends Controller {
     return ['logo','icon','wrapper','bar']
   }
 
-  toggle(event) {
+  toggle() {
     this.iconTarget.classList.toggle('hidden');
     this.logoTarget.classList.toggle('hidden');
 

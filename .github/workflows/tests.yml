@@ -1,7 +1,5 @@
 name: tests
-
 on: [push]
-
 jobs:
   test:
     name: Rails + Bun Tests
@@ -9,43 +7,34 @@ jobs:
     env:
       RAILS_ENV: test
       RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
-
     steps:
       - name: Check out code
-        uses: actions/checkout@v3
-
+        uses: actions/checkout@v4
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.4.2
+          ruby-version-file: .tool-versions
           bundler-cache: true
-
       - name: Read Bun version from .tool-versions
         id: bun_version
         run: |
           echo "BUN_VERSION=$(awk '/^bun / { print $2 }' .tool-versions)" >> "$GITHUB_OUTPUT"
-
       - name: Set up Bun
         uses: oven-sh/setup-bun@v1
         with:
           bun-version: ${{ steps.bun_version.outputs.BUN_VERSION }}
-
       - name: Cache Bun install cache
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ~/.bun/install/cache
-          key: bun-cache-${{ runner.os }}-${{ steps.bun_version.outputs.BUN_VERSION }}-${{ hashFiles('bun.lockb') }}
+          key: bun-cache-${{ runner.os }}-${{ steps.bun_version.outputs.BUN_VERSION }}-${{ hashFiles('bun.lock') }}
           restore-keys: |
             bun-cache-${{ runner.os }}-${{ steps.bun_version.outputs.BUN_VERSION }}-
-
       - name: Install JS dependencies
         run: bun install
-
       - name: Set up database
         run: bin/rails db:create db:schema:load
-
       - name: Run Ruby tests
         run: bin/rails test
-
       - name: Run JS tests
         run: bun test

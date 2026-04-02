@@ -3,10 +3,10 @@
 class Evaluations::InitializeEvaluation
   extend ::LightService::Organizer
 
-  def self.call(params)
+  def self.call(user, quiz)
     with(
-      user: params[:user],
-      quiz: params[:quiz]
+      user:,
+      quiz:
     ).reduce(actions)
   end
 

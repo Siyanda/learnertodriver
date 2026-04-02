@@ -3,15 +3,12 @@
 class Choices::CalculateScore
   extend ::LightService::Action
 
-  expects  :user, :quiz, :evaluation
-  promises :evaluation
+  expects :choice
 
   executed do |ctx|
-    ctx.evaluation = ctx.user.evaluations.create!(
-      quiz:       ctx.quiz,
-      score:      0,
-      status:     :started,
-      started_at: DateTime.now
-    )
+    choice  = ctx.choice
+    answers = CorrectAnswer.where(question: choice.question).pluck(:answer_id)
+
+    choice.update!(value: answers.include?(choice.answer_id) ? 1.0 : 0.0)
   end
 end

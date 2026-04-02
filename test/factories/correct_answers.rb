@@ -16,3 +16,10 @@
 #  index_correct_answers_on_question_id                (question_id)
 #  index_correct_answers_on_question_id_and_answer_id  (question_id,answer_id) UNIQUE
 #
+
+FactoryBot.define do
+  factory :correct_answer do
+    question
+    answer
+  end
+end
