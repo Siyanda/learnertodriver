@@ -12,13 +12,13 @@ class Evaluations::CalculateScoreTest < ActiveSupport::TestCase
 
     quiz.questions << question
 
-    evaluation = create(:evaluation, user: create(:user), quiz:)
-    c1 = create(:choice, evaluation:, question:, answer: correct)
-    c2 = create(:choice, evaluation:, question:, answer: wrong)
+    evaluation    = create(:evaluation, user: create(:user), quiz:)
+    first_choice  = create(:choice, evaluation:, question:, answer: correct)
+    second_choice = create(:choice, evaluation:, question:, answer: wrong)
 
     Evaluations::CalculateScore.call(evaluation)
 
-    assert_equal 1.0, c1.reload.value
-    assert_equal 0.0, c2.reload.value
+    assert_equal 1.0, first_choice.reload.value
+    assert_equal 0.0, second_choice.reload.value
   end
 end
