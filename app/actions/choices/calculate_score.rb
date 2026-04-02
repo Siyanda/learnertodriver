@@ -7,7 +7,7 @@ class Choices::CalculateScore
 
   executed do |ctx|
     choice  = ctx.choice
-    answers = choice.question.answers.pluck(:answer_id)
+    answers = CorrectAnswer.where(question: choice.question).pluck(:answer_id)
 
     choice.update!(value: answers.include?(choice.answer_id) ? 1.0 : 0.0)
   end
