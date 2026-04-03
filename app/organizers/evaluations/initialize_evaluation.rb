@@ -3,7 +3,7 @@
 class Evaluations::InitializeEvaluation
   extend ::LightService::Organizer
 
-  def self.call(user, quiz)
+  def self.call(user:, quiz:)
     with(
       user:,
       quiz:

@@ -69,6 +69,6 @@ class Evaluations::InitializeEvaluationTest < ActiveSupport::TestCase
   private
 
   def result
-    @result ||= Evaluations::InitializeEvaluation.call(@user, @quiz)
+    @result ||= Evaluations::InitializeEvaluation.call(user: @user, quiz: @quiz)
   end
 end

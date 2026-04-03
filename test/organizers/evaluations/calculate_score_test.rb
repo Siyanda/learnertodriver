@@ -17,7 +17,7 @@ class Evaluations::CalculateScoreTest < ActiveSupport::TestCase
     first_choice  = create(:choice, evaluation:, question:, answer: correct)
     second_choice = create(:choice, evaluation:, question:, answer: incorrect)
 
-    Evaluations::CalculateScore.call(evaluation)
+    Evaluations::CalculateScore.call(evaluation:)
 
     assert_equal 1.0, first_choice.reload.value
     assert_equal 0.0, second_choice.reload.value
