@@ -1,14 +1,13 @@
 # frozen_string_literal: true
 
 class EvaluationsController < ApplicationController
-  before_action :set_quiz,           only: %i[new]
   before_action :set_evaluation,     only: %i[show edit update]
   before_action :set_current_choice, only: %i[edit update]
 
   def show; end
 
   def new
-    result = Evaluations::InitializeEvaluation.call(user: Current.user, quiz: @quiz)
+    result = Evaluations::InitializeEvaluation.call(user: Current.user, quiz:)
 
     if result.success?
       redirect_to edit_quiz_evaluation_path(@quiz, result.evaluation)
@@ -47,7 +46,7 @@ class EvaluationsController < ApplicationController
 
   private
 
-  def set_quiz
+  def quiz
     @quiz = Quiz.friendly.find(params[:quiz_id])
   end
 
