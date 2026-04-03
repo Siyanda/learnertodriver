@@ -7,9 +7,6 @@ class Evaluations::FindUserStartedEvaluation
   promises :evaluation
 
   executed do |ctx|
-    user = ctx.user
-    quiz = ctx.quiz
-
-    ctx.evaluation = user.evaluations.started.find_by(quiz:)
+    ctx.evaluation = ctx.user.evaluations.started.find_by(quiz: ctx.quiz)
   end
 end
