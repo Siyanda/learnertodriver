@@ -5,10 +5,11 @@ class AdminController < ApplicationController
 
   layout 'admin'
 
-  def authenticate_admin
-    return if Current.user.admin?
+  private
 
-    flash[:error] = t('.not_authorized')
-    redirect_to root_path
+  def authenticate_admin
+    return if Current.user&.admin?
+
+    redirect_to root_path, alert: t('.not_authorized')
   end
 end

@@ -5,8 +5,6 @@ class ApplicationController < ActionController::Base
 
   layout :determine_layout
 
-  allow_browser versions: :modern
-
   authorize :user, through: -> { Current.user }
 
   def not_found!
@@ -15,12 +13,5 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def determine_layout
-    Current.user ? 'user' : 'guest'
-  end
-
-  def redirect_to_last_page(exception)
-    redirect_to url_for(page: exception.pagy.last),
-                notice: "Page ##{params[:page]} not found. Showing page #{exception.pagy.last} instead."
-  end
+  def determine_layout = Current.user ? 'user' : 'guest'
 end
