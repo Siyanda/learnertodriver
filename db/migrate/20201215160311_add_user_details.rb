@@ -5,15 +5,15 @@ class AddUserDetails < ActiveRecord::Migration[6.1]
     change_table :users, bulk: true do |t|
       t.string   :first_name
       t.string   :last_name
+      t.text     :phone_number
       t.string   :title
       t.text     :bio
+      t.string   :slug
       t.text     :links
       t.date     :birthday
       t.string   :username
-      t.text     :phone_number
-      t.integer  :role,              default: 0, null: false
-      t.integer  :status,            default: 0, null: false
-      t.string   :slug
+      t.integer  :status, default: 0, null: false
+      t.integer  :role,   default: 0, null: false
     end
     add_index :users, :slug,     unique: true
     add_index :users, :username, unique: true

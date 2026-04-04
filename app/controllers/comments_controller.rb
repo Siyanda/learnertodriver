@@ -17,6 +17,7 @@ class CommentsController < ApplicationController
 
   def destroy
     authorize! @comment
+
     @comment.destroy
 
     redirect_to @comment.post, notice: t('controllers.notices.destroy', model: 'Comment')
@@ -33,6 +34,6 @@ class CommentsController < ApplicationController
   end
 
   def comment_params
-    params.expect(comment: %i[content post_id user_id])
+    params.expect(comment: %i[content])
   end
 end
