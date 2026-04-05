@@ -11,7 +11,7 @@ module ApplicationHelper
 
   def inline_svg(path)
     File.open("app/assets/images/svg/#{path}", 'rb') do |file|
-      raw file.read
+      raw file.read # rubocop:disable Rails/OutputSafety
     end
   end
 

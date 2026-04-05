@@ -19,7 +19,7 @@ class EvaluationsController < ApplicationController
 
   def edit; end
 
-  def update
+  def update # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
     authorize! @evaluation
 
     update_attrs = evaluation_params

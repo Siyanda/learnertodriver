@@ -1,5 +1,3 @@
-inherit_from: .rubocop_todo.yml
-
 plugins:
   - rubocop-rails
   - rubocop-factory_bot
@@ -7,6 +5,10 @@ plugins:
 
 AllCops:
   NewCops: enable
+  Exclude:
+    - "bin/*"
+    - "db/migrate/*"
+    - "db/*schema.rb"
 
 Bundler/OrderedGems:
   Enabled: false
@@ -21,7 +23,7 @@ Layout/HashAlignment:
   EnforcedColonStyle: table
   EnforcedHashRocketStyle: table
 
-TrailingCommaInArrayLiteral:
+Style/TrailingCommaInArrayLiteral:
   EnforcedStyleForMultiline: comma
 
 Style/ClassAndModuleChildren:
