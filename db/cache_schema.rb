@@ -147,7 +147,6 @@ ActiveRecord::Schema[8.1].define(version: 2025_05_04_143517) do
   create_table "posts", force: :cascade do |t|
     t.text "content"
     t.datetime "created_at", null: false
-    t.string "excerpt", limit: 150, default: "", null: false
     t.datetime "published_at", precision: nil
     t.string "slug"
     t.integer "status", default: 0, null: false

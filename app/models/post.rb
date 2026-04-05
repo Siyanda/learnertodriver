@@ -3,6 +3,9 @@
 class Post < ApplicationRecord
   extend FriendlyId
 
+  include ActionView::Helpers::TextHelper
+  include ActionView::Helpers::SanitizeHelper
+
   friendly_id :title, use: :slugged
 
   broadcasts_refreshes
@@ -13,7 +16,7 @@ class Post < ApplicationRecord
   has_many :taggings, as: :taggable, dependent: :destroy
   has_many :tags, through: :taggings
 
-  has_one_attached :cover_image
+  has_one_attached  :cover_image
   has_many_attached :images
 
   enum :status, {
@@ -26,9 +29,12 @@ class Post < ApplicationRecord
 
   scope :most_recent, -> { order(created_at: :desc).limit(5) }
 
-  validates :title, presence: true
+  validates :title,  presence: true
   validates :status, presence: true
-  validates :excerpt, length: { maximum: 150 }, allow_blank: true
+
+  def excerpt
+    truncate(strip_tags(content.to_s), length: 150)
+  end
 
   def should_generate_new_friendly_id? = slug.blank? || title_changed?
 end
