@@ -5,9 +5,7 @@ class Evaluation < ApplicationRecord
   belongs_to :quiz
   belongs_to :last_choice, class_name: 'Choice', optional: true
 
-  has_many :choices, -> { order(position: :asc) },
-           inverse_of: :evaluation,
-           dependent:  :destroy
+  has_many :choices, -> { order(position: :asc) }, inverse_of: :evaluation, dependent: :destroy
 
   validates :score,  presence: true
   validates :status, presence: true
