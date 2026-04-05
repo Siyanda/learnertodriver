@@ -45,8 +45,9 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test 'rejects avatar with unsupported content type' do
-    user = User.new(username: 'wrongtype', email_address: 'wrong@example.com', password: 'password')
+    user = User.new(username: 'wrong', email_address: 'wrong@example.com', password: 'password')
     file = fixture_file_upload('fake.txt', 'text/plain')
+
     user.avatar.attach(file)
 
     user.valid?
@@ -56,6 +57,7 @@ class UserTest < ActiveSupport::TestCase
   test 'accepts a valid JPEG avatar under 1MB' do
     user = User.new(username: 'validuser', email_address: 'valid@example.com', password: 'password')
     file = fixture_file_upload('avatar.jpg', 'image/jpeg')
+
     user.avatar.attach(file)
 
     user.avatar.blob.byte_size = 500.kilobytes
