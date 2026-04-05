@@ -20,7 +20,8 @@ jobs:
             rubocop-rails:gemfile
             rubocop-capybara:gemfile
             rubocop-factory_bot:gemfile
-          reporter: github-pr-review
+            rubocop-rake:gemfile
+          reporter: github-check
   erb-lint:
     name: ERB Lint
     runs-on: ubuntu-latest
