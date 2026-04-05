@@ -6,6 +6,8 @@ class Evaluations::PersistEvaluation
   expects :evaluation, :update_attrs
 
   executed do |ctx|
-    next ctx.fail_and_return!(message: ctx.evaluation.errors.full_messages.to_sentence) unless ctx.evaluation.update(ctx.update_attrs)
+    unless ctx.evaluation.update(ctx.update_attrs)
+      next ctx.fail_and_return!(message: ctx.evaluation.errors.full_messages.to_sentence)
+    end
   end
 end

@@ -2,9 +2,9 @@
 
 require 'csv'
 
-models =  %w[user post comment page quiz question answer quiz_question_linkage tag]
+models = %w[user post comment page quiz question answer quiz_question_linkage tag]
 
-puts '... seeding new data 💾'
+Rails.logger.debug '... seeding new data 💾'
 
 seeds_path = Rails.root.join("db/seeds/modules/import/#{Rails.env}").to_s
 
@@ -13,11 +13,11 @@ models.each do |data|
   csv = CSV.parse(seed, headers: true)
 
   model = data.camelize.constantize
-  puts "seeding #{model} 🌱"
+  Rails.logger.debug { "seeding #{model} 🌱" }
   csv.each do |row|
     model.create!(row.to_hash)
   end
-  puts "#{data.camelize.constantize.count} #{data.pluralize} created"
+  Rails.logger.debug { "#{data.camelize.constantize.count} #{data.pluralize} created" }
 end
 
 Quiz.with_questions.unpublished.find_each(&:published!)
@@ -25,7 +25,7 @@ Quiz.with_questions.draft.find_each(&:published!)
 Quiz.with_questions.published.each { |q| q.update!(published_at: Date.current) }
 Question.find_each { |question| CorrectAnswer.create!(question:, answer: question.answers.sample) }
 
-puts '... generating post and page content from markdown 📝'
+Rails.logger.debug '... generating post and page content from markdown 📝'
 
 def rendered_md(file_name)
   markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true, tables: true)
@@ -39,12 +39,12 @@ data = %w[page post comment]
 
 data.each do |model_name|
   require seeds_path + "/generate/#{model_name}.rb"
-  puts "#{model_name.camelize.constantize.count} #{model_name.pluralize} created"
+  Rails.logger.debug { "#{model_name.camelize.constantize.count} #{model_name.pluralize} created" }
 end
 
-puts '... attaching images 🖼️'
+Rails.logger.debug '... attaching images 🖼️'
 
-models =  %w[quiz]
+models = %w[quiz]
 
 models.each do |_model_name|
   data = File.read("#{seeds_path}/assets/images/image_list.csv")
@@ -59,7 +59,7 @@ models.each do |_model_name|
     model      = image_row['model'].camelize.constantize
 
     record = model.find_by!(search_by => search_val)
-    record.send(att_name).attach(io:           File.open("#{seeds_path}/assets/images/#{image_row['model']}/#{file_name}"),
+    record.send(att_name).attach(io:           File.open("#{seeds_path}/assets/images/#{image_row['model']}/#{file_name}"), # rubocop:disable Layout/LineLength
                                  filename:     file_name,
                                  content_type: file_type)
   end
