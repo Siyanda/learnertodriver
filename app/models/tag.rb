@@ -3,11 +3,8 @@
 class Tag < ApplicationRecord
   extend FriendlyId
 
-  has_many :posts, through: :taggings, source: :taggable,
-                   source_type: 'Post'
-
-  has_many :quizzes, through: :taggings, source: :taggable,
-                     source_type: 'Quiz'
+  has_many :posts,   through: :taggings, source: :taggable, source_type: 'Post'
+  has_many :quizzes, through: :taggings, source: :taggable, source_type: 'Quiz'
 
   friendly_id :title, use: :slugged
 

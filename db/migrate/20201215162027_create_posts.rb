@@ -8,7 +8,6 @@ class CreatePosts < ActiveRecord::Migration[6.1]
       t.string     :slug
       t.datetime   :published_at
       t.integer    :status,  default: 0,  null: false
-      t.string     :excerpt, default: '', null: false,       limit: 150
       t.references :user,    null: false, foreign_key: true, index: true
 
       t.timestamps

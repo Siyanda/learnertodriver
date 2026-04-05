@@ -10,7 +10,6 @@ class Evaluations::FindUserCompletedEvaluationTest < ActiveSupport::TestCase
 
   test 'finds a completed evaluation for the user and quiz' do
     evaluation = create(:evaluation, user: @user, quiz: @quiz, status: :completed)
-
     ctx = Evaluations::FindUserCompletedEvaluation.execute(user: @user, quiz: @quiz)
 
     assert_equal evaluation, ctx.evaluation
@@ -19,32 +18,28 @@ class Evaluations::FindUserCompletedEvaluationTest < ActiveSupport::TestCase
   test 'returns nil when the user has no completed evaluation for the quiz' do
     create(:evaluation, user: @user, quiz: @quiz, status: :started)
 
-    ctx = Evaluations::FindUserCompletedEvaluation.execute(user: @user, quiz: @quiz)
-
-    assert_nil ctx.evaluation
+    assert_nil execute.evaluation
   end
 
-  test 'does not return a completed evaluation belonging to a different user' do
-    other_user = create(:user)
-    create(:evaluation, user: other_user, quiz: @quiz, status: :completed)
+  test 'does not return an completed evaluation belonging to a different user' do
+    create(:evaluation, user: create(:user), quiz: @quiz, status: :completed)
 
-    ctx = Evaluations::FindUserCompletedEvaluation.execute(user: @user, quiz: @quiz)
-
-    assert_nil ctx.evaluation
+    assert_nil execute.evaluation
   end
 
-  test 'does not return a completed evaluation for a different quiz' do
-    other_quiz = create(:quiz)
-    create(:evaluation, user: @user, quiz: other_quiz, status: :completed)
+  test 'does not return an completed evaluation for a different quiz' do
+    create(:evaluation, user: @user, quiz: create(:quiz), status: :completed)
 
-    ctx = Evaluations::FindUserCompletedEvaluation.execute(user: @user, quiz: @quiz)
-
-    assert_nil ctx.evaluation
+    assert_nil execute.evaluation
   end
 
   test 'action succeeds regardless of whether an evaluation is found' do
-    ctx = Evaluations::FindUserCompletedEvaluation.execute(user: @user, quiz: @quiz)
+    assert_predicate execute, :success?
+  end
 
-    assert_predicate ctx, :success?
+  private
+
+  def execute
+    Evaluations::FindUserCompletedEvaluation.execute(user: @user, quiz: @quiz)
   end
 end

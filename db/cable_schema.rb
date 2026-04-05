@@ -147,7 +147,6 @@ ActiveRecord::Schema[8.1].define(version: 2025_05_04_143517) do
   create_table "posts", force: :cascade do |t|
     t.text "content"
     t.datetime "created_at", null: false
-    t.string "excerpt", limit: 150, default: "", null: false
     t.datetime "published_at", precision: nil
     t.string "slug"
     t.integer "status", default: 0, null: false
@@ -200,6 +199,16 @@ ActiveRecord::Schema[8.1].define(version: 2025_05_04_143517) do
     t.string "user_agent"
     t.integer "user_id", null: false
     t.index ["user_id"], name: "index_sessions_on_user_id"
+  end
+
+  create_table "solid_cable_messages", force: :cascade do |t|
+    t.binary "channel", limit: 1024, null: false
+    t.integer "channel_hash", limit: 8, null: false
+    t.datetime "created_at", null: false
+    t.binary "payload", limit: 536870912, null: false
+    t.index ["channel"], name: "index_solid_cable_messages_on_channel"
+    t.index ["channel_hash"], name: "index_solid_cable_messages_on_channel_hash"
+    t.index ["created_at"], name: "index_solid_cable_messages_on_created_at"
   end
 
   create_table "taggings", force: :cascade do |t|

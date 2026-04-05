@@ -3,7 +3,7 @@
 class Evaluations::CalculateScore
   extend ::LightService::Organizer
 
-  def self.call(evaluation)
+  def self.call(evaluation:)
     with(evaluation:, choices: evaluation.choices).reduce(actions)
   end
 
