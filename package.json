@@ -12,5 +12,8 @@
     "@rails/actiontext": "^7.2.202",
     "dayjs": "^1.11.13",
     "trix": "^2.1.15"
+  },
+  "devDependencies": {
+    "esbuild-plugin-glob": "^2.2.3"
   }
 }

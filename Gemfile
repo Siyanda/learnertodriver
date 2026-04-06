@@ -38,6 +38,10 @@ gem 'acts_as_list'
 gem 'postmark-rails'
 gem 'rack-mini-profiler', require: false
 
+gem 'dry-initializer'
+gem 'view_component'
+gem 'view_component-contrib'
+
 group :development, :test do
   gem 'debug'
   gem 'faker'

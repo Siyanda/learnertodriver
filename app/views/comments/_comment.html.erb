@@ -1,5 +1,5 @@
 <div class="comment top-margin">
-  <%= image_tag gravatar_url(comment.user.email_address), class: 'comment-avatar' %>
+  <%= "image_tag gravatar_url(comment.user.email_address), class: 'comment-avatar'" %>
   <div class="comment-inner">
     <div class="comment-header">
 
@@ -7,7 +7,7 @@
         <%= link_to comment.user.name %>
       </cite>
 
-      <%= time_ago_span(comment.created_at) %>
+      <%= "time_ago_span(comment.created_at)" %>
 
       <div class="comment-actions">
         <% if comment.user == Current.user %>
@@ -16,7 +16,7 @@
                       'data-turbo-confirm': 'Are you sure?',
                       class: 'confirmation' do %>
             <div class="clickable grey-fill standard-svg svg icon">
-              <%= inline_svg('icons/trash.svg') %>
+              <%= component('utils/inline_svg', path: 'icons/trash.svg') %>
             </div>
           <% end %>
         <% end %>
