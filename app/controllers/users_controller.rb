@@ -23,17 +23,7 @@ class UsersController < ApplicationController
 
   private
 
-  def user_params # rubocop:disable Metrics/MethodLength
-    params.expect(user: %i[
-                    first_name
-                    last_name
-                    email_address
-                    phone_number
-                    username
-                    title
-                    bio
-                    links
-                    birthday
-                  ])
+  def user_params
+    params.expect(user: %i[first_name last_name email_address phone_number username title bio links birthday])
   end
 end
