@@ -4,6 +4,6 @@ class TagsController < ApplicationController
   allow_unauthenticated_access
 
   def show
-    @tag = Tag.friendly.find(params[:id])
+    @tag = Tag.friendly.find(params.expect(:id))
   end
 end

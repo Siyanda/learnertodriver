@@ -5,7 +5,7 @@ class ApplicationViewComponent < ViewComponentContrib::Base
   include MarkdownRenderable
 
   def stimulus_id
-    @_stimulus_id ||= self.class.name.sub('::Component', '').underscore.split('/').join('--').tr('_', '-')
+    @stimulus_id ||= self.class.name.sub('::Component', '').underscore.split('/').join('--').tr('_', '-')
   end
 
   private
@@ -23,7 +23,7 @@ class ApplicationViewComponent < ViewComponentContrib::Base
   end
 
   def identifier
-    @_identifier ||= self.class.name.sub('::Component', '').underscore.split('/').join('--')
+    @identifier ||= self.class.name.sub('::Component', '').underscore.split('/').join('--')
   end
 
   alias_method :controller_name, :identifier # rubocop:disable Style/Alias

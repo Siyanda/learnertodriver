@@ -48,11 +48,11 @@ class EvaluationsController < ApplicationController
   private
 
   def set_quiz
-    @quiz = Quiz.friendly.find(params[:quiz_id])
+    @quiz = Quiz.friendly.find(params.expect(:quiz_id))
   end
 
   def set_evaluation
-    @evaluation = Current.user.evaluations.find(params[:id])
+    @evaluation = Current.user.evaluations.find(params.expect(:id))
   end
 
   def set_current_choice
