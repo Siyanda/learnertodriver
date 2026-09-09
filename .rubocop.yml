@@ -11,6 +11,11 @@ AllCops:
     - "bin/*"
     - "db/migrate/*"
     - "db/*schema.rb"
+    - "vendor/**/*"
+
+inherit_mode:
+  merge:
+    - Exclude
 
 Bundler/OrderedGems:
   Enabled: false
