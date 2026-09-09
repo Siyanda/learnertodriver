@@ -1,6 +1,7 @@
-import { Turbo } from '@hotwired/turbo-rails'
+import "@hotwired/turbo-rails"
+import "../components/controllers/index"
+import "./controllers"
+import "./channels"
 
-import 'trix'
-import '@rails/actiontext'
-import './controllers'
-import './channels'
+import "trix"
+import "@rails/actiontext"

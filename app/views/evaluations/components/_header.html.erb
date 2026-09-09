@@ -3,13 +3,13 @@
     <div class="flex spaced-between">
       <div class="info">
         <%= content_tag(:h1, t('.title', title: quiz.title)) %>
-        <%= content_tag(:h2, nil, data: { 'dayjs-formatted-date-time-target': 'formattedTime', controller: 'dayjs-formatted-date-time', 'dayjs-formatted-date-time-date-value': date.iso8601 }, class: 'bold') %>
+        <h1><%= component('utils/date_time', timestamp: date.iso8601, format: :date) %></h1>
         <%= content_tag(:h2, pluralize(quiz.questions.count, t('.question'))) %>
         <%= content_tag(:h2, Current.user.name) %>
       </div>
 
       <div class="long-svg icon">
-        <%= inline_svg('logo.svg') %>
+        <%= component('utils/inline_svg', path: 'logo.svg') %>
       </div>
     </div>
   </div>

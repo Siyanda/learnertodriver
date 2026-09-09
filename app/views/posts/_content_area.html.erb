@@ -4,9 +4,7 @@
   </div>
 
   <div class="post-content">
-    <%= content_tag(:div,
-                    sanitize(from_markdown(liquidize(post.content))),
-                    class: "post-body") %>
+     content_tag(:div, sanitize(from_markdown(liquidize(post.content))), class: "post-body")
   </div>
 
   <div class="post-footer">
@@ -14,11 +12,11 @@
       <div class="flex">
 
         <%= content_tag(:div, class: "gray-stroke small-svg icon") do %>
-          <%= inline_svg('icons/clock.svg') %>
+          <%= component('utils/inline_svg', path: 'icons/clock.svg') %>
         <% end %>
 
         <%= content_tag(:p, class: "post-date") do %>
-          <%= t('posts.posted_at') %> <%= time_ago_span(post.created_at) %>
+          <%= t('posts.posted_at') %> <%= "time_ago_span(post.created_at)" %>
         <% end %>
 
       </div>

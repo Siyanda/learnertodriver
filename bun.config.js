@@ -1,5 +1,5 @@
-import path from "path";
-import fs from"fs";
+import path from "path"
+import fs   from "fs"
 
 const config = {
   sourcemap: "external",
@@ -26,12 +26,17 @@ const build = async (config) => {
 (async () => {
   await build(config);
 
+  const watchDirs = [
+    path.join(process.cwd(), "app/javascript"),
+    path.join(process.cwd(), "app/components")
+  ]
+
   if (process.argv.includes("--watch")) {
-    fs.watch(path.join(process.cwd(), "app/javascript"), { recursive: true }, (eventType, filename) => {
-      console.log(`File changed: ${filename}. Rebuilding...`);
-      build(config);
-    });
-  } else {
-    process.exit(0);
+    watchDirs.forEach(dir => {
+      fs.watch(dir, { recursive: true }, (eventType, filename) => {
+        console.log(`File changed: ${filename}. Rebuilding...`)
+        build(config)
+      })
+    })
   }
 })();

@@ -10,7 +10,7 @@
 
       <div data-controller="dropdown" class="spaced clickable">
         <div class="menu standard-svg dark-fill icon" data-action="click->dropdown#toggle">
-          <%= inline_svg('icons/user.svg') %>
+          <%= component('utils/inline_svg', path: 'icons/user.svg') %>
         </div>
 
         <div class="menu-container" data-dropdown-target="menu">
@@ -18,7 +18,7 @@
             <li class="full-width">
               <%= link_to session_path, data: { 'turbo-method': :delete }, class: 'flex full-width user-menu-link' do %>
                 <div class="right-margin small-svg dark-fill icon">
-                  <%= inline_svg('icons/log-out.svg') %>
+                  <%= component('utils/inline_svg', path: 'icons/log-out.svg') %>
                 </div> Log Out
               <% end %>
             </li>

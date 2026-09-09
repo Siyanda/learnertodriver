@@ -10,6 +10,7 @@ gem 'bootsnap', require: false
 
 gem 'bcrypt'
 gem 'propshaft'
+gem 'ruby-vips'
 gem 'solid_cache'
 gem 'solid_queue'
 gem 'solid_cable'
@@ -37,6 +38,10 @@ gem 'friendly_id'
 gem 'acts_as_list'
 gem 'postmark-rails'
 gem 'rack-mini-profiler', require: false
+
+gem 'dry-initializer'
+gem 'view_component'
+gem 'view_component-contrib'
 
 group :development, :test do
   gem 'debug'

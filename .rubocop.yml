@@ -1,3 +1,5 @@
+inherit_from: .rubocop_todo.yml
+
 plugins:
   - rubocop-rails
   - rubocop-factory_bot
@@ -9,6 +11,11 @@ AllCops:
     - "bin/*"
     - "db/migrate/*"
     - "db/*schema.rb"
+    - "vendor/**/*"
+
+inherit_mode:
+  merge:
+    - Exclude
 
 Bundler/OrderedGems:
   Enabled: false

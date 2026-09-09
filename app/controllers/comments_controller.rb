@@ -26,11 +26,11 @@ class CommentsController < ApplicationController
   private
 
   def set_post
-    @post = Post.friendly.find(params[:post_id])
+    @post = Post.friendly.find(params.expect(:post_id))
   end
 
   def set_comment
-    @comment = Comment.find(params[:id])
+    @comment = Comment.find(params.expect(:id))
   end
 
   def comment_params

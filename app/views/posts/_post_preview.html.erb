@@ -16,7 +16,7 @@
   <div class="dark-bg block-meta">
     <div class="meta meta-views">
       <div class="light-fill small-svg icon">
-        <%= inline_svg('icons/eye.svg') %>
+        <%= component('utils/inline_svg', path: 'icons/eye.svg') %>
       </div>
       <div class="light-text">
         <%= pluralize(post.comments.size, t('page_views.singular'), t('page_views.plural')) %>
@@ -25,7 +25,7 @@
 
     <div class="meta meta-comments">
       <div class="light-fill small-svg icon">
-        <%= inline_svg('icons/comments.svg') %>
+        <%= component('utils/inline_svg', path: 'icons/comments.svg') %>
       </div>
       <div class="light-text">
         <%= pluralize(post.comments.size, t('comments.singular'), t('comments.plural')) %>
@@ -34,10 +34,10 @@
 
    <div class="meta meta-date">
       <div class="light-fill small-svg icon">
-        <%= inline_svg('icons/clock-fill.svg') %>
+        <%= component('utils/inline_svg', path: 'icons/clock-fill.svg') %>
       </div>
       <div class="light-text">
-        <%= time_ago_span(post.created_at) %>
+        <%= "time_ago_span(post.created_at)" %>
       </div>
     </div>
   </div>

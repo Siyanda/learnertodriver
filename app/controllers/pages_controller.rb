@@ -4,6 +4,6 @@ class PagesController < ApplicationController
   allow_unauthenticated_access
 
   def show
-    @page = Page.friendly.find(params[:id]) || not_found!
+    @page = Page.friendly.find(params.expect(:id)) || not_found!
   end
 end
