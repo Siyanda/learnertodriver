@@ -28,7 +28,7 @@ const build = async (config) => {
 
   const watchDirs = [
     path.join(process.cwd(), "app/javascript"),
-    path.join(process.cwd(), "app/components")
+    path.join(process.cwd(), "app/frontend")
   ]
 
   if (process.argv.includes("--watch")) {

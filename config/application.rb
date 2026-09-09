@@ -10,5 +10,12 @@ module Learnertodriver # rubocop:disable Style/ClassAndModuleChildren
     config.load_defaults 7.0
     config.time_zone = 'Africa/Johannesburg'
     config.autoload_lib(ignore: %w[assets tasks])
+
+    # View component configuration
+    config.autoload_paths                << Rails.root.join('components')
+    config.view_component.previews.paths << Rails.root.join('components')
+
+    config.view_component.previews.controller     = 'PreviewController'
+    config.view_component.previews.default_layout = 'component_preview'
   end
 end
