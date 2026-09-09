@@ -10,6 +10,7 @@ gem 'bootsnap', require: false
 
 gem 'bcrypt'
 gem 'propshaft'
+gem 'ruby-vips'
 gem 'solid_cache'
 gem 'solid_queue'
 gem 'solid_cable'
