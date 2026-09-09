@@ -25,7 +25,6 @@ export default class extends BaseController {
   }
 
   connect() {
-    console.log("ddd");
     this.updateText()
     if (this.formatValue === 'time_ago') this.scheduleNextUpdate()
   }
