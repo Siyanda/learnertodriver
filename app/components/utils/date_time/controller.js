@@ -6,11 +6,11 @@ import relativeTime from 'dayjs/plugin/relativeTime'
 dayjs.extend(duration)
 dayjs.extend(relativeTime)
 
-function getRelativeTimeString(isoTime) {
+export function getRelativeTimeString(isoTime) {
   return dayjs(isoTime).fromNow()
 }
 
-function getNextInterval(ageInSeconds) {
+export function getNextInterval(ageInSeconds) {
   if (ageInSeconds < 60)    return 1000
   if (ageInSeconds < 3600)  return 60 * 1000
   if (ageInSeconds < 86400) return 60 * 60 * 1000
