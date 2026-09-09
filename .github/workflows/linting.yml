@@ -12,7 +12,7 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version-file: .tool-versions
+          ruby-version: .tool-versions
           bundler-cache: true
       - name: Run RuboCop
         uses: reviewdog/action-rubocop@v2
@@ -32,7 +32,7 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version-file: .tool-versions
+          ruby-version: .tool-versions
           bundler-cache: true
       - name: Run ERB Lint
         run: bundle exec erb_lint app/views
@@ -45,7 +45,7 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version-file: .tool-versions
+          ruby-version: .tool-versions
           bundler-cache: true
       - name: Run Brakeman
         run: bundle exec brakeman

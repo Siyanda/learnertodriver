@@ -15,7 +15,7 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version-file: .tool-versions
+          ruby-version: .tool-versions
           bundler-cache: true
       - name: Read Bun version from .tool-versions
         id: bun_version
