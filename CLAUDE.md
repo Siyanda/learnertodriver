@@ -90,7 +90,7 @@ ViewComponent + ViewComponentContrib + Dry::Initializer. Components live in `app
 
 ```ruby
 class Utils::InlineSvg::Component < ApplicationViewComponent
-  option :path
+  option :path, required: true
 
   def svg_content
     file = Rails.root.join('app/assets/images/svg', path).cleanpath
@@ -101,7 +101,16 @@ class Utils::InlineSvg::Component < ApplicationViewComponent
 end
 ```
 
-- `option :name` declares an initializer keyword arg; `default: -> { ... }` for defaults.
+- `option` uses Dry::Initializer — declare every initializer keyword arg with `option`:
+  - `option :name, required: true` for required args (fails loudly if missing).
+  - `option :name, default: -> { ... }` for optional args with defaults.
+  - Aligned like the surrounding block, e.g.:
+
+    ```ruby
+    option :item,     required: true
+    option :stimulus, default: -> { true }
+    option :writable, default: -> { true }
+    ```
 - `stimulus_id` derives a Stimulus controller id from the class name; components pair with a colocated `controller.js` (e.g. `app/components/utils/date_time/controller.js`), registered in `app/components/controllers/index.js`.
 - `component(name, ...)` / `collection_component(name, ...)` helpers render nested components.
 - `MarkdownRenderable` (redcarpet + liquid) is included in `ApplicationViewComponent` and `ApplicationHelper`.
