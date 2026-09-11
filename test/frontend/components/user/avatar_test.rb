@@ -4,11 +4,11 @@ require 'test_helper'
 
 class User::Avatar::ComponentTest < ViewComponent::TestCase
   def test_renders
-    component = build_component
+    component = build_component(user: create(:user))
 
     render_inline(component)
 
-    assert_selector 'div'
+    assert_selector 'img.avatar'
   end
 
   private

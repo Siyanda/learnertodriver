@@ -32,6 +32,7 @@ en:
     none: "Be the first to comment"
     leave_comment: "Leave a Comment"
     submit: "Post Comment"
+  practice_quiz: "Practice Quiz"
   page_views:
     singular: "View"
     plural: "Views"
