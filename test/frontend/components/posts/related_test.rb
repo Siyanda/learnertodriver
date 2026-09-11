@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "test_helper"
+require 'test_helper'
 
 class Posts::Related::ComponentTest < ViewComponent::TestCase
   def test_renders
@@ -8,12 +8,12 @@ class Posts::Related::ComponentTest < ViewComponent::TestCase
 
     render_inline(component)
 
-    assert_selector "div"
+    assert_selector 'div'
   end
 
   private
 
-  def build_component(**options)
-    Posts::Related::Component.new(**options)
+  def build_component(**)
+    Posts::Related::Component.new(**)
   end
 end

@@ -1,5 +1,6 @@
 <div class="comment top-margin">
-  <%= "image_tag gravatar_url(comment.user.email_address), class: 'comment-avatar'" %>
+  <%= component("user/avatar", user: comment.user, class: "comment-avatar") %>
+
   <div class="comment-inner">
     <div class="comment-header">
 
@@ -7,7 +8,7 @@
         <%= link_to comment.user.name %>
       </cite>
 
-      <%= "time_ago_span(comment.created_at)" %>
+      <%= component("utils/date_time", timestamp: comment.created_at) %>
 
       <div class="comment-actions">
         <% if comment.user == Current.user %>

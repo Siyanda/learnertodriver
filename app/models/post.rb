@@ -3,9 +3,6 @@
 class Post < ApplicationRecord
   extend FriendlyId
 
-  include ActionView::Helpers::TextHelper
-  include ActionView::Helpers::SanitizeHelper
-
   friendly_id :title, use: :slugged
 
   broadcasts_refreshes
@@ -14,6 +11,7 @@ class Post < ApplicationRecord
 
   has_many :comments, dependent: :destroy
   has_many :taggings, as: :taggable, dependent: :destroy
+
   has_many :tags, through: :taggings
 
   has_one_attached  :cover_image

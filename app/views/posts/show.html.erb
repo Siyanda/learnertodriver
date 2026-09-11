@@ -2,12 +2,25 @@
 <% breadcrumb :post, @post %>
 
 <div class="flex to-column gapped">
-  <%= render 'content_area', post: @post %>
-  <%= render 'side_bar', post: @post %>
+  <%= render(Posts::Content::Component.new(post: @post)) %>
+
+  <div class="third-width hr-sectioned white-bg shadowed rounded basic-border aside to-full">
+    <div class="section">
+      <%= render(Posts::Tags::Component.new(post:)) %>
+    </div>
+
+    <div class="section">
+      <%= render(Posts::Related::Component.new(post:)) %>
+    </div>
+
+    <div class="section">
+      <%= render(Posts::Ad::Component.new(post:)) %>
+    </div>
+  </div>
 </div>
 
-<%= render 'author_section', post: @post %>
+<%= render(Posts::Author::Component.new(post: @post)) %>
 
 <%= turbo_stream_from @post %>
 
-<%= render 'comment_section', post: @post %>
+<%= render(Posts::Comment::Component.new(post: @post)) %>
