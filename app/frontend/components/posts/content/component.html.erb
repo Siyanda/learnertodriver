@@ -1,0 +1,25 @@
+<div class="flex full-width rounded shadowed basic-border max-content column white-bg post">
+  <div class="post-header">
+    <%= content_tag(:h1, title, class: "post-title") %>
+  </div>
+
+  <div class="post-content">
+    <%= content_tag(:div, sanitize(body), class: "post-body") %>
+  </div>
+
+  <div class="post-footer">
+    <div class="flex center-aligned spaced-between post-meta">
+      <div class="flex">
+
+        <%= content_tag(:div, class: "gray-stroke small-svg icon") do %>
+          <%= component('utils/inline_svg', path: 'icons/clock.svg') %>
+        <% end %>
+
+        <%= content_tag(:p, class: "post-date") do %>
+          <%= t('posts.posted_at') %> <%= component('utils/date_time', timestamp: post.created_at, format: :time_ago) %>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>
