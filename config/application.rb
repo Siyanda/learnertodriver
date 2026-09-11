@@ -12,8 +12,9 @@ module Learnertodriver # rubocop:disable Style/ClassAndModuleChildren
     config.autoload_lib(ignore: %w[assets tasks])
 
     # View component configuration
-    config.autoload_paths                << Rails.root.join('components')
-    config.view_component.previews.paths << Rails.root.join('components')
+    config.autoload_paths                << Rails.root.join('app/frontend/components')
+    config.autoload_paths                << Rails.root.join('app/frontend/components/concerns')
+    config.view_component.previews.paths << Rails.root.join('app/frontend/components')
 
     config.view_component.previews.controller     = 'PreviewController'
     config.view_component.previews.default_layout = 'component_preview'

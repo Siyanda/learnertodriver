@@ -79,16 +79,4 @@ class PostTest < ActiveSupport::TestCase
 
     assert_equal 'updated-title', @post.slug
   end
-
-  test 'strips html tags from excerpt' do
-    @post.content = '<p><strong>Hello</strong> World</p>'
-
-    assert_equal 'Hello World', @post.excerpt
-  end
-
-  test 'returns full content when shorter than 150 characters' do
-    @post.content = '<p>Short content</p>'
-
-    assert_equal 'Short content', @post.excerpt
-  end
 end

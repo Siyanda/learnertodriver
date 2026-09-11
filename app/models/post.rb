@@ -32,9 +32,5 @@ class Post < ApplicationRecord
   validates :title,  presence: true
   validates :status, presence: true
 
-  def excerpt
-    truncate(strip_tags(content.to_s), length: 150)
-  end
-
   def should_generate_new_friendly_id? = slug.blank? || title_changed?
 end
