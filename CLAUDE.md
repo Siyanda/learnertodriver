@@ -86,7 +86,7 @@ Notes on the style:
 `action_policy` — policies in `app/policies`, `ApplicationPolicy < ActionPolicy::Base`. `ApplicationController` calls `authorize :user, through: -> { Current.user }`.
 
 ### View components
-ViewComponent + ViewComponentContrib + Dry::Initializer. Components live in `app/components/<namespace>/<name>/component.rb` + `component.html.erb`, inherit from `ApplicationViewComponent < ViewComponentContrib::Base`.
+ViewComponent + ViewComponentContrib + Dry::Initializer. Components live in `app/frontend/components/<namespace>/<name>/component.rb` + `component.html.erb`, inherit from `ApplicationViewComponent < ViewComponentContrib::Base`.
 
 ```ruby
 class Utils::InlineSvg::Component < ApplicationViewComponent
@@ -111,7 +111,7 @@ end
     option :stimulus, default: -> { true }
     option :writable, default: -> { true }
     ```
-- `stimulus_id` derives a Stimulus controller id from the class name; components pair with a colocated `controller.js` (e.g. `app/components/utils/date_time/controller.js`), registered in `app/components/controllers/index.js`.
+- `stimulus_id` derives a Stimulus controller id from the class name; components pair with a colocated `controller.js` (e.g. `app/frontend/components/utils/date_time/controller.js`), registered in `app/frontend/components/index.js`.
 - `component(name, ...)` / `collection_component(name, ...)` helpers render nested components.
 - `MarkdownRenderable` (redcarpet + liquid) is included in `ApplicationViewComponent` and `ApplicationHelper`.
 
