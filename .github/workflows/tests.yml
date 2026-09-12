@@ -9,24 +9,24 @@ jobs:
       RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
     steps:
       - name: Check out code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
       - name: Install libvips
         run: sudo apt-get update && sudo apt-get install -y libvips
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version-file: .tool-versions
+          ruby-version: .tool-versions
           bundler-cache: true
       - name: Read Bun version from .tool-versions
         id: bun_version
         run: |
           echo "BUN_VERSION=$(awk '/^bun / { print $2 }' .tool-versions)" >> "$GITHUB_OUTPUT"
       - name: Set up Bun
-        uses: oven-sh/setup-bun@v1
+        uses: oven-sh/setup-bun@v2
         with:
           bun-version: ${{ steps.bun_version.outputs.BUN_VERSION }}
       - name: Cache Bun install cache
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: ~/.bun/install/cache
           key: bun-cache-${{ runner.os }}-${{ steps.bun_version.outputs.BUN_VERSION }}-${{ hashFiles('bun.lock') }}

@@ -3,7 +3,7 @@ import dayjs from "dayjs"
 import {
   getNextInterval,
   getRelativeTimeString,
-} from "../../app/components/utils/date_time/controller"
+} from "../../app/frontend/components/utils/date_time/controller"
 
 describe("getRelativeTimeString", () => {
   test("returns a relative time for a past timestamp", () => {

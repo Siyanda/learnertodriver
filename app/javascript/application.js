@@ -1,5 +1,5 @@
 import "@hotwired/turbo-rails"
-import "../components/controllers/index"
+import "../frontend/components/index"
 import "./controllers"
 import "./channels"
 

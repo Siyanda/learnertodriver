@@ -3,9 +3,6 @@
 class Post < ApplicationRecord
   extend FriendlyId
 
-  include ActionView::Helpers::TextHelper
-  include ActionView::Helpers::SanitizeHelper
-
   friendly_id :title, use: :slugged
 
   broadcasts_refreshes
@@ -14,6 +11,7 @@ class Post < ApplicationRecord
 
   has_many :comments, dependent: :destroy
   has_many :taggings, as: :taggable, dependent: :destroy
+
   has_many :tags, through: :taggings
 
   has_one_attached  :cover_image
@@ -32,9 +30,7 @@ class Post < ApplicationRecord
   validates :title,  presence: true
   validates :status, presence: true
 
-  def excerpt
-    truncate(strip_tags(content.to_s), length: 150)
-  end
+  def related(limit: 5) = user.posts.where.not(id:).order(created_at: :desc).limit(limit)
 
   def should_generate_new_friendly_id? = slug.blank? || title_changed?
 end

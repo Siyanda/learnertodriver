@@ -3,6 +3,6 @@
 
 <div class="wrapper">
   <div class="posts">
-    <%= render partial: 'post_preview', collection: @posts, cached: true, as: :post %>
+    <%= render(Posts::PreviewCard::Component.with_collection(@posts)) %>
   </div>
 </div>

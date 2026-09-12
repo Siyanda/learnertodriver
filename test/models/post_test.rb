@@ -68,6 +68,35 @@ class PostTest < ActiveSupport::TestCase
     assert_equal Post.order(created_at: :desc).first, results.first
   end
 
+  test 'related_posts returns the author\'s other posts, newest first, excluding self' do
+    older_post = create(:post, user: @user, created_at: 3.days.ago)
+    newer_post = create(:post, user: @user, created_at: 1.day.ago)
+    other_post = create(:post, created_at: 2.hours.ago)
+
+    results = @post.related
+
+    assert_equal [newer_post, older_post], results.to_a
+    assert_not_includes results, @post
+    assert_not_includes results, other_post
+  end
+
+  test 'related_posts includes posts of any status' do
+    draft = create(:post, user: @user, status: :draft)
+    restricted = create(:post, user: @user, status: :restricted)
+
+    results = @post.related
+
+    assert_includes results, draft
+    assert_includes results, restricted
+  end
+
+  test 'related_posts respects the limit parameter' do
+    create_list(:post, 7, user: @user)
+
+    assert_equal 5, @post.related.length
+    assert_equal 3, @post.related(limit: 3).length
+  end
+
   test 'generates a slug from the title' do
     post = create(:post, user: @user, title: 'My First Post')
 
@@ -78,17 +107,5 @@ class PostTest < ActiveSupport::TestCase
     @post.update!(title: 'Updated Title')
 
     assert_equal 'updated-title', @post.slug
-  end
-
-  test 'strips html tags from excerpt' do
-    @post.content = '<p><strong>Hello</strong> World</p>'
-
-    assert_equal 'Hello World', @post.excerpt
-  end
-
-  test 'returns full content when shorter than 150 characters' do
-    @post.content = '<p>Short content</p>'
-
-    assert_equal 'Short content', @post.excerpt
   end
 end

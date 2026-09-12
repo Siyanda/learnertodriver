@@ -3,7 +3,7 @@
 class Evaluations::UpdateCurrentChoice
   extend ::LightService::Action
 
-  expects :evaluation, :choice_id
+  expects  :evaluation, :choice_id
   promises :current_choice
 
   executed do |ctx|
