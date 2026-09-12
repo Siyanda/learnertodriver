@@ -3,17 +3,11 @@
 require 'test_helper'
 
 class Posts::Related::ComponentTest < ViewComponent::TestCase
-  def test_renders
-    component = build_component
+  def test_renders_ad
+    post = create(:post)
 
-    render_inline(component)
+    render_inline(Posts::Related::Component.new(post:))
 
-    assert_selector 'div'
-  end
-
-  private
-
-  def build_component(**)
-    Posts::Related::Component.new(**)
+    assert_selector '.sub-heading', text: 'Related Posts'
   end
 end
