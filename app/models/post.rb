@@ -30,13 +30,7 @@ class Post < ApplicationRecord
   validates :title,  presence: true
   validates :status, presence: true
 
-  # Other posts by the same author, most recent first, excluding self.
-  def related_posts(limit: 5)
-    user.posts
-        .where.not(id:)
-        .order(created_at: :desc)
-        .limit(limit)
-  end
+  def related(limit: 5) = user.posts.where.not(id:).order(created_at: :desc).limit(limit)
 
   def should_generate_new_friendly_id? = slug.blank? || title_changed?
 end
