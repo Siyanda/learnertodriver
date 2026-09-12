@@ -5,7 +5,7 @@
   </div>
   <hr class="third-width hr-grey">
   <div class="section">
-    <% Post.most_recent.published.each do |post| %>
+    <% post.related.published.each do |post| %>
       <div class="item">
           <%= link_to post.title, post, class: 'link' %>
       </div>
