@@ -6,9 +6,9 @@ class Question < ApplicationRecord
   has_many :answers, dependent: :destroy
 
   enum :kind, {
-    single_choice:   0,
-    multiple_choice: 1,
-    long_answer:     2
+    single_choice:   10,
+    multiple_choice: 20,
+    long_answer:     30
   }, validate: true
 
   scope :random, -> { order(Arel::Nodes::NamedFunction.new('RANDOM', [])) }

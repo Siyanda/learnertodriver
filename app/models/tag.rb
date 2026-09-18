@@ -10,10 +10,10 @@ class Tag < ApplicationRecord
 
   enum :status,
        {
-         published:   0,
-         unpublished: 1,
-         restricted:  2,
-         removed:     3
+         published:   10,
+         unpublished: 20,
+         restricted:  30,
+         removed:     40
        }, validate: true
 
   validates :title, presence: true

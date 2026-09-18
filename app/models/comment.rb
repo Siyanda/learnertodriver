@@ -7,11 +7,11 @@ class Comment < ApplicationRecord
   scope :visible, -> { where(status: :published) }
 
   enum :status, {
-    draft:       0,
-    unpublished: 1,
-    published:   2,
-    restricted:  3,
-    removed:     4
+    draft:       10,
+    unpublished: 20,
+    published:   30,
+    restricted:  40,
+    removed:     50
   }, validate: true
 
   broadcasts_refreshes
