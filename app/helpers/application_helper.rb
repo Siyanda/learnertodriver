@@ -2,12 +2,7 @@
 
 module ApplicationHelper
   include MarkdownRenderable
-
-  def component(name, *args, **kwargs, &block) # rubocop:disable Style/ArgumentsForwarding,Naming/BlockForwarding
-    component = name.to_s.camelize.constantize::Component
-
-    render(component.new(*args, **kwargs), &block) # rubocop:disable Style/ArgumentsForwarding,Naming/BlockForwarding
-  end
+  include ComponentRenderable
 
   def title(page_title)
     content_for(:title) { page_title }

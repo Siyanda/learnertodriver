@@ -3,6 +3,7 @@
 class ApplicationViewComponent < ViewComponentContrib::Base
   extend Dry::Initializer
   include MarkdownRenderable
+  include ComponentRenderable
 
   def stimulus_id
     @stimulus_id ||= self.class.name.sub('::Component', '').underscore.split('/').join('--').tr('_', '-')
@@ -10,17 +11,7 @@ class ApplicationViewComponent < ViewComponentContrib::Base
 
   private
 
-  def component(name, *args, **kwargs, &block) # rubocop:disable Style/ArgumentsForwarding,Naming/BlockForwarding
-    component = name.to_s.camelize.constantize::Component
-
-    render(component.new(*args, **kwargs), &block) # rubocop:disable Style/ArgumentsForwarding,Naming/BlockForwarding
-  end
-
-  def collection_component(name, *args, **kwargs, &block) # rubocop:disable Style/ArgumentsForwarding,Naming/BlockForwarding
-    component = name.to_s.camelize.constantize::Component
-
-    render(component.with_collection(*args, **kwargs), &block) # rubocop:disable Style/ArgumentsForwarding,Naming/BlockForwarding
-  end
+  private :component, :collection_component
 
   def identifier
     @identifier ||= self.class.name.sub('::Component', '').underscore.split('/').join('--')

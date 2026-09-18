@@ -2,19 +2,19 @@
 <% breadcrumb :post, @post %>
 
 <div class="flex to-column gapped">
-  <%= render(Posts::Content::Component.new(post: @post)) %>
+  <%= component('posts/content', post: @post) %>
 
   <div class="third-width hr-sectioned white-bg shadowed rounded basic-border aside to-full">
     <div class="section">
-      <%= render(Posts::Tags::Component.new(post:)) %>
+      <%= component('posts/tags', post: @post) %>
     </div>
 
     <div class="section">
-      <%= render(Posts::Related::Component.new(post:)) %>
+      <%= component('posts/related', post: @post) %>
     </div>
 
     <div class="section">
-      <%= render(Posts::Ad::Component.new(post:)) %>
+      <%= component('posts/ad', post: @post) %>
     </div>
   </div>
 </div>
