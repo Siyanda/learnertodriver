@@ -14,10 +14,10 @@ class Page < ApplicationRecord
 
   enum :status, {
     draft:       0,
-    published:   2,
-    unpublished: 1,
-    restricted:  3,
-    removed:     4
+    published:   10,
+    unpublished: 20,
+    restricted:  30,
+    removed:     40
   }, validate: true
 
   def should_generate_new_friendly_id? = slug.blank? || slug_changed?

@@ -11,9 +11,9 @@ class Evaluation < ApplicationRecord
   validates :status, presence: true
 
   enum :status, {
-    started:     0,
-    in_progress: 1,
-    completed:   2
+    started:     10,
+    in_progress: 20,
+    completed:   30
   }, validate: true
 
   accepts_nested_attributes_for :choices, allow_destroy: true

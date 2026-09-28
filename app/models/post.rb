@@ -18,11 +18,11 @@ class Post < ApplicationRecord
   has_many_attached :images
 
   enum :status, {
-    draft:       0,
-    unpublished: 1,
-    published:   2,
-    restricted:  3,
-    removed:     4
+    draft:       10,
+    unpublished: 20,
+    published:   30,
+    restricted:  40,
+    removed:     50
   }, validate: true
 
   scope :most_recent, -> { order(created_at: :desc).limit(5) }
