@@ -70,7 +70,7 @@ Notes on the style:
 - `ctx.evaluation = ...` / `ctx.evaluation` — `LightService::Context` supports method-style access to keys.
 - `expects :user, :quiz` fails loudly if a key is missing; `promises :evaluation` declares what the action sets.
 - Use `next` to skip the rest of the block (`next unless ctx.evaluation.started?`).
-- Fail with `next ctx.fail_and_return!(message: ...)`.
+- Fail with `next ctx.fail_and_return!('message')` — pass the message positionally; `fail_and_return!(message: ...)` makes `result.message` a Hash.
 - `reduce_if(->(ctx) { ... }, [Actions])` conditionally runs actions in an organizer.
 - Prefix cross-namespace constants with `::` to avoid resolving inside the current namespace.
 
