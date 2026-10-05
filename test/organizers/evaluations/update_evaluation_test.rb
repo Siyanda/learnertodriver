@@ -28,6 +28,23 @@ class Evaluations::UpdateEvaluationTest < ActiveSupport::TestCase
     end
   end
 
+  test 'scores the evaluation when it is completed' do
+    create(:correct_answer, question: @question, answer: @answer)
+
+    result = call(params: {}, commit: 'finish')
+
+    assert_equal 100, result[:evaluation].reload.score
+    assert_equal 1.0, @choice.reload.value
+  end
+
+  test 'does not score an evaluation that is still in progress' do
+    create(:correct_answer, question: @question, answer: @answer)
+
+    result = call(params: {}, commit: nil)
+
+    assert_equal 0, result[:evaluation].reload.score
+  end
+
   test 'sets current_choice from choice_id' do
     result = call(params: {}, commit: nil)
 
@@ -38,6 +55,8 @@ class Evaluations::UpdateEvaluationTest < ActiveSupport::TestCase
     result = call(params: { status: nil }, commit: nil)
 
     assert_predicate result, :failure?
+    assert_kind_of String, result.message
+    assert_match(/Status can't be blank/, result.message)
   end
 
   private

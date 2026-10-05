@@ -1,0 +1,52 @@
+<%= form_with model: [:admin, record], class: 'form admin-form' do |form| %>
+  <%= render 'layouts/common/errors', record: %>
+
+  <div class="form-floating">
+    <%= form.label :title %>
+    <%= form.text_field :title, class: 'form-control', required: true, autofocus: true %>
+  </div>
+
+  <div class="form-floating">
+    <%= form.label :description %>
+    <%= form.text_area :description, class: 'form-control', rows: 3, required: true %>
+  </div>
+
+  <div class="form-floating">
+    <%= form.label :information %>
+    <%= form.text_area :information, class: 'form-control', rows: 3, required: true %>
+  </div>
+
+  <div class="flex admin-form-row">
+    <div class="form-floating full-width">
+      <%= form.label :duration, 'Duration (seconds)' %>
+      <%= form.number_field :duration, class: 'form-control', min: 60, step: 60, required: true %>
+    </div>
+
+    <div class="form-floating full-width">
+      <%= form.label :status %>
+      <%= form.select :status, admin_enum_options(Quiz, :status), {}, class: 'form-control' %>
+    </div>
+
+    <div class="form-floating full-width">
+      <%= form.label :published_at %>
+      <%= form.datetime_local_field :published_at, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-floating">
+    <%= form.label :cover_image %>
+    <%= form.file_field :cover_image, class: 'form-control', accept: 'image/*' %>
+  </div>
+
+  <fieldset class="admin-fieldset">
+    <legend>Questions</legend>
+
+    <div class="admin-checklist">
+      <%= form.collection_check_boxes :question_ids, Question.order(:id), :id, :content do |box| %>
+        <%= box.label(class: 'flex admin-check') { box.check_box + tag.span(box.text.truncate(120)) } %>
+      <% end %>
+    </div>
+  </fieldset>
+
+  <%= render 'admin/resources/form_actions', form: %>
+<% end %>

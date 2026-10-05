@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
 module BetterRailsSystemTests
-  def absolute_image_path(image_name)
+  # Overrides ActionDispatch's private, argument-less #absolute_image_path,
+  # which reads the screenshot name from #image_name.
+  def absolute_image_path
     Rails.root.join("#{Capybara.save_path}/screenshots/#{image_name}.png")
   end
 

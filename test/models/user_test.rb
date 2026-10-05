@@ -17,6 +17,22 @@ class UserTest < ActiveSupport::TestCase
     assert_includes duplicate.errors[:username], 'has already been taken'
   end
 
+  test 'requires an email address and username' do
+    user = User.new(password: 'password')
+
+    assert_not user.valid?
+    assert_includes user.errors[:email_address], "can't be blank"
+    assert_includes user.errors[:username], "can't be blank"
+  end
+
+  test 'requires a unique, well-formed email address' do
+    User.create!(username: 'johndoe', email_address: 'john@example.com', password: 'password')
+
+    assert_includes User.new(email_address: 'JOHN@example.com').tap(&:valid?).errors[:email_address],
+                    'has already been taken'
+    assert_includes User.new(email_address: 'not-an-email').tap(&:valid?).errors[:email_address], 'is invalid'
+  end
+
   test 'normalizes email address to lowercase and stripped' do
     user = User.new(username: 'jane', email_address: '  Jane@Example.com  ', password: 'password')
     user.valid?

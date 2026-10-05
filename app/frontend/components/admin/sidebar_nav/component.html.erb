@@ -1,0 +1,12 @@
+<nav class="admin-sidebar-nav" aria-label="Admin">
+  <ul>
+    <% items.each do |item| %>
+      <li>
+        <%= link_to item.path, class: class_names('flex center-aligned nav-item', active: active?(item)), aria: { current: (active?(item) ? 'page' : nil) } do %>
+          <span class="right-margin small-svg light-fill icon"><%= component('utils/inline_svg', path: item.icon) %></span>
+          <span><%= item.label %></span>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+</nav>

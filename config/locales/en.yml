@@ -13,6 +13,14 @@ en:
       destroy: "%{model} was successfully removed."
       no_edit: "Not authorized to edit this %{model}"
       error: "There was an error saving this %{model}"
+  admin:
+    not_authorized: "You are not authorized to access the admin area"
+    in_use: "%{model} is still in use and could not be removed"
+    confirm_delete: "Are you sure you want to delete this?"
+    users:
+      self_destroy: "You cannot delete your own account"
+    questions:
+      answer_in_use: "An answer that has already been chosen in a quiz cannot be removed"
   views:
     pagination:
       previous: "&lt; Previous"
@@ -38,12 +46,155 @@ en:
     plural: "Views"
   posts:
     posted_at: "Posted"
+  dashboards:
+    show:
+      title: "Dashboard"
+      greeting: "Hi %{name}"
+      intro: "Here's how your learner's test prep is going."
+      period: "Period"
+      periods:
+        all: "All time"
+        week: "Week"
+        month: "Month"
+        year: "Year"
+      in_progress: "Test in progress"
+      started_ago: "Started %{time} ago"
+      resume: "Resume"
+      stats:
+        completed: "Tests completed"
+        quizzes_taken: "Quizzes taken"
+        average_score: "Average score"
+        best_score: "Best score"
+      recent_results: "Recent results"
+      no_results: "You haven't finished a test in this period yet."
+      browse_quizzes: "Browse quizzes"
+      columns:
+        quiz: "Quiz"
+        completed: "Completed"
+        score: "Score"
+      quiz_progress: "Quiz progress"
+      not_attempted: "Not attempted yet"
+      attempts:
+        one: "1 attempt"
+        other: "%{count} attempts"
+      last_taken: "last taken %{time} ago"
+      start: "Start"
+      retake: "Retake"
+  sessions:
+    create:
+      email_password_mismatch: "Try another email address or password."
+      rate_limit_message: "Too many attempts. Please try again later."
+  passwords:
+    create:
+      password_reset_instructions_sent: "Password reset instructions sent (if a user with that email address exists)."
+    update:
+      password_reset_success: "Your password has been reset."
+      password_mismatch: "Passwords did not match."
+      reset_link_invalid: "Password reset link is invalid or has expired."
+    edit:
+      reset_link_invalid: "Password reset link is invalid or has expired."
+  passwords_mailer:
+    reset:
+      password_reset_message: "Reset your password"
+  confirmations:
+    new:
+      title: "Confirm your email"
+      intro: "Enter your email address and we'll send you a new confirmation link."
+      email_address: "Email address"
+      submit: "Send confirmation link"
+      sign_in: "Back to sign in"
+    create:
+      sent: "If that email needs confirming, a new link is on its way."
+      rate_limit_message: "Too many requests. Please try again later."
+    show:
+      confirmed: "Thanks, your email address is confirmed."
+      invalid: "That confirmation link is invalid or has expired. Request a new one below."
+  users_mailer:
+    email_confirmation:
+      subject: "Confirm your email address"
+      greeting: "Hi %{name},"
+      intro: "Thanks for signing up to Learner to Driver. Please confirm your email address by following"
+      reconfirm_intro: "You asked to change your Learner to Driver email address to this one. Confirm it by following"
+      link: "this confirmation link"
+      expiry: "The link expires in 2 days. If you didn't request this, you can ignore this email."
+  layouts:
+    user:
+      confirmation_banner:
+        confirm: "Please confirm your email address (%{email}) to start taking tests."
+        reconfirm: "Check %{email} to confirm your new email address."
+        resend: "Resend email"
+  users:
+    new:
+      title: "Sign up"
+      submit: "Create account"
+      sign_in: "Already have an account? Sign in"
+    create:
+      welcome: "Welcome, %{name}! We've emailed you a link to confirm your address."
+      rate_limit_message: "Too many sign-up attempts. Please try again later."
+    show:
+      title: "Profile"
+      edit: "Edit profile"
+      change_password: "Change password"
+      unconfirmed: "Unconfirmed"
+      pending_email: "Waiting for you to confirm %{email}"
+      member_since: "Member since %{date}"
+      stats:
+        completed: "Tests completed"
+        average_score: "Average score"
+        best_score: "Best score"
+        comments: "Comments"
+      about: "About"
+      no_bio: "You haven't written a bio yet."
+      add_one: "Add one"
+      links: "Links"
+      details: "Details"
+      last_sign_in: "Last sign in"
+      time_ago: "%{time} ago"
+    edit:
+      title: "Edit profile"
+      intro: "Update your details and how you appear to others."
+    update:
+      confirm_new_email: "Profile updated. Check %{email} to confirm your new email address."
+    passwords:
+      edit:
+        title: "Change password"
+        intro: "Choose a new password for your account."
+        current_password: "Current password"
+        new_password: "New password"
+        password_confirmation: "Confirm new password"
+        sessions_note: "You'll stay signed in here, but you'll be signed out everywhere else."
+        submit: "Update password"
+        cancel: "Cancel"
+      update:
+        updated: "Your password has been changed."
+    form:
+      photo: "Photo"
+      avatar: "Profile photo"
+      avatar_hint: "JPEG or PNG, up to 4MB."
+      personal: "Personal details"
+      title_placeholder: "e.g. Learner driver"
+      contact: "Contact"
+      about: "About you"
+      bio_placeholder: "Some information about yourself"
+      links_hint: "One link per line."
+      email_hint: "Changing this sends a confirmation link to the new address."
+      pending_email: "Waiting for you to confirm %{email}. Your current address stays active until then."
+      submit: "Save profile"
+      cancel: "Cancel"
   evaluations:
+    confirm_email_first: "Please confirm your email address before starting a test."
+    show:
+      score: "Score: %{score}"
+      correct_count: "%{correct} of %{total} correct"
+      not_answered: "Not answered"
+      right: "Right"
+      wrong: "Wrong"
     edit:
       question_with_numb: "Question %{number}"
 
     update:
       choice_selection_updated: "Good choice"
+      completed: "Test complete. Here are your results."
 
     load_error: "Unable to load evaluation page"
     components:

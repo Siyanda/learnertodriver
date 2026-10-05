@@ -1,0 +1,37 @@
+<% content_for :details do %>
+  <% choices     = record.choices.includes(:question, :answer) %>
+  <% correct_ids = record.choices.correct.ids %>
+
+  <h2>Choices (<%= correct_ids.size %> / <%= choices.size %> correct)</h2>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th class="small-cell">#</th>
+        <th>Question</th>
+        <th>Chosen answer</th>
+        <th class="small-cell">Result</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% choices.each do |choice| %>
+        <tr>
+          <td class="small-cell"><%= choice.position %></td>
+          <td><%= link_to choice.question.content.truncate(80), [:admin, choice.question] %></td>
+          <td><%= choice.answer&.content || tag.span('Not answered', class: 'grey-text') %></td>
+          <td class="small-cell">
+            <% if choice.answer.nil? %>
+              —
+            <% elsif correct_ids.include?(choice.id) %>
+              <span class="status-badge published">Right</span>
+            <% else %>
+              <span class="status-badge removed">Wrong</span>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+
+<%= render template: 'admin/resources/show' %>

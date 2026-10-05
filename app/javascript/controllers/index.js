@@ -2,3 +2,15 @@
 // Run that command whenever you add a new controller
 
 import { application } from './application'
+
+import AutoSubmitController from "./auto_submit_controller"
+application.register("auto-submit", AutoSubmitController)
+
+import DropdownController from "./dropdown_controller"
+application.register("dropdown", DropdownController)
+
+import NestedFormController from "./nested_form_controller"
+application.register("nested-form", NestedFormController)
+
+import SidebarController from "./sidebar_controller"
+application.register("sidebar", SidebarController)

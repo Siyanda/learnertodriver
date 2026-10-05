@@ -1,12 +1,85 @@
-<% breadcrumb :user, Current.user %>
+<% user = Current.user %>
+<% title t('.title') %>
+<% breadcrumb :user, user %>
 
-<div class="flex to-column gapped">
-  <%= render 'right_area', user: Current.user %>
-  <%= render 'left_area', user: Current.user %>
-</div>
+<section class="user-page">
+  <header class="flex spaced-between center-aligned alt-border content profile-card">
+    <div class="flex center-aligned profile-identity">
+      <%= component('user/avatar', user:, size: 192, html_class: 'profile-avatar') %>
 
-<div class="flex to-column gapped">
-  evaluations completed: <%= Current.user.evaluations.completed.count %>
-  evaluations in_progress: <%= Current.user.evaluations.in_progress.count %>
-  evaluations total: <%= Current.user.evaluations.count %>
-</div>
+      <div>
+        <h1><%= user.name.presence || user.username %></h1>
+        <p class="grey-text">
+          @<%= user.username %><%= " · #{user.title}" if user.title.present? %>
+        </p>
+        <p class="small-text">
+          <span class="status-badge <%= user.role %>"><%= user.role&.humanize %></span>
+          <span class="grey-text"><%= t('.member_since', date: l(user.created_at.to_date, format: :long)) %></span>
+        </p>
+      </div>
+    </div>
+
+    <div class="flex profile-actions">
+      <%= link_to t('.change_password'), edit_user_password_path, class: 'rounded button light' %>
+      <%= link_to t('.edit'), edit_user_path, class: 'rounded button dark' %>
+    </div>
+  </header>
+
+  <div class="stat-grid overview-cards">
+    <%= component('utils/stat_card', label: t('.stats.completed'),     value: @summary.stats[:completed],     path: dashboard_path) %>
+    <%= component('utils/stat_card', label: t('.stats.average_score'), value: @summary.stats[:average_score] ? "#{@summary.stats[:average_score]}%" : '—') %>
+    <%= component('utils/stat_card', label: t('.stats.best_score'),    value: @summary.stats[:best_score] ? "#{@summary.stats[:best_score]}%" : '—') %>
+    <%= component('utils/stat_card', label: t('.stats.comments'),      value: @summary.contributions[:comments]) %>
+  </div>
+
+  <div class="dashboard-panels">
+    <div class="alt-border content">
+      <div class="padded">
+        <h2><%= t('.about') %></h2>
+
+        <% if user.bio.present? %>
+          <%= simple_format(user.bio) %>
+        <% else %>
+          <p class="grey-text"><%= t('.no_bio') %> <%= link_to t('.add_one'), edit_user_path %></p>
+        <% end %>
+
+        <% if (links = profile_links(user.links)).any? %>
+          <h3><%= t('.links') %></h3>
+          <ul class="profile-links">
+            <% links.each do |link| %>
+              <li><%= link %></li>
+            <% end %>
+          </ul>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="alt-border content">
+      <div class="padded">
+        <h2><%= t('.details') %></h2>
+
+        <dl class="profile-details">
+          <dt><%= User.human_attribute_name(:email_address) %></dt>
+          <dd>
+            <%= user.email_address %>
+            <% unless user.confirmed? %>
+              <span class="status-badge pending"><%= t('.unconfirmed') %></span>
+            <% end %>
+            <% if user.pending_reconfirmation? %>
+              <br><span class="small-text grey-text"><%= t('.pending_email', email: user.unconfirmed_email) %></span>
+            <% end %>
+          </dd>
+
+          <dt><%= User.human_attribute_name(:phone_number) %></dt>
+          <dd><%= user.phone_number.presence || tag.span('—', class: 'grey-text') %></dd>
+
+          <dt><%= User.human_attribute_name(:birthday) %></dt>
+          <dd><%= user.birthday ? l(user.birthday, format: :long) : tag.span('—', class: 'grey-text') %></dd>
+
+          <dt><%= t('.last_sign_in') %></dt>
+          <dd><%= user.last_sign_in_at ? t('.time_ago', time: time_ago_in_words(user.last_sign_in_at)) : tag.span('—', class: 'grey-text') %></dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>

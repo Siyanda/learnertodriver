@@ -1,0 +1,40 @@
+<%= form_with model: [:admin, record], class: 'form admin-form' do |form| %>
+  <%= render 'layouts/common/errors', record: %>
+
+  <div class="form-floating">
+    <%= form.label :title %>
+    <%= form.text_field :title, class: 'form-control', required: true, autofocus: true %>
+  </div>
+
+  <div class="flex admin-form-row">
+    <div class="form-floating full-width">
+      <%= form.label :user_id, 'Author' %>
+      <%= form.collection_select :user_id, User.order(:username), :id, :username, {}, class: 'form-control' %>
+    </div>
+
+    <div class="form-floating full-width">
+      <%= form.label :parent_id, 'Parent page' %>
+      <%= form.collection_select :parent_id, Page.where.not(id: record.id).order(:title), :id, :title,
+                                 { include_blank: 'None' }, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="flex admin-form-row">
+    <div class="form-floating full-width">
+      <%= form.label :status %>
+      <%= form.select :status, admin_enum_options(Page, :status), {}, class: 'form-control' %>
+    </div>
+
+    <div class="form-floating full-width">
+      <%= form.label :published_at %>
+      <%= form.datetime_local_field :published_at, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-floating">
+    <%= form.label :content, 'Content (markdown)' %>
+    <%= form.text_area :content, class: 'form-control form-textarea', rows: 16 %>
+  </div>
+
+  <%= render 'admin/resources/form_actions', form: %>
+<% end %>

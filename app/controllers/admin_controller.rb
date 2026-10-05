@@ -10,6 +10,6 @@ class AdminController < ApplicationController
   def authenticate_admin
     return if Current.user&.admin?
 
-    redirect_to root_path, alert: t('.not_authorized')
+    redirect_to root_path, alert: t('admin.not_authorized')
   end
 end

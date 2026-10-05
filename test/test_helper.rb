@@ -13,6 +13,7 @@ require_relative '../config/environment'
 require 'application_system_test_case'
 require 'rails/test_help'
 require 'factory_bot'
+require 'test_helpers/session_test_helper'
 
 ActiveRecord::Schema.verbose = false
 
@@ -25,6 +26,10 @@ class ActiveSupport::TestCase
   parallelize(workers: :number_of_processors)
 
   include FactoryBot::Syntax::Methods
+end
+
+class ActionDispatch::IntegrationTest
+  include SessionTestHelper
 end
 
 # Remove the test databases created during the run once the suite finishes.

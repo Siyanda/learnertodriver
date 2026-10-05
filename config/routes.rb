@@ -1,11 +1,14 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  resource :user,      path: 'profile'
+  resource :user, path: 'profile' do
+    resource :password, only: %i[edit update], controller: 'users/passwords'
+  end
   resource :dashboard, only: :show
   resource :session
 
-  resources :passwords, param: :token
+  resources :passwords,     param: :token
+  resources :confirmations, param: :token, only: %i[new create show]
   resources :pages,     only: :show
   resources :tags,      only: %i[show index]
 
@@ -20,8 +23,8 @@ Rails.application.routes.draw do
   namespace :admin do
     get '/', to: 'dashboard#index'
 
-    resources :pages, :posts, :users, :questions,
-              :evaluations, :tags, :comments, :quizzes
+    resources :users, :quizzes, :questions, :posts, :pages, :comments, :tags
+    resources :evaluations, only: %i[index show destroy]
 
     mount MissionControl::Jobs::Engine, at: '/jobs'
   end

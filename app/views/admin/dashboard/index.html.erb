@@ -1,1 +1,46 @@
+<% title 'Admin' %>
+<% breadcrumb :admin_root %>
 
+<section class="admin-page">
+  <header class="admin-page-header">
+    <h1>Dashboard</h1>
+  </header>
+
+  <div class="stat-grid overview-cards">
+    <%= component('utils/stat_card', label: 'Users',       value: @summary.counts[:users],       icon: 'icons/user.svg',        path: admin_users_path) %>
+    <%= component('utils/stat_card', label: 'Quizzes',     value: @summary.counts[:quizzes],     icon: 'icons/performance.svg', path: admin_quizzes_path) %>
+    <%= component('utils/stat_card', label: 'Questions',   value: @summary.counts[:questions],   icon: 'icons/chat-o.svg',      path: admin_questions_path) %>
+    <%= component('utils/stat_card', label: 'Evaluations', value: @summary.counts[:evaluations], icon: 'icons/chart.svg',       path: admin_evaluations_path) %>
+    <%= component('utils/stat_card', label: 'Posts',       value: @summary.counts[:posts],       icon: 'icons/newspaper-o.svg', path: admin_posts_path) %>
+  </div>
+
+  <div class="stat-grid overview-cards">
+    <%= component('utils/stat_card', label: 'Completed evaluations', value: @summary.completed_evaluations) %>
+    <%= component('utils/stat_card', label: 'Completion rate',       value: "#{@summary.completion_rate}%") %>
+    <%= component('utils/stat_card', label: 'Average score',         value: "#{@summary.average_score}%") %>
+  </div>
+
+  <div class="flex evenly-spaced panel">
+    <div class="alt-border half-width content">
+      <div class="padded">
+        <div class="flex spaced-between center-aligned">
+          <h2>Recent evaluations</h2>
+          <%= link_to 'View all', admin_evaluations_path %>
+        </div>
+
+        <%= component('admin/table', records: @summary.recent_evaluations, columns: %i[user quiz status created_at], actions: []) %>
+      </div>
+    </div>
+
+    <div class="alt-border half-width content">
+      <div class="padded">
+        <div class="flex spaced-between center-aligned">
+          <h2>New users</h2>
+          <%= link_to 'View all', admin_users_path %>
+        </div>
+
+        <%= component('admin/table', records: @summary.recent_users, columns: %i[username email_address created_at], actions: []) %>
+      </div>
+    </div>
+  </div>
+</section>

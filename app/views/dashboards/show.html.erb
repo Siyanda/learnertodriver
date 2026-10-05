@@ -1,107 +1,99 @@
-<div class="dashboard" data-controller="tabs">
+<% title t('.title') %>
 
-    <div class="flex spaced-between">
-      <ul class="flex padded left-margin grouped buttons">
-        <li class="small-text padded button" data-tabs-target="tab" data-action="click->tabs#activate">My Quizzes</li>
-        <li class="small-text padded button" data-tabs-target="tab" data-action="click->tabs#activate">My Posts</li>
-      </ul>
+<section class="learner-dashboard">
+  <header class="flex spaced-between center-aligned dashboard-header">
+    <div>
+      <h1><%= t('.greeting', name: Current.user.first_name.presence || Current.user.username) %></h1>
+      <p class="grey-text"><%= t('.intro') %></p>
+    </div>
 
-      <ul class="flex padded left-margin grouped buttons">
-        <li class="small-text padded button active">all time</li>
-        <li class="small-text padded button">week</li>
-        <li class="small-text padded button">month</li>
-        <li class="small-text padded button">year</li>
-      </ul>
-   </div>
+    <nav class="flex grouped buttons period-filter" aria-label="<%= t('.period') %>">
+      <% Dashboards::ResolvePeriod::PERIODS.each_key do |period| %>
+        <%= link_to t(".periods.#{period}"),
+                    dashboard_path(period: (period unless period == 'all')),
+                    class: class_names('small-text padded button', active: @summary.period == period),
+                    aria:  { current: (@summary.period == period ? 'page' : nil) } %>
+      <% end %>
+    </nav>
+  </header>
 
-    <div class="flex padded-sides spaced-between">
-      <div class="meta">
-
-      </div>
-      <div class="meta">
-        <h4 class="small-text gray-text">Active: {{}}</h4>
-      </div>
-   </div>
-
-   <div class="panel hidden" data-tabs-target="panel">
-      <div class="flex evenly-spaced no-margin panel">
-       <div class="alt-border third-width sparkline content" id="sparkline_comments">
-         <div class="padded">
-           <h1 class="large">Comments : <%= Current.user.comments.size %></h1>
-         </div>
-         <!-- total completed eval for the period -->
-       </div>
-
-       <div class="alt-border third-width sparkline content" id="sparkline_pages_count">
-         <div class="padded">
-           <h1 class="large">Posts : <%= Current.user.posts.size %></h1>
-         </div>
-         <!-- for each of total evals what was the avarage score for the selected period -->
-       </div>
-
-       <div class="alt-border third-width sparkline content" id="sparkline_average_score">
-         <div class="padded">
-           <h1 class="large">Pages : <%= Current.user.pages.size %></h1>
-         </div>
-         <!-- for each of total evals what was the avarage score for the selected period -->
-       </div>
+  <% if (evaluation = @summary.in_progress_evaluation) %>
+    <div class="flex spaced-between center-aligned alt-border content resume-card">
+      <div>
+        <p class="small-text grey-text"><%= t('.in_progress') %></p>
+        <h2><%= evaluation.quiz.title %></h2>
+        <p class="small-text"><%= t('.started_ago', time: time_ago_in_words(evaluation.started_at || evaluation.created_at)) %></p>
       </div>
 
-  <div class="flex evenly-spaced panel">
+      <%= link_to t('.resume'), edit_quiz_evaluation_path(evaluation.quiz, evaluation), class: 'rounded button dark' %>
+    </div>
+  <% end %>
 
-     <div class="alt-border half-width content">
-     </div>
+  <div class="stat-grid overview-cards">
+    <%= component('utils/stat_card', label: t('.stats.completed'),     value: @summary.stats[:completed]) %>
+    <%= component('utils/stat_card', label: t('.stats.quizzes_taken'), value: @summary.stats[:quizzes_taken]) %>
+    <%= component('utils/stat_card', label: t('.stats.average_score'), value: @summary.stats[:average_score] ? "#{@summary.stats[:average_score]}%" : '—') %>
+    <%= component('utils/stat_card', label: t('.stats.best_score'),    value: @summary.stats[:best_score] ? "#{@summary.stats[:best_score]}%" : '—') %>
+  </div>
 
-     <div class="alt-border half-width content">
-     </div>
+  <div class="dashboard-panels">
+    <div class="alt-border content">
+      <div class="padded">
+        <h2><%= t('.recent_results') %></h2>
 
-   </div>
-
-   <div class="flex panel">
-     <div class="alt-border full-width content">
-     </div>
-   </div>
-
-</div>
-
-   <div class="panel hidden" data-tabs-target="panel">
-      <div class="flex evenly-spaced no-margin panel">
-       <div class="alt-border third-width sparkline content" id="sparkline_post_count">
-        <div class="padded">
-          <h4 class="small-text bold gray-text">Pages Posts</h4>
-          <h1><%= Post.published.size %></h1>
-        </div>
-         <!-- total completed eval for the period -->
-       </div>
-
-       <div class="alt-border third-width sparkline content" id="sparkline_drafts_count">
-        <div class="padded">
-          <h4 class="small-text bold gray-text">Drafts</h4>
-          <h1><% Post.draft.size %></h1>
-        </div>
-         <!-- for each of total evals what was the avarage score for the selected period -->
-       </div>
-
-       <div class="alt-border third-width sparkline content" id="sparkline_users_count">
-        <div class="padded">
-          <h4 class="small-text bold gray-text">Pages</h4>
-          <h1><%= Page.all.size %></h1>
-        </div>
-         <!-- for each of total evals what was the avarage score for the selected period -->
-       </div>
+        <% if @summary.evaluations.empty? %>
+          <p class="grey-text"><%= t('.no_results') %></p>
+          <%= link_to t('.browse_quizzes'), quizzes_path, class: 'rounded button dark' %>
+        <% else %>
+          <table class="table">
+            <thead>
+              <tr>
+                <th><%= t('.columns.quiz') %></th>
+                <th><%= t('.columns.completed') %></th>
+                <th><%= t('.columns.score') %></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @summary.evaluations.first(5).each do |result| %>
+                <tr id="<%= dom_id(result) %>">
+                  <td><%= link_to result.quiz.title, quiz_evaluation_path(result.quiz, result), class: 'profile-link' %></td>
+                  <td><%= l(result.completed_at, format: :short) if result.completed_at %></td>
+                  <td><%= component('utils/score_meter', score: @summary.scores[result.id]) %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        <% end %>
       </div>
+    </div>
 
-  <div class="flex evenly-spaced panel">
+    <div class="alt-border content">
+      <div class="padded">
+        <h2><%= t('.quiz_progress') %></h2>
 
-     <div class="alt-border half-width content">
+        <ul class="quiz-progress">
+          <% @summary.quiz_progress.each do |progress| %>
+            <li id="<%= dom_id(progress.quiz, :progress) %>" class="flex spaced-between center-aligned">
+              <div>
+                <h3><%= progress.quiz.title %></h3>
+                <p class="small-text grey-text">
+                  <% if progress.attempts.zero? %>
+                    <%= t('.not_attempted') %>
+                  <% else %>
+                    <%= t('.attempts', count: progress.attempts) %> ·
+                    <%= t('.last_taken', time: time_ago_in_words(progress.last_taken_at)) %>
+                  <% end %>
+                </p>
+                <%= component('utils/score_meter', score: progress.best_score) if progress.attempts.positive? %>
+              </div>
 
-     </div>
-
-     <div class="alt-border half-width content">
-     </div>
-
-   </div>
-
-   <div class="flex panel">
-   </div>
-</div>
+              <%= link_to (progress.attempts.zero? ? t('.start') : t('.retake')),
+                          new_quiz_evaluation_path(progress.quiz),
+                          class: 'rounded button light' %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

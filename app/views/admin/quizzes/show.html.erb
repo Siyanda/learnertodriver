@@ -1,0 +1,7 @@
+<% content_for :details do %>
+  <h2>Questions (<%= record.questions.size %>)</h2>
+
+  <%= component('admin/table', records: record.questions.includes(:answers), columns: %i[content kind]) %>
+<% end %>
+
+<%= render template: 'admin/resources/show' %>

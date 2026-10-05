@@ -1,13 +1,26 @@
 <% breadcrumb :evaluation, @evaluation.quiz %>
+<% correct_ids = @evaluation.choices.correct.ids %>
 
 <%= render 'evaluations/components/header', quiz: @evaluation.quiz, date: @evaluation.created_at %>
-<h3>Score: <%= @evaluation.score %></h3>
-<p>Status: <%= @evaluation.status %></p>
+
+<div class="flex center-aligned spaced-between alt-border content evaluation-result">
+  <div>
+    <h3><%= t('.score', score: number_to_percentage(@evaluation.score, precision: 0)) %></h3>
+    <p><%= t('.correct_count', correct: correct_ids.size, total: @evaluation.choices.size) %></p>
+  </div>
+  <span class="status-badge <%= @evaluation.status %>"><%= @evaluation.status&.humanize %></span>
+</div>
+
 <div class="alt-border gapped content">
-  <% @evaluation.choices.each do |choice| %>
+  <% @evaluation.choices.includes(:question, :answer).each do |choice| %>
     <h4 class="question"><%= choice.question.content %></h4>
-    <div class="answer">
-      <%= choice.answer&.content %>
+    <div class="flex spaced-between center-aligned answer">
+      <span><%= choice.answer&.content || t('.not_answered') %></span>
+      <% if correct_ids.include?(choice.id) %>
+        <span class="status-badge published"><%= t('.right') %></span>
+      <% else %>
+        <span class="status-badge removed"><%= t('.wrong') %></span>
+      <% end %>
     </div>
   <% end %>
 </div>

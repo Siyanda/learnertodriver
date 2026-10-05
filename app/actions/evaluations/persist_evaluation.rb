@@ -7,7 +7,7 @@ class Evaluations::PersistEvaluation
 
   executed do |ctx|
     unless ctx.evaluation.update(ctx.update_attrs)
-      next ctx.fail_and_return!(message: ctx.evaluation.errors.full_messages.to_sentence)
+      next ctx.fail_and_return!(ctx.evaluation.errors.full_messages.to_sentence)
     end
   end
 end

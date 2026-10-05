@@ -1,0 +1,50 @@
+<table class="table admin-table">
+  <thead>
+    <tr>
+      <% columns.each do |column| %>
+        <th><%= header(column) %></th>
+      <% end %>
+      <% if actions? %>
+        <th class="small-cell"><span class="hidden">Actions</span></th>
+      <% end %>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% if records.empty? %>
+      <tr>
+        <td colspan="<%= columns.size + (actions? ? 1 : 0) %>" class="grey-text">No records found</td>
+      </tr>
+    <% end %>
+
+    <% records.each do |record| %>
+      <tr id="<%= dom_id(record) %>">
+        <% columns.each_with_index do |column, index| %>
+          <td><%= index.zero? ? first_cell(record, column) : helpers.admin_value(record, column) %></td>
+        <% end %>
+
+        <% if actions? %>
+        <td class="small-cell">
+          <div class="flex row-actions">
+            <% if editable? %>
+              <%= link_to [:edit, :admin, record], class: 'small-svg dark-fill icon', title: 'Edit', aria: { label: 'Edit' } do %>
+                <%= component('utils/inline_svg', path: 'icons/edit-o.svg') %>
+              <% end %>
+            <% end %>
+
+            <% if destroyable? %>
+              <%= button_to [:admin, record],
+                            method: :delete,
+                            class:  'small-svg red-fill icon clear-btn',
+                            title:  'Delete',
+                            form:   { data: { turbo_confirm: t('admin.confirm_delete') } } do %>
+                <%= component('utils/inline_svg', path: 'icons/trash-o.svg') %>
+              <% end %>
+            <% end %>
+          </div>
+        </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

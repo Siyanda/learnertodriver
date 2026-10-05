@@ -10,5 +10,9 @@ FactoryBot.define do
     confirmed_at             { DateTime.now }
     role                     { :subscriber }
     status                   { :active }
+
+    trait :admin do
+      role { :admin }
+    end
   end
 end

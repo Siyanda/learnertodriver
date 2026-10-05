@@ -1,0 +1,179 @@
+.learner-dashboard,
+.user-page {
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 1.5rem 1.2rem 3rem;
+
+  h1 {
+    font-size: 1.8rem;
+    margin: 0;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+    margin: 0 0 0.8rem;
+  }
+
+  h3 {
+    font-size: 1rem;
+    margin: 0 0 0.2rem;
+  }
+}
+
+.dashboard-header {
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.2rem;
+
+  p {
+    margin: 0.2rem 0 0;
+  }
+}
+
+.period-filter {
+  .button {
+    color: var(--light);
+  }
+
+  .button.active {
+    color: var(--accent-bg);
+  }
+}
+
+.resume-card {
+  border-left: 4px solid var(--accent-color);
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding: 1rem 1.2rem;
+
+  h2,
+  p {
+    margin: 0;
+  }
+}
+
+.dashboard-panels {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr));
+}
+
+.quiz-progress {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    border-bottom: thin solid var(--gainsboro);
+    gap: 1rem;
+    padding: 0.8rem 0;
+
+    &:last-child {
+      border-bottom: 0;
+    }
+  }
+
+  p {
+    margin: 0 0 0.3rem;
+  }
+}
+
+.profile-card {
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding: 1.2rem;
+
+  p {
+    margin: 0.2rem 0 0;
+  }
+}
+
+.profile-identity {
+  gap: 1.2rem;
+}
+
+.profile-avatar {
+  background: var(--gainsboro);
+  border: 3px solid var(--white);
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px var(--gainsboro);
+  height: 96px;
+  object-fit: cover;
+  width: 96px;
+
+  &.small {
+    height: 64px;
+    width: 64px;
+  }
+}
+
+.profile-details {
+  display: grid;
+  gap: 0.6rem 1.2rem;
+  grid-template-columns: minmax(110px, 160px) 1fr;
+  margin: 0;
+
+  dt {
+    color: var(--text-light);
+    font-weight: 600;
+  }
+
+  dd {
+    margin: 0;
+    overflow-wrap: anywhere;
+  }
+}
+
+.profile-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    padding: 0.2rem 0;
+  }
+
+  a {
+    color: var(--blue);
+  }
+}
+
+.profile-form {
+  max-width: none;
+}
+
+@media screen and (max-width: 550px) {
+  .profile-details {
+    grid-template-columns: 1fr;
+  }
+}
+
+.evaluation-result {
+  gap: 1rem;
+  margin: 1rem 0;
+  padding: 1rem 1.2rem;
+
+  h3,
+  p {
+    margin: 0;
+  }
+}
+
+.confirmation-banner {
+  background: var(--accent-color);
+  color: var(--dark);
+  flex-wrap: wrap;
+  gap: 0.6rem 1rem;
+  padding: 0.6rem 1.2rem;
+
+  form {
+    margin: 0;
+  }
+}
+
+.profile-actions {
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}

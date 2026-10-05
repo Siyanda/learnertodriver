@@ -1,0 +1,41 @@
+<% title t('.title') %>
+<% breadcrumb :edit_user_password, @user %>
+
+<section class="user-page">
+  <header class="dashboard-header">
+    <h1><%= t('.title') %></h1>
+    <p class="grey-text"><%= t('.intro') %></p>
+  </header>
+
+  <div class="alt-border content">
+    <div class="padded">
+      <%= form_with model: @user, url: user_password_path, method: :patch, class: 'admin-form profile-form' do |form| %>
+        <%= render 'layouts/common/errors', record: @user %>
+
+        <div class="form-floating">
+          <%= form.label :current_password, t('.current_password') %>
+          <%= form.password_field :current_password, class: 'form-control', required: true, autocomplete: 'current-password', autofocus: true %>
+        </div>
+
+        <div class="flex admin-form-row">
+          <div class="form-floating full-width">
+            <%= form.label :password, t('.new_password') %>
+            <%= form.password_field :password, class: 'form-control', required: true, autocomplete: 'new-password', maxlength: 72 %>
+          </div>
+
+          <div class="form-floating full-width">
+            <%= form.label :password_confirmation, t('.password_confirmation') %>
+            <%= form.password_field :password_confirmation, class: 'form-control', required: true, autocomplete: 'new-password', maxlength: 72 %>
+          </div>
+        </div>
+
+        <p class="small-text grey-text"><%= t('.sessions_note') %></p>
+
+        <div class="flex center-aligned form-actions">
+          <%= form.submit t('.submit'), class: 'clickable rounded button dark' %>
+          <%= link_to t('.cancel'), user_path %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>

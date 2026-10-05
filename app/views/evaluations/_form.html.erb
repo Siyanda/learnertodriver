@@ -18,7 +18,7 @@
       <%= form.hidden_field :last_choice_id, value: current_choice.id %>
 
       <%= content_for(:form_navigation) %>
-      <%= form.submit 'Submit', class: 'clickable rounded button btn-primary p-4 text-white' %>
+      <%= form.submit 'Submit', class: 'clickable rounded button btn-primary p-4 text-white', data: { turbo_frame: '_top' } %>
     </div>
   </div>
 <% end %>

@@ -1,0 +1,19 @@
+<% title admin_label(record) %>
+<% breadcrumb :admin_record, record %>
+<%= content_for(:action_bar) { render 'layouts/common/action_bar', item: record } %>
+
+<section class="admin-page">
+  <header class="admin-page-header">
+    <p class="small-text grey-text"><%= resource_class.model_name.human %></p>
+    <h1><%= admin_label(record) %></h1>
+  </header>
+
+  <dl class="admin-details">
+    <% show_attributes.each do |attribute| %>
+      <dt><%= resource_class.human_attribute_name(attribute) %></dt>
+      <dd><%= admin_value(record, attribute, truncate: false) %></dd>
+    <% end %>
+  </dl>
+
+  <%= yield :details %>
+</section>

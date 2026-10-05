@@ -28,4 +28,10 @@ class Quiz < ApplicationRecord
 
   scope :with_questions,    -> { joins(:questions).distinct }
   scope :without_questions, -> { where.missing(:questions) }
+
+  def self.ransackable_attributes(_auth_object = nil)
+    %w[id title description status duration published_at]
+  end
+
+  def self.ransackable_associations(_auth_object = nil) = []
 end

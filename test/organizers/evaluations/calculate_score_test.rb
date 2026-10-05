@@ -21,5 +21,6 @@ class Evaluations::CalculateScoreTest < ActiveSupport::TestCase
 
     assert_equal 1.0, first_choice.reload.value
     assert_equal 0.0, second_choice.reload.value
+    assert_equal 50,  evaluation.reload.score
   end
 end

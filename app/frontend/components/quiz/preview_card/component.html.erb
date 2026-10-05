@@ -9,7 +9,7 @@
     <div class="card-copy">
       <div class="item-description"><%= quiz.information.truncate(165) %></div>
       <div class="item-meta">
-        <div class="post-date">Duration: <%= component('utils/date_time', timestamp: quiz.duration) %></div>
+        <div class="post-date">Duration: <%= component('utils/date_time', timestamp: quiz.duration, format: :duration) %></div>
     </div>
     </div>
       <div class="cta">
