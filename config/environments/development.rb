@@ -35,8 +35,9 @@ Rails.application.configure do # rubocop:disable Metrics/BlockLength
   # Ensure that the development server always compiles assets on-the-fly
   config.assets.prefix = '/dev-assets'
 
-  # Store uploaded files on the local file system (see config/storage.yml for options).
-  config.active_storage.service = :cloudflare
+  # Store uploaded files on Cloudflare R2 when credentials are available (requires config/master.key),
+  # otherwise fall back to the local file system (see config/storage.yml for options).
+  config.active_storage.service = Rails.application.credentials.dig(:cloudflare, :access_key_id) ? :cloudflare : :local
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
