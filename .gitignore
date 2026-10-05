@@ -155,11 +155,11 @@ Thumbs.db
 *~
 
 # Tags
-# Ignore tags files created by etags and ctags. `TAGS` is a bare pattern that also
-# matches the `app/frontend/components/posts/tags/` component dir on case-insensitive
-# filesystems (git core.ignorecase), so re-include that dir explicitly.
-TAGS
-!app/frontend/components/**/tags/
+# Ignore the tags files etags and ctags write to the project root. Anchored with `/`
+# because git matches case-insensitively on macOS (core.ignorecase), so a bare `TAGS`
+# also ignores every `tags/` directory in the app (e.g. app/views/admin/tags/).
+/TAGS
+/tags
 
 # Always-ignore files and folders #
 *.diff

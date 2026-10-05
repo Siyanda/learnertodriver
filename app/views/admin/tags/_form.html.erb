@@ -1,0 +1,17 @@
+<%= form_with model: [:admin, record], class: 'form admin-form' do |form| %>
+  <%= render 'layouts/common/errors', record: %>
+
+  <div class="flex admin-form-row">
+    <div class="form-floating full-width">
+      <%= form.label :title %>
+      <%= form.text_field :title, class: 'form-control', required: true, autofocus: true %>
+    </div>
+
+    <div class="form-floating full-width">
+      <%= form.label :status %>
+      <%= form.select :status, admin_enum_options(Tag, :status), {}, class: 'form-control' %>
+    </div>
+  </div>
+
+  <%= render 'admin/resources/form_actions', form: %>
+<% end %>
