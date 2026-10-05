@@ -1,17 +1,12 @@
+## Nothing to refund
 
-#A fair refund policy
+Learner to Driver is free. We don't charge for accounts, quizzes or study material, and we'll never ask for your card or banking details.
 
-Bad refund policies are infuriating. You feel like the company is just trying to rip you off. We never want our customers to feel that way, so our refund policy is simple: If you’re ever unhappy with our products* for any reason, just contact our support team and we’ll take care of you.
+## If someone asked you to pay
+If anyone has asked you to pay for access to Learner to Driver, or for "official answers" or a "guaranteed pass" in our name, **it wasn't us**. Please don't pay, and let us know at [hello@learnertodriver.co.za](mailto:hello@learnertodriver.co.za) so we can warn other learners.
 
-##Examples of full refunds we’d grant.
-- If you were just charged for your next month of service but you meant to cancel, we’re happy to refund that extra charge.
-- If you forgot to cancel your account a couple months ago and you haven’t used it since then, we’ll give you a full refund for a few back months. No problem.
-- If you tried one of our products for a couple months and you just weren’t happy with it, you can have your money back.
+## Fees for your actual test
+Learner's licence test fees are paid to your driving licence testing centre (DLTC) or the relevant government booking service, not to us. Ask them about refunds or rebookings.
 
-##Examples of partial refunds or credits we’d grant.
-- If you forgot to cancel your account a year ago, and there’s been activity on your account since then, we’ll review your account usage and figure out a partial refund based on how many months you used it.
-- If you upgraded your account a few months ago to a higher plan and kept using it in general but you didn’t end up using the extra features, projects, or storage space, we’d consider applying a prorated credit towards future months.
-- If we had extended downtime (multiple hours in a day, or multiple days in a month) or you emailed customer service and it took multiple days to get back to you, we’d issue a partial credit to your account.
-
-##Get in touch
-At the end of the day, nearly everything on the edges comes down to a case-by-case basis. Send us a note, tell us what’s up, and we’ll work with you to make sure you’re happy.
+## If that changes
+If we ever add paid features, we'll publish a refund policy here before we charge anyone.

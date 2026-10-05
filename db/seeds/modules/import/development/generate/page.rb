@@ -21,8 +21,6 @@ pages = [
     'user_id' => User.first.id, 'parent_id' => '' },
   { 'title' => 'Incapacitated', 'content' => rendered_md('page/incapacitated'), 'slug' => 'incapacitated',
     'status' => 'published', 'user_id' => User.first.id, 'parent_id' => '' },
-  { 'title' => 'Careers', 'content' => rendered_md('page/jobs'), 'slug' => 'jobs', 'status' => 'published',
-    'user_id' => User.first.id, 'parent_id' => '' },
   { 'title' => 'Partners', 'content' => rendered_md('page/partnership'), 'slug' => 'partnership',
     'status' => 'published', 'user_id' => User.first.id, 'parent_id' => '' },
   { 'title' => 'Policies', 'content' => rendered_md('page/policies'), 'slug' => 'policies', 'status' => 'published',
