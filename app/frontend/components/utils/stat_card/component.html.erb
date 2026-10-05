@@ -1,0 +1,12 @@
+<div class="alt-border overview stat-card">
+  <div class="padded">
+    <div class="flex spaced-between center-aligned">
+      <p class="small-text"><%= label %></p>
+      <% if icon %>
+        <div class="small-svg dark-fill icon"><%= component('utils/inline_svg', path: icon) %></div>
+      <% end %>
+    </div>
+
+    <h1><%= link_to_if path.present?, value, path %></h1>
+  </div>
+</div>

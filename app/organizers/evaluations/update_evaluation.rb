@@ -18,6 +18,7 @@ class Evaluations::UpdateEvaluation
       Evaluations::PersistEvaluation,
       Evaluations::UpdateEvaluationStatus,
       Evaluations::UpdateCurrentChoice,
+      reduce_if(->(ctx) { ctx.evaluation.completed? }, Evaluations::CalculateScore.actions),
     ]
   end
 end

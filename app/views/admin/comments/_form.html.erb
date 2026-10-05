@@ -1,0 +1,27 @@
+<%= form_with model: [:admin, record], class: 'form admin-form' do |form| %>
+  <%= render 'layouts/common/errors', record: %>
+
+  <div class="flex admin-form-row">
+    <div class="form-floating full-width">
+      <%= form.label :post_id %>
+      <%= form.collection_select :post_id, Post.order(:title), :id, :title, {}, class: 'form-control' %>
+    </div>
+
+    <div class="form-floating full-width">
+      <%= form.label :user_id, 'Author' %>
+      <%= form.collection_select :user_id, User.order(:username), :id, :username, {}, class: 'form-control' %>
+    </div>
+
+    <div class="form-floating full-width">
+      <%= form.label :status %>
+      <%= form.select :status, admin_enum_options(Comment, :status), {}, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-floating">
+    <%= form.label :content %>
+    <%= form.text_area :content, class: 'form-control', rows: 5, required: true, autofocus: true %>
+  </div>
+
+  <%= render 'admin/resources/form_actions', form: %>
+<% end %>

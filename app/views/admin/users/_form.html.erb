@@ -1,0 +1,78 @@
+<%= form_with model: [:admin, record], class: 'form admin-form' do |form| %>
+  <%= render 'layouts/common/errors', record: %>
+
+  <div class="flex admin-form-row">
+    <div class="form-floating full-width">
+      <%= form.label :first_name %>
+      <%= form.text_field :first_name, class: 'form-control', required: true, autofocus: true %>
+    </div>
+
+    <div class="form-floating full-width">
+      <%= form.label :last_name %>
+      <%= form.text_field :last_name, class: 'form-control', required: true %>
+    </div>
+  </div>
+
+  <div class="flex admin-form-row">
+    <div class="form-floating full-width">
+      <%= form.label :username %>
+      <%= form.text_field :username, class: 'form-control', required: true %>
+    </div>
+
+    <div class="form-floating full-width">
+      <%= form.label :email_address %>
+      <%= form.email_field :email_address, class: 'form-control', required: true %>
+    </div>
+  </div>
+
+  <div class="flex admin-form-row">
+    <div class="form-floating full-width">
+      <%= form.label :phone_number %>
+      <%= form.telephone_field :phone_number, class: 'form-control' %>
+    </div>
+
+    <div class="form-floating full-width">
+      <%= form.label :title %>
+      <%= form.text_field :title, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-floating">
+    <%= form.label :bio %>
+    <%= form.text_area :bio, class: 'form-control', rows: 4, maxlength: 1000 %>
+  </div>
+
+  <div class="flex admin-form-row">
+    <div class="form-floating full-width">
+      <%= form.label :role %>
+      <%= form.select :role, admin_enum_options(User, :role), {}, class: 'form-control' %>
+    </div>
+
+    <div class="form-floating full-width">
+      <%= form.label :status %>
+      <%= form.select :status, admin_enum_options(User, :status), {}, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-floating">
+    <%= form.label :avatar %>
+    <%= form.file_field :avatar, class: 'form-control', accept: 'image/jpeg,image/png' %>
+  </div>
+
+  <div class="flex admin-form-row">
+    <div class="form-floating full-width">
+      <%= form.label :password %>
+      <%= form.password_field :password, class: 'form-control', required: record.new_record?, autocomplete: 'new-password' %>
+      <% if record.persisted? %>
+        <small class="grey-text">Leave blank to keep the current password</small>
+      <% end %>
+    </div>
+
+    <div class="form-floating full-width">
+      <%= form.label :password_confirmation %>
+      <%= form.password_field :password_confirmation, class: 'form-control', autocomplete: 'new-password' %>
+    </div>
+  </div>
+
+  <%= render 'admin/resources/form_actions', form: %>
+<% end %>

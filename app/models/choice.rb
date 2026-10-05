@@ -9,4 +9,12 @@ class Choice < ApplicationRecord
   validates :position, presence: true
 
   acts_as_list scope: :evaluation
+
+  scope :correct, lambda {
+    where(
+      CorrectAnswer.where(CorrectAnswer.arel_table[:question_id].eq(arel_table[:question_id]))
+                   .where(CorrectAnswer.arel_table[:answer_id].eq(arel_table[:answer_id]))
+                   .arel.exists
+    )
+  }
 end

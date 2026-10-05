@@ -1,0 +1,15 @@
+<% title t('.title') %>
+<% breadcrumb :edit_user, @user %>
+
+<section class="user-page">
+  <header class="dashboard-header">
+    <h1><%= t('.title') %></h1>
+    <p class="grey-text"><%= t('.intro') %></p>
+  </header>
+
+  <div class="alt-border content">
+    <div class="padded">
+      <%= render 'form', user: @user %>
+    </div>
+  </div>
+</section>

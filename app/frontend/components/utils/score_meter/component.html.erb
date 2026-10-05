@@ -1,0 +1,8 @@
+<% if score %>
+  <span class="flex center-aligned score-meter">
+    <meter min="0" max="100" low="50" high="75" optimum="100" value="<%= score %>" aria-label="Score"><%= score %>%</meter>
+    <span class="score-value"><%= score %>%</span>
+  </span>
+<% else %>
+  <span class="grey-text">—</span>
+<% end %>

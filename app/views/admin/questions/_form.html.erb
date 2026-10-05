@@ -1,0 +1,51 @@
+<%= form_with model: [:admin, record], class: 'form admin-form' do |form| %>
+  <%= render 'layouts/common/errors', record: %>
+
+  <div class="form-floating">
+    <%= form.label :content, 'Question' %>
+    <%= form.text_area :content, class: 'form-control', rows: 3, required: true, autofocus: true %>
+  </div>
+
+  <div class="flex admin-form-row">
+    <div class="form-floating full-width">
+      <%= form.label :information %>
+      <%= form.text_field :information, class: 'form-control' %>
+    </div>
+
+    <div class="form-floating full-width">
+      <%= form.label :kind %>
+      <%= form.select :kind, admin_enum_options(Question, :kind), {}, class: 'form-control' %>
+    </div>
+  </div>
+
+  <fieldset class="admin-fieldset" data-controller="nested-form">
+    <legend>Answers</legend>
+    <p class="small-text grey-text">Tick every answer that is correct.</p>
+
+    <template data-nested-form-target="template">
+      <%= form.fields_for :answers, Answer.new, child_index: 'NEW_RECORD' do |answer_form| %>
+        <%= render 'answer_fields', form: answer_form %>
+      <% end %>
+    </template>
+
+    <%= form.fields_for :answers do |answer_form| %>
+      <%= render 'answer_fields', form: answer_form %>
+    <% end %>
+
+    <div data-nested-form-target="target"></div>
+
+    <button type="button" class="clickable rounded button light" data-action="nested-form#add">Add answer</button>
+  </fieldset>
+
+  <fieldset class="admin-fieldset">
+    <legend>Quizzes</legend>
+
+    <div class="admin-checklist">
+      <%= form.collection_check_boxes :quiz_ids, Quiz.order(:title), :id, :title do |box| %>
+        <%= box.label(class: 'flex admin-check') { box.check_box + tag.span(box.text) } %>
+      <% end %>
+    </div>
+  </fieldset>
+
+  <%= render 'admin/resources/form_actions', form: %>
+<% end %>

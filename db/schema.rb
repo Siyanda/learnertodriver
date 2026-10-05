@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_05_04_143517) do
+ActiveRecord::Schema[8.1].define(version: 2026_10_03_120000) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.text "body"
     t.datetime "created_at", null: false
@@ -77,7 +77,7 @@ ActiveRecord::Schema[8.1].define(version: 2025_05_04_143517) do
     t.string "content"
     t.datetime "created_at", null: false
     t.integer "post_id", null: false
-    t.integer "status", default: 0, null: false
+    t.integer "status", default: 10, null: false
     t.datetime "updated_at", null: false
     t.integer "user_id", null: false
     t.index ["post_id"], name: "index_comments_on_post_id"
@@ -101,7 +101,7 @@ ActiveRecord::Schema[8.1].define(version: 2025_05_04_143517) do
     t.integer "quiz_id"
     t.decimal "score", default: "0.0", null: false
     t.datetime "started_at", precision: nil
-    t.integer "status", default: 0, null: false
+    t.integer "status", default: 10, null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
     t.index ["last_choice_id"], name: "index_evaluations_on_last_choice_id"
@@ -149,7 +149,7 @@ ActiveRecord::Schema[8.1].define(version: 2025_05_04_143517) do
     t.datetime "created_at", null: false
     t.datetime "published_at", precision: nil
     t.string "slug"
-    t.integer "status", default: 0, null: false
+    t.integer "status", default: 10, null: false
     t.string "title", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id", null: false
@@ -160,7 +160,7 @@ ActiveRecord::Schema[8.1].define(version: 2025_05_04_143517) do
   create_table "questions", force: :cascade do |t|
     t.string "content", null: false
     t.string "information"
-    t.integer "kind", default: 0, null: false
+    t.integer "kind", default: 10, null: false
   end
 
   create_table "quiz_question_linkages", force: :cascade do |t|
@@ -178,7 +178,7 @@ ActiveRecord::Schema[8.1].define(version: 2025_05_04_143517) do
     t.string "information", null: false
     t.datetime "published_at", precision: nil
     t.string "slug"
-    t.integer "status", default: 0, null: false
+    t.integer "status", default: 10, null: false
     t.string "title", null: false
     t.index ["slug"], name: "index_quizzes_on_slug", unique: true
   end
@@ -213,7 +213,7 @@ ActiveRecord::Schema[8.1].define(version: 2025_05_04_143517) do
 
   create_table "tags", force: :cascade do |t|
     t.string "slug"
-    t.integer "status", default: 0, null: false
+    t.integer "status", default: 20, null: false
     t.text "title", null: false
     t.index ["slug"], name: "index_tags_on_slug", unique: true
     t.index ["title"], name: "index_tags_on_title", unique: true

@@ -20,5 +20,11 @@ class Page < ApplicationRecord
     removed:     40
   }, validate: true
 
+  def self.ransackable_attributes(_auth_object = nil)
+    %w[title content status published_at created_at user_id parent_id]
+  end
+
+  def self.ransackable_associations(_auth_object = nil) = %w[user parent]
+
   def should_generate_new_friendly_id? = slug.blank? || slug_changed?
 end

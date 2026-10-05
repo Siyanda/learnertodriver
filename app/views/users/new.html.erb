@@ -1,0 +1,47 @@
+<% title t('.title') %>
+
+<%= form_with model: @user, url: user_path, method: :post do |form| %>
+  <h1 class="text-center"><%= t('.title') %></h1>
+
+  <%= render 'layouts/common/errors', record: @user %>
+
+  <div class="flex admin-form-row">
+    <div class="form-floating full-width">
+      <%= form.label :first_name %>
+      <%= form.text_field :first_name, class: 'form-control', required: true, autofocus: true, autocomplete: 'given-name' %>
+    </div>
+
+    <div class="form-floating full-width">
+      <%= form.label :last_name %>
+      <%= form.text_field :last_name, class: 'form-control', required: true, autocomplete: 'family-name' %>
+    </div>
+  </div>
+
+  <div class="form-floating">
+    <%= form.label :username %>
+    <%= form.text_field :username, class: 'form-control', required: true, autocomplete: 'username' %>
+  </div>
+
+  <div class="form-floating">
+    <%= form.label :email_address %>
+    <%= form.email_field :email_address, class: 'form-control', required: true, autocomplete: 'email' %>
+  </div>
+
+  <div class="form-floating">
+    <%= form.label :password %>
+    <%= form.password_field :password, class: 'form-control', required: true, autocomplete: 'new-password', maxlength: 72 %>
+  </div>
+
+  <div class="form-floating">
+    <%= form.label :password_confirmation %>
+    <%= form.password_field :password_confirmation, class: 'form-control', required: true, autocomplete: 'new-password', maxlength: 72 %>
+  </div>
+
+  <br>
+  <%= form.submit t('.submit'), class: 'rounded button btn-primary p-4 text-white' %>
+<% end %>
+
+<br>
+<div class="mb-2">
+  <%= link_to t('.sign_in'), new_session_path %>
+</div>

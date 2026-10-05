@@ -1,17 +1,3 @@
-<div class="full-width sidebar-container hidden" data-target="sidebar.bar">
-  <aside class="left sidebar">
-    <ul class="level-two fixed sidebar-items dark">
-
-      <li>
-        <div class="non-clickable light-fill small-svg icon"><%= component('utils/inline_svg', path: 'icons/dashboard.svg') %></div>
-
-      </li>
-
-      <li>
-        <div class="non-clickable light-fill small-svg icon"><%= component('utils/inline_svg', path: 'icons/user.svg') %></div>
-
-      </li>
-
-    </ul>
-  </aside>
-</div>
+<aside class="dark-bg admin-sidebar" data-sidebar-target="bar">
+  <%= component('admin/sidebar_nav', current_path: request.path) %>
+</aside>

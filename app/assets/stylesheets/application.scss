@@ -3,13 +3,16 @@
 @use "common/controls.scss";
 @use "common/utilities.scss";
 @use "common/interaction.scss";
+@use "components/admin.scss";
 @use "components/card.scss";
 @use "components/comment.scss";
+@use "components/learner_dashboard.scss";
 @use "components/dashboard.scss";
 @use "components/editor.scss";
 @use "components/footer.scss";
 @use "components/form.scss";
 @use "components/navigation.scss";
+@use "components/stats.scss";
 @use "components/table.scss";
 @use "components/testimonial.scss";
 @use "layouts/landing.scss";

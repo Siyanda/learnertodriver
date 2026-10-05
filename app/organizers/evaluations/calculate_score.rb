@@ -4,10 +4,14 @@ class Evaluations::CalculateScore
   extend ::LightService::Organizer
 
   def self.call(evaluation:)
-    with(evaluation:, choices: evaluation.choices).reduce(actions)
+    with(evaluation:).reduce(actions)
   end
 
   def self.actions
-    [iterate(:choices, [Choices::CalculateScore])]
+    [
+      Evaluations::LoadChoices,
+      iterate(:choices, [Choices::CalculateScore]),
+      Evaluations::RecordScore,
+    ]
   end
 end

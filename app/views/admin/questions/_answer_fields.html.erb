@@ -1,0 +1,33 @@
+<div class="nested-fields admin-answer" data-new-record="<%= form.object.new_record? %>">
+  <div class="flex admin-form-row">
+    <div class="form-floating full-width">
+      <%= form.label :content, 'Answer' %>
+      <%= form.text_field :content, class: 'form-control', required: true %>
+    </div>
+
+    <div class="form-floating">
+      <%= form.label :name %>
+      <%= form.text_field :name, class: 'form-control', required: true %>
+    </div>
+  </div>
+
+  <div class="flex center-aligned admin-form-row">
+    <div class="form-floating full-width">
+      <%= form.label :information %>
+      <%= form.text_field :information, class: 'form-control', required: true %>
+    </div>
+
+    <div class="form-floating">
+      <%= form.label :value %>
+      <%= form.number_field :value, class: 'form-control', min: 0, required: true %>
+    </div>
+
+    <label class="flex center-aligned admin-check">
+      <%= form.check_box :correct %>
+      <span>Correct</span>
+    </label>
+
+    <%= form.hidden_field :_destroy %>
+    <button type="button" class="clear-btn red-text" data-action="nested-form#remove">Remove</button>
+  </div>
+</div>

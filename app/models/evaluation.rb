@@ -18,6 +18,12 @@ class Evaluation < ApplicationRecord
 
   accepts_nested_attributes_for :choices, allow_destroy: true
 
+  def self.ransackable_attributes(_auth_object = nil)
+    %w[status score started_at completed_at created_at user_id quiz_id]
+  end
+
+  def self.ransackable_associations(_auth_object = nil) = %w[user quiz]
+
   def no_question_choices?
     choices.empty? && quiz.questions.any?
   end

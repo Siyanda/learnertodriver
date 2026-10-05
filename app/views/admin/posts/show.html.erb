@@ -1,0 +1,11 @@
+<% content_for :details do %>
+  <h2>Tags</h2>
+
+  <ul class="flex admin-list inline">
+    <% record.tags.each do |post_tag| %>
+      <li><%= link_to post_tag.title, [:admin, post_tag], class: 'status-badge' %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= render template: 'admin/resources/show' %>

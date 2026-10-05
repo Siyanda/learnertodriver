@@ -2,53 +2,30 @@
 
   <!-- menu - logo -->
   <div class="flex nav-area">
-    <div class="clickable flex icon">
+    <div class="flex center-aligned icon">
+      <button type="button" class="padded mobile-only tablet-only menu light-fill standard-svg icon clear-btn" data-action="click->sidebar#toggle" aria-label="Toggle menu">
+        <%= component('utils/inline_svg', path: 'icons/menu.svg') %>
+      </button>
 
-      <div class="padded desktop-only light-fill medium-svg menu icon" data-action="click->sidebar#toggle">
-        <%= link_to admin_path, aria: { label: admin_path('home') } do %>
-          <%= component('utils/inline_svg', path: 'logo_icon.svg') %>
-        <% end %>
-      </div>
-
-      <div class="flex mobile-only tablet-only center-aligned clickable toggle">
-        <div class="padded margin-sides menu standard-svg icon" data-action="click->sidebar#toggle">
-          <%= component('utils/inline_svg', path: 'icons/menu.svg') %>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <div class="flex nav-area">
-    <div class="padded mobile-only tablet-only light-fill medium-svg menu icon" data-action="click->sidebar#toggle">
-      <%= link_to admin_path, aria: { label: admin_path('home') } do %>
+      <%= link_to admin_path, class: 'padded light-fill medium-svg icon', aria: { label: 'Admin dashboard' } do %>
         <%= component('utils/inline_svg', path: 'logo_icon.svg') %>
       <% end %>
     </div>
-    <!-- large screen nav -->
-    <div class="flex auto-marg navlist desktop-only">
-      <%= link_to 'Dashboard',
-                  admin_path,
-                  class: "link #{url_contains?('active', 'dashboard')}" %>
+  </div>
 
+  <!-- large screen nav -->
+  <div class="flex nav-area">
+    <div class="flex auto-marg navlist desktop-only">
+      <%= link_to 'Dashboard', admin_path,           class: class_names('link', active: request.path == admin_path) %>
+      <%= link_to 'Users',     admin_users_path,     class: "link #{url_contains?('active', admin_users_path)}" %>
+      <%= link_to 'Quizzes',   admin_quizzes_path,   class: "link #{url_contains?('active', admin_quizzes_path)}" %>
+      <%= link_to 'Questions', admin_questions_path, class: "link #{url_contains?('active', admin_questions_path)}" %>
+      <%= link_to 'Posts',     admin_posts_path,     class: "link #{url_contains?('active', admin_posts_path)}" %>
     </div>
   </div>
 
   <div class="flex nav-area">
-    <div class="flex center-aligned search-container desktop-only">
-      <div class="dark-bg search-wrapper">
-        <input type="text" class="search-input" autocomplete="name" placeholder=" search">
-        <div class="svg search float-icon icon">
-          <%= component('utils/inline_svg', path: 'icons/magnifying-glass.svg') %>
-        </div>
-      </div>
-    </div>
-
-    <div class="flex mobile-only tablet-only center-aligned clickable toggle">
-      <div class="padded menu light-stroke standard-svg icon" data-action="click->sidebar#toggle">
-        <%= component('utils/inline_svg', path: 'icons/search.svg') %>
-      </div>
-    </div>
+    <%= link_to 'View site', root_path, class: 'padded light-text' %>
   </div>
 
 </nav>

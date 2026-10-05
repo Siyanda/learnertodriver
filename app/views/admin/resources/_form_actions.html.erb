@@ -1,0 +1,4 @@
+<div class="flex center-aligned form-actions">
+  <%= form.submit class: 'clickable rounded button dark' %>
+  <%= link_to 'Cancel', form.object.persisted? ? [:admin, form.object] : [:admin, form.object.class], class: 'left-margin' %>
+</div>

@@ -15,4 +15,10 @@ class Comment < ApplicationRecord
   }, validate: true
 
   broadcasts_refreshes
+
+  def self.ransackable_attributes(_auth_object = nil)
+    %w[content status created_at user_id post_id]
+  end
+
+  def self.ransackable_associations(_auth_object = nil) = %w[user post]
 end

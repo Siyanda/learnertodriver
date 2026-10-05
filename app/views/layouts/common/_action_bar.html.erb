@@ -1,25 +1,31 @@
 <div class="flex spaced-between action-bar">
   <div class="flex margin-sides">
-
-    <%= link_to url_for controller: controller.controller_name,
-                        action: 'new' do %>
-
+    <%= link_to [:admin, item.class], class: 'flex center-aligned right-margin' do %>
       <div class="mdm-svg icon">
-        <%= component('utils/inline_svg', path: 'icons/plus-circle-o.svg') %>
-      </div> New
+        <%= component('utils/inline_svg', path: 'icons/arrow-left.svg') %>
+      </div> All <%= admin_plural(item.class) %>
     <% end %>
 
-      <%= link_to url_for controller: controller.controller_name,
-                          action: 'edit',
-                          id: item.id do %>
-      <div class="mdm-svg icon">
-        <%= component('utils/inline_svg', path: 'icons/edit-o.svg') %>
-      </div>Edit
+    <% if admin_editable? %>
+      <%= link_to [:new, :admin, item.model_name.singular_route_key.to_sym], class: 'flex center-aligned right-margin' do %>
+        <div class="mdm-svg icon">
+          <%= component('utils/inline_svg', path: 'icons/plus-circle-o.svg') %>
+        </div> New
       <% end %>
+
+      <%= link_to [:edit, :admin, item], class: 'flex center-aligned' do %>
+        <div class="mdm-svg icon">
+          <%= component('utils/inline_svg', path: 'icons/edit-o.svg') %>
+        </div> Edit
+      <% end %>
+    <% end %>
   </div>
 
   <div class="flex">
-    <%= link_to new_page_path, class: 'flex center-aligned rounded dark-btn right-margin outline-btn' do %>
+    <%= button_to [:admin, item],
+                  method: :delete,
+                  class:  'flex center-aligned rounded dark-btn right-margin outline-btn',
+                  form:   { data: { turbo_confirm: t('admin.confirm_delete') } } do %>
       <div class="mdm-svg red-text icon">
         <%= component('utils/inline_svg', path: 'icons/trash-o.svg') %>
       </div>

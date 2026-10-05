@@ -1,0 +1,6 @@
+<%= t('.greeting', name: @user.first_name.presence || @user.username) %>
+
+<%= @user.pending_reconfirmation? ? t('.reconfirm_intro') : t('.intro') %>
+<%= confirmation_url(@token) %>
+
+<%= t('.expiry') %>

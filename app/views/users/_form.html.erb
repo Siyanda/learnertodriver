@@ -1,34 +1,91 @@
-<%= form_for user do |form| %>
-  <div class="padded-sides">
+<%= form_with model: user, url: user_path, method: :patch, class: 'admin-form profile-form' do |form| %>
+  <%= render 'layouts/common/errors', record: user %>
 
-  <div class="flex">
-    <div class="form-floating full-width">
-        <label for="floatingInput">First Name</label>
-        <%= form.text_field :first_name, class: 'form-control', required: true, autofocus: true, autocomplete: 'name', placeholder: 'First name' %>
+  <fieldset class="admin-fieldset">
+    <legend><%= t('users.form.photo') %></legend>
+
+    <div class="flex center-aligned admin-form-row">
+      <%= component('user/avatar', user: Current.user, size: 128, html_class: 'profile-avatar small') %>
+
+      <div class="form-floating full-width">
+        <%= form.label :avatar, t('users.form.avatar') %>
+        <%= form.file_field :avatar, class: 'form-control', accept: 'image/jpeg,image/png' %>
+        <small class="grey-text"><%= t('users.form.avatar_hint') %></small>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset class="admin-fieldset">
+    <legend><%= t('users.form.personal') %></legend>
+
+    <div class="flex admin-form-row">
+      <div class="form-floating full-width">
+        <%= form.label :first_name %>
+        <%= form.text_field :first_name, class: 'form-control', required: true, autocomplete: 'given-name' %>
       </div>
 
-      <div class="form-floating full-width left-margin">
-        <label for="floatingPassword">Last Name</label>
-        <%= form.text_field :last_name, class: 'form-control', required: true, placeholder: 'Last name' %>
+      <div class="form-floating full-width">
+        <%= form.label :last_name %>
+        <%= form.text_field :last_name, class: 'form-control', required: true, autocomplete: 'family-name' %>
       </div>
-  </div>
+    </div>
 
-  <div class="form-floating">
-    <label for="floatingPassword">Phone Number</label>
-    <%= form.text_field :phone_number, class: 'form-control', autocomplete: 'phone_number', placeholder: 'Phone number' %>
-  </div>
+    <div class="flex admin-form-row">
+      <div class="form-floating full-width">
+        <%= form.label :username %>
+        <%= form.text_field :username, class: 'form-control', required: true, autocomplete: 'username' %>
+      </div>
 
-  <div class="form-floating">
-    <label for="floatingPassword">Email Address</label>
-    <%= form.text_field :email_address, class: 'form-control', required: true, autocomplete: 'email', placeholder: 'Email Address' %>
-  </div>
+      <div class="form-floating full-width">
+        <%= form.label :title %>
+        <%= form.text_field :title, class: 'form-control', placeholder: t('users.form.title_placeholder') %>
+      </div>
 
-  <div class="form-floating">
-    <label for="floatingPassword">Bio</label>
-    <%= form.text_area :bio, class: 'form-control', placeholder: 'Some information about yourself', maxlength: 1000 %>
-  </div>
+      <div class="form-floating full-width">
+        <%= form.label :birthday %>
+        <%= form.date_field :birthday, class: 'form-control', autocomplete: 'bday' %>
+      </div>
+    </div>
+  </fieldset>
 
-  <br>
-  <%= form.submit 'Submit', class: 'clickable rounded button btn-primary p-4 text-white' %>
+  <fieldset class="admin-fieldset">
+    <legend><%= t('users.form.contact') %></legend>
+
+    <div class="flex admin-form-row">
+      <div class="form-floating full-width">
+        <%= form.label :email_address %>
+        <%= form.email_field :email_address, class: 'form-control', required: true, autocomplete: 'email' %>
+        <% if user.pending_reconfirmation? %>
+          <small class="grey-text"><%= t('users.form.pending_email', email: user.unconfirmed_email) %></small>
+        <% else %>
+          <small class="grey-text"><%= t('users.form.email_hint') %></small>
+        <% end %>
+      </div>
+
+      <div class="form-floating full-width">
+        <%= form.label :phone_number %>
+        <%= form.telephone_field :phone_number, class: 'form-control', autocomplete: 'tel' %>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset class="admin-fieldset">
+    <legend><%= t('users.form.about') %></legend>
+
+    <div class="form-floating">
+      <%= form.label :bio %>
+      <%= form.text_area :bio, class: 'form-control', rows: 4, maxlength: 1000, placeholder: t('users.form.bio_placeholder') %>
+    </div>
+
+    <div class="form-floating">
+      <%= form.label :links %>
+      <%= form.text_area :links, class: 'form-control', rows: 3, placeholder: 'https://example.com' %>
+      <small class="grey-text"><%= t('users.form.links_hint') %></small>
+    </div>
+  </fieldset>
+
+  <div class="flex center-aligned form-actions">
+    <%= form.submit t('users.form.submit'), class: 'clickable rounded button dark' %>
+    <%= link_to t('users.form.cancel'), user_path %>
   </div>
 <% end %>

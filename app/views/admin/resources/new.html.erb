@@ -1,0 +1,10 @@
+<% title "New #{resource_class.model_name.human}" %>
+<% breadcrumb :admin_new, resource_class %>
+
+<section class="admin-page">
+  <header class="admin-page-header">
+    <h1>New <%= resource_class.model_name.human %></h1>
+  </header>
+
+  <%= render 'form', record: %>
+</section>

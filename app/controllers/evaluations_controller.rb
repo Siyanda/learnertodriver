@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class EvaluationsController < ApplicationController
+  before_action :require_confirmed_email, only: %i[new edit update]
   before_action :set_quiz,           only: %i[new]
   before_action :set_evaluation,     only: %i[show edit update]
   before_action :set_current_choice, only: %i[edit update]
@@ -19,33 +20,45 @@ class EvaluationsController < ApplicationController
 
   def edit; end
 
-  def update # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
+  def update
     authorize! @evaluation
 
-    update_attrs = evaluation_params
+    result = update_evaluation
 
-    update_attrs.merge!(status: :completed, completed_at: Time.current) if params[:commit].present?
-
-    if @evaluation.update(update_attrs)
-      @evaluation.in_progress! if @evaluation.started?
-
-      @current_choice.update(name: @current_choice.question.content, content: @current_choice.answer&.content)
-      respond_to do |format|
-        format.turbo_stream do
-          @current_choice = @evaluation.last_active_choice
-          render turbo_stream: turbo_stream.replace('choice_frame', partial: 'form',
-                                                                    locals:  { evaluation: @evaluation, current_choice: @current_choice }) # rubocop:disable Layout/LineLength
-        end
-        format.html do
-          redirect_to edit_quiz_evaluation_path(@evaluation.quiz, @evaluation), notice: t('.choice_selection_updated')
-        end
-      end
-    else
+    if result.failure?
+      flash.now[:alert] = result.message
       render :edit, status: :unprocessable_content
+    elsif @evaluation.completed?
+      redirect_to quiz_evaluation_path(@evaluation.quiz, @evaluation), notice: t('.completed'), status: :see_other
+    else
+      respond_with_current_choice(result.current_choice)
     end
   end
 
   private
+
+  def require_confirmed_email
+    return if Current.user.confirmed?
+
+    redirect_to quizzes_path, alert: t('evaluations.confirm_email_first')
+  end
+
+  def update_evaluation
+    Evaluations::UpdateEvaluation.call(evaluation: @evaluation, params: evaluation_params,
+                                       choice_id: params[:choice_id], commit: params[:commit])
+  end
+
+  def respond_with_current_choice(current_choice)
+    respond_to do |format|
+      format.turbo_stream do
+        render turbo_stream: turbo_stream.replace('choice_frame', partial: 'form',
+                                                                  locals:  { evaluation: @evaluation, current_choice: })
+      end
+      format.html do
+        redirect_to edit_quiz_evaluation_path(@evaluation.quiz, @evaluation), notice: t('.choice_selection_updated')
+      end
+    end
+  end
 
   def set_quiz
     @quiz = Quiz.friendly.find(params.expect(:quiz_id))

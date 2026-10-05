@@ -1,0 +1,13 @@
+<% if Current.user && (!Current.user.confirmed? || Current.user.pending_reconfirmation?) %>
+  <div class="flex center-aligned spaced-between confirmation-banner" role="status">
+    <span>
+      <% if Current.user.confirmed? %>
+        <%= t('.reconfirm', email: Current.user.unconfirmed_email) %>
+      <% else %>
+        <%= t('.confirm', email: Current.user.email_address) %>
+      <% end %>
+    </span>
+
+    <%= button_to t('.resend'), confirmations_path, class: 'rounded button dark small-text' %>
+  </div>
+<% end %>

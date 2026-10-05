@@ -1,0 +1,34 @@
+<% content_for :details do %>
+  <h2>Answers</h2>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Answer</th>
+        <th>Name</th>
+        <th>Information</th>
+        <th class="small-cell">Correct</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% record.answers.includes(:correct_answer).each do |answer| %>
+        <tr>
+          <td><%= answer.content %></td>
+          <td><%= answer.name %></td>
+          <td><%= answer.information %></td>
+          <td class="small-cell"><%= answer.correct? ? tag.span('Yes', class: 'status-badge published') : '—' %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <h2>Quizzes</h2>
+
+  <ul class="admin-list">
+    <% record.quizzes.each do |quiz| %>
+      <li><%= link_to quiz.title, [:admin, quiz] %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= render template: 'admin/resources/show' %>

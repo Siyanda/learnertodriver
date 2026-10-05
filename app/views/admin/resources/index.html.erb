@@ -1,0 +1,42 @@
+<% title admin_plural(resource_class) %>
+<% breadcrumb :admin_index, resource_class %>
+
+<section class="admin-page">
+  <header class="flex spaced-between center-aligned admin-page-header">
+    <h1><%= admin_plural(resource_class) %></h1>
+
+    <% if admin_editable? %>
+      <%= link_to [:new, :admin, resource_class.model_name.singular_route_key.to_sym], class: 'flex center-aligned rounded button dark' do %>
+        <span class="right-margin small-svg light-fill icon"><%= component('utils/inline_svg', path: 'icons/plus-circle-o.svg') %></span>
+        New <%= resource_class.model_name.human %>
+      <% end %>
+    <% end %>
+  </header>
+
+  <% if search_attribute %>
+    <%= search_form_for @q, url: polymorphic_path([:admin, resource_class]), html: { class: 'flex center-aligned admin-search' } do |f| %>
+      <%= f.search_field search_attribute, class: 'form-control', placeholder: 'Search…', aria: { label: 'Search' } %>
+
+      <% if resource_class.defined_enums.key?('status') %>
+        <%= f.select :status_eq,
+                     resource_class.statuses.map { |name, value| [name.humanize, value] },
+                     { include_blank: 'Any status' },
+                     class: 'form-control', aria: { label: 'Status' } %>
+      <% end %>
+
+      <%= f.submit 'Filter', class: 'rounded button dark' %>
+      <%= link_to 'Clear', polymorphic_path([:admin, resource_class]) %>
+    <% end %>
+  <% end %>
+
+  <%= component('admin/table',
+                records: @records,
+                columns: index_columns,
+                search:  @q,
+                actions: admin_editable? ? %i[edit destroy] : %i[destroy]) %>
+
+  <div class="flex spaced-between center-aligned admin-pagination">
+    <span class="small-text grey-text"><%= @pagy.count %> total</span>
+    <%== @pagy.series_nav if @pagy.last > 1 %>
+  </div>
+</section>

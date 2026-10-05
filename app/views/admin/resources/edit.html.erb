@@ -1,0 +1,11 @@
+<% title "Edit #{admin_label(record)}" %>
+<% breadcrumb :admin_edit, record %>
+
+<section class="admin-page">
+  <header class="admin-page-header">
+    <p class="small-text grey-text">Edit <%= resource_class.model_name.human %></p>
+    <h1><%= admin_label(record) %></h1>
+  </header>
+
+  <%= render 'form', record: %>
+</section>
