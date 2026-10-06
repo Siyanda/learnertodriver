@@ -8,9 +8,9 @@ local:
 
 cloudflare:
   service: S3
-  endpoint: <%= Rails.application.credentials.dig(:cloudflare, :endpoint) %>
-  access_key_id: <%= Rails.application.credentials.dig(:cloudflare, :access_key_id) %>
-  secret_access_key: <%= Rails.application.credentials.dig(:cloudflare, :secret_access_key) %>
+  endpoint: <%= ENV.fetch('CLOUDFLARE_ENDPOINT', nil) %>
+  access_key_id: <%= ENV.fetch('CLOUDFLARE_ACCESS_KEY_ID', nil) %>
+  secret_access_key: <%= ENV.fetch('CLOUDFLARE_SECRET_ACCESS_KEY', nil) %>
   region: auto
   bucket: learnertodriver-<%= Rails.env %>
   request_checksum_calculation: "when_required"
