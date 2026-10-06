@@ -10,6 +10,7 @@ ENV BUNDLE_DEPLOYMENT="1" \
   BUNDLE_WITHOUT="development:test" \
   DATA_PATH="/data" \
   RAILS_ENV="production" \
+  SOLID_QUEUE_IN_PUMA="true" \
   PATH="/rails/bin:$PATH"
 
 RUN gem update --system --no-document && \
