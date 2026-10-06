@@ -26,5 +26,5 @@ class Page < ApplicationRecord
 
   def self.ransackable_associations(_auth_object = nil) = %w[user parent]
 
-  def should_generate_new_friendly_id? = slug.blank? || slug_changed?
+  def should_generate_new_friendly_id? = slug.blank? || title_changed?
 end
