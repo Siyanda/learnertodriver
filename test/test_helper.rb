@@ -32,10 +32,6 @@ class ActionDispatch::IntegrationTest
   include SessionTestHelper
 end
 
-# Remove the test databases created during the run once the suite finishes.
-# Parallel workers each get their own database (e.g. db/test.sqlite3_0), so
-# only the main process (parallel_worker_id is nil) cleans up, after all
-# workers have completed.
 at_exit do
   if ActiveSupport::TestCase.parallel_worker_id.nil?
     test_db_files = Dir[Rails.root.join('db/test*.sqlite3*').to_s] +

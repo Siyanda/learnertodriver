@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 FactoryBot.define do
-  factory :response do
+  factory :quiz_question_linkage do
+    quiz
     question
-    answer { association :answer, question: }
   end
 end

@@ -16,8 +16,6 @@ module ApplicationHelper
     MarkdownRenderable.instance_method(:liquidize).bind(self).call(content)
   end
 
-  # Turns one-per-line profile links into anchors. Only http(s) URLs become
-  # links, so values like `javascript:` are shown as plain text.
   def profile_links(text)
     text.to_s.lines.map(&:strip).compact_blank.map do |link|
       next link unless link.match?(%r{\Ahttps?://}i)

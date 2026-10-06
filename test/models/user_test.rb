@@ -7,12 +7,14 @@ class UserTest < ActiveSupport::TestCase
 
   test 'is valid with valid attributes' do
     user = User.new(username: 'johndoe', email_address: 'john@example.com', password: 'password')
+
     assert user.valid?
   end
 
   test 'is invalid without unique username' do
     User.create!(username: 'johndoe', email_address: 'john@example.com', password: 'password')
     duplicate = User.new(username: 'johndoe', email_address: 'john2@example.com', password: 'password')
+
     assert_not duplicate.valid?
     assert_includes duplicate.errors[:username], 'has already been taken'
   end
@@ -35,12 +37,14 @@ class UserTest < ActiveSupport::TestCase
 
   test 'normalizes email address to lowercase and stripped' do
     user = User.new(username: 'jane', email_address: '  Jane@Example.com  ', password: 'password')
+
     user.valid?
     assert_equal 'jane@example.com', user.email_address
   end
 
   test 'slug is generated from username' do
     user = User.create!(username: 'Jane Doe', email_address: 'jane@example.com', password: 'password')
+
     assert_equal 'jane-doe', user.slug
   end
 

@@ -11,7 +11,6 @@ module Learnertodriver # rubocop:disable Style/ClassAndModuleChildren
     config.time_zone = 'Africa/Johannesburg'
     config.autoload_lib(ignore: %w[assets tasks generators])
 
-    # View component configuration
     config.autoload_paths                << Rails.root.join('app/frontend/components')
     config.autoload_paths                << Rails.root.join('app/frontend/components/concerns')
     config.view_component.previews.paths << Rails.root.join('app/frontend/components')
