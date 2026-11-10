@@ -203,3 +203,9 @@ en:
       header:
         title: "%{title} quiz"
         question: Question
+  bot_checks:
+    failed: "We couldn't confirm you're a person. Please try again."
+  view_components:
+    forms:
+      bot_check:
+        website: "Website"

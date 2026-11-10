@@ -17,6 +17,8 @@ class UsersController < ApplicationController
     redirect_to edit_user_path, alert: t('.rate_limit_message')
   }
 
+  protect_from_bots only: :create, with: ->(message) { reject_sign_up(message) }
+
   def show
     @summary = ::Users::SummarizeProfile.call(user: Current.user)
   end
@@ -70,6 +72,13 @@ class UsersController < ApplicationController
 
   def redirect_signed_in_user
     redirect_to dashboard_path if authenticated?
+  end
+
+  def reject_sign_up(message)
+    @user             = User.new(registration_params)
+    flash.now[:alert] = message
+
+    render :new, status: :unprocessable_content
   end
 
   def registration_params

@@ -13,6 +13,8 @@ class PasswordsController < ApplicationController
     redirect_to new_password_path, alert: t('.rate_limit_message')
   }
 
+  protect_from_bots only: :create, with: ->(message) { redirect_to new_password_path, alert: message }
+
   def new; end
 
   def edit; end

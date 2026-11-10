@@ -12,6 +12,10 @@ class ConfirmationsController < ApplicationController
     redirect_back_or_to new_confirmation_path, alert: t('.rate_limit_message')
   }
 
+  protect_from_bots only: :create, unless: :authenticated?, with: lambda { |message|
+    redirect_to new_confirmation_path, alert: message
+  }
+
   def show
     result = ::Users::ConfirmEmail.call(token: params.expect(:token))
 

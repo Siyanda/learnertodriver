@@ -13,6 +13,7 @@ require_relative '../config/environment'
 require 'application_system_test_case'
 require 'rails/test_help'
 require 'factory_bot'
+require 'test_helpers/bot_check_test_helper'
 require 'test_helpers/session_test_helper'
 
 ActiveRecord::Schema.verbose = false
@@ -29,6 +30,7 @@ class ActiveSupport::TestCase
 end
 
 class ActionDispatch::IntegrationTest
+  include BotCheckTestHelper
   include SessionTestHelper
 end
 

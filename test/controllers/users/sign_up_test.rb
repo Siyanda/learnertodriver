@@ -18,7 +18,7 @@ class Users::SignUpTest < ActionDispatch::IntegrationTest
 
   test 'signing up creates a subscriber and signs them in' do
     assert_difference 'User.count', 1 do
-      post user_path, params: { user: sign_up_params.merge(role: 'admin') }
+      post user_path, params: { user: sign_up_params.merge(role: 'admin'), **bot_check_params }
     end
 
     user = User.find_by!(email_address: 'lerato@example.com')
@@ -33,11 +33,28 @@ class Users::SignUpTest < ActionDispatch::IntegrationTest
 
   test 'sign-up re-renders the form with errors' do
     assert_no_difference 'User.count' do
-      post user_path, params: { user: sign_up_params.merge(email_address: @user.email_address) }
+      post user_path, params: { user: sign_up_params.merge(email_address: @user.email_address), **bot_check_params }
     end
 
     assert_response :unprocessable_content
     assert_select '#error_explanation li', text: /Email address has already been taken/
+  end
+
+  test 'rejects sign-ups that fill in the honeypot' do
+    assert_no_difference 'User.count' do
+      post user_path, params: { user: sign_up_params, website: 'https://spam.example', **bot_check_params }
+    end
+
+    assert_response :unprocessable_content
+    assert_equal I18n.t('bot_checks.failed'), flash[:alert]
+  end
+
+  test 'rejects sign-ups submitted too quickly' do
+    assert_no_difference 'User.count' do
+      post user_path, params: { user: sign_up_params, **bot_check_params(started_at: Time.current) }
+    end
+
+    assert_response :unprocessable_content
   end
 
   test 'signed-in users skip sign-up' do

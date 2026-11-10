@@ -9,6 +9,8 @@
     <%= form.email_field :email_address, class: 'form-control', required: true, autofocus: true, autocomplete: 'username', value: params[:email_address] %>
   </div>
 
+  <%= component('forms/bot_check') %>
+
   <br>
   <%= form.submit t('.submit'), class: 'rounded button btn-primary p-4 text-white' %>
 <% end %>

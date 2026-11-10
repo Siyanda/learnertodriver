@@ -147,3 +147,15 @@ select:-webkit-autofill {
     visibility: visible;
   }
 }
+
+.bot-check-field {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.bot-check-widget {
+  margin-top: 1rem;
+}

@@ -127,6 +127,7 @@ Required env vars grow as integrations are added — when you add one, document 
 - `DAILY_EMAIL_LIMIT` — max emails sent per day across all mailers (default `300`); protects Postmark credits from abuse.
 - `DEFAULT_MAIL_FROM` — sender address for all mail (default `hi@learnertodriver.co.za`); must be a verified Postmark sender.
 - `CLOUDFLARE_ENDPOINT`, `CLOUDFLARE_ACCESS_KEY_ID`, `CLOUDFLARE_SECRET_ACCESS_KEY` — Cloudflare R2 for Active Storage; required in production, optional in development (falls back to local disk when unset).
+- `TURNSTILE_SITE_KEY`, `TURNSTILE_SECRET_KEY` — Cloudflare Turnstile bot check on sign-up, password reset and resend confirmation; required in production, optional in development (the check is skipped when unset). Cloudflare's test keys: `1x00000000000000000000AA` / `1x0000000000000000000000000000000AA`.
 - `APP_URL` — canonical app URL.
 - `RAILS_MASTER_KEY` — credentials key.
 - `SOLID_QUEUE_IN_PUMA` — runs Solid Queue inside Puma so background jobs (e.g. mail) are processed in production; set in the `Dockerfile`.

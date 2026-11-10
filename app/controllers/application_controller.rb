@@ -2,6 +2,7 @@
 
 class ApplicationController < ActionController::Base
   include Authentication
+  include BotProtection
 
   layout :determine_layout
 
