@@ -87,6 +87,7 @@ en:
   passwords:
     create:
       password_reset_instructions_sent: "Password reset instructions sent (if a user with that email address exists)."
+      rate_limit_message: "Too many requests. Please try again later."
     update:
       password_reset_success: "Your password has been reset."
       password_mismatch: "Passwords did not match."
@@ -155,6 +156,7 @@ en:
       intro: "Update your details and how you appear to others."
     update:
       confirm_new_email: "Profile updated. Check %{email} to confirm your new email address."
+      rate_limit_message: "Too many profile updates. Please try again later."
     passwords:
       edit:
         title: "Change password"

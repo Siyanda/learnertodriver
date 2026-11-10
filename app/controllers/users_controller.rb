@@ -10,6 +10,12 @@ class UsersController < ApplicationController
   rate_limit to: 10, within: 3.minutes, only: :create, with: lambda {
     redirect_to new_user_url, alert: t('.rate_limit_message')
   }
+  rate_limit to: 30, within: 1.day, only: :create, name: 'daily', with: lambda {
+    redirect_to new_user_url, alert: t('.rate_limit_message')
+  }
+  rate_limit to: 20, within: 1.hour, only: :update, by: -> { Current.user.id }, name: 'profile', with: lambda {
+    redirect_to edit_user_path, alert: t('.rate_limit_message')
+  }
 
   def show
     @summary = ::Users::SummarizeProfile.call(user: Current.user)
