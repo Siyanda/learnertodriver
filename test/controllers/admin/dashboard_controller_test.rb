@@ -14,4 +14,13 @@ class Admin::DashboardControllerTest < ActionDispatch::IntegrationTest
     assert_select '.stat-card', minimum: 5
     assert_select "#evaluation_#{evaluation.id}"
   end
+
+  test 'renders activity trends and storage usage' do
+    create(:post).images.attach(io: file_fixture('avatar.jpg').open, filename: 'avatar.jpg')
+
+    get admin_path
+
+    assert_select '.activity-cards .stat-card', 4
+    assert_select '.storage-table tbody tr', text: /Posts/
+  end
 end

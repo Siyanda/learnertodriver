@@ -1,0 +1,55 @@
+<div class="alt-border content storage-usage">
+  <div class="padded">
+    <h2>Storage usage</h2>
+    <p class="small-text grey-text"><%= summary %></p>
+
+    <% if modules.empty? %>
+      <p class="grey-text">No files uploaded yet</p>
+    <% else %>
+      <div class="flex storage-bar" role="img" aria-label="<%= summary %>">
+        <% modules.each_with_index do |storage_module, index| %>
+          <span class="storage-segment <%= series_class(index) %>" style="flex-grow: <%= storage_module.bytes %>" title="<%= storage_module.label %>"></span>
+        <% end %>
+      </div>
+
+      <ul class="flex storage-legend">
+        <% modules.each_with_index do |storage_module, index| %>
+          <li class="flex center-aligned">
+            <span class="swatch <%= series_class(index) %>"></span>
+            <span class="grey-text"><%= storage_module.label %>:</span>
+            <strong><%= number_to_human_size(storage_module.bytes) %></strong>
+          </li>
+        <% end %>
+      </ul>
+
+      <table class="table admin-table storage-table">
+        <thead>
+          <tr>
+            <th>Module</th>
+            <th>Storage</th>
+            <th>Files</th>
+            <th>Share</th>
+            <th>30d growth</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% modules.each_with_index do |storage_module, index| %>
+            <tr>
+              <td><%= storage_module.label %></td>
+              <td><%= number_to_human_size(storage_module.bytes) %></td>
+              <td><%= pluralize(storage_module.files, 'file') %></td>
+              <td>
+                <span class="flex center-aligned share-pill">
+                  <span class="swatch <%= series_class(index) %>"></span>
+                  <%= share(storage_module) %>
+                </span>
+              </td>
+              <td><%= growth(storage_module) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
+  </div>
+</div>

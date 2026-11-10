@@ -8,5 +8,12 @@
     </div>
 
     <h1><%= link_to_if path.present?, value, path %></h1>
+
+    <% if change %>
+      <p class="small-text stat-change">
+        <span class="<%= class_names(up: change.positive?, down: change.negative?) %>"><%= formatted_change %></span>
+        <span class="grey-text"><%= change_label %></span>
+      </p>
+    <% end %>
   </div>
 </div>

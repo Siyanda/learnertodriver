@@ -20,6 +20,18 @@
     <%= component('utils/stat_card', label: 'Average score',         value: "#{@summary.average_score}%") %>
   </div>
 
+  <h2>Last 30 days</h2>
+
+  <div class="stat-grid overview-cards activity-cards">
+    <% activity, compared_to = @summary.activity, 'vs previous 30 days' %>
+    <%= component('utils/stat_card', label: 'New users',             value: activity[:new_users].current,             change: activity[:new_users].change,             change_label: compared_to) %>
+    <%= component('utils/stat_card', label: 'Evaluations started',   value: activity[:evaluations_started].current,   change: activity[:evaluations_started].change,   change_label: compared_to) %>
+    <%= component('utils/stat_card', label: 'Evaluations completed', value: activity[:evaluations_completed].current, change: activity[:evaluations_completed].change, change_label: compared_to) %>
+    <%= component('utils/stat_card', label: 'Comments',              value: activity[:comments].current,              change: activity[:comments].change,              change_label: compared_to) %>
+  </div>
+
+  <%= component('admin/storage_usage', modules: @summary.storage_modules, bytes: @summary.storage_bytes, files: @summary.storage_files) %>
+
   <div class="flex evenly-spaced panel">
     <div class="alt-border half-width content">
       <div class="padded">

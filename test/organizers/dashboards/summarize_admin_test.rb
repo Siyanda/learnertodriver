@@ -21,6 +21,15 @@ class Dashboards::SummarizeAdminTest < ActiveSupport::TestCase
     assert_operator result.recent_users.size, :<=, 5
   end
 
+  test 'includes activity trends and storage usage' do
+    create(:user).avatar.attach(io: file_fixture('avatar.jpg').open, filename: 'avatar.jpg')
+
+    result = Dashboards::SummarizeAdmin.call
+
+    assert_equal %i[new_users evaluations_started evaluations_completed comments], result.activity.keys
+    assert_equal 1, result.storage_files
+  end
+
   test 'handles an empty database' do
     Evaluation.delete_all
 

@@ -32,3 +32,82 @@
     min-width: 3ch;
   }
 }
+
+.stat-change {
+  margin: 0.4rem 0 0;
+
+  .up {
+    color: var(--green);
+  }
+
+  .down {
+    color: var(--red);
+  }
+}
+
+.storage-usage {
+  --series-0: #818cf8;
+  --series-1: #38bdf8;
+  --series-2: #4ade80;
+  --series-3: #facc15;
+  --series-4: #fb7185;
+  --series-5: #94a3b8;
+
+  margin-bottom: 1rem;
+
+  h2 {
+    margin-top: 0;
+  }
+
+  @for $i from 0 through 5 {
+    .series-#{$i} {
+      background: var(--series-#{$i});
+    }
+  }
+
+  .storage-bar {
+    border-radius: 1rem;
+    gap: 2px;
+    height: 0.9rem;
+    margin: 1rem 0 0.8rem;
+    overflow: hidden;
+  }
+
+  .storage-segment {
+    flex-basis: 0;
+    min-width: 4px;
+  }
+
+  .storage-legend {
+    flex-wrap: wrap;
+    gap: 0.4rem 1.2rem;
+    justify-content: flex-start;
+    list-style: none;
+    margin: 0 0 1rem;
+    padding: 0;
+
+    li {
+      gap: 0.4rem;
+    }
+  }
+
+  .swatch {
+    border-radius: 0.2rem;
+    display: inline-block;
+    height: 0.8rem;
+    width: 0.8rem;
+  }
+
+  .share-pill {
+    border: thin solid var(--gainsboro);
+    border-radius: 0.4rem;
+    display: inline-flex;
+    gap: 0.4rem;
+    padding: 0.1rem 0.5rem;
+
+    .swatch {
+      height: 0.7rem;
+      width: 0.25rem;
+    }
+  }
+}
