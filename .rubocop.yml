@@ -35,3 +35,7 @@ Style/TrailingCommaInArrayLiteral:
 
 Style/ClassAndModuleChildren:
   EnforcedStyle: compact
+
+Metrics/BlockLength:
+  Exclude:
+    - config/routes.rb

@@ -14,6 +14,18 @@ class Posts::Comment::ComponentTest < ViewComponent::TestCase
     assert_selector '.comments-title', text: '2 Comments'
   end
 
+  def test_hides_comments_awaiting_approval
+    post = create(:post)
+    create(:comment, post: post, status: :draft, content: 'Spam link')
+
+    with_request_url "/posts/#{post.id}" do
+      render_inline(Posts::Comment::Component.new(post: post))
+    end
+
+    assert_selector '.comments-title', text: '0 Comments'
+    assert_no_text 'Spam link'
+  end
+
   def test_renders_no_comments_message
     post = create(:post)
 

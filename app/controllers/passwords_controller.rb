@@ -6,12 +6,21 @@ class PasswordsController < ApplicationController
 
   layout 'registrations'
 
+  rate_limit to: 5, within: 10.minutes, only: :create, with: lambda {
+    redirect_to new_password_path, alert: t('.rate_limit_message')
+  }
+  rate_limit to: 3, within: 1.hour, only: :create, by: :email_address_param, name: 'per_email', with: lambda {
+    redirect_to new_password_path, alert: t('.rate_limit_message')
+  }
+
+  protect_from_bots only: :create, with: ->(message) { redirect_to new_password_path, alert: message }
+
   def new; end
 
   def edit; end
 
   def create
-    if (user = User.find_by(email_address: params[:email_address]))
+    if (user = User.find_by(email_address: email_address_param))
       PasswordsMailer.reset(user).deliver_later
     end
 

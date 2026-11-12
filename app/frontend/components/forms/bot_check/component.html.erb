@@ -1,0 +1,6 @@
+<div class="bot-check-field" aria-hidden="true">
+  <%= label_tag ::BotProtection::HONEYPOT_FIELD, t('.website') %>
+  <%= text_field_tag ::BotProtection::HONEYPOT_FIELD, nil, tabindex: -1, autocomplete: 'off' %>
+</div>
+<%= hidden_field_tag ::BotProtection::FILL_TIME_FIELD, form_started_at %>
+<%= tag.div(class: 'bot-check-widget', data: stimulus_data) if turnstile? %>

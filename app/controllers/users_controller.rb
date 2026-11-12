@@ -10,6 +10,14 @@ class UsersController < ApplicationController
   rate_limit to: 10, within: 3.minutes, only: :create, with: lambda {
     redirect_to new_user_url, alert: t('.rate_limit_message')
   }
+  rate_limit to: 30, within: 1.day, only: :create, name: 'daily', with: lambda {
+    redirect_to new_user_url, alert: t('.rate_limit_message')
+  }
+  rate_limit to: 20, within: 1.hour, only: :update, by: -> { Current.user.id }, name: 'profile', with: lambda {
+    redirect_to edit_user_path, alert: t('.rate_limit_message')
+  }
+
+  protect_from_bots only: :create, with: ->(message) { reject_sign_up(message) }
 
   def show
     @summary = ::Users::SummarizeProfile.call(user: Current.user)
@@ -64,6 +72,13 @@ class UsersController < ApplicationController
 
   def redirect_signed_in_user
     redirect_to dashboard_path if authenticated?
+  end
+
+  def reject_sign_up(message)
+    @user             = User.new(registration_params)
+    flash.now[:alert] = message
+
+    render :new, status: :unprocessable_content
   end
 
   def registration_params

@@ -59,7 +59,7 @@ class ConfirmationsControllerTest < ActionDispatch::IntegrationTest
 
   test 'resends a confirmation link by email address' do
     assert_enqueued_email_with UsersMailer, :email_confirmation, args: [@user] do
-      post confirmations_path, params: { email_address: @user.email_address }
+      post confirmations_path, params: { email_address: @user.email_address, **bot_check_params }
     end
 
     assert_redirected_to new_session_path
@@ -67,7 +67,7 @@ class ConfirmationsControllerTest < ActionDispatch::IntegrationTest
 
   test 'does not reveal whether an email address exists' do
     assert_no_enqueued_emails do
-      post confirmations_path, params: { email_address: 'nobody@example.com' }
+      post confirmations_path, params: { email_address: 'nobody@example.com', **bot_check_params }
     end
 
     assert_equal I18n.t('confirmations.create.sent'), flash[:notice]
@@ -77,8 +77,17 @@ class ConfirmationsControllerTest < ActionDispatch::IntegrationTest
     confirmed = create(:user)
 
     assert_no_enqueued_emails do
-      post confirmations_path, params: { email_address: confirmed.email_address }
+      post confirmations_path, params: { email_address: confirmed.email_address, **bot_check_params }
     end
+  end
+
+  test 'does not resend to guests who fail the bot check' do
+    assert_no_enqueued_emails do
+      post confirmations_path, params: { email_address: @user.email_address }
+    end
+
+    assert_redirected_to new_confirmation_path
+    assert_equal I18n.t('bot_checks.failed'), flash[:alert]
   end
 
   test 'resends to the signed-in user from the banner' do

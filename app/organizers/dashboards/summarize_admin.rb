@@ -11,6 +11,8 @@ class Dashboards::SummarizeAdmin
     [
       Dashboards::CountRecords,
       Dashboards::CalculateEvaluationStats,
+      Dashboards::CalculateActivityStats,
+      Dashboards::CalculateStorageUsage,
       Dashboards::FindRecentEvaluations,
       Dashboards::FindRecentUsers,
     ]

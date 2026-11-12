@@ -30,6 +30,7 @@ class User < ApplicationRecord
   validates :username,      presence: true, uniqueness: true
   validates :unconfirmed_email, format: { with: URI::MailTo::EMAIL_REGEXP }, allow_blank: true
   validate  :unconfirmed_email_available
+  validate  :email_not_disposable
   validate :acceptable_avatar_image
 
   def self.ransackable_attributes(_auth_object = nil)
@@ -54,6 +55,13 @@ class User < ApplicationRecord
     return unless User.where.not(id:).exists?(email_address: unconfirmed_email)
 
     errors.add(:email_address, :taken)
+  end
+
+  def email_not_disposable
+    new_addresses = changes.slice('email_address', 'unconfirmed_email').values.filter_map { |_old, new| new.presence }
+    return unless new_addresses.any? { |address| ValidEmail2::Address.new(address).disposable_domain? }
+
+    errors.add(:email_address, :disposable_email)
   end
 
   def acceptable_avatar_image

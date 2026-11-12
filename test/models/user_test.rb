@@ -35,6 +35,26 @@ class UserTest < ActiveSupport::TestCase
     assert_includes User.new(email_address: 'not-an-email').tap(&:valid?).errors[:email_address], 'is invalid'
   end
 
+  test 'rejects disposable email addresses' do
+    user = build(:user, email_address: 'learner@mailinator.com')
+
+    assert_not user.valid?
+    assert_includes user.errors[:email_address], I18n.t('errors.messages.disposable_email')
+  end
+
+  test 'rejects changing to a disposable email address' do
+    user = create(:user)
+
+    assert_not user.update(unconfirmed_email: 'learner@mailinator.com')
+    assert_includes user.errors[:email_address], I18n.t('errors.messages.disposable_email')
+  end
+
+  test 'keeps existing accounts valid if their email domain is later listed as disposable' do
+    user = build(:user, email_address: 'learner@mailinator.com').tap { |u| u.save!(validate: false) }
+
+    assert_predicate user.reload, :valid?
+  end
+
   test 'normalizes email address to lowercase and stripped' do
     user = User.new(username: 'jane', email_address: '  Jane@Example.com  ', password: 'password')
 

@@ -1,4 +1,7 @@
 en:
+  errors:
+    messages:
+      disposable_email: "can't be a temporary or disposable address"
   site_name: "Learner to Driver"
   short_name: "learnertodriver"
   tagline: "Get Your Learners"
@@ -40,6 +43,10 @@ en:
     none: "Be the first to comment"
     leave_comment: "Leave a Comment"
     submit: "Post Comment"
+    confirm_email_first: "Please confirm your email address before commenting."
+    create:
+      awaiting_approval: "Thanks! Your comment will appear once it's approved."
+      rate_limit_message: "You're commenting too quickly. Please wait a few minutes."
   practice_quiz: "Practice Quiz"
   page_views:
     singular: "View"
@@ -87,6 +94,7 @@ en:
   passwords:
     create:
       password_reset_instructions_sent: "Password reset instructions sent (if a user with that email address exists)."
+      rate_limit_message: "Too many requests. Please try again later."
     update:
       password_reset_success: "Your password has been reset."
       password_mismatch: "Passwords did not match."
@@ -155,6 +163,7 @@ en:
       intro: "Update your details and how you appear to others."
     update:
       confirm_new_email: "Profile updated. Check %{email} to confirm your new email address."
+      rate_limit_message: "Too many profile updates. Please try again later."
     passwords:
       edit:
         title: "Change password"
@@ -201,3 +210,9 @@ en:
       header:
         title: "%{title} quiz"
         question: Question
+  bot_checks:
+    failed: "We couldn't confirm you're a person. Please try again."
+  view_components:
+    forms:
+      bot_check:
+        website: "Website"

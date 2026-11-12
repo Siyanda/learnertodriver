@@ -37,6 +37,8 @@
     <%= form.password_field :password_confirmation, class: 'form-control', required: true, autocomplete: 'new-password', maxlength: 72 %>
   </div>
 
+  <%= component('forms/bot_check') %>
+
   <br>
   <%= form.submit t('.submit'), class: 'rounded button btn-primary p-4 text-white' %>
 <% end %>
