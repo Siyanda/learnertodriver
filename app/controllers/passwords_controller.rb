@@ -37,8 +37,6 @@ class PasswordsController < ApplicationController
 
   private
 
-  def email_address_param = User.normalize_value_for(:email_address, params[:email_address].to_s)
-
   def set_user_by_token
     @user = User.find_by!(password_reset_token: params.expect(:token))
   rescue ActiveSupport::MessageVerifier::InvalidSignature

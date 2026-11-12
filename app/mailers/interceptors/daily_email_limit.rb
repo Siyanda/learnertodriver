@@ -14,6 +14,8 @@ class Interceptors::DailyEmailLimit
   end
 
   def delivering_email(message)
+    return unless message.perform_deliveries
+
     sent_today = store.increment("#{CACHE_KEY}:#{Date.current.iso8601}", 1, expires_in: 1.day)
     return if sent_today.nil? || sent_today <= limit
 

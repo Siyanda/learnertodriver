@@ -1,4 +1,7 @@
 en:
+  errors:
+    messages:
+      disposable_email: "can't be a temporary or disposable address"
   site_name: "Learner to Driver"
   short_name: "learnertodriver"
   tagline: "Get Your Learners"
@@ -40,6 +43,10 @@ en:
     none: "Be the first to comment"
     leave_comment: "Leave a Comment"
     submit: "Post Comment"
+    confirm_email_first: "Please confirm your email address before commenting."
+    create:
+      awaiting_approval: "Thanks! Your comment will appear once it's approved."
+      rate_limit_message: "You're commenting too quickly. Please wait a few minutes."
   practice_quiz: "Practice Quiz"
   page_views:
     singular: "View"

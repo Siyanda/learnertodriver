@@ -4,14 +4,14 @@ class Posts::Comment::Component < ApplicationViewComponent
   option :post
 
   def comment_count
-    post.comments.count
+    post.comments.visible.count
   end
 
   def comments
-    post.comments.includes(:user)
+    post.comments.visible.includes(:user)
   end
 
   def comments?
-    post.comments.any?
+    post.comments.visible.any?
   end
 end

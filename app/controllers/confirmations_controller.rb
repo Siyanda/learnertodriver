@@ -38,7 +38,5 @@ class ConfirmationsController < ApplicationController
 
   private
 
-  def email_address_param = User.normalize_value_for(:email_address, params[:email_address].to_s)
-
   def recipient_email = Current.user&.confirmation_email || email_address_param
 end

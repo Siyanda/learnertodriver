@@ -37,6 +37,7 @@ gem 'gretel'
 gem 'friendly_id'
 gem 'acts_as_list'
 gem 'postmark-rails'
+gem 'valid_email2', '~> 7.1.0'
 gem 'rack-mini-profiler', require: false
 
 gem 'dry-initializer'

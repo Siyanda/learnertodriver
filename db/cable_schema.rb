@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_10_03_120000) do
+ActiveRecord::Schema[8.1].define(version: 2026_11_10_085213) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.text "body"
     t.datetime "created_at", null: false
@@ -92,6 +92,14 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_03_120000) do
     t.index ["answer_id"], name: "index_correct_answers_on_answer_id"
     t.index ["question_id", "answer_id"], name: "index_correct_answers_on_question_id_and_answer_id", unique: true
     t.index ["question_id"], name: "index_correct_answers_on_question_id"
+  end
+
+  create_table "email_suppressions", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.string "email_address", null: false
+    t.integer "reason", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email_address"], name: "index_email_suppressions_on_email_address", unique: true
   end
 
   create_table "evaluations", force: :cascade do |t|

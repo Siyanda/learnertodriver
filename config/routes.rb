@@ -20,6 +20,10 @@ Rails.application.routes.draw do
     resources :evaluations, only: %i[new create show edit update]
   end
 
+  namespace :webhooks do
+    resources :postmark_events, only: :create
+  end
+
   namespace :admin do
     get '/', to: 'dashboard#index'
 
@@ -28,6 +32,8 @@ Rails.application.routes.draw do
 
     mount MissionControl::Jobs::Engine, at: '/jobs'
   end
+
+  post '/rails/active_storage/direct_uploads', to: 'admin/direct_uploads#create', as: nil
 
   get '/manifest.json',            to: 'service_worker#manifest'
   get '/offline.html',             to: 'service_worker#offline'

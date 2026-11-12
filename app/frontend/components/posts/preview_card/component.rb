@@ -12,7 +12,7 @@ class Posts::PreviewCard::Component < ApplicationViewComponent
   end
 
   def comment_count
-    post.comments.size
+    post.comments.visible.size
   end
 
   def view_count

@@ -18,6 +18,6 @@ module Learnertodriver # rubocop:disable Style/ClassAndModuleChildren
     config.view_component.previews.controller     = 'PreviewController'
     config.view_component.previews.default_layout = 'component_preview'
 
-    config.action_mailer.interceptors = %w[Interceptors::DailyEmailLimit]
+    config.action_mailer.interceptors = %w[Interceptors::SuppressedRecipients Interceptors::DailyEmailLimit]
   end
 end
