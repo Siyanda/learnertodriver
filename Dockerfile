@@ -8,7 +8,7 @@ WORKDIR /rails
 ENV BUNDLE_DEPLOYMENT="1" \
   BUNDLE_PATH="/usr/local/bundle" \
   BUNDLE_WITHOUT="development:test" \
-  DATA_PATH="/data" \
+  DB_PATH="/data" \
   RAILS_ENV="production" \
   SOLID_QUEUE_IN_PUMA="true" \
   PATH="/rails/bin:$PATH"
