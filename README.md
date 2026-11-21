@@ -17,7 +17,7 @@
     <img src="https://img.shields.io/badge/Ruby-v4.0.5-red.svg" alt="ruby version"/>
   </a>
   <a href="http://rubyonrails.org/">
-    <img src="https://img.shields.io/badge/Rails-v8.1.3-red.svg" alt="rails version"/>
+    <img src="https://img.shields.io/badge/Rails-v8.1.3.1-red.svg" alt="rails version"/>
   </a>
   <a href="https://bun.sh/">
     <img src="https://img.shields.io/badge/bun-v1.3.11-red.svg" alt="bun version"/>
@@ -59,6 +59,14 @@ Learner to Driver is a Rails PWA that helps you prepare for the South African le
 - [Ruby](https://www.ruby-lang.org/en/) 4.0.5 — we recommend [asdf](https://asdf-vm.com/) or [mise](https://mise.jdx.dev/)
 - [bun](https://bun.sh/) 1.3.11
 - [SQLite](https://www.sqlite.org/)
+- [libvips](https://www.libvips.org/) — image processing
+- [overmind](https://github.com/DarthSim/overmind) + [tmux](https://github.com/tmux/tmux) — runs `Procfile.dev` (optional; falls back to foreman)
+
+On macOS, install the non-Ruby dependencies with Homebrew:
+
+```sh
+brew bundle
+```
 
 ### Installation
 
@@ -112,6 +120,11 @@ See `env.example` for the full list. Key variables:
 |---|---|
 | `DB_PATH` | Production SQLite path (default `storage`) |
 | `POSTMARK_API_TOKEN` | Postmark for transactional mail |
+| `DAILY_EMAIL_LIMIT` | Max emails sent per day across all mailers (default `300`) |
+| `POSTMARK_WEBHOOK_PASSWORD` | Basic-auth password for the Postmark bounce/spam webhook; the webhook rejects every request while unset |
+| `DEFAULT_MAIL_FROM` | Sender address for all mail (default `hi@learnertodriver.co.za`); must be a verified Postmark sender |
+| `CLOUDFLARE_ENDPOINT`, `CLOUDFLARE_ACCESS_KEY_ID`, `CLOUDFLARE_SECRET_ACCESS_KEY` | Cloudflare R2 for Active Storage; required in production, falls back to local disk in development |
+| `TURNSTILE_SITE_KEY`, `TURNSTILE_SECRET_KEY` | Cloudflare Turnstile bot check on sign-up, password reset and resend confirmation; required in production, skipped in development when unset |
 | `APP_URL` | Canonical app URL |
 | `RAILS_MASTER_KEY` | Credentials key |
 
@@ -119,7 +132,7 @@ See `env.example` for the full list. Key variables:
 
 - `app/actions/<domain>/<verb_noun>.rb` — single-responsibility LightService actions
 - `app/organizers/<domain>/<verb>.rb` — LightService organizers composing actions
-- `app/components/<namespace>/<name>/` — ViewComponents with colocated Stimulus controllers
+- `app/frontend/components/<namespace>/<name>/` — ViewComponents with colocated Stimulus controllers
 - `app/policies/` — ActionPolicy authorization policies
 - `app/controllers/admin/` — admin area (layout `admin`, `AdminController`)
 
