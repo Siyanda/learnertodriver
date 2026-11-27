@@ -13,6 +13,7 @@ class Admin::SidebarNav::Component < ApplicationViewComponent
     ['Pages',       :admin_pages_path,                'icons/pages.svg'],
     ['Comments',    :admin_comments_path,             'icons/comments.svg'],
     ['Tags',        :admin_tags_path,                 'icons/hashtag.svg'],
+    ['Flagged IPs', :admin_flagged_ips_path,          'icons/close.svg'],
     ['Jobs',        :admin_mission_control_jobs_path, 'icons/tools.svg'],
   ].freeze
 

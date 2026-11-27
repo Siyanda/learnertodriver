@@ -29,6 +29,7 @@ Rails.application.routes.draw do
 
     resources :users, :quizzes, :questions, :posts, :pages, :comments, :tags
     resources :evaluations, only: %i[index show destroy]
+    resources :flagged_ips, only: %i[index show destroy]
 
     mount MissionControl::Jobs::Engine, at: '/jobs'
   end

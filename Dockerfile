@@ -19,7 +19,7 @@ RUN gem update --system --no-document && \
 FROM base AS build
 
 RUN apt-get update -qq && \
-  apt-get install --no-install-recommends -y build-essential curl libvips pkg-config unzip
+  apt-get install --no-install-recommends -y build-essential curl libbrotli-dev libvips pkg-config unzip
 
 ARG BUN_VERSION=1.2.15
 ENV BUN_INSTALL=/usr/local/bun
@@ -43,7 +43,7 @@ RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
 FROM base
 
 RUN apt-get update -qq && apt-get install --no-install-recommends -y \
-  curl imagemagick libsqlite3-0 libvips build-essential pkg-config unzip && \
+  curl imagemagick libbrotli1 libsqlite3-0 libvips build-essential pkg-config unzip && \
   rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
 COPY --from=build "${BUNDLE_PATH}" "${BUNDLE_PATH}"
