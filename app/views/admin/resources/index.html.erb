@@ -11,6 +11,8 @@
         New <%= resource_class.model_name.human %>
       <% end %>
     <% end %>
+
+    <%= render 'index_actions' if lookup_context.exists?('index_actions', [controller_path], true) %>
   </header>
 
   <% if search_attribute %>
